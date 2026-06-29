@@ -236,3 +236,45 @@ def hr_quality_training_loss(
         qt = torch.clamp(quality_target.float().to(quality_logit.device), 0.0, 1.0)
         loss = loss + float(quality_weight) * F.binary_cross_entropy_with_logits(quality_logit, qt)
     return loss
+
+
+
+def hr_quality_selection_training_loss(
+    hr_logits: torch.Tensor,
+    hr_bpm: torch.Tensor,
+    hr_bins: torch.Tensor,
+    final_hr_bpm: torch.Tensor | None = None,
+    selection_logits: torch.Tensor | None = None,
+    best_candidate_index: torch.Tensor | None = None,
+    quality_logit: torch.Tensor | None = None,
+    quality_target: torch.Tensor | None = None,
+    sigma_bpm: float = 3.0,
+    dist_weight: float = 1.0,
+    hr_reg_weight: float = 0.10,
+    selection_weight: float = 0.50,
+    quality_weight: float = 0.20,
+) -> torch.Tensor:
+    """HRQualityNetV2 objective.
+
+    Components:
+      - HR distribution loss: learned temporal features must localize HR.
+      - Smooth-L1 HR regression on the final blended HR.
+      - Candidate-selection loss: learn which fixed input/prior HR estimate is best.
+      - Quality loss: learn whether at least one candidate is reliable.
+    """
+    loss = float(dist_weight) * hr_distribution_loss(hr_logits, hr_bpm, hr_bins, sigma_bpm=sigma_bpm)
+
+    if final_hr_bpm is not None and hr_reg_weight > 0:
+        loss = loss + float(hr_reg_weight) * F.smooth_l1_loss(final_hr_bpm.float(), hr_bpm.float(), beta=2.0)
+
+    if selection_logits is not None and best_candidate_index is not None and selection_weight > 0:
+        target = best_candidate_index.long().to(selection_logits.device)
+        valid = target >= 0
+        if valid.any():
+            loss = loss + float(selection_weight) * F.cross_entropy(selection_logits[valid], target[valid])
+
+    if quality_logit is not None and quality_target is not None and quality_weight > 0:
+        qt = torch.clamp(quality_target.float().to(quality_logit.device), 0.0, 1.0)
+        loss = loss + float(quality_weight) * F.binary_cross_entropy_with_logits(quality_logit, qt)
+
+    return loss

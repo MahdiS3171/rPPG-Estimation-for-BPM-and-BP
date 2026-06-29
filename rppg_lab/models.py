@@ -376,3 +376,128 @@ class HRQualityNet(nn.Module):
                 "features": feat,
             }
         return hr_bpm
+
+
+class HRQualityNetV2(nn.Module):
+    """HR + quality model with explicit candidate/prior selection.
+
+    This model is designed for the current project stage.  It receives temporal
+    traces (RGB + classical priors) and also the HR estimates obtained from a
+    fixed set of candidate input channels (typically RGB_G + prior channels).
+
+    It predicts:
+        1) an HR probability distribution from learned temporal features;
+        2) a selection distribution over candidate HR estimates;
+        3) a final HR as a learnable blend of learned-HR and candidate-fused HR;
+        4) a confidence/quality score.
+
+    The auxiliary selection objective lets the network learn *which prior should
+    be trusted* in each window, which is exactly the gap between the best single
+    prior and the input-channel oracle.
+    """
+
+    def __init__(
+        self,
+        in_channels: int,
+        num_candidates: int,
+        hr_min: float = 40.0,
+        hr_max: float = 180.0,
+        hr_step: float = 1.0,
+        base_channels: int = 48,
+        num_blocks: int = 4,
+        dropout: float = 0.20,
+    ):
+        super().__init__()
+        self.in_channels = int(in_channels)
+        self.num_candidates = int(num_candidates)
+        self.hr_min = float(hr_min)
+        self.hr_max = float(hr_max)
+        self.hr_step = float(hr_step)
+
+        bins = torch.arange(self.hr_min, self.hr_max + 0.5 * self.hr_step, self.hr_step, dtype=torch.float32)
+        self.register_buffer("hr_bins", bins)
+
+        self.encoder = TemporalEncoder1D(
+            in_channels=self.in_channels,
+            base_channels=base_channels,
+            num_blocks=num_blocks,
+            dropout=dropout,
+        )
+
+        pooled_dim = base_channels * 2
+        self.pool_dropout = nn.Dropout(dropout)
+        self.hr_head = nn.Sequential(
+            nn.Linear(pooled_dim, 128),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(128, bins.numel()),
+        )
+        self.selection_head = nn.Sequential(
+            nn.Linear(pooled_dim, 96),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(96, self.num_candidates),
+        )
+        self.fusion_gate_head = nn.Sequential(
+            nn.Linear(pooled_dim, 32),
+            nn.ReLU(inplace=True),
+            nn.Linear(32, 1),
+        )
+        self.quality_head = nn.Sequential(
+            nn.Linear(pooled_dim, 64),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(64, 1),
+        )
+
+    def forward(
+        self,
+        x: torch.Tensor,
+        candidate_hrs: Optional[torch.Tensor] = None,
+        candidate_valid: Optional[torch.Tensor] = None,
+        return_dict: bool = True,
+    ):
+        feat = self.encoder(x)
+        avg = feat.mean(dim=-1)
+        std = feat.std(dim=-1, unbiased=False)
+        pooled = self.pool_dropout(torch.cat([avg, std], dim=1))
+
+        hr_logits = self.hr_head(pooled)
+        hr_probs = torch.softmax(hr_logits, dim=-1)
+        learned_hr = (hr_probs * self.hr_bins.view(1, -1)).sum(dim=-1)
+
+        selection_logits = self.selection_head(pooled)
+        if candidate_valid is not None:
+            selection_logits = selection_logits.masked_fill(~candidate_valid.bool(), -1e4)
+        selection_probs = torch.softmax(selection_logits, dim=-1)
+
+        if candidate_hrs is None:
+            candidate_hr = learned_hr
+            final_hr = learned_hr
+            gate = torch.ones_like(learned_hr)
+        else:
+            cand = candidate_hrs.to(x.device).float()
+            if candidate_valid is not None:
+                cand = torch.where(candidate_valid.bool().to(x.device), cand, learned_hr.view(-1, 1))
+            candidate_hr = (selection_probs * cand).sum(dim=-1)
+            gate = torch.sigmoid(self.fusion_gate_head(pooled).squeeze(-1))
+            final_hr = gate * learned_hr + (1.0 - gate) * candidate_hr
+
+        quality_logit = self.quality_head(pooled).squeeze(-1)
+        quality = torch.sigmoid(quality_logit)
+
+        if return_dict:
+            return {
+                "hr_logits": hr_logits,
+                "hr_probs": hr_probs,
+                "learned_hr_bpm": learned_hr,
+                "selection_logits": selection_logits,
+                "selection_probs": selection_probs,
+                "candidate_hr_bpm": candidate_hr,
+                "fusion_gate": gate,
+                "hr_bpm": final_hr,
+                "quality_logit": quality_logit,
+                "quality": quality,
+                "features": feat,
+            }
+        return final_hr
