@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: rppg-lab
+Version: 0.1.0
+Summary: Clean research codebase for remote PPG, HR, and BP experiments
+Requires-Python: >=3.9

@@ -1,0 +1,8 @@
+[project]
+name = "rppg-lab"
+version = "0.1.0"
+description = "Clean research codebase for remote PPG, HR, and BP experiments"
+requires-python = ">=3.9"
+
+[tool.setuptools]
+packages = ["rppg_lab"]

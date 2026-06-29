@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+cache_roi/
+cache_roi*/
+outputs/
+checkpoints/
+*.pth
+*.pt
+*.npz
+.DS_Store
+UBFCData/
+rPPG-10/
