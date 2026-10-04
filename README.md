@@ -1,28 +1,54 @@
-# rPPG Lab – cleaned project
+# rPPG Lab - reviewed research code
 
-This is the working codebase for the face-video rPPG / HR project.
+This repository contains the current research code for estimating heart rate
+from facial video and preparing a future cuff-referenced blood-pressure study.
+It is an academic prototype, not a medical device.
 
-## Current stable path
+## Evidence-backed current path
 
-1. Classical baselines remain mandatory.
-   - UBFC-rPPG: CHROM / CHROM_WIN are strong.
-   - rPPG-10: GREEN-face was strongest in the current tests.
-2. The deep model should not rebuild a waveform from scratch when a classical prior is already strong.
-3. The default hybrid model is now `PriorResidualWaveformNet`:
+The present results support a conservative hybrid strategy:
 
 ```text
-RGB + classical priors -> weighted prior fusion + small learned residual -> rPPG waveform
+face video -> RGB traces -> classical rPPG priors -> prior-preserving model -> HR
 ```
 
-The residual head is zero-initialized. At epoch 0 the model behaves like a conservative prior fusion, so it should not destroy CHROM/CHROM_WIN before learning anything.
+On the stored UBFC validation split, `CHROM_WIN` is already very strong. The
+recommended waveform model, `PriorResidualWaveformNet`, starts from a weighted
+fusion of classical priors and learns only a small residual correction. Its
+residual head is zero-initialized, so the untrained model does not destroy a
+strong prior.
 
-## Recommended UBFC training command
+The six default prior channels are:
+
+```text
+GREEN, CHROM, CHROM_WIN, PBV, POS_WIN, OMIT
+```
+
+`PBV`, `LGI`, and `OMIT` in this repository are transparent baseline
+approximations; they must not be described as exact reproductions of every
+published variant.
+
+## Datasets and evaluation status
+
+- **UBFC-rPPG:** used for participant-wise model development and validation.
+- **rPPG-10:** used for an external classical-method benchmark and, separately,
+  for multi-dataset training of `HRQualityNet`.
+
+The current multi-dataset experiment is **not** a strict cross-dataset test:
+UBFC-rPPG and rPPG-10 are both represented in training and validation after
+independent participant-wise splits. A strict train-on-one/test-on-the-other
+experiment remains future work.
+
+No locked final test set has yet been reported for the HR models. Stored "best"
+checkpoint metrics are validation results used for model selection.
+
+## Recommended UBFC waveform command
 
 ```powershell
 python scripts/train_waveform_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_oldpoints --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2 --roi face --out checkpoints/prior_residual_ubfc.pt
 ```
 
-For an RGB-only control:
+RGB-only ablation:
 
 ```powershell
 python scripts/train_waveform_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_oldpoints --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2 --roi face --no-priors --model waveform --out checkpoints/rgb_waveform_ubfc.pt
@@ -30,38 +56,55 @@ python scripts/train_waveform_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi
 
 ## Visual waveform inspection
 
-After training:
-
 ```powershell
 python scripts/plot_waveform_predictions.py --ubfc-root UBFCData --cache-dir cache_roi_oldpoints --checkpoint checkpoints/prior_residual_ubfc.pt --mode worst --num-plots 12 --show-priors --out-dir outputs/waveform_plots
 ```
 
-This saves plots with:
+The waveform target is fingertip/contact PPG while the input is facial rPPG.
+A small physiological and acquisition delay can exist, so both zero-lag and
+lag-aligned correlation are reported. HR is estimated from the predicted
+waveform with Welch spectral analysis.
 
-- target PPG waveform,
-- model output,
-- optional prior channels.
+## Blood-pressure code status
 
-Use these plots before trusting HR metrics.
+The BP path is a scaffold awaiting synchronized, participant-level data. The
+reviewed baseline now provides:
 
-## Important evaluation notes
+- participant-wise train/validation/locked-test splits;
+- training-only feature imputation and standardization;
+- training-only target standardization;
+- a population-mean BP reference baseline;
+- separate SBP/DBP metrics;
+- checkpointed preprocessing and split metadata.
 
-- Zero-lag waveform correlation is not always the right metric because facial rPPG and finger PPG can have a physiological delay.
-- The training script prints both `val_wave_corr` and `val_wave_corr_aligned`; the aligned one is more informative for waveform recovery.
-- HR metrics are computed from the predicted waveform using Welch.
-- The dataset now defines window-level `y_hr` from the same reference PPG window used as the waveform target, avoiding the earlier mismatch between UBFC's HR row and window-level Welch estimates.
+Run only after valid pilot recordings exist:
 
-## rPPG-10 notes
-
-`Subject_4` in the downloaded rPPG-10 copy has empty video files and should be excluded automatically by the benchmark script. ECG HR reference is extracted using R-peak detection, not Welch on downsampled ECG.
-
-## HRQualityNet
-
-A direct HR-distribution + quality/confidence model is available in:
-
-```text
-scripts/train_hr_quality.py
-rppg_lab.models.HRQualityNet
+```powershell
+python scripts/train_bp_baseline.py --data-dir data_sessions --out checkpoints/bp_feature_mlp.pt
 ```
 
-See `docs/HR_QUALITY_MODEL.md` for commands and interpretation.
+Face-to-hand optical delay is stored as an **inter-site peripheral delay**, not
+true PTT. Neither camera signal marks cardiac ejection, and an apparent velocity
+must not be reported as clinical PWV.
+
+## Reproducibility audit
+
+Create a manifest from stored checkpoints and CSV outputs:
+
+```powershell
+python scripts/audit_results.py
+```
+
+The generated `outputs/results_audit.json` summarizes existing artifacts; it
+does not rerun training.
+
+## Validation commands used in the review
+
+```powershell
+python -m compileall -q rppg_lab scripts tests
+python -m unittest discover -s tests -v
+```
+
+The datasets were not included in the uploaded archive, so full extraction and
+retraining were not rerun during this review. Existing checkpoints and result
+CSVs were audited, and model/signal/BP-preprocessing paths were smoke-tested.

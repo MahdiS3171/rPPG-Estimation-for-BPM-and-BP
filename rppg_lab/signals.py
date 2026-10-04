@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Dict, Optional, Tuple
 import numpy as np
 from scipy.interpolate import interp1d
-from scipy.signal import butter, filtfilt, welch, find_peaks, correlate, correlation_lags
+from scipy.signal import butter, filtfilt, welch, find_peaks, correlate, correlation_lags, coherence
 
 EPS = 1e-8
 
@@ -213,15 +213,24 @@ def phase_delay_at_hr(x: np.ndarray, y: np.ndarray, fs: float, hr_hz: Optional[f
     if k <= 0:
         return np.nan, np.nan
     phase = np.angle(Y[k] * np.conj(X[k]))
-    delay = phase / (2.0 * np.pi * freqs[k])
+    # If y(t)=x(t-delay), the cross-spectrum Y*conj(X) has phase
+    # -2*pi*f*delay. Negating the phase therefore makes positive values mean
+    # that y lags x, consistent with align_by_xcorr().
+    delay = -phase / (2.0 * np.pi * freqs[k])
     # Wrap to half a cycle.
     period = 1.0 / freqs[k]
     if delay > 0.5 * period:
         delay -= period
     if delay < -0.5 * period:
         delay += period
-    coherence_proxy = float(np.abs(Y[k] * np.conj(X[k])) / (np.abs(Y[k]) * np.abs(X[k]) + EPS))
-    return float(delay), coherence_proxy
+
+    # A single-bin normalized cross-spectrum is identically one and is not a
+    # useful confidence measure. Estimate magnitude-squared coherence instead.
+    nperseg = min(n, max(32, int(round(float(fs) * 8.0))))
+    f_coh, cxy = coherence(x, y, fs=float(fs), nperseg=nperseg)
+    kc = int(np.argmin(np.abs(f_coh - freqs[k])))
+    coherence_at_hr = float(np.clip(cxy[kc], 0.0, 1.0)) if cxy.size else float("nan")
+    return float(delay), coherence_at_hr
 
 
 def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
@@ -244,6 +253,10 @@ def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
         "amp_std": np.nan,
         "width50_mean_sec": np.nan,
         "upstroke_mean_sec": np.nan,
+        "fall_time_mean_sec": np.nan,
+        "area_mean": np.nan,
+        "duty_mean": np.nan,
+        "upstroke_slope_mean": np.nan,
         "ibi_mean_sec": np.nan,
         "ibi_std_sec": np.nan,
     }
@@ -254,6 +267,10 @@ def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
     amps = []
     widths = []
     upstrokes = []
+    fall_times = []
+    areas = []
+    duties = []
+    upstroke_slopes = []
     for p in peaks:
         prev_troughs = troughs[troughs < p]
         next_troughs = troughs[troughs > p]
@@ -268,9 +285,21 @@ def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
         half = min(x[l], x[r]) + 0.5 * amp
         segment = x[l:r + 1]
         above = np.where(segment >= half)[0]
+        pulse_duration = float((r - l) / fs)
         if above.size > 1:
-            widths.append(float((above[-1] - above[0]) / fs))
-        upstrokes.append(float((p - l) / fs))
+            width50 = float((above[-1] - above[0]) / fs)
+            widths.append(width50)
+            if pulse_duration > 0:
+                duties.append(width50 / pulse_duration)
+        upstroke = float((p - l) / fs)
+        fall_time = float((r - p) / fs)
+        upstrokes.append(upstroke)
+        fall_times.append(fall_time)
+        if upstroke > 0:
+            upstroke_slopes.append(amp / upstroke)
+        baseline = min(float(x[l]), float(x[r]))
+        pulse_above_baseline = np.maximum(segment - baseline, 0.0)
+        areas.append(float(np.trapezoid(pulse_above_baseline, dx=1.0 / fs)))
     if amps:
         out["amp_mean"] = float(np.mean(amps))
         out["amp_std"] = float(np.std(amps))
@@ -278,28 +307,41 @@ def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
         out["width50_mean_sec"] = float(np.mean(widths))
     if upstrokes:
         out["upstroke_mean_sec"] = float(np.mean(upstrokes))
+    if fall_times:
+        out["fall_time_mean_sec"] = float(np.mean(fall_times))
+    if areas:
+        out["area_mean"] = float(np.mean(areas))
+    if duties:
+        out["duty_mean"] = float(np.mean(duties))
+    if upstroke_slopes:
+        out["upstroke_slope_mean"] = float(np.mean(upstroke_slopes))
     return out
 
 
 def two_site_features(proximal: np.ndarray, distal: np.ndarray, fs: float, distance_m: Optional[float] = None) -> Dict[str, float]:
-    """Features for future face-hand BP experiments."""
+    """Extract inter-site timing features for future face--hand BP experiments.
+
+    The delays measured between two peripheral optical signals are not true PTT,
+    because neither signal marks cardiac ejection. The optional velocity is an
+    apparent inter-site velocity and must not be reported as clinical PWV.
+    """
     prox = bandpass(proximal, fs)
     dist = bandpass(distal, fs)
     hr = estimate_hr_welch(prox, fs)
     xlag, xscore = align_by_xcorr(prox, dist, fs, max_lag_sec=0.6)
     plag, pscore = phase_delay_at_hr(prox, dist, fs, hr_hz=hr.hr_hz)
     out = {
-        "ptt_xcorr_sec": xlag,
-        "ptt_xcorr_score": xscore,
-        "ptt_phase_sec": plag,
-        "ptt_phase_score": pscore,
+        "inter_site_delay_xcorr_sec": xlag,
+        "inter_site_delay_xcorr_score": xscore,
+        "inter_site_delay_phase_sec": plag,
+        "inter_site_delay_phase_coherence": pscore,
     }
     if distance_m is not None and np.isfinite(xlag) and xlag > 0:
-        out["pwv_xcorr_m_s"] = float(distance_m / xlag)
+        out["apparent_inter_site_velocity_xcorr_m_s"] = float(distance_m / xlag)
     else:
-        out["pwv_xcorr_m_s"] = np.nan
+        out["apparent_inter_site_velocity_xcorr_m_s"] = np.nan
     if distance_m is not None and np.isfinite(plag) and plag > 0:
-        out["pwv_phase_m_s"] = float(distance_m / plag)
+        out["apparent_inter_site_velocity_phase_m_s"] = float(distance_m / plag)
     else:
-        out["pwv_phase_m_s"] = np.nan
+        out["apparent_inter_site_velocity_phase_m_s"] = np.nan
     return out

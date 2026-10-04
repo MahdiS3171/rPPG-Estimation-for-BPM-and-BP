@@ -25,7 +25,7 @@ from rppg_lab.signals import estimate_hr_welch, standardize_1d
 
 
 def load_model(ckpt_path: Path, device: torch.device):
-    ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
     model_type = ckpt.get("model_type", "waveform")
     in_ch = int(ckpt.get("in_channels", 3))
     prior_names = list(ckpt.get("prior_names", []))

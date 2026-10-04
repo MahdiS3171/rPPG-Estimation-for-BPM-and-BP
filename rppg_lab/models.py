@@ -262,8 +262,8 @@ class BPFeatureMLP(nn.Module):
     def __init__(self, in_features: int, hidden: int = 128, dropout: float = 0.15, out_dim: int = 2):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(in_features, hidden), nn.BatchNorm1d(hidden), nn.ReLU(), nn.Dropout(dropout),
-            nn.Linear(hidden, hidden), nn.BatchNorm1d(hidden), nn.ReLU(), nn.Dropout(dropout),
+            nn.Linear(in_features, hidden), nn.LayerNorm(hidden), nn.ReLU(), nn.Dropout(dropout),
+            nn.Linear(hidden, hidden), nn.LayerNorm(hidden), nn.ReLU(), nn.Dropout(dropout),
             nn.Linear(hidden, hidden // 2), nn.ReLU(), nn.Linear(hidden // 2, out_dim),
         )
 
@@ -499,5 +499,310 @@ class HRQualityNetV2(nn.Module):
                 "quality_logit": quality_logit,
                 "quality": quality,
                 "features": feat,
+            }
+        return final_hr
+
+
+class FrameEncoder2D(nn.Module):
+    """Small per-frame CNN used by VideoHRNet.
+
+    The encoder is intentionally compact for the first video-stage experiment:
+    it should run on a normal laptop/GPU and act as a sanity-check before moving
+    to a heavier PhysFormer-like transformer.
+    """
+
+    def __init__(self, out_dim: int = 96, dropout: float = 0.10):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv2d(3, 16, kernel_size=5, stride=2, padding=2),
+            nn.BatchNorm2d(16),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(64, out_dim, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(out_dim),
+            nn.ReLU(inplace=True),
+            nn.Dropout2d(dropout) if dropout > 0 else nn.Identity(),
+            nn.AdaptiveAvgPool2d(1),
+            nn.Flatten(),
+        )
+
+    def forward(self, frames: torch.Tensor) -> torch.Tensor:
+        return self.net(frames)
+
+
+class VideoHRNet(nn.Module):
+    """First spatio-temporal video HR + quality model.
+
+    Input: ``video`` with shape ``(B, T, 3, H, W)``.
+    Output: HR probability distribution, expected HR, and quality/confidence.
+
+    This model is intentionally lighter than PhysFormer.  It is the bridge
+    between the validated 1D HRQualityNet path and the final heavy video model.
+    """
+
+    def __init__(
+        self,
+        hr_min: float = 40.0,
+        hr_max: float = 180.0,
+        hr_step: float = 1.0,
+        frame_feature_dim: int = 96,
+        temporal_channels: int = 96,
+        num_temporal_blocks: int = 4,
+        dropout: float = 0.20,
+    ):
+        super().__init__()
+        self.hr_min = float(hr_min)
+        self.hr_max = float(hr_max)
+        self.hr_step = float(hr_step)
+        bins = torch.arange(self.hr_min, self.hr_max + 0.5 * self.hr_step, self.hr_step, dtype=torch.float32)
+        self.register_buffer("hr_bins", bins)
+
+        self.frame_encoder = FrameEncoder2D(out_dim=frame_feature_dim, dropout=dropout * 0.5)
+        self.temporal_in = nn.Sequential(
+            nn.Conv1d(frame_feature_dim, temporal_channels, kernel_size=7, padding=3),
+            nn.BatchNorm1d(temporal_channels),
+            nn.ReLU(inplace=True),
+        )
+        blocks = []
+        for i in range(num_temporal_blocks):
+            blocks.append(ResidualBlock1D(temporal_channels, kernel_size=7, dilation=2 ** (i % 4), dropout=dropout))
+        self.temporal_blocks = nn.Sequential(*blocks)
+        pooled_dim = temporal_channels * 2
+        self.dropout = nn.Dropout(dropout)
+        self.hr_head = nn.Sequential(
+            nn.Linear(pooled_dim, 128),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(128, bins.numel()),
+        )
+        self.quality_head = nn.Sequential(
+            nn.Linear(pooled_dim, 64),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(64, 1),
+        )
+
+    def forward(self, video: torch.Tensor, return_dict: bool = True):
+        # video: (B,T,3,H,W)
+        b, t, c, h, w = video.shape
+        frames = video.reshape(b * t, c, h, w)
+        frame_feat = self.frame_encoder(frames).reshape(b, t, -1)  # (B,T,F)
+        feat = frame_feat.transpose(1, 2).contiguous()  # (B,F,T)
+        feat = self.temporal_blocks(self.temporal_in(feat))
+        avg = feat.mean(dim=-1)
+        std = feat.std(dim=-1, unbiased=False)
+        pooled = self.dropout(torch.cat([avg, std], dim=1))
+        logits = self.hr_head(pooled)
+        probs = torch.softmax(logits, dim=-1)
+        hr_bpm = (probs * self.hr_bins.view(1, -1)).sum(dim=-1)
+        quality_logit = self.quality_head(pooled).squeeze(-1)
+        quality = torch.sigmoid(quality_logit)
+        if return_dict:
+            return {
+                "hr_logits": logits,
+                "hr_probs": probs,
+                "hr_bpm": hr_bpm,
+                "quality_logit": quality_logit,
+                "quality": quality,
+                "features": feat,
+                "frame_features": frame_feat,
+            }
+        return hr_bpm
+
+
+class VideoPriorHRNet(nn.Module):
+    """Prior-guided video HR + quality model.
+
+    This is the recommended second video-stage model.  It receives both:
+      * raw face video clips: (B, T, 3, H, W)
+      * validated 1D traces/priors: (B, C, L)
+      * candidate HR estimates from RGB_G + prior channels: (B, K)
+
+    The model is deliberately initialized to preserve a strong candidate prior
+    (CHROM_WIN when present).  Therefore epoch-0 performance should be close to
+    the best classical prior instead of the poor random-video baseline.
+    The video branch is then learned as a residual/correction and quality cue.
+    """
+
+    def __init__(
+        self,
+        trace_channels: int,
+        num_candidates: int,
+        candidate_names: Optional[Sequence[str]] = None,
+        hr_min: float = 40.0,
+        hr_max: float = 180.0,
+        hr_step: float = 1.0,
+        frame_feature_dim: int = 64,
+        video_temporal_channels: int = 64,
+        trace_channels_hidden: int = 48,
+        num_video_blocks: int = 3,
+        num_trace_blocks: int = 3,
+        dropout: float = 0.20,
+        residual_scale_bpm: float = 5.0,
+    ):
+        super().__init__()
+        self.trace_channels = int(trace_channels)
+        self.num_candidates = int(num_candidates)
+        self.candidate_names = list(candidate_names or [f"cand_{i}" for i in range(num_candidates)])
+        self.hr_min = float(hr_min)
+        self.hr_max = float(hr_max)
+        self.hr_step = float(hr_step)
+        self.residual_scale_bpm = float(residual_scale_bpm)
+
+        bins = torch.arange(self.hr_min, self.hr_max + 0.5 * self.hr_step, self.hr_step, dtype=torch.float32)
+        self.register_buffer("hr_bins", bins)
+
+        self.frame_encoder = FrameEncoder2D(out_dim=frame_feature_dim, dropout=dropout * 0.5)
+        self.video_temporal_in = nn.Sequential(
+            nn.Conv1d(frame_feature_dim, video_temporal_channels, kernel_size=7, padding=3),
+            nn.BatchNorm1d(video_temporal_channels),
+            nn.ReLU(inplace=True),
+        )
+        video_blocks = []
+        for i in range(num_video_blocks):
+            video_blocks.append(ResidualBlock1D(video_temporal_channels, kernel_size=7, dilation=2 ** (i % 4), dropout=dropout))
+        self.video_temporal_blocks = nn.Sequential(*video_blocks)
+
+        self.trace_encoder = TemporalEncoder1D(
+            in_channels=self.trace_channels,
+            base_channels=trace_channels_hidden,
+            num_blocks=num_trace_blocks,
+            dropout=dropout,
+        )
+
+        pooled_dim = 2 * video_temporal_channels + 2 * trace_channels_hidden + 4
+        self.dropout = nn.Dropout(dropout)
+        self.shared = nn.Sequential(
+            nn.Linear(pooled_dim, 192),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(192, 128),
+            nn.ReLU(inplace=True),
+        )
+        self.hr_head = nn.Linear(128, bins.numel())
+        # Auxiliary head using only video features. This prevents the video branch
+        # from becoming a silent passenger when a strong classical prior is present.
+        self.video_hr_head = nn.Sequential(
+            nn.Linear(2 * video_temporal_channels, 96),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(96, bins.numel()),
+        )
+        self.selection_head = nn.Linear(128, self.num_candidates)
+        self.fusion_gate_head = nn.Linear(128, 1)
+        self.residual_head = nn.Linear(128, 1)
+        self.quality_head = nn.Linear(128, 1)
+
+        # Conservative initialization: prefer CHROM_WIN/CHROM/GREEN when they
+        # are candidate names, and keep final HR mostly candidate-based at start.
+        sel_bias = _initial_prior_logits(self.candidate_names, init_prior="auto")
+        if len(sel_bias) == self.num_candidates:
+            with torch.no_grad():
+                self.selection_head.bias.copy_(sel_bias)
+        nn.init.zeros_(self.selection_head.weight)
+
+        nn.init.zeros_(self.residual_head.weight)
+        nn.init.zeros_(self.residual_head.bias)
+        nn.init.zeros_(self.fusion_gate_head.weight)
+        nn.init.constant_(self.fusion_gate_head.bias, -4.0)  # sigmoid ~= 0.018: preserve candidate HR.
+
+    def _encode_video(self, video: torch.Tensor) -> torch.Tensor:
+        b, t, c, h, w = video.shape
+        frames = video.reshape(b * t, c, h, w)
+        frame_feat = self.frame_encoder(frames).reshape(b, t, -1)
+        feat = frame_feat.transpose(1, 2).contiguous()
+        feat = self.video_temporal_blocks(self.video_temporal_in(feat))
+        avg = feat.mean(dim=-1)
+        std = feat.std(dim=-1, unbiased=False)
+        return torch.cat([avg, std], dim=1)
+
+    def _encode_trace(self, x_trace: torch.Tensor) -> torch.Tensor:
+        feat = self.trace_encoder(x_trace)
+        avg = feat.mean(dim=-1)
+        std = feat.std(dim=-1, unbiased=False)
+        return torch.cat([avg, std], dim=1)
+
+    def forward(
+        self,
+        video: torch.Tensor,
+        x_trace: torch.Tensor,
+        candidate_hrs: Optional[torch.Tensor] = None,
+        candidate_valid: Optional[torch.Tensor] = None,
+        return_dict: bool = True,
+    ):
+        vpool = self._encode_video(video)
+        tpool = self._encode_trace(x_trace)
+
+        video_hr_logits = self.video_hr_head(self.dropout(vpool))
+        video_hr_probs = torch.softmax(video_hr_logits, dim=-1)
+        video_hr_bpm = (video_hr_probs * self.hr_bins.view(1, -1)).sum(dim=-1)
+
+        # Simple candidate statistics give the fusion MLP scale/context without
+        # letting it depend on hidden state alone.
+        if candidate_hrs is not None:
+            cand = candidate_hrs.to(video.device).float()
+            valid = candidate_valid.bool().to(video.device) if candidate_valid is not None else torch.isfinite(cand)
+            cand_safe = torch.where(valid, cand, torch.zeros_like(cand))
+            count = valid.float().sum(dim=1).clamp_min(1.0)
+            cand_mean = cand_safe.sum(dim=1) / count
+            cand_min = torch.where(valid, cand, torch.full_like(cand, 999.0)).min(dim=1).values
+            cand_max = torch.where(valid, cand, torch.full_like(cand, -999.0)).max(dim=1).values
+            cand_spread = (cand_max - cand_min).clamp_min(0.0)
+            cand_std = torch.sqrt((((cand_safe - cand_mean[:, None]) ** 2) * valid.float()).sum(dim=1) / count)
+            cand_feats = torch.stack([
+                (cand_mean - 90.0) / 30.0,
+                cand_std / 20.0,
+                cand_spread / 60.0,
+                count / max(1.0, float(self.num_candidates)),
+            ], dim=1)
+        else:
+            cand_feats = torch.zeros(video.shape[0], 4, device=video.device)
+
+        z = self.shared(self.dropout(torch.cat([vpool, tpool, cand_feats], dim=1)))
+        hr_logits = self.hr_head(z)
+        hr_probs = torch.softmax(hr_logits, dim=-1)
+        learned_hr = (hr_probs * self.hr_bins.view(1, -1)).sum(dim=-1)
+
+        selection_logits = self.selection_head(z)
+        if candidate_valid is not None:
+            selection_logits = selection_logits.masked_fill(~candidate_valid.bool().to(video.device), -1e4)
+        selection_probs = torch.softmax(selection_logits, dim=-1)
+
+        if candidate_hrs is None:
+            candidate_hr = learned_hr
+        else:
+            cand = candidate_hrs.to(video.device).float()
+            if candidate_valid is not None:
+                cand = torch.where(candidate_valid.bool().to(video.device), cand, learned_hr[:, None])
+            candidate_hr = (selection_probs * cand).sum(dim=-1)
+
+        residual = self.residual_scale_bpm * torch.tanh(self.residual_head(z).squeeze(-1))
+        candidate_corrected = candidate_hr + residual
+        gate = torch.sigmoid(self.fusion_gate_head(z).squeeze(-1))
+        final_hr = (1.0 - gate) * candidate_corrected + gate * learned_hr
+
+        quality_logit = self.quality_head(z).squeeze(-1)
+        quality = torch.sigmoid(quality_logit)
+        if return_dict:
+            return {
+                "hr_logits": hr_logits,
+                "hr_probs": hr_probs,
+                "learned_hr_bpm": learned_hr,
+                "video_hr_logits": video_hr_logits,
+                "video_hr_probs": video_hr_probs,
+                "video_hr_bpm": video_hr_bpm,
+                "selection_logits": selection_logits,
+                "selection_probs": selection_probs,
+                "candidate_hr_bpm": candidate_hr,
+                "residual_bpm": residual,
+                "fusion_gate": gate,
+                "hr_bpm": final_hr,
+                "quality_logit": quality_logit,
+                "quality": quality,
             }
         return final_hr

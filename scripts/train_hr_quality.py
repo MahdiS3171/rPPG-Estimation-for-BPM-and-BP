@@ -9,6 +9,10 @@ reproduce finger PPG waveform morphology.  Instead, it predicts:
 
 This matches the practical objective better: accurate HR + calibrated reject
 option when the rPPG evidence is weak.
+
+V3 adds soft candidate-selection supervision and dual checkpointing:
+  - best_overall: lowest validation HR MAE;
+  - best_qualityXX: lowest MAE among the top-quality windows at a chosen coverage.
 """
 from __future__ import annotations
 
@@ -137,11 +141,19 @@ class HRQualityWrapper(Dataset):
     it is a useful supervised target for learning confidence.
     """
 
-    def __init__(self, base: Dataset, fs: float, channel_names: Sequence[str], quality_tau_bpm: float = 5.0):
+    def __init__(
+        self,
+        base: Dataset,
+        fs: float,
+        channel_names: Sequence[str],
+        quality_tau_bpm: float = 5.0,
+        selection_tau_bpm: float = 3.0,
+    ):
         self.base = base
         self.fs = float(fs)
         self.channel_names = list(channel_names)
         self.quality_tau_bpm = float(quality_tau_bpm)
+        self.selection_tau_bpm = float(selection_tau_bpm)
         # Candidate channels for explicit selection: RGB_G + all classical priors.
         # R/B are kept as temporal inputs but not as trusted HR candidates.
         self.candidate_idx = ([1] if len(self.channel_names) > 1 else []) + list(range(3, len(self.channel_names)))
@@ -177,10 +189,33 @@ class HRQualityWrapper(Dataset):
         # candidate is close.  tau=5 bpm means quality ~=0.37 at 5 bpm error.
         q = float(np.exp(-((best_err / self.quality_tau_bpm) ** 2))) if np.isfinite(best_err) else 0.0
 
+        # Soft target for candidate selection.  Hard argmin is noisy when two
+        # candidates are close; the soft target gives partial credit to all
+        # candidates whose HR estimates are close to ground truth.
+        if np.isfinite(y_hr) and np.any(cand_valid):
+            errs = np.abs(cand_hrs - y_hr)
+            errs[~cand_valid] = np.inf
+            logits = -0.5 * (errs / max(1e-6, self.selection_tau_bpm)) ** 2
+            logits[~np.isfinite(logits)] = -1e9
+            logits = logits - np.max(logits)
+            selection_target = np.exp(logits)
+            selection_target[~cand_valid] = 0.0
+            total = float(selection_target.sum())
+            if total > 0:
+                selection_target = selection_target / total
+            else:
+                selection_target = np.zeros_like(cand_hrs, dtype=np.float64)
+        else:
+            selection_target = np.zeros_like(cand_hrs, dtype=np.float64)
+
+        cand_errs = np.abs(cand_hrs - y_hr) if np.isfinite(y_hr) else np.full_like(cand_hrs, np.inf, dtype=float)
+        cand_errs[~cand_valid] = np.inf
+
         cand_hrs_filled = np.nan_to_num(cand_hrs, nan=0.0, posinf=0.0, neginf=0.0).astype(np.float32)
+        cand_errs_filled = np.nan_to_num(cand_errs, nan=999.0, posinf=999.0, neginf=999.0).astype(np.float32)
         cand_valid = cand_valid.astype(np.bool_)
 
-        # Return only the fields needed by HRQualityNet/HRQualityNetV2.
+        # Return only the fields needed by HRQualityNet/HRQualityNetV2/V3.
         return {
             "x": x,
             "y_hr": item["y_hr"],
@@ -188,6 +223,8 @@ class HRQualityWrapper(Dataset):
             "best_input_err": torch.tensor(best_err if np.isfinite(best_err) else 999.0, dtype=torch.float32),
             "candidate_hrs": torch.from_numpy(cand_hrs_filled),
             "candidate_valid": torch.from_numpy(cand_valid),
+            "candidate_errs": torch.from_numpy(cand_errs_filled),
+            "selection_target": torch.from_numpy(selection_target.astype(np.float32)),
             "best_candidate_index": torch.tensor(best_idx, dtype=torch.long),
             "subject_id": item.get("subject_id", ""),
             "dataset": item.get("dataset", "UBFC"),
@@ -222,6 +259,7 @@ def build_datasets(args, prior_names: Sequence[str], channel_names: Sequence[str
             fs=args.fs,
             channel_names=channel_names,
             quality_tau_bpm=args.quality_tau_bpm,
+            selection_tau_bpm=args.selection_tau_bpm,
         ))
         val_sets.append(HRQualityWrapper(
             UBFCRPPGDataset(va, fs_target=args.fs, win_sec=args.win_sec, stride_sec=args.stride_sec,
@@ -229,6 +267,7 @@ def build_datasets(args, prior_names: Sequence[str], channel_names: Sequence[str
             fs=args.fs,
             channel_names=channel_names,
             quality_tau_bpm=args.quality_tau_bpm,
+            selection_tau_bpm=args.selection_tau_bpm,
         ))
 
     if args.rppg10_root:
@@ -246,6 +285,7 @@ def build_datasets(args, prior_names: Sequence[str], channel_names: Sequence[str
             fs=args.fs,
             channel_names=channel_names,
             quality_tau_bpm=args.quality_tau_bpm,
+            selection_tau_bpm=args.selection_tau_bpm,
         ))
         val_sets.append(HRQualityWrapper(
             RPPG10WindowDataset(va, root=root, fs_target=args.fs, win_sec=args.rppg10_win_sec,
@@ -253,6 +293,7 @@ def build_datasets(args, prior_names: Sequence[str], channel_names: Sequence[str
             fs=args.fs,
             channel_names=channel_names,
             quality_tau_bpm=args.quality_tau_bpm,
+            selection_tau_bpm=args.selection_tau_bpm,
         ))
 
     if not train_sets or not val_sets:
@@ -304,6 +345,8 @@ def evaluate_model(model, loader: DataLoader, device: torch.device):
     model.eval()
     gt, pred, qual, qtar, datasets = [], [], [], [], []
     sel_correct, sel_total = 0, 0
+    sel_soft_ce_sum, sel_soft_ce_n = 0.0, 0
+    sel_expected_err_sum, sel_expected_err_n = 0.0, 0
     with torch.no_grad():
         for batch in loader:
             x = batch["x"].to(device)
@@ -319,6 +362,23 @@ def evaluate_model(model, loader: DataLoader, device: torch.device):
                         pred_idx = out["selection_probs"].argmax(dim=1)
                         sel_correct += int((pred_idx[valid_sel] == best_idx[valid_sel]).sum().item())
                         sel_total += int(valid_sel.sum().item())
+                if "selection_probs" in out and "selection_target" in batch:
+                    st = batch["selection_target"].to(device).float()
+                    valid_soft = st.sum(dim=1) > 0
+                    if valid_soft.any():
+                        probs = torch.clamp(out["selection_probs"][valid_soft], 1e-8, 1.0)
+                        ce = -(st[valid_soft] * torch.log(probs)).sum(dim=1)
+                        sel_soft_ce_sum += float(ce.sum().item())
+                        sel_soft_ce_n += int(valid_soft.sum().item())
+                if "selection_probs" in out and "candidate_errs" in batch:
+                    cerr = batch["candidate_errs"].to(device).float()
+                    finite_err = torch.isfinite(cerr) & (cerr < 998.0)
+                    valid_err = finite_err.any(dim=1)
+                    if valid_err.any():
+                        err = torch.where(finite_err, cerr, torch.zeros_like(cerr))
+                        exp_err = (out["selection_probs"] * err).sum(dim=1)
+                        sel_expected_err_sum += float(exp_err[valid_err].sum().item())
+                        sel_expected_err_n += int(valid_err.sum().item())
             else:
                 out = model(x, return_dict=True)
             p = out["hr_bpm"].cpu().numpy().astype(float)
@@ -346,6 +406,8 @@ def evaluate_model(model, loader: DataLoader, device: torch.device):
         "gt": np.asarray(gt),
         "pred": np.asarray(pred),
         "selection_acc": (sel_correct / sel_total) if sel_total > 0 else float("nan"),
+        "selection_soft_ce": (sel_soft_ce_sum / sel_soft_ce_n) if sel_soft_ce_n > 0 else float("nan"),
+        "selection_expected_err": (sel_expected_err_sum / sel_expected_err_n) if sel_expected_err_n > 0 else float("nan"),
     }
     return out
 
@@ -357,6 +419,10 @@ def print_eval_summary(ev: Dict, prefix: str = "val"):
     print(f"{prefix}_HR_MAE={m.mae:.3f} {prefix}_HR_RMSE={m.rmse:.3f} {prefix}_HR_r={m.pearson:.3f}")
     if np.isfinite(ev.get("selection_acc", float("nan"))):
         print(f"{prefix}_selection_acc={ev['selection_acc']:.3f}")
+    if np.isfinite(ev.get("selection_soft_ce", float("nan"))):
+        print(f"{prefix}_selection_soft_ce={ev['selection_soft_ce']:.3f}")
+    if np.isfinite(ev.get("selection_expected_err", float("nan"))):
+        print(f"{prefix}_selection_expected_err={ev['selection_expected_err']:.3f}")
     if len(abs_err) and np.std(qual) > 1e-8:
         corr = np.corrcoef(qual, abs_err)[0, 1]
         print(f"{prefix}_quality_error_corr={corr:.3f}  quality_mean={np.mean(qual):.3f}")
@@ -373,6 +439,39 @@ def print_eval_summary(ev: Dict, prefix: str = "val"):
             continue
         mm = safe_metrics(ev["gt"][mask], ev["pred"][mask])
         print(f"  {ds:8s}: N={mask.sum():4d} MAE={mm.mae:7.3f} RMSE={mm.rmse:7.3f} r={mm.pearson:7.3f}")
+
+
+def quality_coverage_mae(ev: Dict, coverage: float) -> float:
+    abs_err = np.asarray(ev["abs_err"], dtype=float)
+    qual = np.asarray(ev["quality"], dtype=float)
+    if len(abs_err) == 0:
+        return float("inf")
+    n = max(1, int(round(float(coverage) * len(abs_err))))
+    idx = np.argsort(-qual)[:n]
+    return float(np.nanmean(abs_err[idx]))
+
+
+def checkpoint_path(base: Path, suffix: str) -> Path:
+    return base.with_name(f"{base.stem}_{suffix}{base.suffix}")
+
+
+def save_checkpoint(path: Path, model, args, channel_names, prior_names, best_value: float, tag: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save({
+        "model_state": model.state_dict(),
+        "model_class": "HRQualityNetV2" if args.model_version in {"v2", "v3"} else "HRQualityNet",
+        "model_version": args.model_version,
+        "checkpoint_tag": tag,
+        "in_channels": len(channel_names),
+        "channel_names": channel_names,
+        "candidate_names": (["RGB_G"] if len(channel_names) > 1 else []) + prior_names,
+        "priors": prior_names,
+        "fs": args.fs,
+        "hr_bins": model.hr_bins.detach().cpu().numpy(),
+        "args": vars(args),
+        "best_value": best_value,
+    }, path)
+
 
 
 def main():
@@ -397,13 +496,16 @@ def main():
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--weight-decay", type=float, default=1e-3)
     ap.add_argument("--quality-tau-bpm", type=float, default=5.0)
+    ap.add_argument("--selection-tau-bpm", type=float, default=3.0)
     ap.add_argument("--sigma-bpm", type=float, default=3.0)
     ap.add_argument("--quality-weight", type=float, default=0.20)
-    ap.add_argument("--model-version", choices=["v1", "v2"], default="v2")
+    ap.add_argument("--model-version", choices=["v1", "v2", "v3"], default="v3")
     ap.add_argument("--selection-weight", type=float, default=0.50)
+    ap.add_argument("--soft-selection-weight", type=float, default=0.70)
     ap.add_argument("--hr-reg-weight", type=float, default=0.10)
     ap.add_argument("--dist-weight", type=float, default=1.00)
     ap.add_argument("--patience", type=int, default=12)
+    ap.add_argument("--quality-save-coverage", type=float, default=0.60)
     args = ap.parse_args()
 
     torch.manual_seed(args.seed)
@@ -427,7 +529,7 @@ def main():
 
     # Candidate HRs are RGB_G + all prior channels.
     num_candidates = (1 if len(channel_names) > 1 else 0) + max(0, len(channel_names) - 3)
-    if args.model_version == "v2":
+    if args.model_version in {"v2", "v3"}:
         model = HRQualityNetV2(in_channels=len(channel_names), num_candidates=num_candidates).to(device)
     else:
         model = HRQualityNet(in_channels=len(channel_names)).to(device)
@@ -437,7 +539,9 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     best = np.inf
+    best_quality = np.inf
     bad_epochs = 0
+    quality_path = checkpoint_path(out_path, f"quality{int(round(100*args.quality_save_coverage))}")
 
     print("\nInitial evaluation:")
     init_ev = evaluate_model(model, val_loader, device)
@@ -458,10 +562,12 @@ def main():
             y_hr = y_hr[finite]
             qtar = qtar[finite]
 
-            if args.model_version == "v2":
+            if args.model_version in {"v2", "v3"}:
                 cand = batch["candidate_hrs"].to(device)[finite]
                 cvalid = batch["candidate_valid"].to(device)[finite]
                 best_idx = batch["best_candidate_index"].to(device)[finite]
+                sel_target = batch.get("selection_target")
+                sel_target = sel_target.to(device)[finite] if sel_target is not None else None
                 out = model(x, candidate_hrs=cand, candidate_valid=cvalid, return_dict=True)
                 loss = hr_quality_selection_training_loss(
                     hr_logits=out["hr_logits"],
@@ -470,12 +576,14 @@ def main():
                     final_hr_bpm=out["hr_bpm"],
                     selection_logits=out["selection_logits"],
                     best_candidate_index=best_idx,
+                    selection_target_probs=sel_target if args.model_version == "v3" else None,
                     quality_logit=out["quality_logit"],
                     quality_target=qtar,
                     sigma_bpm=args.sigma_bpm,
                     dist_weight=args.dist_weight,
                     hr_reg_weight=args.hr_reg_weight,
                     selection_weight=args.selection_weight,
+                    soft_selection_weight=args.soft_selection_weight if args.model_version == "v3" else 0.0,
                     quality_weight=args.quality_weight,
                 )
             else:
@@ -501,28 +609,30 @@ def main():
         print(f"epoch={epoch} train_loss={np.mean(losses):.4f} val_HR_MAE={m.mae:.3f} val_HR_RMSE={m.rmse:.3f} val_HR_r={m.pearson:.3f}")
         print_eval_summary(ev, prefix="val")
 
-        if m.mae < best - 1e-4:
+        q_mae = quality_coverage_mae(ev, args.quality_save_coverage)
+
+        improved_overall = m.mae < best - 1e-4
+        improved_quality = q_mae < best_quality - 1e-4
+
+        if improved_overall:
             best = m.mae
             bad_epochs = 0
-            torch.save({
-                "model_state": model.state_dict(),
-                "model_class": "HRQualityNetV2" if args.model_version == "v2" else "HRQualityNet",
-                "model_version": args.model_version,
-                "in_channels": len(channel_names),
-                "channel_names": channel_names,
-                "candidate_names": (["RGB_G"] if len(channel_names) > 1 else []) + prior_names,
-                "priors": prior_names,
-                "fs": args.fs,
-                "hr_bins": model.hr_bins.detach().cpu().numpy(),
-                "args": vars(args),
-                "best_val_hr_mae": best,
-            }, out_path)
-            print("saved best:", out_path)
+            save_checkpoint(out_path, model, args, channel_names, prior_names, best, tag="best_overall")
+            print("saved best overall:", out_path)
         else:
             bad_epochs += 1
-            if bad_epochs >= args.patience:
-                print(f"Early stopping: no improvement for {args.patience} epochs. Best val_HR_MAE={best:.3f}")
-                break
+
+        if improved_quality:
+            best_quality = q_mae
+            save_checkpoint(quality_path, model, args, channel_names, prior_names, best_quality, tag=f"best_quality_{args.quality_save_coverage:.2f}")
+            print(f"saved best quality@{int(round(100*args.quality_save_coverage))}%:", quality_path, f"MAE={best_quality:.3f}")
+
+        if bad_epochs >= args.patience:
+            print(
+                f"Early stopping: no overall improvement for {args.patience} epochs. "
+                f"Best val_HR_MAE={best:.3f}; best quality@{int(round(100*args.quality_save_coverage))}% MAE={best_quality:.3f}"
+            )
+            break
 
 
 if __name__ == "__main__":

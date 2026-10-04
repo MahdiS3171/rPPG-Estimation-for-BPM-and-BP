@@ -246,12 +246,14 @@ def hr_quality_selection_training_loss(
     final_hr_bpm: torch.Tensor | None = None,
     selection_logits: torch.Tensor | None = None,
     best_candidate_index: torch.Tensor | None = None,
+    selection_target_probs: torch.Tensor | None = None,
     quality_logit: torch.Tensor | None = None,
     quality_target: torch.Tensor | None = None,
     sigma_bpm: float = 3.0,
     dist_weight: float = 1.0,
     hr_reg_weight: float = 0.10,
     selection_weight: float = 0.50,
+    soft_selection_weight: float = 0.0,
     quality_weight: float = 0.20,
 ) -> torch.Tensor:
     """HRQualityNetV2 objective.
@@ -260,6 +262,9 @@ def hr_quality_selection_training_loss(
       - HR distribution loss: learned temporal features must localize HR.
       - Smooth-L1 HR regression on the final blended HR.
       - Candidate-selection loss: learn which fixed input/prior HR estimate is best.
+      - Optional soft candidate-selection loss: assign nonzero probability to
+        candidates with near-optimal HR errors, which is more stable than a
+        hard argmin when several priors are effectively tied.
       - Quality loss: learn whether at least one candidate is reliable.
     """
     loss = float(dist_weight) * hr_distribution_loss(hr_logits, hr_bpm, hr_bins, sigma_bpm=sigma_bpm)
@@ -272,6 +277,16 @@ def hr_quality_selection_training_loss(
         valid = target >= 0
         if valid.any():
             loss = loss + float(selection_weight) * F.cross_entropy(selection_logits[valid], target[valid])
+
+    if selection_logits is not None and selection_target_probs is not None and soft_selection_weight > 0:
+        target_probs = selection_target_probs.float().to(selection_logits.device)
+        valid_soft = target_probs.sum(dim=1) > 0
+        if valid_soft.any():
+            log_probs = torch.log_softmax(selection_logits[valid_soft], dim=-1)
+            target_probs = target_probs[valid_soft]
+            target_probs = target_probs / (target_probs.sum(dim=-1, keepdim=True) + EPS)
+            soft_ce = -(target_probs * log_probs).sum(dim=-1).mean()
+            loss = loss + float(soft_selection_weight) * soft_ce
 
     if quality_logit is not None and quality_target is not None and quality_weight > 0:
         qt = torch.clamp(quality_target.float().to(quality_logit.device), 0.0, 1.0)

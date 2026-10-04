@@ -1,71 +1,50 @@
-# معماری علمی پیشنهادی پروژه
+# معماری پژوهشی فعلی
 
-## 1. ضربان قلب
+## ۱. هدف ضربان قلب
 
-مسیر اصلی:
-
-```text
-video -> multi-ROI RGB traces -> classical rPPG priors -> waveform model -> rPPG waveform -> HR
-```
-
-### چرا waveform-first؟
-
-اگر مدل مستقیم HR بدهد، ممکن است shortcut یاد بگیرد. مثلا به جای یادگیری سیگنال فیزیولوژیک، از bias دیتاست یا نور یا حرکت عدد HR را حدس بزند. اما اگر waveform را پیش‌بینی کند، می‌توانیم هم فرکانس را بسنجیم، هم correlation waveform، هم SNR و هم Bland-Altman روی HR را.
-
-### مدل‌های موجود در کد
-
-- `HR1DCNN`: فقط baseline مستقیم HR.
-- `WaveformNet`: مدل اصلی فعلی برای یک ROI یا RGB+prior.
-- `MultiROIWaveformNet`: نسخه آماده برای ROI attention. ورودی آن `(B, R, C, L)` است.
-
-### ورودی پیشنهادی فعلی
-
-برای شروع:
+مسیر اصلی پژوهش برای ضربان قلب به‌صورت زیر است:
 
 ```text
-C = 8 = RGB(3) + POS_WIN + CHROM_WIN + LGI + OMIT + PBV
+video -> ROI/RGB traces -> classical priors -> prior-preserving temporal model -> rPPG waveform/HR
 ```
 
-بعدا برای multi-ROI:
+مدل `PriorResidualWaveformNet` خروجی روش‌های کلاسیک را به‌صورت وزن‌دار ادغام می‌کند و یک اصلاح باقی‌مانده‌ی کوچک می‌آموزد. این انتخاب به دلیل عملکرد قوی `CHROM_WIN` روی تقسیم اعتبارسنجی UBFC انجام شده است.
+
+مدل‌های موجود:
+
+- `HR1DCNN`: خط پایه‌ی رگرسیون مستقیم ضربان؛
+- `WaveformNet`: بازسازی عمومی شکل موج؛
+- `PriorResidualWaveformNet`: مدل ترکیبی محافظه‌کار و مسیر پیشنهادی فعلی؛
+- `HRQualityNet` و `HRQualityNetV2`: تخمین توزیع ضربان، انتخاب prior و امتیاز کیفیت؛
+- `VideoHRNet`: ورودی ویدئویی مستقیم؛
+- `VideoPriorHRNet`: ترکیب ویدئو، trace و تخمین‌های کلاسیک؛
+- `MultiROIWaveformNet`: زیرساخت توجه میان نواحی که هنوز نتیجه‌ی آموزشی نهایی ندارد.
+
+## ۲. وضعیت ارزیابی
+
+- همه‌ی تقسیم‌های مدل فعلی در سطح آزمودنی انجام شده‌اند.
+- مقادیر checkpointهای «بهترین» مربوط به اعتبارسنجی و انتخاب مدل‌اند، نه آزمون نهایی قفل‌شده.
+- آزمون روش‌های کلاسیک روی rPPG-10 یک ارزیابی خارجی مستقل از UBFC است.
+- آموزش `HRQualityNet` روی ترکیب UBFC و rPPG-10، آموزش چندمجموعه‌داده‌ای است و آزمون سخت‌گیرانه‌ی cross-dataset محسوب نمی‌شود.
+
+## ۳. مسیر فشار خون
+
+هدف نهایی پروژه بررسی امکان تخمین فشار خون از ویدئوی چهره است. ثبت هم‌زمان دست، contact PPG و فشارسنج بازویی در فاز داده‌برداری نقش مرجع و اطلاعات مکمل پژوهشی دارد. مسیر آزمایشی پیشنهادی:
 
 ```text
-R = forehead, left_cheek, right_cheek, face
-C = RGB + priors per ROI
+face rPPG + hand rPPG + inter-site peripheral delay + morphology + metadata + cuff labels -> SBP/DBP
 ```
 
-## 2. فشارخون
+تأخیر میان دو سیگنال محیطی «PTT واقعی» نیست، زیرا هیچ‌کدام زمان خروج موج از قلب را ثبت نمی‌کنند. هر ویژگی سرعتی نیز فقط سرعت ظاهری بین دو محل است و نباید به‌عنوان PWV بالینی گزارش شود.
 
-مسیر علمی پیشنهادی:
+مدل `BPFeatureMLP` فقط یک خط پایه‌ی ویژگی‌محور است. کد آموزش آن پس از بازبینی به تقسیم train/validation/test در سطح فرد، پیش‌پردازش صرفاً بر اساس داده‌ی آموزش و ارزیابی یک‌باره‌ی آزمون قفل‌شده مجهز شده است.
 
-```text
-face rPPG + hand rPPG + PTT/phase + PWA + HR + metadata + cuff calibration -> SBP/DBP + uncertainty
-```
+## ۴. اصول گزارش علمی
 
-مدل face-only BP فقط baseline است و نباید claim اصلی پروژه باشد.
+۱. نتایج اعتبارسنجی و آزمون نهایی از یکدیگر جدا گزارش می‌شوند.
 
-## 3. معیارهای ارزیابی
+۲. نتایج زیرمجموعه‌ی باکیفیت همراه با درصد پوشش ارائه می‌شوند و جایگزین نتیجه‌ی کل داده نیستند.
 
-برای HR:
+۳. هیچ نتیجه‌ی فشار خون پیش از جمع‌آوری داده‌ی مرجع و آزمون آزمودنی‌محور گزارش نمی‌شود.
 
-- MAE/RMSE bpm
-- Pearson correlation
-- Bland-Altman
-- waveform correlation
-- SNR
-- cross-dataset test
-
-برای BP:
-
-- ME ± SD
-- MAE/RMSE
-- Bland-Altman
-- subject-wise یا cohort-wise split
-- calibration-aware evaluation
-- sanity check نزدیک به AAMI: `abs(ME)<=5` و `SD<=8`
-
-## 4. قانون‌های پروژه
-
-1. window split برای نتیجه نهایی ممنوع.
-2. هر مدل BP باید baseline mean/person-calibration را شکست دهد.
-3. هر claim BP باید uncertainty یا quality flag داشته باشد.
-4. اول robust rPPG، بعد BP.
+۴. روش‌های ساده‌شده‌ی کلاسیک با عنوان baseline approximation معرفی می‌شوند.

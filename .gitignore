@@ -11,3 +11,5 @@ checkpoints/
 .DS_Store
 UBFCData/
 rPPG-10/
+cache_video/
+cache_video_prior/

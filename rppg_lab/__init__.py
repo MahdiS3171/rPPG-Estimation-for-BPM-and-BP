@@ -1,12 +1,13 @@
-"""Clean rPPG/BP research codebase.
+"""Reviewed rPPG/BP research codebase.
 
-Main modules:
-- classical: traditional rPPG methods (GREEN, CHROM, POS, PBV, LGI, OMIT, ICA, PCA)
-- roi: MediaPipe-based multi-ROI extraction from facial/hand videos
-- signals: filtering, HR estimation, PTT/phase features, waveform utilities
-- datasets: UBFC loaders and PyTorch datasets
-- models: waveform-first HR models and BP feature baselines
-- losses/metrics: reproducible training and evaluation helpers
+Main modules
+------------
+- ``classical``: transparent traditional rPPG baselines and priors.
+- ``roi``: MediaPipe-based facial/hand ROI extraction.
+- ``signals``: filtering, HR estimation, inter-site delay, and waveform features.
+- ``datasets``: UBFC and future session-level dataset helpers.
+- ``models``: waveform, HR/quality, video, multi-ROI, and BP baselines.
+- ``losses`` / ``metrics``: reproducible training and evaluation helpers.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
