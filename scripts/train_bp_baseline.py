@@ -25,6 +25,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from rppg_lab.datasets import SessionBPDataset
 from rppg_lab.models import BPFeatureMLP
 from rppg_lab.metrics import aami_summary, regression_metrics
+from rppg_lab.splits import split_subjects
 
 
 def seed_all(seed: int) -> None:
@@ -33,51 +34,6 @@ def seed_all(seed: int) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
-
-
-def split_subjects(
-    subject_ids: Sequence[str],
-    val_fraction: float,
-    test_fraction: float,
-    seed: int,
-) -> tuple[list[str], list[str], list[str]]:
-    """Create disjoint participant-wise train, validation, and test sets."""
-    unique = sorted(set(str(s) for s in subject_ids))
-    if not (0.0 < val_fraction < 1.0):
-        raise ValueError("--val-fraction must be between 0 and 1.")
-    if not (0.0 <= test_fraction < 1.0):
-        raise ValueError("--test-fraction must be in [0, 1).")
-    if val_fraction + test_fraction >= 1.0:
-        raise ValueError("Validation and test fractions must sum to less than 1.")
-    min_subjects = 3 if test_fraction > 0 else 2
-    if len(unique) < min_subjects:
-        raise RuntimeError(
-            f"At least {min_subjects} distinct participants are required for the requested split."
-        )
-
-    rng = np.random.default_rng(seed)
-    order = np.arange(len(unique))
-    rng.shuffle(order)
-
-    n_val = max(1, int(round(len(unique) * val_fraction)))
-    n_test = max(1, int(round(len(unique) * test_fraction))) if test_fraction > 0 else 0
-    # Always leave at least one participant for training.
-    overflow = n_val + n_test - (len(unique) - 1)
-    while overflow > 0 and n_test > 1:
-        n_test -= 1
-        overflow -= 1
-    while overflow > 0 and n_val > 1:
-        n_val -= 1
-        overflow -= 1
-    if n_val + n_test >= len(unique):
-        raise RuntimeError("Split fractions leave no participant for training.")
-
-    val_set = {unique[i] for i in order[:n_val]}
-    test_set = {unique[i] for i in order[n_val:n_val + n_test]}
-    train_ids = [s for s in unique if s not in val_set and s not in test_set]
-    val_ids = [s for s in unique if s in val_set]
-    test_ids = [s for s in unique if s in test_set]
-    return train_ids, val_ids, test_ids
 
 
 def fit_feature_preprocessor(x_train: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -165,6 +121,15 @@ def main() -> None:
     test_idx = [i for i, sid in enumerate(ds.subject_ids) if sid in test_set]
     if not train_idx or not val_idx or (args.test_fraction > 0 and not test_idx):
         raise RuntimeError("Participant split produced an empty requested partition.")
+
+    # Discover the legacy JSON feature schema from training rows only, so a
+    # feature present exclusively in validation/test cannot alter model inputs.
+    ds.feature_keys = sorted({k for i in train_idx for k,v in ds.rows[i]["features"].items()
+                             if isinstance(v, (int,float)) and not isinstance(v,bool)})
+    if not ds.feature_keys:
+        raise RuntimeError("No numeric features in training subjects")
+    print("Legacy cuff timing is unchecked; use run_bp_pilot.py and train_bp_models.py for provenance-aware research.")
+    print("Dataset exclusions:", ds.exclusions)
 
     x_raw = np.stack([ds[i]["x_raw"].numpy() for i in range(len(ds))])
     y_raw = np.stack([ds[i]["y"].numpy() for i in range(len(ds))]).astype(np.float32)

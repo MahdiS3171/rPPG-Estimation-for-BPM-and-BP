@@ -1,0 +1,37 @@
+{
+  "subject_id": "S001",
+  "session_id": "rest_01",
+  "recording_id": "S001_rest_01_take1",
+  "video_path": "../data_sessions/S001/rest_01/video.mp4",
+  "video_start_time": "2026-10-06T10:00:00+03:30",
+  "metadata": {
+    "protocol_version": "pilot-v1",
+    "camera": "record actual phone model",
+    "lighting": "record actual condition",
+    "posture": "seated",
+    "hand_used": "Right",
+    "subject_metadata": {},
+    "note": "ILLUSTRATIVE VALUES ONLY; replace with acquired measurements"
+  },
+  "references": [
+    {
+      "sbp": 120.0,
+      "dbp": 80.0,
+      "measurement_index": 0,
+      "start_time": "2026-10-06T09:58:00+03:30",
+      "end_time": "2026-10-06T09:59:00+03:30",
+      "relation_to_video": "before",
+      "device": "record actual cuff make/model",
+      "notes": "Illustrative reading, not research data"
+    }
+  ],
+  "associations": [
+    {
+      "reference_index": 0,
+      "interval_start_sec": 0.0,
+      "interval_end_sec": 60.0,
+      "method": "nearby_cuff_pilot",
+      "notes": "Assume stable resting BP between this preceding cuff reading and this interval; not simultaneous continuous ground truth."
+    }
+  ]
+}

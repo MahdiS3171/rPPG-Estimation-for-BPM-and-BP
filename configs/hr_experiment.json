@@ -1,0 +1,9 @@
+{
+  "regions": ["face"],
+  "method": "POS_WIN",
+  "sample_rate": 30.0,
+  "face_roi": "combined",
+  "max_gap_sec": 0.15,
+  "edge_guard_sec": 1.0,
+  "seed": 42
+}

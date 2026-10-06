@@ -1,11 +1,16 @@
-"""Signal processing, HR estimation, PTT/phase, and feature extraction utilities."""
+"""Legacy HR utilities and exploratory optical inter-site features.
+
+Timing-sensitive runs should use processing.py and bp.py, which retain gaps and
+validate time bases. These array-based functions retain historical HR behavior.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Dict, Optional, Tuple
 import numpy as np
 from scipy.interpolate import interp1d
-from scipy.signal import butter, filtfilt, welch, find_peaks, correlate, correlation_lags, coherence
+from scipy.signal import welch, find_peaks, correlate, correlation_lags, coherence
+from scipy.integrate import trapezoid
 
 EPS = 1e-8
 
@@ -29,21 +34,9 @@ def standardize_channels(x: np.ndarray) -> np.ndarray:
 
 
 def bandpass(sig: np.ndarray, fs: float, f_low: float = 0.7, f_high: float = 4.0, order: int = 3) -> np.ndarray:
-    x = np.asarray(sig, dtype=np.float64)
-    x = np.nan_to_num(x - np.nanmean(x), nan=0.0)
-    fs = float(fs)
-    if x.size < max(12, order * 6):
-        return x.astype(np.float32)
-    nyq = 0.5 * fs
-    low = max(1e-6, f_low / nyq)
-    high = min(0.999, f_high / nyq)
-    if low >= high:
-        return x.astype(np.float32)
-    b, a = butter(order, [low, high], btype="band")
-    try:
-        return filtfilt(b, a, x).astype(np.float32)
-    except ValueError:
-        return x.astype(np.float32)
+    """Legacy HR filter with preserved float32 output and short-input behavior."""
+    from .classical import bandpass_filter
+    return bandpass_filter(sig, fs, f_low, f_high, order).astype(np.float32)
 
 
 def resample_uniform(
@@ -299,7 +292,7 @@ def pulse_wave_features(sig: np.ndarray, fs: float) -> Dict[str, float]:
             upstroke_slopes.append(amp / upstroke)
         baseline = min(float(x[l]), float(x[r]))
         pulse_above_baseline = np.maximum(segment - baseline, 0.0)
-        areas.append(float(np.trapezoid(pulse_above_baseline, dx=1.0 / fs)))
+        areas.append(float(trapezoid(pulse_above_baseline, dx=1.0 / fs)))
     if amps:
         out["amp_mean"] = float(np.mean(amps))
         out["amp_std"] = float(np.std(amps))

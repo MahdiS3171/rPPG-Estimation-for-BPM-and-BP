@@ -64,7 +64,11 @@ def load_ubfc_ground_truth(gt_path: str | Path) -> Tuple[np.ndarray, np.ndarray,
 
 
 def sliding_windows(num_samples: int, fs: float, win_sec: float, stride_sec: float) -> List[Tuple[int, int]]:
+    if fs <= 0 or win_sec <= 0 or stride_sec <= 0:
+        raise ValueError("Sampling rate and window/stride duration must be positive")
     win = int(round(win_sec * fs))
+    if win < 1:
+        raise ValueError("Window must contain at least one sample")
     stride = max(1, int(round(stride_sec * fs)))
     out = []
     s = 0
@@ -75,10 +79,16 @@ def sliding_windows(num_samples: int, fs: float, win_sec: float, stride_sec: flo
 
 
 def subject_split(subjects: Sequence[UBFCSubject], val_fraction: float = 0.2, seed: int = 42) -> Tuple[List[UBFCSubject], List[UBFCSubject]]:
+    ids = [s.subject_id for s in subjects]
+    if len(set(ids)) != len(ids):
+        raise ValueError("Duplicate subject IDs; group recordings before partitioning")
+    if len(subjects) < 2 or not 0 < val_fraction < 1:
+        raise ValueError("Need at least two subjects and validation fraction in (0,1)")
     rng = np.random.default_rng(seed)
     idx = np.arange(len(subjects))
     rng.shuffle(idx)
     n_val = max(1, int(round(len(subjects) * val_fraction)))
+    n_val = min(n_val, len(subjects)-1)
     val_idx = set(idx[:n_val].tolist())
     train, val = [], []
     for i, s in enumerate(subjects):
@@ -136,10 +146,15 @@ class UBFCRPPGDataset(Dataset):
             t_vid2 = t_vid[keep]
             rgb = rgb[keep]
             q = q[keep]
-            _, ppg_u = resample_uniform(t_gt, ppg_gt, self.fs_target, t_start=t0, t_end=t1)
-            _, hr_u = resample_uniform(t_gt, hr_gt, self.fs_target, t_start=t0, t_end=t1)
-            n = min(len(rgb), len(ppg_u), len(hr_u))
-            rgb, q, ppg_u, hr_u, t_vid2 = rgb[:n], q[:n], ppg_u[:n], hr_u[:n], t_vid2[:n]
+            from .types import validate_timestamps
+            validate_timestamps(t_gt)
+            # The target must be evaluated at the actual retained video grid,
+            # not a new grid starting at an arbitrary common-support boundary.
+            ppg_u = np.interp(t_vid2, t_gt, ppg_gt)
+            hr_u = np.interp(t_vid2, t_gt, hr_gt)
+            n = len(t_vid2)
+            if n < 4:
+                raise ValueError(f"Insufficient overlapping video/reference support for {subj.subject_id}")
 
             priors = []
             for name in self.prior_methods:
@@ -214,17 +229,30 @@ class SessionBPDataset(Dataset):
     """
 
     def __init__(self, data_dir: str | Path, feature_keys: Optional[Sequence[str]] = None, target: str = "both"):
+        if target not in {"both", "sbp", "dbp"}:
+            raise ValueError("BP target must be both, sbp or dbp")
         self.data_dir = Path(data_dir)
         self.target = target
         self.rows: List[Dict] = []
+        self.exclusions: List[Dict] = []
         for feat_path in sorted(self.data_dir.glob("*/*/features.json")):
             label_path = feat_path.with_name("labels.json")
             if not label_path.exists():
+                self.exclusions.append({"path": str(feat_path), "reason": "missing_bp_label"})
                 continue
             feat = json.loads(feat_path.read_text(encoding="utf-8"))
             lab = json.loads(label_path.read_text(encoding="utf-8"))
             cuff = lab.get("cuff", {})
             if "sbp" not in cuff or "dbp" not in cuff:
+                self.exclusions.append({"path": str(feat_path), "reason": "invalid_bp_reference"})
+                continue
+            try:
+                sbp, dbp = float(cuff["sbp"]), float(cuff["dbp"])
+            except (TypeError, ValueError):
+                self.exclusions.append({"path": str(feat_path), "reason": "invalid_bp_reference"})
+                continue
+            if not np.isfinite([sbp, dbp]).all() or not 0 < dbp < sbp:
+                self.exclusions.append({"path": str(feat_path), "reason": "invalid_bp_reference"})
                 continue
             subject_id = str(lab.get("subject_id") or feat_path.parent.parent.name)
             session_id = str(lab.get("session_id") or feat_path.parent.name)
@@ -250,6 +278,9 @@ class SessionBPDataset(Dataset):
             self.feature_keys = list(feature_keys)
         if not self.feature_keys:
             raise RuntimeError("No numeric BP feature keys were found.")
+        reserved = {"sbp", "dbp", "sbp_mmhg", "dbp_mmhg", "bp", "target", "label", "reference_sbp", "reference_dbp"}
+        if any(k.lower() in reserved for k in self.feature_keys):
+            raise ValueError("BP target/reference labels cannot be feature columns")
 
     @property
     def subject_ids(self) -> List[str]:
@@ -261,7 +292,7 @@ class SessionBPDataset(Dataset):
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor | str]:
         row = self.rows[idx]
         feat = row["features"]
-        x = np.array([float(feat.get(k, np.nan)) for k in self.feature_keys], dtype=np.float32)
+        x = np.array([float(feat[k]) if feat.get(k) is not None else np.nan for k in self.feature_keys], dtype=np.float32)
         if self.target == "sbp":
             y = np.array([row["sbp"]], dtype=np.float32)
         elif self.target == "dbp":

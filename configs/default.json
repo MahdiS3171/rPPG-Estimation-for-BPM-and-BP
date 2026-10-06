@@ -1,0 +1,17 @@
+{
+  "regions": ["face", "hand"],
+  "method": "GREEN",
+  "sample_rate": 30.0,
+  "face_roi": "combined",
+  "hand_roi": "palm",
+  "skin_mask": false,
+  "expected_hand": "any",
+  "input_mirrored": false,
+  "timestamp_mode": "auto",
+  "max_gap_sec": 0.15,
+  "filter_low_hz": 0.7,
+  "filter_high_hz": 4.0,
+  "window_sec": 10.0,
+  "stride_sec": 5.0,
+  "seed": 42
+}

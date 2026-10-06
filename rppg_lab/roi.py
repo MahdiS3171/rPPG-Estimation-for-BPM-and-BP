@@ -39,16 +39,16 @@ class ROIExtractionResult:
 
     @staticmethod
     def load_npz(path: str | Path) -> "ROIExtractionResult":
-        data = np.load(path, allow_pickle=True)
-        roi_names = [str(x) for x in data["roi_names"].tolist()]
-        roi_rgb = {name: data[f"roi__{name}"] for name in roi_names}
-        return ROIExtractionResult(
-            timestamps=data["timestamps"],
-            fs_reported=float(data["fs_reported"][0]),
-            roi_rgb=roi_rgb,
-            quality=data["quality"],
-            frame_shape=tuple(int(x) for x in data["frame_shape"]),
-        )
+        with np.load(path, allow_pickle=False) as data:
+            roi_names = [str(x) for x in data["roi_names"].tolist()]
+            roi_rgb = {name: data[f"roi__{name}"] for name in roi_names}
+            return ROIExtractionResult(
+                timestamps=data["timestamps"],
+                fs_reported=float(data["fs_reported"][0]),
+                roi_rgb=roi_rgb,
+                quality=data["quality"],
+                frame_shape=tuple(int(x) for x in data["frame_shape"]),
+            )
 
 
 # MediaPipe FaceMesh landmark groups. These are practical polygon ROIs, not
@@ -123,10 +123,14 @@ class FaceROIExtractor:
         min_detection_confidence: float = 0.5,
         min_tracking_confidence: float = 0.5,
         include_full_face: bool = True,
+        detector_backend: str = "auto",
+        model_path: str | Path = "models/face_landmarker.task",
     ) -> None:
         self.min_detection_confidence = min_detection_confidence
         self.min_tracking_confidence = min_tracking_confidence
         self.include_full_face = include_full_face
+        self.detector_backend = detector_backend
+        self.model_path = Path(model_path)
 
     def extract(
         self,
@@ -135,26 +139,6 @@ class FaceROIExtractor:
         cache_dir: Optional[str | Path] = None,
         force: bool = False,
     ) -> ROIExtractionResult:
-        import cv2
-
-        # MediaPipe has had two import layouts across installations.
-        # Some Windows environments expose `mediapipe.python.solutions` but
-        # not `mediapipe.solutions`, which caused:
-        # AttributeError: module 'mediapipe' has no attribute 'solutions'.
-        try:
-            import mediapipe as mp
-            mp_face = mp.solutions.face_mesh  # classic public API
-        except (AttributeError, ImportError):
-            try:
-                from mediapipe.python.solutions import face_mesh as mp_face  # fallback layout
-            except Exception as e:
-                raise ImportError(
-                    "MediaPipe FaceMesh could not be imported. Install/repair it with:\n"
-                    "  pip uninstall -y mediapipe\n"
-                    "  pip install mediapipe==0.10.14\n"
-                    "Also make sure there is no local file/folder named 'mediapipe' in the project."
-                ) from e
-
         video_path = Path(video_path)
         if not video_path.exists():
             raise FileNotFoundError(video_path)
@@ -163,6 +147,10 @@ class FaceROIExtractor:
             "min_det": self.min_detection_confidence,
             "min_track": self.min_tracking_confidence,
             "full": self.include_full_face,
+            "detector_backend": self.detector_backend,
+            "extraction_version": 2,
+            "model_path": str(self.model_path.resolve()),
+            "model_mtime_ns": self.model_path.stat().st_mtime_ns if self.model_path.exists() else None,
         }
         if cache_dir is not None:
             cache_path = Path(cache_dir) / f"roi_{_cache_key(video_path, config)}.npz"
@@ -171,67 +159,52 @@ class FaceROIExtractor:
         else:
             cache_path = None
 
-        cap = cv2.VideoCapture(str(video_path))
-        if not cap.isOpened():
-            raise RuntimeError(f"Could not open video: {video_path}")
-        fs_reported = float(cap.get(cv2.CAP_PROP_FPS) or 0.0)
-
-        face_mesh = mp_face.FaceMesh(
-            static_image_mode=False,
-            max_num_faces=1,
-            refine_landmarks=True,
-            min_detection_confidence=self.min_detection_confidence,
-            min_tracking_confidence=self.min_tracking_confidence,
-        )
+        from .video import VideoReader
+        from .detection import FaceRegionDetector
+        reader = VideoReader(video_path)
+        fs_reported = reader.metadata.fps_nominal
+        try:
+            face_mesh = FaceRegionDetector(
+                backend=self.detector_backend,
+                model_path=self.model_path,
+                min_detection_confidence=self.min_detection_confidence,
+                min_tracking_confidence=self.min_tracking_confidence,
+            )
+        except Exception:
+            reader.close()
+            raise
 
         timestamps = []
         roi_values = {name: [] for name in FACE_ROIS}
         qualities = []
         prev_center = None
         frame_shape = (0, 0)
-        frame_idx = 0
-
-        while True:
-            ok, frame_bgr = cap.read()
-            if not ok:
-                break
-            if max_frames is not None and frame_idx >= max_frames:
-                break
-            pos_msec = cap.get(cv2.CAP_PROP_POS_MSEC)
-            if pos_msec and pos_msec > 0:
-                t = float(pos_msec) / 1000.0
-            elif fs_reported > 0:
-                t = frame_idx / fs_reported
-            else:
-                t = float(frame_idx)
-
-            frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-            h, w = frame_rgb.shape[:2]
-            frame_shape = (h, w)
-            res = face_mesh.process(frame_rgb)
-            if not res.multi_face_landmarks:
-                frame_idx += 1
-                continue
-            lms = res.multi_face_landmarks[0].landmark
-            roi_pixels_total = 0
-            this_roi = {}
-            all_pts = []
-            for name, idxs in FACE_ROIS.items():
-                pts = np.array([[lms[i].x * w, lms[i].y * h] for i in idxs], dtype=np.float32)
-                all_pts.append(pts)
-                mean_rgb, n_pix = _polygon_mean_rgb(frame_rgb, pts)
-                this_roi[name] = mean_rgb
-                roi_pixels_total += n_pix
-            face_pts = np.vstack(all_pts)
-            q, prev_center = _quality_from_frame(frame_rgb, face_pts, roi_pixels_total, prev_center)
-            timestamps.append(t)
-            qualities.append(q)
-            for name in FACE_ROIS:
-                roi_values[name].append(this_roi[name])
-            frame_idx += 1
-
-        face_mesh.close()
-        cap.release()
+        try:
+            for frame_idx, t, frame_rgb in reader.frames(max_frames):
+                h, w = frame_rgb.shape[:2]
+                frame_shape = (h, w)
+                res = face_mesh.detect(frame_rgb, frame_idx, t)
+                if not res.valid:
+                    continue
+                landmarks = res.landmarks
+                roi_pixels_total = 0
+                this_roi = {}
+                all_pts = []
+                for name, idxs in FACE_ROIS.items():
+                    pts = np.asarray(landmarks[list(idxs)], dtype=np.float32)
+                    all_pts.append(pts)
+                    mean_rgb, n_pix = _polygon_mean_rgb(frame_rgb, pts)
+                    this_roi[name] = mean_rgb
+                    roi_pixels_total += n_pix
+                face_pts = np.vstack(all_pts)
+                q, prev_center = _quality_from_frame(frame_rgb, face_pts, roi_pixels_total, prev_center)
+                timestamps.append(t)
+                qualities.append(q)
+                for name in FACE_ROIS:
+                    roi_values[name].append(this_roi[name])
+        finally:
+            face_mesh.close()
+            reader.close()
 
         if not timestamps:
             raise RuntimeError(f"No usable face frames found in {video_path}")

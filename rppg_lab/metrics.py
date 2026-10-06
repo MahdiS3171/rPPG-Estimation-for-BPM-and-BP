@@ -19,6 +19,8 @@ class RegressionMetrics:
 def regression_metrics(y_true, y_pred) -> RegressionMetrics:
     y = np.asarray(y_true, dtype=float).ravel()
     p = np.asarray(y_pred, dtype=float).ravel()
+    if y.shape != p.shape:
+        raise ValueError("Reference and prediction shapes must match")
     m = np.isfinite(y) & np.isfinite(p)
     y, p = y[m], p[m]
     if y.size == 0:
@@ -35,6 +37,8 @@ def regression_metrics(y_true, y_pred) -> RegressionMetrics:
 def bland_altman(y_true, y_pred) -> Dict[str, float]:
     y = np.asarray(y_true, dtype=float).ravel()
     p = np.asarray(y_pred, dtype=float).ravel()
+    if y.shape != p.shape:
+        raise ValueError("Reference and prediction shapes must match")
     m = np.isfinite(y) & np.isfinite(p)
     d = p[m] - y[m]
     if d.size == 0:

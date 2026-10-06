@@ -13,3 +13,7 @@ UBFCData/
 rPPG-10/
 cache_video/
 cache_video_prior/
+models/*.task
+models/*.download
+models/landmarkers.json
+data_sessions/
