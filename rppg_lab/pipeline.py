@@ -1,17 +1,17 @@
 """Single decoded pass for face and hand; timing uses paired segment boundaries."""
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 from typing import Callable, Mapping
 import logging
 import numpy as np
 from .config import PipelineConfig
 from .detection import BaseRegionDetector, FaceRegionDetector, HandRegionDetector
-from .region_masks import get_region_mask, extract_frame_rgb
+from .region_masks import get_region_mask, get_face_masks, extract_frame_rgb_by_roi
 from .types import RGBTrace, RegionObservation, RegionResult, SharedTimebase, DualROIResult, PhysiologicalSignal
 from .video import VideoReader
-from .processing import shared_grid, resample_trace, extract_signal
-from .quality import region_quality
+from .processing import shared_grid, process_rgb_trace, extract_signal
 from .bp import FEATURE_KEYS, extract_features
 
 LOG = logging.getLogger(__name__)
@@ -32,6 +32,31 @@ def _detectors(config: PipelineConfig) -> dict[str, BaseRegionDetector]:
             detector.close()
         raise
     return detectors
+
+
+def _observation_quality(obs: RegionObservation, previous: dict[str, tuple[float, np.ndarray]], site: str,
+                         max_gap_sec: float) -> dict[str, float]:
+    """Reuse detector confidence and existing site motion for all its ROIs."""
+    quality = {"detector_confidence": obs.confidence, "motion_px_per_sec": float("nan")}
+    if obs.valid and obs.landmarks is not None:
+        center = obs.landmarks.mean(axis=0)
+        if site in previous:
+            pt, pc = previous[site]
+            # Do not report a continuous trajectory through a lost-tracking gap.
+            if obs.timestamp - pt <= max_gap_sec:
+                quality["motion_px_per_sec"] = float(np.linalg.norm(center - pc) / (obs.timestamp - pt))
+        previous[site] = obs.timestamp, center
+    return quality
+
+
+def _build_region(values: list[np.ndarray], metrics: list[dict],
+                   observations: list[RegionObservation], source_t: np.ndarray,
+                   grid: np.ndarray, roi_name: str, config: PipelineConfig
+                   ) -> tuple[RegionResult, np.ndarray, np.ndarray]:
+    colors = np.asarray(values)
+    raw_q = {key: np.asarray([q[key] for q in metrics]) for key in metrics[0]}
+    trace = RGBTrace(source_t, colors, roi_name, np.isfinite(colors).all(axis=1), raw_q)
+    return process_rgb_trace(trace, grid, config, observations)
 
 
 def _feature_windows(face: RegionResult, hand: RegionResult, rgb: dict, imputed: dict,
@@ -94,6 +119,9 @@ def process_recording(video: str | Path, config: PipelineConfig | None = None,
     Stored RGB uses every original decoded timestamp. Stored rPPG uses one shared
     uniform grid with explicit missing samples. Offline phase/timing fidelity
     remains a hypothesis to validate, especially for adaptive classical methods.
+    face_rois contains separate results from one face detection per frame; face
+    aliases its face_roi entry for existing HR/BP callers. Hand-only runs expose
+    an empty face_rois mapping and retain the legacy missing face placeholder.
     """
     config = config or PipelineConfig()
     reader = VideoReader(video, config.timestamp_mode, timestamps)
@@ -106,39 +134,44 @@ def process_recording(video: str | Path, config: PipelineConfig | None = None,
     if not set(config.regions) <= set(active):
         reader.close()
         raise ValueError("A detector is required for every selected region")
-    observations = {site: [] for site in ("face", "hand")}
-    values = {site: [] for site in observations}
-    metrics = {site: [] for site in observations}
+    roi_names = config.requested_face_rois if "face" in config.regions else (config.face_roi,)
+    trace_names = (*roi_names, "hand")
+    observations = {name: [] for name in trace_names}
+    values = {name: [] for name in trace_names}
+    metrics = {name: [] for name in trace_names}
     previous = {}
     try:
         for index,t,frame in reader.frames(max_frames):
             masks = {}
-            for site in observations:
+            frame_observations = {}
+            for site in ("face", "hand"):
                 obs = active[site].detect(frame,index,t) if site in config.regions else RegionObservation(index,t,reason="region_not_requested")
                 if obs.frame_index != index or obs.timestamp != t:
                     raise ValueError("Detector changed the original frame/time identity")
-                strategy = config.face_roi if site == "face" else config.hand_roi
-                mask = get_region_mask(frame, obs, site, strategy, config.skin_mask, config.skin_cr_range, config.skin_cb_range)
-                color, q = extract_frame_rgb(frame, mask, config.min_pixels)
-                q["detector_confidence"] = obs.confidence
-                q["motion_px_per_sec"] = float("nan")
-                if obs.valid and obs.landmarks is not None:
-                    center = obs.landmarks.mean(axis=0)
-                    if site in previous:
-                        pt,pc = previous[site]
-                        # Do not pretend motion over a lost-tracking gap is a
-                        # continuously observed trajectory.
-                        if t-pt <= config.max_gap_sec:
-                            q["motion_px_per_sec"] = float(np.linalg.norm(center-pc)/(t-pt))
-                    previous[site] = t,center
-                if obs.valid and not np.isfinite(color).all():
-                    obs.reason = "insufficient_skin_pixels"
-                values[site].append(color)
-                metrics[site].append(q)
-                observations[site].append(obs)
-                masks[site] = mask
+                if site == "face":
+                    site_masks = get_face_masks(frame, obs, roi_names, config.skin_mask,
+                                                config.skin_cr_range, config.skin_cb_range)
+                else:
+                    site_masks = {"hand": get_region_mask(frame, obs, site, config.hand_roi,
+                                  config.skin_mask, config.skin_cr_range, config.skin_cb_range)}
+                common_quality = _observation_quality(obs, previous, site, config.max_gap_sec)
+                for name, (color, q) in extract_frame_rgb_by_roi(frame, site_masks, config.min_pixels).items():
+                    q.update(common_quality)
+                    # Measurement failure is local to this ROI. Detection validity
+                    # still describes geometry, while RGBTrace validity describes RGB.
+                    measured_obs = replace(obs)
+                    if obs.valid and not np.isfinite(color).all():
+                        measured_obs.reason = "insufficient_skin_pixels"
+                    values[name].append(color)
+                    metrics[name].append(q)
+                    observations[name].append(measured_obs)
+                selected = config.face_roi if site == "face" else "hand"
+                masks[site] = site_masks[selected]
+                frame_observations[site] = observations[selected][-1]
+                if site == "face":
+                    masks.update({"face_" + name: mask for name, mask in site_masks.items()})
             if debug_callback is not None and config.debug_every and index % config.debug_every == 0:
-                debug_callback(index,t,frame,masks,{site: observations[site][-1] for site in observations})
+                debug_callback(index,t,frame,masks,frame_observations)
     finally:
         reader.close()
         if owned:
@@ -151,24 +184,25 @@ def process_recording(video: str | Path, config: PipelineConfig | None = None,
         if config.sample_rate < 0.95*acquired_fs:
             raise ValueError(f"Downsampling {acquired_fs:.3f} to {config.sample_rate} Hz needs antialiasing; set sample_rate to capture rate or higher")
     grid = shared_grid(source_t, config.sample_rate)
-    regions, uniform, imputed = {}, {}, {}
+    regions, face_rois, uniform, imputed = {}, {}, {}, {}
     exclusions = []
     if metadata.decoded_frame_shortfall:
         exclusions.append({"reason": "decoded_frame_count_below_container_report", "count": metadata.decoded_frame_shortfall,
                            "note": "Reported frame count can be inaccurate; cannot infer original capture drops from this alone"})
-    for site in observations:
-        colors = np.asarray(values[site])
-        raw_q = {k: np.asarray([q[k] for q in metrics[site]]) for k in metrics[site][0]}
-        trace = RGBTrace(source_t, colors, site, np.isfinite(colors).all(axis=1), raw_q)
-        uniform[site], imputed[site] = resample_trace(trace, grid, config.max_gap_sec)
-        signal = extract_signal(uniform[site], grid, site, config)
-        quality = region_quality(trace, signal, imputed[site], config.min_valid_fraction,
-                                 config.min_snr_db, config.hr_min_hz, config.hr_max_hz)
-        signal.quality = quality
-        regions[site] = RegionResult(trace, signal, quality, observations[site])
-        if site in config.regions:
-            exclusions.extend({"region": site, "reason": reason} for reason in quality["reasons"])
-            exclusions.extend({"region": site, **failure} for failure in signal.preprocessing["failures"])
+    for name in trace_names:
+        site = "hand" if name == "hand" else "face" if name == config.face_roi else None
+        # Keep the legacy selected trace/source label (face) as well as its
+        # explicit ROI key in the mapping, without processing it a second time.
+        region, rgb_uniform, interpolated = _build_region(values[name], metrics[name], observations[name],
+                                                          source_t, grid, site or name, config)
+        if name != "hand" and "face" in config.regions:
+            face_rois[name] = region
+        if site is not None:
+            regions[site] = region
+            uniform[site], imputed[site] = rgb_uniform, interpolated
+            if site in config.regions:
+                exclusions.extend({"region": site, "reason": reason} for reason in region.quality["reasons"])
+                exclusions.extend({"region": site, **failure} for failure in region.rppg.preprocessing["failures"])
     rows = _feature_windows(regions["face"],regions["hand"],uniform,imputed,metadata,grid,config) if set(config.regions) == {"face","hand"} else []
     exclusions.extend({"window_index": row["window_index"], "start_sec": row["start_sec"],
                        "end_sec": row["end_sec"], "reasons": row["reasons"]} for row in rows if row["status"] == "excluded")
@@ -184,4 +218,4 @@ def process_recording(video: str | Path, config: PipelineConfig | None = None,
              len(source_t),100*regions["face"].quality["valid_frame_fraction"],
              100*regions["hand"].quality["valid_frame_fraction"],len(delays))
     return DualROIResult(regions["face"],regions["hand"],SharedTimebase(grid,source_t),metadata,
-                         {site: regions[site].quality["hr_bpm"] for site in regions},delay,rows,exclusions,config.to_dict())
+                         {site: regions[site].quality["hr_bpm"] for site in regions},delay,rows,exclusions,config.to_dict(),face_rois)

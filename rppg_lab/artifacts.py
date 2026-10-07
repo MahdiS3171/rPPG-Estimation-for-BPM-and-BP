@@ -93,6 +93,17 @@ def save_result(result: DualROIResult, output: Path, run_provenance: dict) -> No
         arrays[site+"_landmarks"] = landmarks
         for name,values in region.rgb.quality.items():
             arrays[site+"_"+name] = values
+    arrays["face_roi_names"] = np.asarray(list(result.face_rois), dtype=str)
+    for name, region in result.face_rois.items():
+        prefix = "face_roi_" + name + "_"
+        arrays[prefix + "rgb"] = region.rgb.values
+        arrays[prefix + "valid"] = region.rgb.validity_mask
+        arrays[prefix + "rppg"] = region.rppg.values
+        arrays[prefix + "rgb_uniform"], arrays[prefix + "interpolated"] = resample_trace(
+            region.rgb, result.shared.timestamps, config.max_gap_sec)
+        arrays[prefix + "reason"] = np.asarray([obs.reason or "" for obs in region.observations], dtype=str)
+        for metric, values in region.rgb.quality.items():
+            arrays[prefix + metric] = values
     joint = np.isfinite(uniform["face"]).all(axis=1)&np.isfinite(uniform["hand"]).all(axis=1)
     paired = {site: extract_signal(uniform[site],result.shared.timestamps,site,config,allowed=joint) for site in uniform}
     arrays.update({site+"_rppg_paired":signal.values for site,signal in paired.items()})
@@ -101,6 +112,8 @@ def save_result(result: DualROIResult, output: Path, run_provenance: dict) -> No
     write_json(output/"summary.json", {"hr": result.hr, "delay": result.delay,
         "quality": {"face": result.face.quality,"hand": result.hand.quality},
         "preprocessing": {"face": result.face.rppg.preprocessing,"hand": result.hand.rppg.preprocessing},
+        "face_rois": {name: {"quality": region.quality, "preprocessing": region.rppg.preprocessing}
+                      for name, region in result.face_rois.items()},
         "paired_preprocessing": {site:signal.preprocessing for site,signal in paired.items()},
         "video": asdict(result.video), "exclusions": result.exclusions,
         "observations": {site: [{"reason":obs.reason,"identity":obs.identity,"valid":obs.valid,

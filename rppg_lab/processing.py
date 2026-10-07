@@ -1,11 +1,13 @@
 """Timing-aware processing. No sorting, extrapolation or hidden gap filling."""
 from __future__ import annotations
 
+from dataclasses import replace
+from typing import Sequence
 import numpy as np
 from scipy.signal import butter, sosfiltfilt
-from .types import RGBTrace, PhysiologicalSignal, validate_timestamps
+from .types import RGBTrace, PhysiologicalSignal, RegionResult, RegionObservation, validate_timestamps
 from .config import PipelineConfig
-from .classical import METHOD_FUNCS
+from .classical import METHOD_FUNCS, DEFAULT_PRIORS
 
 
 def valid_runs(valid: np.ndarray) -> list[tuple[int, int]]:
@@ -103,3 +105,35 @@ def extract_signal(rgb: np.ndarray, grid: np.ndarray, region: str, config: Pipel
         "polarity": "algorithm_native_unvalidated", "algorithm_internal_filter": False,
         "interpolation": "linear_bounded_gap_no_extrapolation", "max_gap_sec": config.max_gap_sec,
     })
+
+
+def process_rgb_trace(trace: RGBTrace, grid: np.ndarray, config: PipelineConfig,
+                      observations: list[RegionObservation] | None = None
+                      ) -> tuple[RegionResult, np.ndarray, np.ndarray]:
+    """Apply identical bounded interpolation, segment filtering and quality to any ROI.
+
+    The caller constructs the shared grid once, independently of ROI validity.
+    Returns the result, uniform RGB, and interpolation flags on that grid.
+    """
+    from .quality import region_quality
+    uniform, imputed = resample_trace(trace, grid, config.max_gap_sec)
+    signal = extract_signal(uniform, grid, trace.roi_name, config)
+    quality = region_quality(trace, signal, imputed, config.min_valid_fraction,
+                             config.min_snr_db, config.hr_min_hz, config.hr_max_hz)
+    signal.quality = quality
+    return RegionResult(trace, signal, quality, observations or []), uniform, imputed
+
+
+def build_classical_priors(trace: RGBTrace, grid: np.ndarray, config: PipelineConfig,
+                           methods: Sequence[str] = tuple(DEFAULT_PRIORS)) -> dict[str, PhysiologicalSignal]:
+    """Build per-ROI priors using the existing classical methods and gap rules.
+
+    Pass result.shared.timestamps: this helper never invents a per-ROI grid.
+    Priors retain NaNs, segment failures and filter edge guards. They are
+    algorithm-native waveforms, with no morphology or timing validation implied.
+    """
+    if isinstance(methods, str) or not set(methods) <= METHOD_FUNCS.keys():
+        raise ValueError("methods must contain known classical method names")
+    uniform, _ = resample_trace(trace, grid, config.max_gap_sec)
+    return {name: extract_signal(uniform, grid, trace.roi_name, replace(config, method=name))
+            for name in methods}

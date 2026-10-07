@@ -45,6 +45,8 @@ class PipelineConfig:
     max_hr_difference_bpm: float = 5.0
     seed: int = 42
     debug_every: int = 60
+    # Additive extraction; face_roi still selects the legacy HR/timing output.
+    face_rois: tuple[str, ...] = ("forehead", "left_cheek", "right_cheek", "combined")
 
     def __post_init__(self) -> None:
         from .classical import METHOD_FUNCS
@@ -52,8 +54,13 @@ class PipelineConfig:
             raise ValueError("regions must contain face and/or hand once")
         if self.method not in METHOD_FUNCS:
             raise ValueError(f"Unknown method {self.method}")
-        if self.face_roi not in {"combined", "full_skin", "forehead", "left_cheek", "right_cheek"}:
+        from .region_masks import FACE_MASK_STRATEGIES
+        if self.face_roi not in FACE_MASK_STRATEGIES:
             raise ValueError("Unknown face_roi")
+        if (not self.face_rois or isinstance(self.face_rois, str) or
+                len(set(self.face_rois)) != len(self.face_rois) or
+                not set(self.face_rois) <= FACE_MASK_STRATEGIES):
+            raise ValueError("face_rois must contain known, unique facial ROIs")
         if self.hand_roi not in {"palm", "back_of_hand", "landmark_polygon", "bounding_box", "skin_masked_bbox"}:
             raise ValueError("Unknown hand_roi")
         if self.detector_backend not in {"auto", "legacy", "tasks"} or self.timestamp_mode not in {"auto", "nominal"}:
@@ -87,10 +94,15 @@ class PipelineConfig:
     def to_dict(self) -> dict:
         return asdict(self)
 
+    @property
+    def requested_face_rois(self) -> tuple[str, ...]:
+        """Always include the legacy selector, even for an explicit ROI subset."""
+        return tuple(dict.fromkeys((*self.face_rois, self.face_roi)))
+
     @classmethod
     def load(cls, path: str | Path) -> "PipelineConfig":
         data = json.loads(Path(path).read_text(encoding="utf-8"))
-        for name in ("regions", "skin_cr_range", "skin_cb_range"):
+        for name in ("regions", "skin_cr_range", "skin_cb_range", "face_rois"):
             if name in data:
                 data[name] = tuple(data[name])
         return cls(**data)

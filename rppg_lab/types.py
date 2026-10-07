@@ -128,3 +128,6 @@ class DualROIResult:
     bp_features: list[dict[str, Any]]
     exclusions: list[dict[str, Any]]
     config: dict[str, Any]
+    # Each RGBTrace uses original timestamps; each signal uses the shared grid.
+    # face remains the configured legacy result, also present in this mapping.
+    face_rois: dict[str, RegionResult] = field(default_factory=dict)

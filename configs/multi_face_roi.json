@@ -1,0 +1,11 @@
+{
+  "regions": ["face", "hand"],
+  "method": "GREEN",
+  "sample_rate": 30.0,
+  "face_roi": "combined",
+  "face_rois": ["forehead", "left_cheek", "right_cheek", "combined"],
+  "hand_roi": "palm",
+  "skin_mask": false,
+  "timestamp_mode": "auto",
+  "max_gap_sec": 0.15
+}

@@ -130,6 +130,65 @@ the corresponding hand objects, `result.shared.timestamps` and
 order, times are seconds, HR is bpm, cuff targets are mmHg. Original RGB/ROI
 observations use the decoded clock; rPPG uses the uniform clock.
 
+Facial extraction now retains `forehead`, `left_cheek`, `right_cheek`, and
+`combined` simultaneously in `result.face_rois: dict[str, RegionResult]`.
+One decoded frame and one face-landmark detection produce all masks; landmark
+groups remain defined in `roi.FACE_ROIS`. `combined` is their pixel union,
+counting overlapping pixels once. Keeping regions separate preserves information
+for future window-level ROI quality/attention experiments: a region can retain
+the HR frequency while corrupting pulse morphology.
+
+All facial RGB traces share the exact original frame timestamps, with independent
+NaNs and validity masks; all rPPG outputs use `result.shared.timestamps`.
+Bounded interpolation, segment filtering and edge guards apply separately to
+each ROI. A failed cheek does not invalidate the forehead or hand. Per-ROI
+diagnostics include valid fractions, pixel count, frame coverage, brightness,
+illumination spread, shared face motion, rejection reasons and filter segments.
+`RegionObservation.valid` describes detection geometry; `rgb.validity_mask` and
+`rgb.quality["extraction_valid"]` describe measurement success.
+
+Existing JSON configs and CLIs work without changes. `face_roi` still selects
+`result.face` for legacy HR and face–hand timing/BP features; that object also
+appears in `result.face_rois[config.face_roi]`. Its legacy `roi_name`/source label
+remains `face`; the mapping key identifies the actual facial ROI. By default,
+old configs gain all four traces while retaining their selected face output.
+An explicit list can limit extraction or add `full_skin`; the selected `face_roi`
+is always included. For example:
+
+```json
+{
+  "face_roi": "combined",
+  "face_rois": ["forehead", "left_cheek", "right_cheek", "combined"]
+}
+```
+
+```python
+from rppg_lab.config import PipelineConfig
+from rppg_lab.pipeline import process_recording
+from rppg_lab.processing import build_classical_priors
+
+config = PipelineConfig()
+result = process_recording("video.mp4", config)
+forehead_rgb = result.face_rois["forehead"].rgb.values
+left_cheek_rgb = result.face_rois["left_cheek"].rgb.values
+right_cheek_rgb = result.face_rois["right_cheek"].rgb.values
+combined_rgb = result.face_rois["combined"].rgb.values
+forehead_valid = result.face_rois["forehead"].rgb.validity_mask
+priors = build_classical_priors(result.face_rois["forehead"].rgb,
+                                result.shared.timestamps, config,
+                                methods=("GREEN", "CHROM"))
+green_forehead = priors["GREEN"].values
+```
+
+Saved NPZ artifacts add `face_roi_names` and `face_roi_<name>_rgb`, `_valid`,
+`_rppg`, `_rgb_uniform`, `_interpolated`, `_reason` and diagnostic arrays;
+`summary.json` adds per-ROI quality and preprocessing under `face_rois`.
+Existing artifact keys remain available. Hand-only runs return an empty
+`face_rois` mapping. See [multi-ROI extraction details](docs/MULTI_FACE_ROI.md)
+for the exact schema and Phase 2 boundaries. This infrastructure prepares the
+upcoming MultiROI waveform model; BP accuracy or morphology improvement has
+not been demonstrated by this extraction change.
+
 Each new run saves configuration, source/input/model hashes, package versions,
 git revision/dirty state, timestamp sources, frame counts, per-frame geometry and
 quality, original/uniform RGB, interpolation flags, individual and paired rPPG,
