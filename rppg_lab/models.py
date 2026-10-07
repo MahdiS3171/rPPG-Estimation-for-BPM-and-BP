@@ -312,7 +312,11 @@ class MultiROIPriorResidualWaveformNet(nn.Module):
         clean = x.masked_fill(~channel_valid[..., None], 0)
         if not torch.isfinite(clean).all():
             raise ValueError("RGB and valid prior channels must be finite")
-        feat_flat = self.shared(clean.reshape(b * r, c, length))
+        # Missing branches must never enter the shared BatchNorm statistics.
+        # index_copy preserves the valid features' autograd connection.
+        valid_rows = valid_roi.reshape(-1).nonzero(as_tuple=True)[0]
+        valid_feat = self.shared(clean.reshape(b * r, c, length).index_select(0, valid_rows))
+        feat_flat = valid_feat.new_zeros(b * r, valid_feat.shape[1], length).index_copy(0, valid_rows, valid_feat)
         feat = feat_flat.reshape(b, r, -1, length).masked_fill(~valid_roi[..., None, None], 0)
         logits = (self.static_prior_logits[None, None, :] + self.roi_prior_bias[None, :, :]
                   + self.gate_head(feat_flat).reshape(b, r, self.num_priors))

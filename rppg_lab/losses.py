@@ -13,10 +13,142 @@ For HR/rPPG training, a useful objective should therefore combine:
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
+import math
+
 import torch
 import torch.nn.functional as F
 
+from .waveform_alignment import aligned_overlap, lag_candidates
+
 EPS = 1e-8
+
+
+@dataclass(frozen=True)
+class WaveformV1LossConfig:
+    """Engineering starting weights; no anatomical fiducial equivalence assumed."""
+
+    w_corr: float = 1.0
+    w_d1: float = 0.25
+    w_spec: float = 0.10
+    w_hr: float = 0.10
+    w_res: float = 0.02
+    max_lag_sec: float = 0.5
+    derivative_internal_weight: float = 0.25
+    spectral_fmin_hz: float = 0.7
+    spectral_fmax_hz: float = 8.0
+
+    def __post_init__(self):
+        values = tuple(vars(self).values())
+        if not all(math.isfinite(v) and v >= 0 for v in values):
+            raise ValueError("Waveform v1 configuration must be finite and nonnegative")
+        if self.spectral_fmax_hz <= self.spectral_fmin_hz:
+            raise ValueError("spectral_fmax_hz must exceed spectral_fmin_hz")
+
+
+def waveform_spectral_band(fs: float, fmin: float = 0.7, fmax: float = 8.0) -> tuple[float, float]:
+    """Effective morphology band, conservatively capped below Nyquist."""
+    if not all(math.isfinite(v) for v in (fs, fmin, fmax)) or fs <= 0 or fmin < 0 or fmax <= fmin:
+        raise ValueError("Invalid sampling rate or spectral band")
+    return float(fmin), min(float(fmax), 0.45 * float(fs))
+
+
+def _pearson_loss_per_sample(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+    if pred.shape[-1] < 2:
+        # Undefined correlation is neutral for optimization, not a perfect fit.
+        return pred.sum(dim=-1) * 0 + 1
+    p = pred - pred.mean(dim=-1, keepdim=True)
+    t = target - target.mean(dim=-1, keepdim=True)
+    corr = (p * t).sum(dim=-1) / torch.sqrt(
+        (p.square().sum(dim=-1) + EPS) * (t.square().sum(dim=-1) + EPS))
+    return 1 - corr.clamp(-1, 1)
+
+
+def same_lag_waveform_derivative_loss(
+    pred: torch.Tensor, target: torch.Tensor, max_lag: int = 15,
+    derivative_internal_weight: float = 0.25,
+) -> dict[str, torch.Tensor]:
+    """Select one lag per sample minimizing Lcorr + internal_weight * Ld1.
+
+    Components and selected_lag are [B]. Gather retains gradients through both
+    selected overlaps. Polarity is preserved. No derivative-specific alignment.
+    """
+    if pred.ndim != 2 or pred.shape != target.shape or pred.shape[0] < 1:
+        raise ValueError("prediction and target must have matching nonempty [B,L] shapes")
+    if not math.isfinite(derivative_internal_weight) or derivative_internal_weight < 0:
+        raise ValueError("derivative_internal_weight must be finite and nonnegative")
+    lags = lag_candidates(pred.shape[-1], max_lag)
+    corr, d1 = [], []
+    for lag in lags:
+        p, t = aligned_overlap(pred, target, lag)
+        corr.append(_pearson_loss_per_sample(p, t))
+        d1.append(_pearson_loss_per_sample(p.diff(dim=-1), t.diff(dim=-1)))
+    corr, d1 = torch.stack(corr), torch.stack(d1)
+    chosen = (corr + derivative_internal_weight * d1).argmin(dim=0, keepdim=True)
+    return dict(waveform_corr=corr.gather(0, chosen).squeeze(0),
+                derivative_corr=d1.gather(0, chosen).squeeze(0),
+                selected_lag=pred.new_tensor(lags, dtype=torch.long)[chosen.squeeze(0)])
+
+
+def waveform_spectral_distance(
+    pred: torch.Tensor, target: torch.Tensor, fs: float,
+    fmin: float = 0.7, fmax: float = 8.0,
+) -> torch.Tensor:
+    """Per-window Jensen-Shannon distance of normalized tapered band PSDs.
+
+    This is JS divergence / ln(2), bounded by [0,1], zero for equal shapes.
+    Reuses the legacy FFT helper without changing it. Site-dependent harmonics
+    make this an auxiliary diagnostic/low-weight loss. No FFT bins returns NaN;
+    the training objective explicitly skips that unavailable auxiliary term.
+    """
+    low, high = waveform_spectral_band(fs, fmin, fmax)
+    p, _ = _band_psd(pred, fs, low, high)
+    t, _ = _band_psd(target, fs, low, high)
+    if p.shape[-1] == 0:
+        return pred.sum(dim=-1) * 0 + float("nan")
+    p = p / p.sum(dim=-1, keepdim=True)
+    t = t / t.sum(dim=-1, keepdim=True)
+    m = (p + t) / 2
+    js = 0.5 * (p * (p.clamp_min(EPS).log() - m.clamp_min(EPS).log())
+                + t * (t.clamp_min(EPS).log() - m.clamp_min(EPS).log())).sum(dim=-1)
+    return (js / math.log(2)).clamp(0, 1)
+
+
+def waveform_v1_training_loss(
+    pred: torch.Tensor, target: torch.Tensor, hr_bpm: torch.Tensor, fs: float,
+    residuals: torch.Tensor | None = None, roi_valid: torch.Tensor | None = None,
+    config: WaveformV1LossConfig | None = None, return_components: bool = False,
+) -> torch.Tensor | dict[str, torch.Tensor]:
+    """Morphology-oriented waveform objective, opt-in for legacy callers.
+
+    L = w_corr*Lcorr + w_d1*Ld1 + w_spec*JS + w_hr*HR_CE + w_res*residual_MSE.
+    No generic smoothing, second derivative, notch, RI or quality-head target.
+    Residuals are unscaled [B,R,L] with a validity mask, or prepared [Nvalid,L].
+    Scalar component dictionary is optional; otherwise returns a scalar tensor.
+    """
+    cfg = config or WaveformV1LossConfig()
+    waveform_spectral_band(fs, cfg.spectral_fmin_hz, cfg.spectral_fmax_hz)
+    terms = same_lag_waveform_derivative_loss(pred, target, int(round(cfg.max_lag_sec * fs)),
+                                            cfg.derivative_internal_weight)
+    spectral = waveform_spectral_distance(pred, target, fs, cfg.spectral_fmin_hz, cfg.spectral_fmax_hz)
+    components = dict(waveform_corr=terms["waveform_corr"].mean(),
+                      derivative_corr=terms["derivative_corr"].mean(),
+                      spectral=torch.nan_to_num(spectral, nan=0.0).mean(),
+                      hr=hr_label_distribution_loss(pred, hr_bpm, fs),
+                      residual=pred.sum() * 0)
+    if residuals is not None:
+        if roi_valid is not None:
+            if residuals.ndim != 3 or roi_valid.dtype != torch.bool or roi_valid.shape != residuals.shape[:2]:
+                raise ValueError("residuals [B,R,L] require bool roi_valid [B,R]")
+            residuals = residuals[roi_valid.to(residuals.device)]
+        elif residuals.ndim != 2:
+            raise ValueError("Pass prepared [Nvalid,L] residuals or [B,R,L] with roi_valid")
+        if residuals.numel():
+            components["residual"] = residuals.square().mean()
+    weights = dict(waveform_corr=cfg.w_corr, derivative_corr=cfg.w_d1,
+                   spectral=cfg.w_spec, hr=cfg.w_hr, residual=cfg.w_res)
+    components["total"] = sum(weights[k] * value for k, value in components.items())
+    return components if return_components else components["total"]
 
 
 def negative_pearson_loss(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:

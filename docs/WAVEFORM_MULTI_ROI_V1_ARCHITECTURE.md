@@ -1,10 +1,13 @@
-# Multi-ROI prior-residual waveform architecture — Phase 2 candidate
+# Multi-ROI prior-residual waveform architecture — Part 3 Waveform v1 candidate
 
-This adds the architecture and UBFC training data path for a future Waveform
-Model v1. Loss and checkpoint selection remain **provisional**. No final model
-is frozen. Existing waveform ablations, the old UBFC dataset/trainer, BP code,
-and conservative face–hand timing retain their scientific behavior. See
-[MULTI_FACE_ROI.md](MULTI_FACE_ROI.md) for Phase 1 acquisition.
+Phase 2 supplied the architecture and synchronized UBFC data path. Part 3 adds
+morphology-oriented loss, subject-balanced validation, HR-gated candidate
+selection, and a locked participant test split. No final model is frozen.
+Existing losses, waveform ablations, the old UBFC dataset/trainer, BP code, and
+conservative face–hand timing retain their scientific behavior. See
+[MULTI_FACE_ROI.md](MULTI_FACE_ROI.md) for Phase 1 acquisition and
+[WAVEFORM_V1_TRAINING_AND_SELECTION.md](WAVEFORM_V1_TRAINING_AND_SELECTION.md)
+for the full Part 3 objective, evaluation, selection, and scientific rationale.
 
 ## Input and exact model API
 
@@ -48,7 +51,8 @@ arguments for reconstructing the model before loading its state dictionary.
 
 ## Shared encoder and implemented fusion
 
-One shared `TemporalEncoder1D` processes flattened `[B*R,C,L]` input, producing
+One shared `TemporalEncoder1D` processes only the valid rows of flattened
+`[B*R,C,L]` input. Differentiable `index_copy` reconstructs zero-filled
 `F: [B,R,D,L]`, `D=base_channels`. Both gates pool across time before their
 Linear layers. Prior and ROI weights are constant over each window, with no
 sample-wise mixing that could itself change waveform morphology.
@@ -72,8 +76,8 @@ quality[b]    = sigmoid(Linear_quality(mean_t(features[b])))
 
 The residual head is one shared 7-sample convolution, matching the existing
 prior-residual head and `residual_scale=0.10`. Quality uses the same beta-fused
-latent features as waveform fusion. The provisional trainer does not supervise
-this quality head; its output is uncalibrated.
+latent features as waveform fusion. The trainer does not supervise or select
+using this quality head; its output is uncalibrated.
 
 Default forward returns only `ppg`. With `return_dict=True`:
 
@@ -100,8 +104,10 @@ Invalid ROI logits are masked before ROI softmax: attention equals zero and
 remaining ROI weights sum to one. A batch sample with no valid ROI raises.
 Invalid branch waveforms/residuals/features are zero. Masked numeric channels
 are zeroed before encoding; masked NaNs cannot propagate. Other channels must
-be finite. The shared encoder retains its existing BatchNorm behavior during
-training, sharing weights and statistics across the branches.
+be finite. Only valid ROI rows enter shared BatchNorm during training. Invalid
+zero placeholders cannot change valid representations or running statistics.
+Valid features are scattered without detaching, preserving encoder gradients.
+The correction retains all downstream masks and conservative epoch-0 behavior.
 
 Optional finite floating `roi_quality: [B,R]` adds log quality. The clamp uses
 `eps=max(1e-6, torch.finfo(x.dtype).tiny)`. Zero learned ROI logits give attention
@@ -231,49 +237,70 @@ writes. Phase 1 provided a writer but no reusable artifact loader/cache; this
 small raw subset avoids caching irrelevant global signals/geometry/BP outputs.
 Legacy caches remain untouched. `cache_dir=None` disables caching.
 
-## Training and checkpoint metadata
+## Part 3 training and checkpoint metadata
 
-```powershell
-.\.venv\Scripts\python.exe scripts/train_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_multi_phase1 --out-dir checkpoints/waveform_multi_roi_phase2 --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2
-```
-
-`--config` accepts Phase 1 settings; `sample_rate` must match `--fs`. Dataset
-forces face-only extraction and `--rois` order. `--rois`/`--priors` are
-comma-separated overrides. `--epochs 0` saves/evaluates initialization. A small
-smoke run can add `--max-subjects 4 --max-frames 450 --epochs 1 --batch-size 4
---base-channels 8 --num-blocks 1 --stride-sec 10`.
-
-The existing `subject_split(..., val_fraction=0.2, seed=42)` partitions whole
-participants and exact IDs are printed. `--max-subjects` limits discovery before
-splitting and is a smoke-run aid. The unchanged **PROVISIONAL**
-`rppg_training_loss` supervises the final waveform and regularizes unscaled
-residuals of valid ROI branches. No new morphology loss is added.
-
-Validation logs HR MAE (including HR metric count), zero-lag correlation,
-best correlation within +/-0.5 seconds, mean ROI attention, all ROI x prior
-weight means, valid-window fractions and maximum absolute scaled residual.
-Prior means are conditional on a valid ROI (absent ROIs report null); mean ROI
-attention includes invalid windows as zero. These are descriptive diagnostics.
-
-Every epoch, including epoch 0, saves `waveform_multi_roi_last.pt`. Optional
-`waveform_multi_roi_best_hr_PROVISIONAL.pt` selects minimum validation HR MAE;
-`--no-best-hr` disables it. HR selection is **not** the future final waveform
-criterion. `training_log_PROVISIONAL.json` retains epoch-0/later diagnostics,
-metadata and excluded windows. Checkpoint fields are:
+The default multi-ROI objective is now `waveform_v1_training_loss`:
 
 ```text
-model_class, model_config                  exact constructor arguments
-model_state, optimizer_state               tensor state dictionaries
-phase                                      "Phase 2 PROVISIONAL"
-roi_names, prior_names, channel_names/channel_ordering
-extraction_config, extraction_cache_version
-fs, win_sec, window_length_samples, stride_sec, min_valid_fraction
-seed, train_subjects, val_subjects          exact participant IDs
-reference_diagnostics                      duplicate-time policy/counts
-loss_name                                  "rppg_training_loss (PROVISIONAL Phase 2)"
-checkpoint_selection_criterion             LAST or provisional HR MAE
-epoch, validation_metrics, args, provenance code/package/source identities
+L = 1.00 * Lcorr + 0.25 * Ld1 + 0.10 * Lspectral + 0.10 * LHR + 0.02 * Lresidual
 ```
+
+Waveform and first-difference losses share one discrete lag per sample selected
+by minimizing `Lcorr + 0.25 * Ld1`, allowing up to 0.5 seconds. Signed Pearson
+preserves polarity. The auxiliary normalized spectral comparison uses
+Jensen-Shannon divergence / ln(2) over `[0.7, min(8.0, 0.45*fs)]` Hz. HR reuses
+the stable label-distribution loss. Residual MSE observes valid ROIs only.
+There is no default smoothing, second derivative/APG, or dicrotic/RI feature
+supervision. Facial input and fingertip reference cannot be assumed anatomically
+identical. Original losses remain unchanged; `--objective phase2_rppg` is the
+explicit old-objective ablation.
+
+```powershell
+.\.venv\Scripts\python.exe scripts/train_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_multi_phase1 --out-dir checkpoints/waveform_multi_roi_v1_candidate --objective waveform_v1 --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2
+.\.venv\Scripts\python.exe scripts/evaluate_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --checkpoint checkpoints/waveform_multi_roi_v1_candidate/best_waveform_candidate.pt --split-manifest checkpoints/waveform_multi_roi_v1_candidate/waveform_v1_split.json --split val --out outputs/waveform_v1_validation.json
+```
+
+The reusable participant split reserves 20% test first and 20% of remaining
+participants for validation, using sorted IDs and seeded PCG64 permutation.
+`waveform_v1_split.json` records exact IDs, seed, fractions and algorithm version;
+its content and canonical SHA256 are checkpointed. The trainer constructs only
+train and validation datasets. Locked test requires separate explicit
+`--split test` evaluation after selection, before a later freeze. Two-subject
+legacy plumbing tests are explicitly smoke-only with no test set.
+
+Evaluation reports zero/best-lag waveform correlation, lag samples/ms,
+first-difference correlation at the waveform-selected lag, aligned z-score RMSE,
+broad spectral distance/similarity, waveform-derived HR error, and coarse
+width/upstroke/fall/area/IBI diagnostics. Missing metrics are NaN (JSON null).
+Window summaries remain; finite means per subject are averaged equally for
+subject-balanced metrics. ROI attention, validity, prior weights and residual
+magnitude remain diagnostics. Coarse features and spectral metrics never rank
+checkpoints.
+
+```text
+morphology_score = 0.5 * subject_balanced_metrics.wave_corr_aligned
+                 + 0.5 * subject_balanced_metrics.d1_corr_same_lag
+eligible: subject_balanced_HR_MAE(epoch) <= subject_balanced_HR_MAE(epoch0) + 1.0 bpm
+```
+
+The HR tolerance is an engineering guard, not a clinical threshold. Eligible
+maximum morphology score selects `best_waveform_candidate.pt`. Score ties within
+1e-8 prefer higher subject-balanced aligned correlation, lower HR MAE, then
+earlier epoch. Epoch 0 is the finite conservative reference. Nonzero lag is not
+penalized. Also save `best_morphology_unconstrained.pt`,
+`best_hr_diagnostic.pt`, and `last.pt`. All carry
+`waveform_v1_status="candidate_not_frozen"`; no final Waveform v1 is frozen.
+Deprecated Phase 2 artifact aliases retain analysis/test compatibility with
+explicit Part 3 metadata.
+
+Checkpoints contain exact model config/state, ROI/prior/channel ordering,
+extraction config/cache version, fs/window/stride/frame/quality limits,
+objective/all weights/lag/spectral band, score formula/HR gate/tie rules,
+manifest path/content/hash and all split IDs, epoch/validation/epoch-0 metrics,
+selection criterion, seed and Git/package/source provenance. The separate
+evaluator reconstructs this configuration and refuses incompatible ordering,
+cache schemas or split identities. See the training/selection document for
+complete CLI flags, manifest schema and validation policy.
 
 ## Small usage example
 
@@ -300,17 +327,15 @@ out = model(
 # roi_ppg/fused_priors/residuals each [2,3,300]
 ```
 
-## Validation and Part 3 limitations
+## Validation and scientific limitations
 
-`tests/test_waveform_multi_roi.py` covers exact shapes and conservative
-initialization, validity/quality/prior masks, explicit empty-support errors,
-masked NaNs, shared feature fusion, finite backward/optimizer updates,
-window-only method inputs and independent copies, outside-window perturbation
-invariance in helper/dataset, synthetic Phase 1 data/loader schema, bad ROIs,
-bounded gaps/source fractions, common support, duplicate reference handling,
-ordering, target-independent quality/local normalization, prohibition of legacy
-extraction, cache round trips/invalidation/corruption, epoch-0 evaluation,
-training and checkpoint reload. Existing numerical expectations are unchanged.
+`tests/test_waveform_multi_roi.py` retains Phase 2 model/data/cache numerical
+expectations. `tests/test_waveform_v1.py` adds TRAIN-mode valid-only BatchNorm
+statistics and gradients, same-lag losses/metrics, polarity, broad spectral
+bands, component accounting and valid residual masks, subject-balanced metrics,
+HR-gated morphology selection/ties, locked-test separation and metadata-driven
+checkpoint reconstruction/evaluation. Existing tests and old losses are not
+rewritten for the new objective.
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
@@ -318,22 +343,11 @@ training and checkpoint reload. Existing numerical expectations are unchanged.
 git diff --check
 ```
 
-Verification on 2026-10-07: all **80 tests passed** (49 existing plus 31 new),
-`compileall` and `git diff --check` passed. Synthetic forward/backward and an
-optimizer step, mocked Phase 1 dataset construction, and checkpoint reload
-passed. A local UBFC smoke run decoded at most 450 frames per subject: training
-IDs `subject1, subject10, subject11`, validation ID `subject12`, three training
-windows and one validation window, one epoch/optimizer step on CUDA. Epoch 0
-had zero residual contribution, equal ROI attention and the static prior
-weights. Local ignored artifacts are in
-`outputs/smoke_waveform_multi_roi_20261007/`. This small run verifies plumbing,
-not full-cohort performance or waveform morphology.
-
-Part 3 must design morphology-oriented loss/evaluation and final checkpoint
-selection. Classical polarity/phase/filter edges and contact-to-face alignment
-still need scientific evaluation. HR/aligned correlation alone does not validate
-morphology. There is **no BP accuracy claim, no morphology-validation claim,
-and no hand-generalization claim**. No final Waveform v1 checkpoint is frozen.
-Pixel/video encoders, hand neural training, learned face–hand timing, BP
-integration and HealthMultiTaskNet redesign are outside this change. Software
-tests and a small local training step establish software behavior only.
+Software tests and small train/validation smokes establish implementation
+behavior, not full-cohort performance. Prior polarity/phase/filter edges and
+face/finger differences still require complete validation. There is no BP
+accuracy claim, morphology-equivalence claim, validated dicrotic feature claim,
+or hand-generalization claim. Pixel/video encoders, hand neural training,
+learned face-hand timing, BP integration and HealthMultiTaskNet redesign remain
+outside Part 3. The quality head remains uncalibrated, and the resulting model
+remains a Waveform v1 candidate until a later explicit review and freeze.
