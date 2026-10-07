@@ -20,6 +20,7 @@ from rppg_lab.artifacts import file_sha256, provenance, write_json
 from rppg_lab.datasets import UBFCMultiROIRPPGDataset, find_ubfc_subjects
 from rppg_lab.waveform_metrics import evaluate_waveform_model
 from rppg_lab.waveform_training import checkpoint_dataset_config, reconstruct_waveform_model
+from rppg_lab.waveform_review import reserve_locked_test
 
 
 def build_parser():
@@ -32,6 +33,9 @@ def build_parser():
     parser.add_argument("--cache-dir", default="cache_roi_multi_phase1")
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--include-baselines", action="store_true",
+                        help="Validation-only classical comparisons on identical Part 2 windows")
+    parser.add_argument("--validation-review", help="Accepted saved review; required before locked test")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser
 
@@ -46,6 +50,11 @@ def main():
     manifest_path = Path(args.split_manifest or checkpoint["split_manifest_path"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     dataset_config = checkpoint_dataset_config(checkpoint, manifest)
+    receipt = None
+    if args.split == "test":
+        if not args.validation_review or args.include_baselines:
+            parser.error("Locked test requires --validation-review and forbids baseline comparisons")
+        receipt = reserve_locked_test(args.checkpoint, manifest_path, args.validation_review, args.out)
     ids = manifest["validation_ids" if args.split == "val" else "test_ids"]
     if not ids:
         raise ValueError("Requested split has no participants (two-subject smoke has no test set)")
@@ -64,13 +73,15 @@ def main():
     cfg = checkpoint["loss_config"]
     metrics = evaluate_waveform_model(model, DataLoader(dataset, batch_size=args.batch_size, shuffle=False),
         device, checkpoint["fs"], cfg["max_lag_sec"], cfg["spectral_fmin_hz"], cfg["spectral_fmax_hz"],
-        include_windows=True)
+        include_windows=True, include_baselines=args.include_baselines)
     output = Path(args.out)
     output.parent.mkdir(parents=True, exist_ok=True)
     write_json(output, dict(split=args.split, subject_ids=ids, checkpoint=str(Path(args.checkpoint).resolve()),
         checkpoint_sha256=file_sha256(args.checkpoint), epoch=checkpoint["epoch"],
         waveform_v1_status=checkpoint["waveform_v1_status"], split_manifest=manifest,
-        split_manifest_sha256=checkpoint["split_manifest_sha256"], metrics=metrics,
+        split_manifest_sha256=checkpoint["split_manifest_sha256"],
+        split_manifest_file_sha256=file_sha256(manifest_path), locked_test_consumed=args.split == "test",
+        locked_test_receipt=receipt, metrics=metrics,
         exclusions=dataset.exclusions, reference_diagnostics=dataset.reference_diagnostics, provenance=provenance()))
     print("Subject-balanced metrics:", metrics["subject_balanced_metrics"])
     print("Saved:", output)

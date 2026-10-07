@@ -13,6 +13,7 @@ from .losses import waveform_spectral_band, waveform_spectral_distance
 from .metrics import regression_metrics
 from .signals import estimate_hr_welch, pulse_wave_features
 from .waveform_alignment import aligned_overlap, lag_candidates
+from .waveform_baselines import classical_window_predictions, target_sha256
 
 COARSE_FEATURES = ("width50_mean_sec", "upstroke_mean_sec", "fall_time_mean_sec",
                    "area_mean", "ibi_mean_sec", "ibi_std_sec")
@@ -140,7 +141,8 @@ def forward_batch(model, batch: dict, device: torch.device) -> dict:
 
 def evaluate_waveform_model(model, loader, device: torch.device, fs: float,
                             max_lag_sec: float = 0.5, spectral_fmin_hz: float = 0.7,
-                            spectral_fmax_hz: float = 8.0, include_windows: bool = False) -> dict:
+                            spectral_fmax_hz: float = 8.0, include_windows: bool = False,
+                            include_baselines: bool = False) -> dict:
     """Full metric suite and descriptive gates, conditional on valid ROI support."""
     model.eval()
     rows = []
@@ -150,23 +152,47 @@ def evaluate_waveform_model(model, loader, device: torch.device, fs: float,
     residual_sum = np.zeros(model.num_rois)
     residual_samples = np.zeros(model.num_rois)
     residual_max = 0.0
+    residual_max_roi = np.zeros(model.num_rois)
+    residual_finite = True
+    baseline_rows = {}
+    attention_rows = []
     with torch.no_grad():
         for batch in loader:
             out = forward_batch(model, batch, device)
             pred = out["ppg"].cpu().numpy()
             target = batch["y_ppg"].cpu().numpy()
             valid = batch["roi_valid"].cpu().numpy()
-            attention += out["roi_attention"].cpu().numpy().sum(axis=0)
+            beta = out["roi_attention"].cpu().numpy()
+            attention += beta.sum(axis=0)
             weights += out["prior_weights"].cpu().numpy().sum(axis=0)
             valid_count += valid.sum(axis=0)
             scaled = (model.residual_scale * out["residuals"]).abs().cpu().numpy()
-            residual_max = max(residual_max, float(scaled.max()))
+            residual_finite = residual_finite and bool(np.isfinite(scaled).all())
+            residual_max_roi = np.maximum(residual_max_roi, scaled.max(axis=(0, 2)))
+            residual_max = float(np.max(residual_max_roi))
             residual_sum += (scaled * valid[..., None]).sum(axis=(0, 2))
             residual_samples += valid.sum(axis=0) * scaled.shape[-1]
             for i in range(len(pred)):
                 row = waveform_window_metrics(pred[i], target[i], fs, max_lag_sec,
                     spectral_fmin_hz, spectral_fmax_hz, float(batch["y_hr"][i]))
                 row.update(subject_id=batch["subject_id"][i], start_sec=float(batch["start_sec"][i]))
+                attention_rows.append((row["subject_id"], beta[i]))
+                if include_windows or include_baselines:
+                    row["target_sha256"] = target_sha256(target[i], float(batch["y_hr"][i]))
+                if include_windows:
+                    row.update(roi_attention=beta[i].tolist(), roi_valid=valid[i].tolist(),
+                               prior_valid=batch["prior_valid"][i].tolist(),
+                               prior_weights=out["prior_weights"][i].cpu().tolist(),
+                               scaled_residual_mean_abs=scaled[i].mean(axis=-1).tolist(),
+                               scaled_residual_max_abs=scaled[i].max(axis=-1).tolist())
+                if include_baselines:
+                    for name, waveform in classical_window_predictions(batch["x"][i].numpy(), valid[i],
+                            batch["prior_valid"][i].numpy(), model.roi_names, model.prior_names):
+                        baseline = waveform_window_metrics(waveform, target[i], fs, max_lag_sec,
+                            spectral_fmin_hz, spectral_fmax_hz, float(batch["y_hr"][i]))
+                        baseline.update(subject_id=row["subject_id"], start_sec=row["start_sec"],
+                                        target_sha256=row["target_sha256"])
+                        baseline_rows.setdefault(name, []).append(baseline)
                 rows.append(row)
     result = aggregate_waveform_metrics(rows)
     windows = len(rows)
@@ -185,6 +211,25 @@ def evaluate_waveform_model(model, loader, device: torch.device, fs: float,
                                        if residual_samples[r] else float("nan")
                                        for r, name in enumerate(model.roi_names)},
         residual_contribution_max_abs=residual_max)
+    all_attention = np.stack([a for _, a in attention_rows])
+    result.update(
+        roi_attention_median={name: float(np.median(all_attention[:, r]))
+                              for r, name in enumerate(model.roi_names)},
+        roi_attention_per_subject_mean={sid: dict(zip(model.roi_names,
+            np.stack([a for subject, a in attention_rows if subject == sid]).mean(axis=0).tolist()))
+            for sid in result["per_subject"]},
+        # Ties split credit equally, avoiding an arbitrary ROI-order preference.
+        roi_highest_attention_percent={name: float(100 * ((all_attention == all_attention.max(axis=1)[:, None])
+            / (all_attention == all_attention.max(axis=1)[:, None]).sum(axis=1)[:, None])[:, r].mean())
+            for r, name in enumerate(model.roi_names)},
+        highly_concentrated_attention_percent=float(100 * (all_attention.max(axis=1) > .8).mean()),
+        attention_concentration_rule="max(beta) > 0.8; descriptive only, not causal",
+        residual_diagnostics_all_finite=residual_finite,
+        residual_contribution_overall_mean_abs=float(residual_sum.sum() / residual_samples.sum()),
+        residual_contribution_max_abs_per_roi=dict(zip(model.roi_names, residual_max_roi.tolist())))
+    if include_baselines:
+        result["classical_baselines"] = {name: dict(**aggregate_waveform_metrics(group), window_results=group)
+                                         for name, group in baseline_rows.items()}
     if include_windows:
         result["window_results"] = rows
     return result

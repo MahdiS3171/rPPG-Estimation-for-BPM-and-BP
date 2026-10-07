@@ -318,12 +318,44 @@ UBFC-rPPG and rPPG-10 are both represented in training and validation after
 independent participant-wise splits. A strict train-on-one/test-on-the-other
 experiment remains future work.
 
-No locked final test set has yet been reported for the HR models. Stored "best"
-checkpoint metrics are validation results used for model selection.
+The legacy direct-HR models' stored "best" checkpoint metrics remain validation
+results used for selection. The official frozen Waveform v1 now has a separately
+reported, once-consumed locked test as documented below.
 
 ## Recommended UBFC waveform command
 
 Part 3 morphology-oriented **Waveform v1 candidate** training:
+
+**Waveform v1 = frozen**, checkpoint status `frozen_v1`. The full 41-participant
+UBFC experiment completed 30 epochs and selected epoch 25. It passed the
+predeclared validation gate and the once-consumed locked-test review.
+Subject-balanced validation/test morphology scores are 0.7900/0.7738 and HR
+MAEs are 1.0954/1.0964 bpm. The fixed split, baselines, uncertainty, provenance
+and limitations are in [Waveform v1 finalization](docs/WAVEFORM_V1_FINALIZATION.md).
+
+Window-level inference accepts Phase 1 multi-ROI extraction information:
+
+```python
+from rppg_lab.waveform_inference import FrozenWaveformExtractor
+from rppg_lab.extraction_cache import load_face_roi_extraction
+
+extractor = FrozenWaveformExtractor(
+    "checkpoints/waveform_v1_official_ubfc/waveform_v1_frozen.pt"
+)
+# Acquisition is separate from inference; use the frozen extraction config.
+extraction = load_face_roi_extraction(
+    "recording.avi", extractor.extraction_config, "cache_roi_multi_phase1"
+)
+result = extractor.infer_window(extraction)  # first supported 10-second window
+waveform, timestamps = result["waveform"], result["timestamps"]
+```
+
+Results include ROI attention, prior weights, validity masks, scaled residuals
+and model/hash metadata. The unsupervised quality head is omitted. Overlapping
+windows remain independent; continuous stitching is deferred. Frozen Waveform
+v1 is intended for facial morphology extraction and is **not approved for
+face-hand inter-site timing**. The BP timing path remains matched face/hand
+GREEN pending separate learned-waveform phase validation. No BP code changed.
 
 ```powershell
 python scripts/train_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_multi_phase1 --out-dir checkpoints/waveform_multi_roi_v1_candidate --objective waveform_v1 --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2
@@ -343,11 +375,17 @@ constructs only train/validation datasets. Separately evaluate validation:
 python scripts/evaluate_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --checkpoint checkpoints/waveform_multi_roi_v1_candidate/best_waveform_candidate.pt --split-manifest checkpoints/waveform_multi_roi_v1_candidate/waveform_v1_split.json --split val --out outputs/waveform_v1_validation.json
 ```
 
-Only after model selection, before a later explicit freeze, replace `--split val`
-with `--split test` and use a separate output file for locked-test evaluation.
+For finalization, evaluate validation with `--include-baselines`, then run
+`scripts/review_waveform_v1_candidate.py` on the saved training/checkpoint/split/
+evaluation artifacts. Only `ACCEPT_FOR_LOCKED_TEST` permits `--split test`,
+which requires `--validation-review` and an unused separate output file.
+The evaluator records test consumption before loading held-out data and
+refuses repeat consumption from the candidate directory.
 The evaluator requires an explicit split and reconstructs the checkpoint's
 exact signal/model configuration. Use `--objective phase2_rppg` for the unchanged
-old-loss ablation. All produced checkpoints remain `candidate_not_frozen`.
+old-loss ablation. Training checkpoints remain `candidate_not_frozen`;
+`scripts/finalize_waveform_v1.py` can repack a reviewed candidate as `frozen_v1`
+only after an acceptable saved locked test. Neither review utility runs inference.
 See [training and selection](docs/WAVEFORM_V1_TRAINING_AND_SELECTION.md) for
 weights/CLI flags, tie-breaking, manifest schema, metadata and scientific limits.
 
