@@ -218,6 +218,128 @@ class PriorResidualWaveformNet(nn.Module):
         return ppg
 
 
+class MultiROIPriorResidualWaveformNet(nn.Module):
+    """Conservative, window-level prior and ROI fusion with shared heads.
+
+    Input ``x`` is [B,R,C,L], with channels [R,G,B,prior_1,...,prior_K].
+    With ``return_dict=True``: ppg [B,L], quality [B], features [B,D,L],
+    roi_attention [B,R], roi_ppg/fused_priors/residuals [B,R,L], and
+    prior_weights [B,R,K]. Invalid branches return zero weights/waveforms.
+    ROI and prior ordering are explicit constructor/checkpoint configuration.
+    """
+
+    def __init__(
+        self,
+        in_channels: int,
+        prior_names: Sequence[str],
+        roi_names: Sequence[str] = ("forehead", "left_cheek", "right_cheek"),
+        prior_start: int = 3,
+        base_channels: int = 32,
+        num_blocks: int = 3,
+        dropout: float = 0.20,
+        residual_scale: float = 0.10,
+        init_prior: str = "auto",
+    ) -> None:
+        super().__init__()
+        if isinstance(roi_names, str) or not roi_names or len(set(roi_names)) != len(roi_names):
+            raise ValueError("roi_names must be nonempty and unique")
+        if isinstance(prior_names, str) or not prior_names or len(set(prior_names)) != len(prior_names):
+            raise ValueError("prior_names must be nonempty and unique")
+        self.in_channels = int(in_channels)
+        self.prior_names = tuple(prior_names)
+        self.roi_names = tuple(roi_names)
+        self.prior_start = int(prior_start)
+        self.num_priors = len(self.prior_names)
+        self.num_rois = len(self.roi_names)
+        self.residual_scale = float(residual_scale)
+        if self.prior_start < 3 or self.in_channels != self.prior_start + self.num_priors:
+            raise ValueError("in_channels must equal prior_start + len(prior_names), with prior_start >= 3")
+        if base_channels < 1 or num_blocks < 0 or not 0 <= dropout < 1:
+            raise ValueError("Invalid encoder width, block count or dropout")
+        if not torch.isfinite(torch.tensor(self.residual_scale)) or self.residual_scale < 0:
+            raise ValueError("residual_scale must be finite and nonnegative")
+        self.model_config = dict(
+            in_channels=self.in_channels, prior_names=self.prior_names, roi_names=self.roi_names,
+            prior_start=self.prior_start, base_channels=base_channels, num_blocks=num_blocks,
+            dropout=dropout, residual_scale=self.residual_scale, init_prior=init_prior,
+        )
+        self.shared = TemporalEncoder1D(self.in_channels, base_channels, num_blocks, dropout)
+        self.static_prior_logits = nn.Parameter(_initial_prior_logits(self.prior_names, init_prior))
+        self.roi_prior_bias = nn.Parameter(torch.zeros(self.num_rois, self.num_priors))
+        self.gate_head = nn.Sequential(nn.AdaptiveAvgPool1d(1), nn.Flatten(),
+                                       nn.Linear(base_channels, self.num_priors))
+        self.residual_head = nn.Conv1d(base_channels, 1, kernel_size=7, padding=3)
+        self.static_roi_logits = nn.Parameter(torch.zeros(self.num_rois))
+        self.attn_head = nn.Sequential(nn.AdaptiveAvgPool1d(1), nn.Flatten(),
+                                       nn.Linear(base_channels, 1))
+        for head in (self.gate_head[-1], self.residual_head, self.attn_head[-1]):
+            nn.init.zeros_(head.weight)
+            nn.init.zeros_(head.bias)
+        self.quality_head = nn.Sequential(nn.AdaptiveAvgPool1d(1), nn.Flatten(),
+                                          nn.Linear(base_channels, 1), nn.Sigmoid())
+
+    def forward(
+        self,
+        x: torch.Tensor,
+        roi_quality: Optional[torch.Tensor] = None,
+        roi_valid: Optional[torch.Tensor] = None,
+        prior_valid: Optional[torch.Tensor] = None,
+        return_dict: bool = False,
+    ) -> torch.Tensor | Dict[str, torch.Tensor]:
+        if x.ndim != 4 or x.shape[1:3] != (self.num_rois, self.in_channels):
+            raise ValueError(f"x must have shape [B,{self.num_rois},{self.in_channels},L], got {tuple(x.shape)}")
+        b, r, c, length = x.shape
+        if b < 1 or length < 1 or not x.is_floating_point():
+            raise ValueError("x must be floating point with nonempty batch/time dimensions")
+
+        def mask(value: Optional[torch.Tensor], shape: tuple[int, ...], name: str) -> torch.Tensor:
+            if value is None:
+                return torch.ones(shape, device=x.device, dtype=torch.bool)
+            if value.shape != shape or value.dtype != torch.bool:
+                raise ValueError(f"{name} must be a bool tensor of shape {shape}")
+            return value.to(x.device)
+
+        valid_roi = mask(roi_valid, (b, r), "roi_valid")
+        valid_prior = mask(prior_valid, (b, r, self.num_priors), "prior_valid") & valid_roi[..., None]
+        if not valid_roi.any(dim=1).all():
+            raise ValueError("Every batch sample must have at least one valid ROI (no valid ROI found)")
+        if (valid_roi & ~valid_prior.any(dim=-1)).any():
+            raise ValueError("Every valid ROI must have at least one valid prior")
+
+        # Remove invalid numeric channels BEFORE encoding; masked NaNs must not
+        # contaminate valid branches or batch normalization.
+        channel_valid = torch.cat((valid_roi[..., None].expand(b, r, self.prior_start), valid_prior), dim=-1)
+        clean = x.masked_fill(~channel_valid[..., None], 0)
+        if not torch.isfinite(clean).all():
+            raise ValueError("RGB and valid prior channels must be finite")
+        feat_flat = self.shared(clean.reshape(b * r, c, length))
+        feat = feat_flat.reshape(b, r, -1, length).masked_fill(~valid_roi[..., None, None], 0)
+        logits = (self.static_prior_logits[None, None, :] + self.roi_prior_bias[None, :, :]
+                  + self.gate_head(feat_flat).reshape(b, r, self.num_priors))
+        logits = logits.masked_fill(~valid_prior, -torch.inf)
+        # An invalid ROI has no priors; avoid softmax(-inf,...,-inf) NaNs.
+        logits = logits.masked_fill(~valid_roi[..., None], 0)
+        alpha = torch.softmax(logits, dim=-1).masked_fill(~valid_prior, 0)
+        priors = clean[:, :, self.prior_start:, :]
+        fused_priors = (alpha[..., None] * priors).sum(dim=2)
+        residuals = self.residual_head(feat_flat).reshape(b, r, length).masked_fill(~valid_roi[..., None], 0)
+        roi_ppg = fused_priors + self.residual_scale * residuals
+        roi_logits = self.static_roi_logits[None, :] + self.attn_head(feat_flat).reshape(b, r)
+        if roi_quality is not None:
+            if roi_quality.shape != (b, r) or not roi_quality.is_floating_point() or not torch.isfinite(roi_quality).all():
+                raise ValueError(f"roi_quality must be finite floating point of shape {(b, r)}")
+            eps = max(1e-6, torch.finfo(x.dtype).tiny)
+            roi_logits = roi_logits + roi_quality.to(device=x.device, dtype=x.dtype).clamp(eps, 1).log()
+        beta = torch.softmax(roi_logits.masked_fill(~valid_roi, -torch.inf), dim=1)
+        ppg = (beta[..., None] * roi_ppg).sum(dim=1)
+        features = (beta[..., None, None] * feat).sum(dim=1)
+        quality = self.quality_head(features).squeeze(-1)
+        if return_dict:
+            return dict(ppg=ppg, quality=quality, features=features, roi_attention=beta,
+                        roi_ppg=roi_ppg, prior_weights=alpha, fused_priors=fused_priors, residuals=residuals)
+        return ppg
+
+
 class MultiROIWaveformNet(nn.Module):
     """Shared temporal encoder + learnable ROI attention.
 

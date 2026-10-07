@@ -186,8 +186,10 @@ Saved NPZ artifacts add `face_roi_names` and `face_roi_<name>_rgb`, `_valid`,
 Existing artifact keys remain available. Hand-only runs return an empty
 `face_rois` mapping. See [multi-ROI extraction details](docs/MULTI_FACE_ROI.md)
 for the exact schema and Phase 2 boundaries. This infrastructure prepares the
-upcoming MultiROI waveform model; BP accuracy or morphology improvement has
-not been demonstrated by this extraction change.
+MultiROI waveform model. The [Phase 2 prior-residual architecture and dataset](docs/WAVEFORM_MULTI_ROI_V1_ARCHITECTURE.md)
+now use separate facial traces with window-local priors and masked window-level
+attention. Its training loss and checkpoint selection remain provisional; BP
+accuracy or morphology improvement has not been demonstrated.
 
 Each new run saves configuration, source/input/model hashes, package versions,
 git revision/dirty state, timestamp sources, frame counts, per-frame geometry and
@@ -318,6 +320,14 @@ No locked final test set has yet been reported for the HR models. Stored "best"
 checkpoint metrics are validation results used for model selection.
 
 ## Recommended UBFC waveform command
+
+Phase 2 multi-ROI architecture smoke training (provisional loss/checkpoints):
+
+```powershell
+python scripts/train_waveform_multi_roi_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_multi_phase1 --out-dir checkpoints/waveform_multi_roi_phase2 --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2
+```
+
+The existing single-ROI baseline remains available:
 
 ```powershell
 python scripts/train_waveform_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi_oldpoints --epochs 20 --batch-size 32 --fs 30 --win-sec 10 --stride-sec 2 --roi face --out checkpoints/prior_residual_ubfc.pt

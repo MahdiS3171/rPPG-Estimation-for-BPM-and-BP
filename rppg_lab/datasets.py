@@ -18,6 +18,7 @@ import torch
 from torch.utils.data import Dataset
 
 from .classical import METHOD_FUNCS, DEFAULT_PRIORS
+from .config import PipelineConfig
 from .roi import extract_rgb_trace
 from .signals import resample_uniform, standardize_channels, standardize_1d, estimate_hr_welch
 
@@ -211,6 +212,193 @@ class UBFCRPPGDataset(Dataset):
             "quality": torch.tensor(q, dtype=torch.float32),
             "subject_id": rec["subject_id"],
         }
+
+
+def _prepare_multi_roi_reference(t: np.ndarray, hr: np.ndarray, ppg: np.ndarray
+                                 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
+    """Keep contact time order; average observations at identical timestamps.
+
+    Some local UBFC reference files contain repeated rounded timestamps. This
+    new-dataset-only rule makes interpolation unambiguous without changing the
+    video clock. Backward/nonfinite timestamps raise; no sorting or dropping of
+    nonfinite signal values occurs. A nonfinite duplicate poisons its group so
+    affected target windows still get excluded.
+    """
+    t = np.asarray(t, dtype=np.float64)
+    hr, ppg = np.asarray(hr), np.asarray(ppg)
+    if t.ndim != 1 or t.shape != hr.shape or t.shape != ppg.shape or len(t) < 2:
+        raise ValueError("Contact reference requires matching [T] arrays with T >= 2")
+    if not np.isfinite(t).all() or np.any(np.diff(t) < 0):
+        raise ValueError("Contact reference timestamps must be finite and nondecreasing; will not reorder them")
+    starts = np.r_[0, np.flatnonzero(np.diff(t) > 0) + 1]
+    removed = len(t) - len(starts)
+    if removed:
+        counts = np.diff(np.r_[starts, len(t)])
+        hr = np.add.reduceat(hr.astype(np.float64), starts) / counts
+        ppg = np.add.reduceat(ppg.astype(np.float64), starts) / counts
+        t = t[starts]
+    if len(t) < 2:
+        raise ValueError("Contact reference needs at least two distinct timestamps")
+    return t, hr, ppg, removed
+
+
+class UBFCMultiROIRPPGDataset(Dataset):
+    """Face-only Phase 1 traces with strictly window-local classical priors.
+
+    Ordering is stored in roi_names, prior_names and channel_names. Each item
+    contains x [R,3+K,L], y_ppg [L], scalar y_hr, bool roi_valid [R],
+    roi_quality [R], bool prior_valid [R,K], subject_id and start_sec.
+    Quality is exactly the source-frame valid fraction in [start,end), without
+    reference information. A window survives when at least one ROI has enough
+    source support, finite bounded-interpolated RGB and a successful prior.
+    """
+
+    def __init__(
+        self,
+        subjects: Sequence[UBFCSubject],
+        fs_target: float = 30.0,
+        win_sec: float = 10.0,
+        stride_sec: float = 2.0,
+        roi_names: Sequence[str] = ("forehead", "left_cheek", "right_cheek"),
+        prior_methods: Sequence[str] = tuple(DEFAULT_PRIORS),
+        cache_dir: str | Path | None = "cache_roi_multi_phase1",
+        extraction_config: PipelineConfig | None = None,
+        min_valid_fraction: float | None = None,
+        max_frames: int | None = None,
+    ) -> None:
+        from dataclasses import replace
+        from .region_masks import FACE_MASK_STRATEGIES
+        if isinstance(roi_names, str) or not roi_names or len(set(roi_names)) != len(roi_names) or not set(roi_names) <= FACE_MASK_STRATEGIES:
+            raise ValueError("roi_names must be nonempty, unique facial ROI names")
+        if isinstance(prior_methods, str) or not prior_methods or len(set(prior_methods)) != len(prior_methods) or not set(prior_methods) <= METHOD_FUNCS.keys():
+            raise ValueError("prior_methods must be nonempty, unique classical method names")
+        if not np.isfinite([fs_target, win_sec, stride_sec]).all() or min(fs_target, win_sec, stride_sec) <= 0:
+            raise ValueError("fs_target, win_sec and stride_sec must be positive and finite")
+        if round(win_sec * fs_target) < 4:
+            raise ValueError("A training window must contain at least four samples")
+        if max_frames is not None and (type(max_frames) is not int or max_frames < 1):
+            raise ValueError("max_frames must be a positive integer or None")
+        self.subjects = list(subjects)
+        if len({s.subject_id for s in self.subjects}) != len(self.subjects):
+            raise ValueError("Duplicate subject IDs")
+        self.fs_target = float(fs_target)
+        self.win_sec = float(win_sec)
+        self.stride_sec = float(stride_sec)
+        self.roi_names = tuple(roi_names)
+        self.prior_names = tuple(prior_methods)
+        self.channel_names = ("RGB_R", "RGB_G", "RGB_B", *self.prior_names)
+        config = extraction_config or PipelineConfig(sample_rate=self.fs_target)
+        if config.sample_rate != self.fs_target:
+            raise ValueError("extraction_config.sample_rate must equal fs_target")
+        self.extraction_config = replace(config, regions=("face",), face_rois=self.roi_names,
+                                         face_roi=self.roi_names[0])
+        self.min_valid_fraction = float(config.min_valid_fraction if min_valid_fraction is None else min_valid_fraction)
+        if not np.isfinite(self.min_valid_fraction) or not 0 <= self.min_valid_fraction <= 1:
+            raise ValueError("min_valid_fraction must lie in [0,1]")
+        self.cache_dir = Path(cache_dir) if cache_dir is not None else None
+        self.max_frames = max_frames
+        self.records: list[dict] = []
+        self.samples: list[tuple[int, int, int]] = []
+        self.exclusions: list[dict] = []
+        self.reference_diagnostics: list[dict] = []
+        self._load_all()
+
+    def _load_all(self) -> None:
+        from .extraction_cache import load_face_roi_extraction
+        from .processing import resample_trace
+        from .window_priors import build_window_priors
+        for subject in self.subjects:
+            extraction = load_face_roi_extraction(subject.video_path, self.extraction_config,
+                                                   self.cache_dir, self.max_frames)
+            grid = extraction.shared.timestamps
+            t_gt, hr_gt, ppg_gt = load_ubfc_ground_truth(subject.gt_path)
+            t_gt, hr_gt, ppg_gt, duplicates = _prepare_multi_roi_reference(t_gt, hr_gt, ppg_gt)
+            self.reference_diagnostics.append(dict(subject_id=subject.subject_id,
+                duplicate_timestamp_samples_averaged=duplicates,
+                duplicate_policy="mean_at_identical_contact_times; video_clock_unchanged"))
+            if duplicates:
+                warnings.warn(f"{subject.subject_id}: averaging {duplicates} duplicate contact-reference "
+                              "timestamp samples; video timestamps are unchanged", RuntimeWarning)
+            keep = (grid >= t_gt[0]) & (grid <= t_gt[-1])
+            retained = grid[keep]  # preserve the VIDEO grid's exact origin/spacing
+            uniform, imputed = [], []
+            for name in self.roi_names:
+                rgb, flags = resample_trace(extraction.traces[name], grid, self.extraction_config.max_gap_sec)
+                uniform.append(rgb[keep])
+                imputed.append(flags[keep])
+            rec = dict(subject_id=subject.subject_id, timestamps=retained,
+                       rgb=np.stack(uniform), interpolated=np.stack(imputed),
+                       traces=extraction.traces, ppg=np.interp(retained, t_gt, ppg_gt),
+                       hr=np.interp(retained, t_gt, hr_gt))
+            rec_idx = len(self.records)
+            self.records.append(rec)
+            if len(retained) < round(self.win_sec * self.fs_target):
+                self.exclusions.append(dict(subject_id=subject.subject_id, reason="insufficient_common_support"))
+            for start, end in sliding_windows(len(retained), self.fs_target, self.win_sec, self.stride_sec):
+                target = rec["ppg"][start:end]
+                if not np.isfinite(target).all() or np.std(target) <= 1e-8:
+                    self.exclusions.append(dict(subject_id=subject.subject_id,
+                        start_sec=float(retained[start]), reason="invalid_reference_window"))
+                    continue
+                valid, _ = self._window_support(rec, start, end)
+                # Screen for at least one successful prior, never recording-wide.
+                # Usually GREEN succeeds immediately; full priors are computed
+                # only for __getitem__, with no global or on-disk prior cache.
+                for r in np.flatnonzero(valid):
+                    rgb_window = rec["rgb"][r, start:end]
+                    valid[r] = any(build_window_priors(rgb_window, self.fs_target, (name,))[1][0]
+                                   for name in self.prior_names)
+                if valid.any():
+                    self.samples.append((rec_idx, start, end))
+                else:
+                    self.exclusions.append(dict(subject_id=subject.subject_id,
+                        start_sec=float(retained[start]), reason="no_usable_roi"))
+
+    def _window_support(self, rec: dict, start: int, end: int) -> tuple[np.ndarray, np.ndarray]:
+        quality = np.zeros(len(self.roi_names), dtype=np.float32)
+        valid = np.zeros(len(self.roi_names), dtype=bool)
+        a = rec["timestamps"][start]
+        b = rec["timestamps"][end - 1] + 1 / self.fs_target
+        for r, name in enumerate(self.roi_names):
+            trace = rec["traces"][name]
+            source = (trace.timestamps >= a) & (trace.timestamps < b)
+            fraction = float(trace.validity_mask[source].mean()) if source.any() else 0.0
+            quality[r] = fraction
+            valid[r] = bool(source.any() and fraction >= self.min_valid_fraction
+                            and np.isfinite(rec["rgb"][r, start:end]).all())
+        return valid, quality
+
+    def __len__(self) -> int:
+        return len(self.samples)
+
+    def __getitem__(self, idx: int) -> Dict[str, torch.Tensor | str]:
+        from .window_priors import build_window_priors
+        rec_idx, start, end = self.samples[idx]
+        rec = self.records[rec_idx]
+        valid, quality = self._window_support(rec, start, end)
+        prior_valid = np.zeros((len(self.roi_names), len(self.prior_names)), dtype=bool)
+        x = np.zeros((len(self.roi_names), len(self.channel_names), end - start), dtype=np.float32)
+        for r in np.flatnonzero(valid):
+            rgb_window = rec["rgb"][r, start:end]
+            priors, success = build_window_priors(rgb_window, self.fs_target, self.prior_names)
+            valid[r] = bool(success.any())
+            if valid[r]:
+                x[r, :3] = standardize_channels(rgb_window).T
+                x[r, 3:] = priors
+                prior_valid[r] = success
+        if not valid.any():
+            raise RuntimeError("Previously retained window now has no usable ROI; classical methods/data changed")
+        raw_target = rec["ppg"][start:end]
+        hr = float(estimate_hr_welch(raw_target, self.fs_target).hr_bpm)
+        if not np.isfinite(hr):
+            fallback = rec["hr"][start:end]
+            hr = float(fallback[np.isfinite(fallback)].mean()) if np.isfinite(fallback).any() else float("nan")
+        if not np.isfinite(hr):
+            raise ValueError(f"No valid window-level HR target for {rec['subject_id']} at {rec['timestamps'][start]}")
+        return dict(x=torch.from_numpy(x), y_ppg=torch.from_numpy(standardize_1d(raw_target)),
+                    y_hr=torch.tensor(hr, dtype=torch.float32), roi_valid=torch.from_numpy(valid),
+                    roi_quality=torch.from_numpy(quality), prior_valid=torch.from_numpy(prior_valid),
+                    subject_id=rec["subject_id"], start_sec=torch.tensor(rec["timestamps"][start], dtype=torch.float64))
 
 
 class SessionBPDataset(Dataset):
