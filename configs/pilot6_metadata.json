@@ -1,0 +1,166 @@
+{
+  "schema_version": "pilot6_explicit_metadata_v1",
+  "source_access": "Google workbook public exports HTTP 401; user supplied local full XLSX workbook",
+  "csv_sheet_name": "01_Subjects",
+  "sheet_name_evidence": "Actual local workbook.sheetnames; remote workbook inaccessible",
+  "header_rows": {
+    "01_Subjects": 2,
+    "02_Sessions": 2,
+    "03_Review": 2,
+    "04_Windows": 2,
+    "05_Field_Guide": 2,
+    "90_Source_Subjects": 2,
+    "91_Source_Sessions": 2,
+    "92_Migration_Audit": 2,
+    "00_Protocol": 3
+  },
+  "filename_pattern": "^(S[0-9]{3})_(V[0-9]{2})$",
+  "filename_identity_note": "Subject and recording token parsed literally; V token is provisional session identifier, not a verified acquisition session",
+  "sheets": {
+    "01_Subjects": {
+      "kind": "subject",
+      "columns": {
+        "subject_id": "Subject_ID",
+        "suprasternal_face_cm": {
+          "column": "Suprasternal_to_FaceROI_cm",
+          "scale": 1,
+          "source_unit": "cm"
+        },
+        "suprasternal_finger_cm": {
+          "column": "Suprasternal_to_IndexFingertip_cm",
+          "scale": 1,
+          "source_unit": "cm"
+        }
+      },
+      "required_id_column": "Subject_ID"
+    },
+    "02_Sessions": {
+      "kind": "session",
+      "required_id_column": "Session_ID",
+      "columns": {
+        "subject_id": "Subject_ID",
+        "recording_id": "Session_ID",
+        "session_id": "Session_ID",
+        "video_path": "Video_File_or_Link",
+        "fps": "Actual_FPS",
+        "resolution": "Resolution",
+        "camera": "Phone_Device_ID",
+        "lighting": "Light_Type",
+        "movement": "Subject_Motion_Level",
+        "conditions": "Original_Protocol_Condition",
+        "event_time_source": "Event_Time_Source",
+        "manual_exclude": "Manual_Exclude",
+        "hand_side": "Hand_ROI_Side",
+        "cuff_arm": "Cuff_Arm",
+        "cuff_device": "Cuff_Device_ID"
+      },
+      "measurements": [
+        {
+          "bp_relative_start_sec": {
+            "column": "BP1_Start_s",
+            "scale": 1
+          },
+          "bp_relative_end_sec": {
+            "column": "BP1_End_s",
+            "scale": 1
+          },
+          "sbp_mmHg": {
+            "column": "SBP1_mmHg",
+            "scale": 1
+          },
+          "dbp_mmHg": {
+            "column": "DBP1_mmHg",
+            "scale": 1
+          },
+          "hr_bpm": {
+            "column": "CuffHR1_bpm",
+            "scale": 1
+          }
+        },
+        {
+          "bp_relative_start_sec": {
+            "column": "BP2_Start_s",
+            "scale": 1
+          },
+          "bp_relative_end_sec": {
+            "column": "BP2_End_s",
+            "scale": 1
+          },
+          "sbp_mmHg": {
+            "column": "SBP2_mmHg",
+            "scale": 1
+          },
+          "dbp_mmHg": {
+            "column": "DBP2_mmHg",
+            "scale": 1
+          },
+          "hr_bpm": {
+            "column": "CuffHR2_bpm",
+            "scale": 1
+          }
+        },
+        {
+          "bp_relative_start_sec": {
+            "column": "BP3_Start_s",
+            "scale": 1
+          },
+          "bp_relative_end_sec": {
+            "column": "BP3_End_s",
+            "scale": 1
+          },
+          "sbp_mmHg": {
+            "column": "SBP3_mmHg",
+            "scale": 1
+          },
+          "dbp_mmHg": {
+            "column": "DBP3_mmHg",
+            "scale": 1
+          },
+          "hr_bpm": {
+            "column": "CuffHR3_bpm",
+            "scale": 1
+          }
+        }
+      ]
+    },
+    "03_Review": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "04_Windows": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "05_Field_Guide": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "90_Source_Subjects": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "91_Source_Sessions": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "92_Migration_Audit": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    },
+    "00_Protocol": {
+      "kind": "documentation_or_derived_or_archive",
+      "columns": {},
+      "required_id_column": "__not_an_observation__"
+    }
+  },
+  "geometry_semantics": "05_Field_Guide row 9: tape measurement on body from suprasternal landmark to face ROI / index fingertip, cm; explicitly not true arterial paths. 00_Protocol row 22 reiterates no validated PWV.",
+  "unmapped_date": "Enrollment_Date_Jalali is preserved raw; enrollment date is not recording time and is not parsed as Gregorian.",
+  "bp_semantics": "00_Protocol rows 9,18-20: actual cuff ends required; approximate 50s must not fill missing ends; last-two mean is session summary only. 92_Migration_Audit rows 12-14: legacy starts converted from original clock fractions, require video confirmation; only S004 has recovered end notes.",
+  "session_identity_note": "02_Sessions.Session_ID matches video stem exactly; V01 alone is not used when verified session IDs exist."
+}

@@ -19,4 +19,5 @@ models/*.download
 models/landmarkers.json
 data_sessions/
 data/rppg10/
+sheets/
 cache_rppg10*/

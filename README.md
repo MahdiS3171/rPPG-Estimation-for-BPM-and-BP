@@ -19,6 +19,12 @@ RGB video --> one clock -+--> face detector --> face mask --> RGB --> rPPG --+
 
 ## Setup and runnable commands
 
+The six-recording pilot CLI is `scripts/evaluate_pilot6.py`. See
+[Pilot-6 dual-ROI feasibility](docs/PILOT6_DUAL_ROI_BP_FEASIBILITY.md) for the
+verified local workbook schema, checkpoint blockers, measured results, and
+Windows commands. Pilot artifacts use the ignored `outputs/pilot6_dual_roi/`
+namespace; source metadata in `sheets/` also remains ignored.
+
 From the repository root, use Python 3.10+ and the project environment:
 
 ```powershell
