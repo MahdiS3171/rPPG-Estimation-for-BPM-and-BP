@@ -5,6 +5,7 @@ cache_roi/
 cache_roi*/
 outputs/
 checkpoints/
+Dataset/
 *.pth
 *.pt
 *.npz
