@@ -15,6 +15,7 @@ dependencies = [
   "mediapipe>=0.10",
   "matplotlib>=3.7",
   "pandas>=2.0",
+  "openpyxl>=3.1",
   "tqdm>=4.66",
   "torch>=2.0",
 ]

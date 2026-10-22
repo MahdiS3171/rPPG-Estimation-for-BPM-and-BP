@@ -18,3 +18,5 @@ models/*.task
 models/*.download
 models/landmarkers.json
 data_sessions/
+data/rppg10/
+cache_rppg10*/

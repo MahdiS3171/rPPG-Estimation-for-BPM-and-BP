@@ -403,6 +403,30 @@ python scripts/train_waveform_ubfc.py --ubfc-root UBFCData --cache-dir cache_roi
 
 ## Visual waveform inspection
 
+For the official frozen multi-ROI Waveform v1, use the validation-only
+[visual validation tool](docs/WAVEFORM_V1_VISUAL_VALIDATION.md). It verifies the
+official checkpoint identity, preserves the consumed locked test, and generates
+six-panel waveform diagnostics, complete window rankings, cross-site feature
+agreement and non-overlapping-window consistency summaries:
+
+```powershell
+python scripts/visualize_waveform_v1.py --ubfc-root UBFCData --all-validation-subjects --include-random --out-dir outputs/waveform_visual_v1
+```
+
+For independent HR evaluation on the three precropped rPPG-10 videos, see
+[Part 4.5B external validation](docs/WAVEFORM_V1_RPPG10_EXTERNAL_VALIDATION.md).
+The evaluator verifies the official frozen identity, uses ECG only for HR,
+reports subject-balanced uncertainty and coverage, and records an exclusive
+external-evaluation receipt. Start with `--validate-only`; limited debug runs
+are always labeled SMOKE. ECG does not establish optical waveform morphology,
+BP or physiological timing validity.
+
+```powershell
+python scripts/evaluate_waveform_v1_rppg10.py --dataset-root rPPG-10 --checkpoint checkpoints/waveform_v1_official_ubfc/waveform_v1_frozen.pt --out-dir outputs/waveform_v1_rppg10_external --cache-dir cache_rppg10_rgb --seed 42
+```
+
+The earlier single-ROI candidate plotting utility remains available:
+
 ```powershell
 python scripts/plot_waveform_predictions.py --ubfc-root UBFCData --cache-dir cache_roi_oldpoints --checkpoint checkpoints/prior_residual_ubfc.pt --mode worst --num-plots 12 --show-priors --out-dir outputs/waveform_plots
 ```
