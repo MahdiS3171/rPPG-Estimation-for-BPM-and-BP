@@ -1,0 +1,10 @@
+{
+  "version": "native60_cubic_fir_camera_pts_to30_v2",
+  "native_grid_hz": 60.0,
+  "target_hz": 30.0,
+  "passband_hz": 8.0,
+  "stopband_hz": 15.0,
+  "attenuation_db": 80.0,
+  "max_interpolation_gap_sec": 0.025001,
+  "native_rate_tolerance_hz": 1.0
+}

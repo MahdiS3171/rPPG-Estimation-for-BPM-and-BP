@@ -514,3 +514,26 @@ The present pilot establishes that synchronized face/hand RGB can be extracted
 reproducibly and that some intervals contain plausible pulse-rate structure.
 It does not yet demonstrate reliable face-to-hand physiological timing,
 validated waveform morphology on these videos, or usable BP estimation.
+
+## 2026-10-23: restored-manifest frozen facial follow-up
+
+The original frozen manifest has been restored and verified against the
+official checkpoint. A separate native-resolution facial extraction and
+versioned 60-to-30 Hz adaptation now unblock original-API facial inference.
+The earlier results and their historical blockers above remain unchanged.
+
+See [the frozen facial evaluation report](PILOT6_FROZEN_V1_ADAPTED_EVALUATION.md)
+for identities, compatibility checks, measured adapter limitations, S004's
+58/59 accepted windows but only 15 seconds of engineering-good waveform
+coverage, the stricter-gap sensitivity run, cohort evaluation and reproduction
+commands. New outputs use `outputs/pilot6_frozen_native_aa_v1/`; no hand neural
+inference, physiological PTT or BP model is introduced by that follow-up.
+
+The follow-up completed all six videos and 108,115 native frames. Frozen
+facial inference accepted 347/354 scheduled windows. Engineering-good time
+unions are 45, 110, 275, 15, 255 and 40 seconds for S001–S006; these are
+signal-quality flags, not validated waveform accuracy. A stricter gap policy
+reduces total good coverage from 740 to 295 seconds. Both cohort artifact
+verification runs pass with bit-identical selected-window replay. The result
+supports further instrumented pulse/timing validation, especially investigating
+the substantial recording and gap-policy dependence, before BP model training.
