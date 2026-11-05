@@ -141,7 +141,8 @@ reference alignment. Passing synthetic controls does not validate physiology.
 
 Prepare a guide for blinded, independent human review of all contact sheets.
 Use at least two reviewers, explicit uncertainty, inter-reviewer agreement and
-adjudication. Keep original-image context and native-resolution insets. Scores,+candidate weights and PPG traces should be hidden during initial annotation.
+adjudication. Keep original-image context and native-resolution insets. Scores,
+candidate weights and PPG traces should be hidden during initial annotation.
 No human assessments will be invented. Assistant visual notes, if any, are
 separate non-human exploratory observations and not validation labels.
 
