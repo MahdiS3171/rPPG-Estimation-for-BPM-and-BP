@@ -1,0 +1,42 @@
+{
+  "intended_unique_windows": 20,
+  "intended_roi_windows": 60,
+  "intended_method_cells": 480,
+  "split_cells": {
+    "Train": 384,
+    "Val": 48,
+    "Test": 48
+  },
+  "all_prediction_failures": {},
+  "train_native_negative_zero_lag_cells": 173,
+  "lag_boundary_cells_by_split": {
+    "Train": 19
+  },
+  "all_reference_hr_range_bpm": [
+    49.2966427502619,
+    142.37719019223633
+  ],
+  "train_condition_mae_range_bpm": [
+    8.662213919199477,
+    34.6379405424281
+  ],
+  "control_intended_cells": 384,
+  "control_computational_cells": 354,
+  "control_eligible_cells": 306,
+  "control_failures": {
+    "FLAT_SOURCE_RGB": 48,
+    "NO_COMPUTABLE_PRIOR": 30
+  },
+  "quality_association_status": {
+    "DESCRIPTIVE_ONLY": 360,
+    "UNDEFINED_TIES_OR_SUPPORT": 24
+  },
+  "timing_outcomes": {
+    "PASS_SYNTHETIC_ONLY": 2,
+    "ABSTAIN_UNVERIFIED": 4,
+    "FAIL": 1
+  },
+  "decision": "QUALIFIED_GO_TO_DESIGN_LIMITED_SEPARATELY_REVIEWED_EXPERIMENT",
+  "training_authorized": false,
+  "real_domain_generalization_established": false
+}

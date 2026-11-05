@@ -1,0 +1,49 @@
+{
+  "tests": {
+    "run": 175,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "protected_io_attempts": 0,
+    "new_gate08_tests": 26,
+    "process_exit_code": 0
+  },
+  "new_python_files_compiled": 6,
+  "cli_help_passed": true,
+  "retained_cell_hashes_verified": 480,
+  "reference_cell_hashes_verified": 480,
+  "quality_values_match_blind_metadata": true,
+  "recording_balanced_aggregates_independently_verified": 72,
+  "source_hashes_unchanged": 10,
+  "previous_input_hashes_unchanged": 20,
+  "actual_numerical_run_commit": "839d8136f2e88b36e2d14459c07a31be9d35cb9c",
+  "plot_layout_revision_commit": "8e6b83827784bfa58962ec4e5be2552d5aad6e2f",
+  "plot_layout_revision_sha256": "7949f02d148664ad3830dc333ee2d6db5318aa5f939c7829161e98b34b98ebee",
+  "reviewed_plot_directory": "plots",
+  "plot_revision_changes": "Final fresh run includes corrected legend placement; six PNG hashes match visually reviewed versions from the first run.",
+  "allow_training": false,
+  "cli_existing_output_refused": true,
+  "cli_source_child_output_refused": true,
+  "initial_numerical_run_commit": "8881fbe384ab21047f9b092814f19185f0df6ffc",
+  "control_missingness_fix_commit": "839d8136f2e88b36e2d14459c07a31be9d35cb9c",
+  "control_missingness_fix": "24 missing-ROI control clipping descriptors changed from zero to unknown. Actual predictions, metrics, quality, reference arrays and timing results are byte-identical to the initial run.",
+  "actual_results_repeat_byte_identical": [
+    "locked_predictions.npz",
+    "label_blind_predictions.json",
+    "reference_windows.npz",
+    "per_window_metrics.csv",
+    "condition_metrics.json",
+    "quality_associations.json",
+    "negative_control_summary.json",
+    "synthetic_timing.json"
+  ],
+  "visually_reviewed_identical_pngs": [
+    "negative_controls.png",
+    "train_hr_pairs.png",
+    "train_native_correlations.png",
+    "train_quality_errors.png",
+    "waveforms_P000001.png",
+    "waveforms_P000003.png"
+  ],
+  "test_source_sha256": "f056c26d1128c567c6a74f50f60580c2697baedf82356dbcf466f9702ecca5d2"
+}

@@ -1,0 +1,126 @@
+{
+  "local_root": "outputs/waveform_v2_classical_feasibility_gate08_20261105_02",
+  "recommended_plots": "plots/",
+  "files": [
+    {
+      "path": "ATTRIBUTION.md",
+      "bytes": 2711,
+      "sha256": "9bb5dda3a5496c75fc7e5057e089bd5f7640e76bc7e587cb3116b90243170ec7",
+      "git_payload_included": false
+    },
+    {
+      "path": "condition_metrics.json",
+      "bytes": 336099,
+      "sha256": "95e4e81f9ca18fa993b36808d7a7e07cf43c6bfe16e290dcfa91e4e2aa3fd9ce",
+      "git_payload_included": false
+    },
+    {
+      "path": "label_blind_predictions.json",
+      "bytes": 545014,
+      "sha256": "f6395bc01c7a83793d10d2f781392bdf86eab111d45f9815c098a74f8b18399c",
+      "git_payload_included": false
+    },
+    {
+      "path": "LICENSE_SCAMPS.txt",
+      "bytes": 3789,
+      "sha256": "4ca5e434d1faf7e964b14e4a2508ae33ef5447ecd84a9a9f6e25767a64498595",
+      "git_payload_included": false
+    },
+    {
+      "path": "local_artifact_manifest.json",
+      "bytes": 3264,
+      "sha256": "86d0ec1c649c2356187144326307c6c5e4b2f48364ad847af63616c62f6b83d5",
+      "git_payload_included": false
+    },
+    {
+      "path": "locked_predictions.npz",
+      "bytes": 1136978,
+      "sha256": "78d8d35c29a37f8ffd285909ab2fca9dcc388c7e01e7e88982fbecbd7f011ec0",
+      "git_payload_included": false
+    },
+    {
+      "path": "negative_control_metrics.csv",
+      "bytes": 186239,
+      "sha256": "c3b2f599563f4b12ee52657f06a4f20ac079793b50ceefc6f25cb1180e68478e",
+      "git_payload_included": false
+    },
+    {
+      "path": "negative_control_summary.json",
+      "bytes": 216722,
+      "sha256": "c331b7a2a6bfabb1fc80e71adf0b7dc45ef7f2cd7dae8f3545316d41cb45a9f1",
+      "git_payload_included": false
+    },
+    {
+      "path": "per_window_metrics.csv",
+      "bytes": 294910,
+      "sha256": "e3b04d9a880eba8e94dddabcd70e5cb7c07eeca0f41962f922b1651c980e171c",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/negative_controls.png",
+      "bytes": 196765,
+      "sha256": "ee4bde8cee62601a3d9c551d8c4765732a8d6d66848e65e2629e989a683c19c6",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/train_hr_pairs.png",
+      "bytes": 247215,
+      "sha256": "16f506fc98ac42bb59cf19a704b820e6021f325e2322e2bd56263db57e9bf844",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/train_native_correlations.png",
+      "bytes": 72248,
+      "sha256": "9317dfbcea7c1d68a5c6822fda13a587f4ab2108690a439465e2cac804e19d74",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/train_quality_errors.png",
+      "bytes": 214089,
+      "sha256": "2eba0a4ef42f2ab782de67d442056ddfe90374eb9fcf0a437dd6f9ccb53923ca",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/waveforms_P000001.png",
+      "bytes": 1330042,
+      "sha256": "e7238949244321653f067cd92e3983c7ea509df1c6f959dadc3beecf0f1d4b2e",
+      "git_payload_included": false
+    },
+    {
+      "path": "plots/waveforms_P000003.png",
+      "bytes": 1336404,
+      "sha256": "6194c011e9662aa969173e6d65c592efbb25b5bc69924b87361086c5c2ae8247",
+      "git_payload_included": false
+    },
+    {
+      "path": "prediction_lock.json",
+      "bytes": 438,
+      "sha256": "2a4c6acf74fe6fa9571a256c8477487dc1c4ce197ccf5b7a2641a9d5a7bc94ff",
+      "git_payload_included": false
+    },
+    {
+      "path": "provenance_and_validation.json",
+      "bytes": 26914,
+      "sha256": "c420ea95723de31783075c60e447ef33a99c872f92d0b571b5a34f610d0b6623",
+      "git_payload_included": false
+    },
+    {
+      "path": "quality_associations.json",
+      "bytes": 94134,
+      "sha256": "0d3031dc271264e11f9e2905d7af7d6cefb74c4982cec6c1683aa827f6da56de",
+      "git_payload_included": false
+    },
+    {
+      "path": "reference_windows.npz",
+      "bytes": 48140,
+      "sha256": "e9703612bad75df904c8cb401678758eae07ac7c7f960e3e91000ba9da4c66a4",
+      "git_payload_included": false
+    },
+    {
+      "path": "synthetic_timing.json",
+      "bytes": 20302,
+      "sha256": "eef8073662e3f889fe0af634ca2db56d4f1ceb6885c17f8852c143f044489197",
+      "git_payload_included": false
+    }
+  ]
+}
