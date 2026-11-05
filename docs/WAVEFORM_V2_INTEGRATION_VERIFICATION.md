@@ -68,8 +68,11 @@ entries all matched; the latter covers every other ZIP entry. Both JSON manifest
 are preserved byte-for-byte under `docs/waveform_v2/`. Their original paths still
 describe archive-relative provenance, not a mutable installed-file manifest.
 
-Eleven extracted files remain byte-identical to the archive, including both
-manifests. Only the registry has reviewed post-extraction fixes:
+Nine extracted files remain byte-identical to the archive, including both
+manifests. Two new Markdown documents (`WAVEFORM_V2_SUBJECT_ADAPTATION_DESIGN.md`
+and `WAVEFORM_V2_TIMING_CONTRACT_GATE03.md`) have trailing-space hard breaks
+removed so that the final commit-range whitespace check passes. The registry
+has the following reviewed post-extraction fixes:
 
 1. A malformed `/FullPackage` row such as JSON `null` previously raised an
    uncaught `AttributeError` while reading timestamps. It now becomes an explicit
@@ -105,6 +108,7 @@ Python 3.10 and other dependency combinations were not independently tested.
 | Synthetic CLI refuses an existing output directory | Passed; expected exit code 2 |
 | PURE CLI `--help` only | Passed; no real inventory |
 | `git diff --check` | Passed |
+| `git diff --check <base>...HEAD` | Passed after normalizing four supplied Markdown hard breaks |
 | Protected tracked-file diff against fetched base | Empty |
 
 The prototype initially had one incorrect test expectation: a uniformly slower

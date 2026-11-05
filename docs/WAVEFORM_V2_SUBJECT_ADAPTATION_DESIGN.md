@@ -1,6 +1,6 @@
 # Waveform v2 — Subject-context adaptive prior design (proposal only)
 
-**Design state:** Architecture specification, not trained or implemented.  
+**Design state:** Architecture specification, not trained or implemented.
 **Base model:** `MultiROIPriorResidualWaveformNet` in `rppg_lab/models.py` (pinned `27e5455`); existing multi-ROI window-specific prior gate and residual must remain available as a baseline.
 
 ## What exists in Waveform v1

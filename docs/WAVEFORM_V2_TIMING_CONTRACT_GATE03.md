@@ -1,8 +1,8 @@
 # Waveform v2 — Gate 03: Timing-transfer engineering contract
 
-**Status:** Local add-on, not merged into GitHub; exclusively synthetic engineering controls.  
-**Pinned base:** `MahdiS3171/rPPG-Estimation-for-BPM-and-BP@27e54556025e2eff4e1b4091001a2eaf28667cc7`  
-**Date:** 2026-11-03  
+**Status:** Local add-on, not merged into GitHub; exclusively synthetic engineering controls.
+**Pinned base:** `MahdiS3171/rPPG-Estimation-for-BPM-and-BP@27e54556025e2eff4e1b4091001a2eaf28667cc7`
+**Date:** 2026-11-03
 **Protected:** frozen Waveform v1, previously published outcomes, S007–S011 reserved recordings.
 
 ## Why this is needed
