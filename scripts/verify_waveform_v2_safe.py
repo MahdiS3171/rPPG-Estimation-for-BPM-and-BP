@@ -19,7 +19,7 @@ EXISTING_MODULES = (
     "test_waveform_v1", "test_waveform_visualization",
 )
 NEW_MODULES = ("test_waveform_v2_infrastructure", "test_waveform_v2_timing_contract",
-               "test_waveform_v2_integration", "test_waveform_v2_adaptation")
+               "test_waveform_v2_integration", "test_waveform_v2_adaptation", "test_waveform_v2_scamps")
 EXCLUDED_CLASSES = {
     "OfficialFrozenTests": "Loads the original frozen checkpoint",
     "WaveformTrainingIntegrationTests": "Runs a synthetic training epoch",
@@ -48,8 +48,9 @@ def install_io_guard(root):
     blocked = [root / name for name in ("Dataset", "UBFCData", "rPPG-10", "PUREData",
                "data/pure", "checkpoints", "outputs", "cache_roi_multi_phase1",
                "cache_roi_oldpoints", "cache_rppg10_rgb", "cache_rppg10_synthetic",
-               "cache_video", "cache_video_prior")]
+               "cache_video", "cache_video_prior", "SCAMPSData", "data/scamps")]
     prefixes = [os.path.normcase(os.path.abspath(p)) for p in blocked]
+    scamps_cache_prefix = os.path.normcase(os.path.abspath(root / "cache_scamps"))
     counters = dict(blocked_io_attempts=0)
 
     def guard(event, args):
@@ -61,7 +62,7 @@ def install_io_guard(root):
             if not isinstance(path, (str, bytes, os.PathLike)):
                 continue
             name = os.path.normcase(os.path.abspath(os.fsdecode(path)))
-            if any(name == p or name.startswith(p + os.sep) for p in prefixes):
+            if name.startswith(scamps_cache_prefix) or any(name == p or name.startswith(p + os.sep) for p in prefixes):
                 counters["blocked_io_attempts"] += 1
                 raise PermissionError("Verification forbids I/O in protected source/artifact directories")
     sys.addaudithook(guard)

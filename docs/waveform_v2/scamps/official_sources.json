@@ -1,0 +1,22 @@
+{
+  "official_split.csv": {
+    "url": "https://facesyntheticspubwedata.z6.web.core.windows.net/neurips-2022/ScampsTrainTestSplit.csv",
+    "sha256": "d0b03f4a22f00c7dcfc106417e252c798274c7eb5fd022de0843b65951fea79e",
+    "bytes": 262009
+  },
+  "SCAMPS_datasheet.pdf": {
+    "url": "https://raw.githubusercontent.com/danmcduff/scampsdataset/0d3e1fd9915ea52a66af87caa1508b292555f765/Datasheet%20-%20Synthetics%20for%20Camera%20Measurement%20of%20Physiological%20Signals.pdf",
+    "sha256": "bc9f237762a8a6fe81a77854f1be8cc282d8620078fc9a8897ae897bf782d59c",
+    "bytes": 88820
+  },
+  "LICENSE_SCAMPS.txt": {
+    "url": "https://raw.githubusercontent.com/danmcduff/scampsdataset/0d3e1fd9915ea52a66af87caa1508b292555f765/LICENSE.txt",
+    "sha256": "4ca5e434d1faf7e964b14e4a2508ae33ef5447ecd84a9a9f6e25767a64498595",
+    "bytes": 3789
+  },
+  "README_SCAMPS.md": {
+    "url": "https://raw.githubusercontent.com/danmcduff/scampsdataset/0d3e1fd9915ea52a66af87caa1508b292555f765/README.md",
+    "sha256": "805113b0628fd281aea0c1550d46bd534ed724ffc170472071904a5016488081",
+    "bytes": 11309
+  }
+}

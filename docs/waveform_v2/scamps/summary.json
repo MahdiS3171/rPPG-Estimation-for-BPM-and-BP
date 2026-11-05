@@ -1,0 +1,7 @@
+{
+  "recordings": 10,
+  "structures_valid": 10,
+  "all_values_finite": 10,
+  "training_admitted": 0,
+  "physical_timing_admitted": 0
+}
