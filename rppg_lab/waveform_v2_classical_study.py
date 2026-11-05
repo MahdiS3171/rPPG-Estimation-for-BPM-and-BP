@@ -288,6 +288,7 @@ def run_controls():
             warnings.simplefilter("ignore", RuntimeWarning)  # constant PCA fixture
             prediction = predict_recording(rgb, valid)
         clipping = np.any((rgb <= 1) | (rgb >= 254), axis=-1).astype(float)
+        clipping[~np.isfinite(rgb).all(-1)] = np.nan
         items = prediction_rows(name, "Control", rgb, valid, clipping, prediction)
         for row in items:
             w, r, k = STARTS.index(row["start"]), CONDITIONS.index(row["roi"]), METHODS.index(row["method"])

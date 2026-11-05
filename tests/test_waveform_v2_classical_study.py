@@ -219,6 +219,7 @@ class ClassicalIOAndControlTests(unittest.TestCase):
         missing = [r for r in rows if r['filename'] == 'missing_windows' and r['start'] == 300]
         self.assertEqual(len(missing), 24)
         self.assertFalse(any(r['computational_success'] for r in missing))
+        self.assertTrue(all(np.isnan(r['quality']['clipping_fraction_mean']) for r in missing))
 
     def test_coherent_illumination_is_not_identifiable_as_physiology(self):
         _, rgb, valid, reference = list(control_fixtures())[4]
