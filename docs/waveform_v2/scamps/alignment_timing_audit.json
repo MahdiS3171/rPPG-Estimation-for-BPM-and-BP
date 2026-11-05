@@ -1,0 +1,358 @@
+{
+  "scope": "synthetic_index_provenance_not_physical_timing",
+  "documentation_claim": "RGB frame i and d_ppg[i] are aligned synthetic samples",
+  "nominal_render_rate_hz": 30.0,
+  "nominal_rate_basis": "600 documented frames / 20 s in paper; not embedded metadata",
+  "capture_timestamps_present": false,
+  "physical_synchronization_verified": false,
+  "frame_label_index_shift_applied": 0,
+  "mask_shift_padding_threshold_or_resize_applied": false,
+  "recordings": [
+    {
+      "filename": "P000001.mat",
+      "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000002.mat",
+      "source_sha256": "1d66ec0b5fdef03ca083c24ca87b0db852799e1c3ee7335ec56d371e09a11b4f",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000003.mat",
+      "source_sha256": "6411b40f99958a3b6cf0fc61ac460e41c947c1feca80dbb801fc2d31c74ebeef",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000004.mat",
+      "source_sha256": "aed82a87b3451379debcb6745158805b0c5ba8ae82f829dd4b2ef37d49b27178",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000005.mat",
+      "source_sha256": "f83788832701b85a82239c35626a4a68a194b537c6947a8b94403fe767c7a37d",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000006.mat",
+      "source_sha256": "18310c736ac51303b6e4b783633b897c9a72ee7690d11c7c3b2b1f1fa3f684cc",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000007.mat",
+      "source_sha256": "3786c4d0d59b8d175fbca9fd8de347f8bee821d3adef4de33649180ebbbe7515",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000008.mat",
+      "source_sha256": "f564249af83319fb00ab2f00c27c4a5efde65766bcb6496139e6c21eefed1887",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000009.mat",
+      "source_sha256": "c97a1b50047df6ec7e7aa646514b99040396634a903c820a5dc3cdab4fe11d22",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    },
+    {
+      "filename": "P000010.mat",
+      "source_sha256": "847d0942cf21e4cf00e40ab121298becdaa2a34813361f8ef7644e054f0284df",
+      "structure_valid": true,
+      "frames": 600,
+      "ppg_samples": 600,
+      "mask_alignment": "UNVERIFIED_LENGTH_MISMATCH",
+      "mask_lengths": {
+        "skin_mask": 599,
+        "combined_mask": 599,
+        "numerical_mask": 599
+      },
+      "allow_training": false,
+      "allow_physiological_delay_scoring": false,
+      "lazy_window_check": {
+        "start": 300,
+        "stop": 302,
+        "rgb_shape": [
+          2,
+          240,
+          240,
+          3
+        ],
+        "label_indices_equal_frame_indices": true,
+        "paired_values_valid": true,
+        "masks_associated_to_frames": false,
+        "mask_shape": [
+          2,
+          240,
+          240
+        ],
+        "status": "PASS_ENGINEERING_ONLY"
+      }
+    }
+  ],
+  "blockers": [
+    "599 mask samples vs 600 frames/targets; mask-to-frame mapping unverified",
+    "Fractional mask semantics and values outside [0,1] require explicit interpretation",
+    "No actual capture timestamps or independent synchronization evidence",
+    "20-second nominal clips cannot support the current default 30-second context plus target"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "source_sha256": "d0b03f4a22f00c7dcfc106417e252c798274c7eb5fd022de0843b65951fea79e",
+  "header_anomaly": "2_header_fields_3_data_fields",
+  "official_counts": {
+    "Train": 2000,
+    "Val": 400,
+    "Test": 400
+  },
+  "sample_assignments": {
+    "P000001": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000001.mat"
+    },
+    "P000002": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000002.mat"
+    },
+    "P000003": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000003.mat"
+    },
+    "P000004": {
+      "split": "Val",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000004.mat"
+    },
+    "P000005": {
+      "split": "Test",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000005.mat"
+    },
+    "P000006": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000006.mat"
+    },
+    "P000007": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000007.mat"
+    },
+    "P000008": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000008.mat"
+    },
+    "P000009": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000009.mat"
+    },
+    "P000010": {
+      "split": "Train",
+      "source_url": "https://hueaml.blob.core.windows.net/scampsdatasetrelease/240Final2/P000010.mat"
+    }
+  },
+  "sample_counts": {
+    "Train": 8,
+    "Val": 1,
+    "Test": 1
+  },
+  "avatar_disjointness": "official_datasheet_claim_not_independently_verified",
+  "all_ten_engineering_exposed": true,
+  "forbid_random_window_splits": true,
+  "rendering_factors": {
+    "identity_keys_in_local_files": false,
+    "appearance_asset_ids_available": false,
+    "exact_shared_motion_or_action_traces": [
+      {
+        "variable": "au12",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au15",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au17",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au18",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au2",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au26",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au27",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au4",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "au7",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "d_pitch",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "d_roll",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      },
+      {
+        "variable": "d_yaw",
+        "trace_sha256": "24ddaa4710480313757f965c38d60208a334556cb244f830d5006a893edd8da7",
+        "recordings": [
+          "P000001",
+          "P000002",
+          "P000003",
+          "P000004",
+          "P000005",
+          "P000006",
+          "P000007",
+          "P000008",
+          "P000009",
+          "P000010"
+        ]
+      }
+    ],
+    "interpretation": "Shared released motion/action traces are rendering-factor overlap, not proof of shared avatar identity"
+  }
+}

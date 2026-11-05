@@ -1,0 +1,51 @@
+{
+  "filename": "P000001.mat",
+  "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+  "windows": [
+    {
+      "window_frames": 1,
+      "frames_variable": "Xsub",
+      "start_index": 300,
+      "returned_rgb_ppg_bytes": 1382408,
+      "rss_baseline_bytes": 48287744,
+      "sampled_rss_peak_bytes": 59674624,
+      "sampled_rss_delta_bytes": 11386880,
+      "python_numpy_traced_peak_bytes": 2769740,
+      "elapsed_seconds": 0.2787107000040123,
+      "decoded_shape": [
+        1,
+        240,
+        240,
+        3
+      ]
+    },
+    {
+      "window_frames": 8,
+      "frames_variable": "Xsub",
+      "start_index": 300,
+      "returned_rgb_ppg_bytes": 11059264,
+      "rss_baseline_bytes": 50294784,
+      "sampled_rss_peak_bytes": 68677632,
+      "sampled_rss_delta_bytes": 18382848,
+      "python_numpy_traced_peak_bytes": 22123731,
+      "elapsed_seconds": 0.28668479999760166,
+      "decoded_shape": [
+        8,
+        240,
+        240,
+        3
+      ]
+    }
+  ],
+  "rss_sampling_interval_seconds": 0.002,
+  "limitations": [
+    "In-process RSS measurements, not a fresh-process or allocator-independent bound",
+    "Sampling may miss brief native peaks; tracemalloc excludes some native HDF5 memory",
+    "HDF5 time chunks span 75 frames; small windows decompress more data than they return"
+  ],
+  "hdf5_read_cache_bytes": 1048576,
+  "max_window_frames": 8,
+  "max_window_bytes": 67108864,
+  "full_collection_uncompressed_bytes": 24874752000,
+  "largest_audit_read_bytes": 180000
+}
