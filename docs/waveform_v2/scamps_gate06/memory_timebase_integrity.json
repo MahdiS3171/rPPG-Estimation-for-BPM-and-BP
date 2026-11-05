@@ -1,0 +1,129 @@
+{
+  "array_budget_bytes": 134217728,
+  "process_rss_budget_bytes": 1073741824,
+  "process_start_rss_bytes": 163594240,
+  "sampled_process_peak_rss_bytes": 724062208,
+  "rss_budget_exceeded": false,
+  "rss_sampling_interval_s": 0.002,
+  "recordings": [
+    {
+      "filename": "P000001.mat",
+      "extraction_seconds": 16.36583879999671,
+      "baseline_rss_bytes": 237899776,
+      "observed_process_peak_so_far_bytes": 358813696,
+      "traced_python_numpy_extraction_peak_bytes": 89330068,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000002.mat",
+      "extraction_seconds": 15.776344099998823,
+      "baseline_rss_bytes": 254742528,
+      "observed_process_peak_so_far_bytes": 368844800,
+      "traced_python_numpy_extraction_peak_bytes": 89305186,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000003.mat",
+      "extraction_seconds": 15.020311200001743,
+      "baseline_rss_bytes": 255827968,
+      "observed_process_peak_so_far_bytes": 369934336,
+      "traced_python_numpy_extraction_peak_bytes": 89298109,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000004.mat",
+      "extraction_seconds": 16.827346900005068,
+      "baseline_rss_bytes": 257269760,
+      "observed_process_peak_so_far_bytes": 369934336,
+      "traced_python_numpy_extraction_peak_bytes": 89298111,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000005.mat",
+      "extraction_seconds": 16.66304140000284,
+      "baseline_rss_bytes": 257073152,
+      "observed_process_peak_so_far_bytes": 369934336,
+      "traced_python_numpy_extraction_peak_bytes": 89298658,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000006.mat",
+      "extraction_seconds": 14.83922330000496,
+      "baseline_rss_bytes": 261079040,
+      "observed_process_peak_so_far_bytes": 372375552,
+      "traced_python_numpy_extraction_peak_bytes": 89312806,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000007.mat",
+      "extraction_seconds": 15.429661699999997,
+      "baseline_rss_bytes": 263290880,
+      "observed_process_peak_so_far_bytes": 374341632,
+      "traced_python_numpy_extraction_peak_bytes": 89298527,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000008.mat",
+      "extraction_seconds": 15.549595500000578,
+      "baseline_rss_bytes": 261345280,
+      "observed_process_peak_so_far_bytes": 374706176,
+      "traced_python_numpy_extraction_peak_bytes": 89296924,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000009.mat",
+      "extraction_seconds": 14.967723499998101,
+      "baseline_rss_bytes": 263036928,
+      "observed_process_peak_so_far_bytes": 376561664,
+      "traced_python_numpy_extraction_peak_bytes": 89295338,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    },
+    {
+      "filename": "P000010.mat",
+      "extraction_seconds": 15.455651500000386,
+      "baseline_rss_bytes": 262909952,
+      "observed_process_peak_so_far_bytes": 376561664,
+      "traced_python_numpy_extraction_peak_bytes": 89297192,
+      "estimated_streaming_array_peak_bytes": 109411200,
+      "max_decoded_chunk_frames": 32,
+      "frame_collection_materialized": false
+    }
+  ],
+  "tensor_shape_without_network_call": [
+    1,
+    3,
+    9,
+    300
+  ],
+  "tensor_device": "cpu",
+  "limitations": [
+    "Native RSS sampled every 2 ms may miss brief peaks",
+    "Tracemalloc excludes some native detector/HDF5 allocations; RSS includes them",
+    "Array estimate is conservative workspace accounting, not an OS allocation limiter"
+  ],
+  "source_indices_preserved": true,
+  "synthetic_grid_kind": "documented_nominal_30Hz_frame_grid",
+  "source_timestamps": null,
+  "independent_sensor_clock_verified": false,
+  "source_ppg_shift_applied": 0,
+  "subject_adaptation_enabled": false,
+  "calibration_requirement": false
+}
