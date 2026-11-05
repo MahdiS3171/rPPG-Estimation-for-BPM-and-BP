@@ -1,0 +1,87 @@
+{
+  "python": "3.11.0",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "h5py": "3.16.0",
+    "mediapipe": "0.10.14",
+    "matplotlib": "3.11.0",
+    "opencv-python": "4.13.0.92",
+    "psutil": "7.2.2"
+  },
+  "code_and_protocol_sha256": {
+    "rppg_lab/waveform_v2_optical_quality.py": "f5eac28ca0389f32e573de81db0089e4792277dd095e72d30917200c41c9ce60",
+    "rppg_lab/waveform_v2_micro_rois.py": "2fdcd4334dd4b1a4c1cdf42ffa813f864fab82374041b650d22f1dcd6cbc2b57",
+    "rppg_lab/waveform_v2_quality_timing.py": "b1b62e701897dac8cea264c9575e4ba400f6b45313d085290250e1c51c87986d",
+    "rppg_lab/waveform_v2_optical_audit.py": "0670846685ef62eb8b5af210407fe5266a326cbf550e871c609638a2062d4045",
+    "scripts/audit_waveform_v2_optical_quality.py": "cf3ad731f91bc5dc7624103334c41c6dc1499ab1975a0fbf737167e8329aa41e",
+    "scripts/verify_waveform_v2_optical_quality_safe.py": "708e09bf6f5d683363b7b8d1e05af750f77cf1061fbebcb5ea295f0cef7688f1",
+    "tests/test_waveform_v2_optical_quality.py": "b44472dc80260a24c3f104aa87f712b6948164ce05af0a1313a6c0136965d598",
+    "docs/WAVEFORM_V2_OPTICAL_QUALITY_GATE07_SPEC.md": "cc560493a0785b8248bfef90e8ea946644d5ed4111fb7df3069e189e18b16287",
+    "docs/WAVEFORM_V2_OPTICAL_QUALITY_ANNOTATION_GUIDE.md": "1c2aab015abd69baeb7c63fdf54108340095e9561cfa1cd4f70a171586500f89"
+  },
+  "test_command": ".venv/Scripts/python.exe -u -m scripts.verify_waveform_v2_optical_quality_safe",
+  "tests": {
+    "run": 149,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "protected_io_attempts": 0
+  },
+  "preregistered_commit": "0d0fb28ffb27ad0abf2d478367f0027114de1ae6",
+  "reviewed_parent": "65ac812e69cc7d39e98b1643b7e25df997eef0f5",
+  "source_ppg_values_decoded": false,
+  "waveform_models_invoked": false,
+  "allow_training": false,
+  "segmentation_mapping": "UNVERIFIED",
+  "additional_checks": {
+    "new_python_files_compiled": 7,
+    "cli_help_passed": true,
+    "existing_output_refused": true,
+    "source_child_output_refused": true,
+    "all_metadata_json_parsed": true,
+    "local_artifacts_git_ignored": true,
+    "retained_recordings_verified": 10,
+    "baseline_hashes_rebuilt_from_retained_arrays": 20,
+    "pending_human_items_verified": 150,
+    "assistant_layout_qa_sheets": 10,
+    "assistant_pair_full_sheet_qa": [
+      "P000001",
+      "P000005"
+    ]
+  },
+  "implementation_commit": "4422d4651bd7ea59e0b866236229a365b08dee4d",
+  "remote_heads_rechecked": {
+    "main": "27e54556025e2eff4e1b4091001a2eaf28667cc7",
+    "feature/waveform-v2-gates02-03": "243d41b729e028dad90182e14927a5c499dfd530",
+    "feature/waveform-v2-scamps-gate05": "2264fbe2aa2b3b0474674fe8f6193c5155a31dcb",
+    "feature/waveform-v2-scamps-gate06": "65ac812e69cc7d39e98b1643b7e25df997eef0f5"
+  },
+  "prior_prs_rechecked": [
+    {
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    {
+      "number": 2,
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    {
+      "number": 3,
+      "state": "open",
+      "draft": true,
+      "merged": false
+    }
+  ],
+  "license_verification": {
+    "upstream_repository": "danmcduff/scampsdataset",
+    "path": "LICENSE.txt",
+    "git_blob_sha": "381ad325da802fc3f45b4591ffebf2ba3f238491",
+    "vendored_sha256": "4ca5e434d1faf7e964b14e4a2508ae33ef5447ecd84a9a9f6e25767a64498595"
+  }
+}

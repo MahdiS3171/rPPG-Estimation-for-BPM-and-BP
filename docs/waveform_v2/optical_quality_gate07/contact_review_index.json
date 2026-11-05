@@ -1,0 +1,145 @@
+{
+  "role": "coordinator_only_hide_during_blinded_review",
+  "recordings": [
+    {
+      "review_id": "Rec7cd2f7",
+      "filename": "P000001.mat",
+      "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/Rec7cd2f7.png",
+      "contact_sheet_sha256": "02eb9a340a77247f6be854b9c5352041100fabf733de7b4623fe02736c6ad73d"
+    },
+    {
+      "review_id": "Ra99efc43",
+      "filename": "P000002.mat",
+      "source_sha256": "1d66ec0b5fdef03ca083c24ca87b0db852799e1c3ee7335ec56d371e09a11b4f",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/Ra99efc43.png",
+      "contact_sheet_sha256": "d800d609e83808aa6996b659a81b414b0980b7652ad8e3a80d9f41fe1095824d"
+    },
+    {
+      "review_id": "R4a311368",
+      "filename": "P000003.mat",
+      "source_sha256": "6411b40f99958a3b6cf0fc61ac460e41c947c1feca80dbb801fc2d31c74ebeef",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/R4a311368.png",
+      "contact_sheet_sha256": "187bffb3c747519a7a475d94c53f2878851c41a89ab3ab61e77e01b60fbd0f26"
+    },
+    {
+      "review_id": "R604308c0",
+      "filename": "P000004.mat",
+      "source_sha256": "aed82a87b3451379debcb6745158805b0c5ba8ae82f829dd4b2ef37d49b27178",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/R604308c0.png",
+      "contact_sheet_sha256": "661e4d1bcaa7dadcf398b2dba8737c951c564fd9d7b60983cdfb57bc9f25807d"
+    },
+    {
+      "review_id": "R8929b290",
+      "filename": "P000005.mat",
+      "source_sha256": "f83788832701b85a82239c35626a4a68a194b537c6947a8b94403fe767c7a37d",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/R8929b290.png",
+      "contact_sheet_sha256": "f6c725e9c023c639891117248d45f7e824939f972908d9c47df68f4c46ecfaea"
+    },
+    {
+      "review_id": "Re6b3cc3a",
+      "filename": "P000006.mat",
+      "source_sha256": "18310c736ac51303b6e4b783633b897c9a72ee7690d11c7c3b2b1f1fa3f684cc",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/Re6b3cc3a.png",
+      "contact_sheet_sha256": "bb2042c2c379069922c2e0f7c242252697037b30d71967df09b8c9ea78c5a93a"
+    },
+    {
+      "review_id": "R37e13169",
+      "filename": "P000007.mat",
+      "source_sha256": "3786c4d0d59b8d175fbca9fd8de347f8bee821d3adef4de33649180ebbbe7515",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/R37e13169.png",
+      "contact_sheet_sha256": "038986d3809e7e7bf4fbca4f8515eb22f2ad2397257d0ce1ee8e95b3b897638f"
+    },
+    {
+      "review_id": "R33cb89ef",
+      "filename": "P000008.mat",
+      "source_sha256": "f564249af83319fb00ab2f00c27c4a5efde65766bcb6496139e6c21eefed1887",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/R33cb89ef.png",
+      "contact_sheet_sha256": "8bde018be89544a9e9f9820c5cfd600960770a4ac32c9a249c74984d55bf2f0d"
+    },
+    {
+      "review_id": "Ra4b8d22d",
+      "filename": "P000009.mat",
+      "source_sha256": "c97a1b50047df6ec7e7aa646514b99040396634a903c820a5dc3cdab4fe11d22",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/Ra4b8d22d.png",
+      "contact_sheet_sha256": "e2b224670ba1efbc070b43d94bc9d8a0233de08d72301e685332b081dad6cd2c"
+    },
+    {
+      "review_id": "Rff499b00",
+      "filename": "P000010.mat",
+      "source_sha256": "847d0942cf21e4cf00e40ab121298becdaa2a34813361f8ef7644e054f0284df",
+      "frame_indices": [
+        0,
+        149,
+        299,
+        449,
+        599
+      ],
+      "contact_sheet": "contact_sheets/Rff499b00.png",
+      "contact_sheet_sha256": "b6627f114178725db8bc535936573830fd67c72539e37ffc1338c79009eb118e"
+    }
+  ]
+}

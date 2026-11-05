@@ -1,0 +1,138 @@
+{
+  "local_root": "outputs/waveform_v2_optical_quality_gate07_20261105_01",
+  "status": "source_derived_images_and_arrays_remain_local_ignored",
+  "files": [
+    {
+      "relative_path": "contact_sheets/R33cb89ef.png",
+      "bytes": 659943,
+      "sha256": "8bde018be89544a9e9f9820c5cfd600960770a4ac32c9a249c74984d55bf2f0d",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/R37e13169.png",
+      "bytes": 642865,
+      "sha256": "038986d3809e7e7bf4fbca4f8515eb22f2ad2397257d0ce1ee8e95b3b897638f",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/R4a311368.png",
+      "bytes": 652691,
+      "sha256": "187bffb3c747519a7a475d94c53f2878851c41a89ab3ab61e77e01b60fbd0f26",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/R604308c0.png",
+      "bytes": 755028,
+      "sha256": "661e4d1bcaa7dadcf398b2dba8737c951c564fd9d7b60983cdfb57bc9f25807d",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/R8929b290.png",
+      "bytes": 611825,
+      "sha256": "f6c725e9c023c639891117248d45f7e824939f972908d9c47df68f4c46ecfaea",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/Ra4b8d22d.png",
+      "bytes": 520721,
+      "sha256": "e2b224670ba1efbc070b43d94bc9d8a0233de08d72301e685332b081dad6cd2c",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/Ra99efc43.png",
+      "bytes": 607404,
+      "sha256": "d800d609e83808aa6996b659a81b414b0980b7652ad8e3a80d9f41fe1095824d",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/Re6b3cc3a.png",
+      "bytes": 544871,
+      "sha256": "bb2042c2c379069922c2e0f7c242252697037b30d71967df09b8c9ea78c5a93a",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/Rec7cd2f7.png",
+      "bytes": 734355,
+      "sha256": "02eb9a340a77247f6be854b9c5352041100fabf733de7b4623fe02736c6ad73d",
+      "git_committed": false
+    },
+    {
+      "relative_path": "contact_sheets/Rff499b00.png",
+      "bytes": 681420,
+      "sha256": "b6627f114178725db8bc535936573830fd67c72539e37ffc1338c79009eb118e",
+      "git_committed": false
+    },
+    {
+      "relative_path": "layout_qa_mosaic.png",
+      "bytes": 1712073,
+      "sha256": "e4b728b273597b099d02149d663c5c2c75f63aae5a10e7dfaa71c0022d855d2c",
+      "git_committed": false
+    },
+    {
+      "relative_path": "LICENSE_SCAMPS.txt",
+      "bytes": 3789,
+      "sha256": "4ca5e434d1faf7e964b14e4a2508ae33ef5447ecd84a9a9f6e25767a64498595",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000001.npz",
+      "bytes": 426228,
+      "sha256": "3a20cd72d05ba74dc7e4cd3f5b25f55b50e7dfbba78f65ceadd7a7c79753d7ef",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000002.npz",
+      "bytes": 395912,
+      "sha256": "077f3103a6a60a80f13c11261ed8baf6f20b5659b7cb83049a3cba3ebfb4a656",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000003.npz",
+      "bytes": 462746,
+      "sha256": "0ce42ecc247a50674d19774e6d64459d36d35d2f9638a3a22527b896519a9214",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000004.npz",
+      "bytes": 416515,
+      "sha256": "8a9d46d24c7b1a0e69322f01a6c82ef5f31d45a7d1fe40b430e0327e156b8fec",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000005.npz",
+      "bytes": 393273,
+      "sha256": "41d4121a7773bcae6370b5ff909a1133b14886782fed496217712ac4c91d1cb8",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000006.npz",
+      "bytes": 397460,
+      "sha256": "e88e19e3b56839f929195789cef45eeeb695f68f36cfb28c2007a9b723797b7e",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000007.npz",
+      "bytes": 422249,
+      "sha256": "ef32b4d26fdf67edd0f6cd8b97b822c32a42d8b962bdb8efa39bb0d21bb1b5c1",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000008.npz",
+      "bytes": 404915,
+      "sha256": "07b280736098fb2ea02b221729694f740c1a5527e4fdca251dd7a788b4e05f16",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000009.npz",
+      "bytes": 376845,
+      "sha256": "5ff5ef4ae478eac0a3ca418a115a678e998600f47f8bdbaf89f21728c8f34641",
+      "git_committed": false
+    },
+    {
+      "relative_path": "retained_arrays/P000010.npz",
+      "bytes": 392313,
+      "sha256": "5477bea0b806832131a29906cea1c819131ed7a2506692edcbe83fa945333706",
+      "git_committed": false
+    }
+  ]
+}
