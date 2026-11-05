@@ -54,8 +54,8 @@ def make_plots(output, rows, aggregate, signals, references, controls):
         ax.set(title=method, xlabel="Same-index reference Welch HR (bpm)", ylabel="Prior Welch HR (bpm)",
                xlim=(42, 210), ylim=(42, 210))
         ax.grid(alpha=.15)
-    fig.legend(handles=legend, loc="outside upper center", ncol=4)
-    fig.suptitle("All 16 Train windows per condition; fixed methods/ROIs; no quality selection", y=1.06)
+    fig.legend(handles=legend, loc="outside lower center", ncol=4)
+    fig.suptitle("All 16 Train windows per condition; fixed methods/ROIs; no quality selection")
     fig.savefig(out/"train_hr_pairs.png", dpi=130, bbox_inches="tight")
     plt.close(fig)
 
@@ -67,8 +67,8 @@ def make_plots(output, rows, aggregate, signals, references, controls):
                        [v["metrics"]["hr_abs_error_bpm"] for v in group], color=colors[r], alpha=.7, s=28)
         ax.set(title=method, xlabel="Own-peak spectral concentration (label-free)", ylabel="Absolute HR error (bpm)")
         ax.grid(alpha=.15)
-    fig.legend(handles=legend, loc="outside upper center", ncol=4)
-    fig.suptitle("Train descriptors versus fixed errors; no fitted quality threshold", y=1.06)
+    fig.legend(handles=legend, loc="outside lower center", ncol=4)
+    fig.suptitle("Train descriptors versus fixed errors; no fitted quality threshold")
     fig.savefig(out/"train_quality_errors.png", dpi=130, bbox_inches="tight")
     plt.close(fig)
 
