@@ -1,0 +1,9 @@
+{
+  "stage": "BEFORE_ANY_REFERENCE_VALUE_READ",
+  "predictions_sha256": "78d8d35c29a37f8ffd285909ab2fca9dcc388c7e01e7e88982fbecbd7f011ec0",
+  "metadata_sha256": "f6395bc01c7a83793d10d2f781392bdf86eab111d45f9815c098a74f8b18399c",
+  "intended_cells": 480,
+  "all_20_inputs_match_gate06": true,
+  "protocol_commit": "a100379c238b15b5e0f2b5d55b56de4e0520cc78",
+  "implementation_commit": "839d8136f2e88b36e2d14459c07a31be9d35cb9c"
+}
