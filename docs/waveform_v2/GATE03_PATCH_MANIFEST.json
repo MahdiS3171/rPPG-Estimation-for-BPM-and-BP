@@ -1,0 +1,70 @@
+{
+  "name": "Waveform_v2_Gates02_03_additive_patch",
+  "base_repo": "MahdiS3171/rPPG-Estimation-for-BPM-and-BP",
+  "base_sha": "27e54556025e2eff4e1b4091001a2eaf28667cc7",
+  "created": "2026-11-03",
+  "status": "LOCAL_ONLY_NOT_MERGED",
+  "scope": "new_files_only_no_existing_replacements",
+  "tests": {
+    "gate02": 12,
+    "gate03": 14,
+    "combined": 26
+  },
+  "files": [
+    {
+      "path": "rppg_lab/waveform_v2_registry.py",
+      "sha256": "e3ab2fcb394bb890088617f230fea0a487f242ce2fe8ec0448c48a51b1d9ef4d",
+      "size": 11965
+    },
+    {
+      "path": "rppg_lab/waveform_v2_benchmark.py",
+      "sha256": "6799200cc143dd5cb941006921a6a72b5cbf1816962b1194f30691e8d1727ab4",
+      "size": 6652
+    },
+    {
+      "path": "rppg_lab/waveform_v2_timing_contract.py",
+      "sha256": "11fe5e1630b8323e2ca84bf305d9ff4f432a98ea06d554610fd1264dd5ecc62e",
+      "size": 11884
+    },
+    {
+      "path": "scripts/prepare_waveform_v2_pure.py",
+      "sha256": "be411e4d96ff90b8fc506237e6563af584d8ac09edb074886a6556d40756e69b",
+      "size": 2671
+    },
+    {
+      "path": "scripts/audit_waveform_v2_timing_synthetic.py",
+      "sha256": "1271455f8ce3c01922544b1be93379c65dd03a8e8cd41f3bbbfbb77b49b59dfe",
+      "size": 1853
+    },
+    {
+      "path": "tests/test_waveform_v2_infrastructure.py",
+      "sha256": "f7b1a2bf38e0ba47d66dd1822a8ad61057805e8ae7f832b0df588ebaa7681972",
+      "size": 7073
+    },
+    {
+      "path": "tests/test_waveform_v2_timing_contract.py",
+      "sha256": "9465a000400847239dfda3d8d5eafba132f31d3c76d239ae1478b18e15c067d1",
+      "size": 3805
+    },
+    {
+      "path": "docs/WAVEFORM_V2_INFRASTRUCTURE_GATE02.md",
+      "sha256": "7f5c3f9520065a63bcfb245186f1e4c11b085ba51e7d742adaa59d4caa36f06f",
+      "size": 6717
+    },
+    {
+      "path": "docs/WAVEFORM_V2_TIMING_CONTRACT_GATE03.md",
+      "sha256": "e0ed5efa6e34aea8a3314f0125a5e46890365c2f0fd5bbf92c372ebe5e48dff1",
+      "size": 6045
+    },
+    {
+      "path": "docs/WAVEFORM_V2_SUBJECT_ADAPTATION_DESIGN.md",
+      "sha256": "7aa51c91e067faa0a4b21ac9967c8e290c98107e66174abeb552866fea1f8aeb",
+      "size": 4729
+    },
+    {
+      "path": "GATE02_PATCH_MANIFEST.json",
+      "sha256": "669e64225459a2de9bfa40c5f5e685504e7c7ca276e12e0e835cbfa2372327a0",
+      "size": 1206
+    }
+  ]
+}
