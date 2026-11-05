@@ -1,0 +1,196 @@
+{
+  "schema": "scamps_gate06_preprocessing_contract_v0.1",
+  "source_base_commit": "2264fbe2aa2b3b0474674fe8f6193c5155a31dcb",
+  "roi_order": [
+    "forehead",
+    "left_cheek",
+    "right_cheek"
+  ],
+  "prior_order": [
+    "GREEN",
+    "CHROM",
+    "CHROM_WIN",
+    "PBV",
+    "POS_WIN",
+    "OMIT"
+  ],
+  "channel_order": [
+    "RGB_R",
+    "RGB_G",
+    "RGB_B",
+    "GREEN",
+    "CHROM",
+    "CHROM_WIN",
+    "PBV",
+    "POS_WIN",
+    "OMIT"
+  ],
+  "nominal_grid": {
+    "rate_hz": 30,
+    "kind": "documented_synthetic_frame_index_grid",
+    "capture_timestamps": null,
+    "physical_clock_verified": false
+  },
+  "geometry": {
+    "helper": "region_masks.get_face_masks",
+    "indices": "roi.FACE_ROIS",
+    "hulls": "rounded_clipped_convex_hulls",
+    "skin_chroma_gate": false,
+    "detector": "existing FaceRegionDetector tasks CPU, fresh per recording",
+    "min_detection_confidence": 0.5,
+    "min_tracking_confidence": 0.5,
+    "min_pixels": 50,
+    "detector_input": "rint(stored_Xsub_times_255)_uint8_copy",
+    "measurement": "original_float_Xsub_times_255_no_rounding",
+    "geometric_fallback": false,
+    "segmentation_used": false,
+    "validity_scope": "finite_polygon_support_not_validated_skin_purity"
+  },
+  "acquisition": {
+    "interpolation_helper": "processing.resample_trace",
+    "max_gap_seconds": 0.15,
+    "extrapolation": false,
+    "original_rgb_and_validity_retained": true,
+    "interpolation_flags_retained": true,
+    "window_edge_policy": "Same as V1: bounded acquisition interpolation can use neighbouring source samples outside window; priors/statistics only use window"
+  },
+  "window": {
+    "samples": 300,
+    "default_starts": [
+      0,
+      300
+    ],
+    "end_exclusive": true,
+    "roi_quality": "float64 original valid fraction for thresholding, float32 reporting",
+    "min_valid_fraction": 0.9,
+    "rgb_normalization": "signals.standardize_channels",
+    "prior_helper": "window_priors.build_window_priors",
+    "prior_internal_filters": "unchanged METHOD_FUNCS defaults; Butterworth order 3, 0.7-4 Hz, filtfilt",
+    "prior_internal_overlap": "CHROM_WIN/POS_WIN retain 1.6-second overlap-add defaults",
+    "target_normalization": "signals.standardize_1d",
+    "invalid_roi_or_failed_prior": "zero channel plus explicit false mask; raw NaNs retained separately",
+    "invalid_target": "raw retained; target availability false, standardized placeholder zero",
+    "input_shape": [
+      "B",
+      3,
+      9,
+      300
+    ],
+    "numpy_dtype": "float32",
+    "torch_device": "cpu"
+  },
+  "admission": {
+    "subject_adaptation_enabled": false,
+    "calibration_indices": [],
+    "allow_training": false,
+    "physical_timing_eligible": false,
+    "participant_identity": null
+  },
+  "frozen_v1_manifest_configuration": {
+    "metadata_file": "waveform_v1_freeze_manifest.json",
+    "sha256": "da5ba397b3be389deec8821f8ea16944b5f5b93e2834bb79c3c147eb3d1f89dc",
+    "inspected_keys": [
+      "model_class",
+      "model_config",
+      "fs",
+      "window_length_samples",
+      "roi_names",
+      "prior_names",
+      "channel_ordering",
+      "extraction_config"
+    ],
+    "configuration": {
+      "model_class": "MultiROIPriorResidualWaveformNet",
+      "model_config": {
+        "in_channels": 9,
+        "prior_names": [
+          "GREEN",
+          "CHROM",
+          "CHROM_WIN",
+          "PBV",
+          "POS_WIN",
+          "OMIT"
+        ],
+        "roi_names": [
+          "forehead",
+          "left_cheek",
+          "right_cheek"
+        ],
+        "prior_start": 3,
+        "base_channels": 32,
+        "num_blocks": 3,
+        "dropout": 0.2,
+        "residual_scale": 0.1,
+        "init_prior": "auto"
+      },
+      "fs": 30.0,
+      "window_length_samples": 300,
+      "roi_names": null,
+      "prior_names": null,
+      "channel_ordering": [
+        "RGB_R",
+        "RGB_G",
+        "RGB_B",
+        "GREEN",
+        "CHROM",
+        "CHROM_WIN",
+        "PBV",
+        "POS_WIN",
+        "OMIT"
+      ],
+      "extraction_config": {
+        "regions": [
+          "face"
+        ],
+        "method": "GREEN",
+        "sample_rate": 30.0,
+        "face_roi": "forehead",
+        "hand_roi": "palm",
+        "skin_mask": false,
+        "skin_cr_range": [
+          133,
+          173
+        ],
+        "skin_cb_range": [
+          77,
+          127
+        ],
+        "min_pixels": 50,
+        "detector_backend": "auto",
+        "face_model": "models/face_landmarker.task",
+        "hand_model": "models/hand_landmarker.task",
+        "min_detection_confidence": 0.5,
+        "min_tracking_confidence": 0.5,
+        "expected_hand": "any",
+        "input_mirrored": false,
+        "max_hand_jump_fraction": 0.15,
+        "timestamp_mode": "auto",
+        "allow_nominal_timing": false,
+        "max_gap_sec": 0.15,
+        "min_segment_sec": 4.0,
+        "filter_low_hz": 0.7,
+        "filter_high_hz": 4.0,
+        "filter_order": 3,
+        "edge_guard_sec": 1.0,
+        "hr_min_hz": 0.7,
+        "hr_max_hz": 3.5,
+        "window_sec": 10.0,
+        "stride_sec": 5.0,
+        "max_delay_sec": 0.3,
+        "min_valid_fraction": 0.9,
+        "min_snr_db": 0.0,
+        "min_delay_correlation": 0.5,
+        "max_hr_difference_bpm": 5.0,
+        "seed": 42,
+        "debug_every": 60,
+        "face_rois": [
+          "forehead",
+          "left_cheek",
+          "right_cheek"
+        ]
+      }
+    },
+    "frozen_checkpoint_loaded": false,
+    "historical_resolved_backend": "not_recorded_in_freeze_provenance"
+  }
+}
