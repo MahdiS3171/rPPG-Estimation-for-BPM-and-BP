@@ -21,3 +21,7 @@ data_sessions/
 data/rppg10/
 sheets/
 cache_rppg10*/
+PUREData/
+data/pure/
+cache_pure*/
+incoming/
