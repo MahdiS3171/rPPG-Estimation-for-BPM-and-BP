@@ -118,6 +118,8 @@ def run_bp_study(root,scope_path):
     # Only development pressures are read while fitting and creating predictions.
     y_train={s:session_reference(by_id[s])[0] for s in train_ids}
     locked=dict(scope_sha256=file_sha256(scope_path),source_sha256=file_sha256(Path(__file__)),input_receipt_sha256=input_hashes,
+        matched_session_metadata_sha256=file_sha256(root/'private_metadata/matched_sessions.json'),
+        metadata_snapshot_sha256=file_sha256(root/'private_metadata/metadata_snapshot.xlsx'),
         alpha=10.,feature_source='30-Hz fixed frozen-model session medians',
         no_bp_based_feature_or_model_selection=True,models={});dev={}
     for name in MODELS:

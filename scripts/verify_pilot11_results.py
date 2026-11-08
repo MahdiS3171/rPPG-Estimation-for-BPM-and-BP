@@ -30,6 +30,8 @@ def verify(root):
     sessions=json.loads((root/'private_metadata/matched_sessions.json').read_text());by_id={s['subject_id']:s for s in sessions}
     lock_path=root/'bp/bp_prediction_lock.json';lock=json.loads(lock_path.read_text());report=json.loads((root/'bp/bp_summary.json').read_text())
     if report['prediction_lock_sha256']!=file_sha256(lock_path):raise ValueError('Prediction lock changed')
+    if lock['matched_session_metadata_sha256']!=file_sha256(root/'private_metadata/matched_sessions.json'):raise ValueError('Matched reference metadata changed')
+    if lock['metadata_snapshot_sha256']!=file_sha256(root/'private_metadata/metadata_snapshot.xlsx'):raise ValueError('Workbook snapshot changed')
     if lock['source_sha256']!=file_sha256('rppg_lab/pilot11_bp.py'):raise ValueError('BP implementation changed since predictions')
     features={};artifact_count=0
     for subject in scope['subjects']:

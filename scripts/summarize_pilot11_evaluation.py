@@ -46,6 +46,11 @@ def summarize(root):
     for key in ('delay_xcorr_sec','split_difference_sec','phase_xcorr_difference_sec','cross_method_range_sec','cross_roi_range_sec'):
         per_subject=[median([number(r.get(key))*1000 for r in independent if r['subject_id']==s and r['computable']=='True']) for s in scope['subjects']]
         primary['subject_median_'+key.replace('_sec','_ms')]=median([number(v) for v in per_subject])
+    primary['agreement_diagnostic_availability']={}
+    for key in ('split_difference_sec','phase_xcorr_difference_sec','cross_method_range_sec','cross_roi_range_sec'):
+        values=np.asarray([number(r.get(key)) for r in independent]);finite=np.isfinite(values)
+        primary['agreement_diagnostic_availability'][key]=dict(attempted=len(values),unavailable=int((~finite).sum()),
+            measured_within_33_334_ms=int((finite&(values<=.033334)).sum()),measured_exceeds_33_334_ms=int((finite&(values>.033334)).sum()))
     phase_quality=[]
     for roi in ('combined','hand_palm'):
         for phase in ('candidate_cuff_free','cuff_active','cuff_boundary_guard','crosses_boundary'):
@@ -83,9 +88,11 @@ def summarize(root):
         predictions=[number(r['delay_xcorr_sec']) for r in group if r['model']!='face_GREEN']
         if len(predictions)>=2:spreads.append(1000*float(np.ptp(predictions)))
     bp=json.loads((root/'bp/bp_summary.json').read_text())
+    replay=json.loads((root/'bp/numerical_verification.json').read_text())
     bandwidth=json.loads((root/'native_output_audit/aggregate.json').read_text())
     if bandwidth['input_receipt_sha256']!=sorted(h for _,h in completed):raise ValueError('Bandwidth audit does not cover the exact completed cohort')
     result=dict(date='2026-11-08',scope_sha256=file_sha256(scope_path),evaluation_receipt_sha256=sorted(h for _,h in completed),
+        aggregation_source_sha256=file_sha256(__file__),metadata_snapshot_sha256=file_sha256(root/'private_metadata/metadata_snapshot.xlsx'),
         subjects=len(completed),models=15,recordings=len(completed),
         source_frames=sum(r['timing']['camera']['source_frames'] for r,_ in completed),
         source_seconds=sum(r['timing']['camera']['source_seconds'] for r,_ in completed),
@@ -96,7 +103,7 @@ def summarize(root):
             attempted_rows=len(learned),median_same_window_cross_model_lag_range_ms=median(spreads),
             lag_range_population='All computable windows and phases, six frozen waveform checkpoints',
             calibrated=False,hand_neural_model_validated=False),
-        bp=bp,native_output_bandwidth=bandwidth,private_artifacts_published=False,limitations=['No local contact waveform truth','Unmeasured rolling shutter/exposure timing',
+        bp=bp,numerical_verification=replay,native_output_bandwidth=bandwidth,private_artifacts_published=False,limitations=['No local contact waveform truth','Unmeasured rolling shutter/exposure timing',
             'Legacy unverified cuff event times','Six development and five evaluation people at most','30-Hz training targets; native60 is processing sensitivity only'])
     return result
 
