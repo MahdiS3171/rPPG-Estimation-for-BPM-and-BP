@@ -97,6 +97,28 @@ permitted Train windows produces a local checkpoint and manifest. Its exported
 checkpoint has no new validation score. Keep classical and compact hybrids for
 future independent comparisons. Native timing/generalization remain open.
 
+The full-Train fit completed: 9,397 parameters, 300 steps, 168 windows from 26
+real subjects and eight synthetic clips. Its local checkpoint is
+`outputs/waveform_screen/development_candidate_20261108_01/waveform_v2_development_candidate.pt`.
+SHA-256: `2851cc36fea693113a27359ef5fb18741595eea26fcf2852e35dd768464e00a9`.
+The [candidate receipt](waveform_research/development_candidate_20261108.json)
+records configuration, source hashes and checks. Exact serialization replay,
+flat abstention and 30/60-Hz input smoke checks pass. This adds one fitting run
+to the 123 development comparisons; it does not add validation evidence.
+
+Reproduction after the permitted prepared data and completed ROI study exist:
+
+```powershell
+python -m scripts.screen_waveform_extensions --data outputs/waveform_screen/data_20261108_01 --candidate-from outputs/waveform_screen/roi_training_20261108_01 --out outputs/waveform_screen/development_candidate_REPRO
+```
+
+The model factory is `make_extended_model('long_tcn', width=16)`. Its input is
+`[batch, 3 ROIs, 9 channels, 10*fs samples]`: RGB followed by GREEN, CHROM,
+CHROM_WIN, PBV, POS_WIN and OMIT, with the prepared pipeline's normalization,
+validity masks and 75 input-only descriptors. A checkpoint is not an arbitrary
+video-to-waveform API; the same preprocessing contract must be honored. V1 and
+the app's frozen inference path were not replaced.
+
 Next value comes from robustness and data/reference admission, followed by a
 locked third real domain. Current evidence does not require camera recapture
 as its explanation. Phone calibration can measure acquisition behavior, but
@@ -108,7 +130,8 @@ The [research index](waveform_research/README.md) links fixed protocols, result
 tables and hash receipts. Checkpoints, per-window predictions and participant
 waveform plots remain local and ignored. Independent numerical replay reproduced
 552 first-screen aggregates, 366 confirmation/seed aggregates, 144 matched
-control aggregates, 192 architecture-screen aggregates and 162 architecture
-confirmation aggregates without neural inference or original-source access. Maximum
+control aggregates, 192 architecture-screen aggregates, 162 architecture
+confirmation aggregates and 90 ROI-training aggregates without neural inference
+or original-source access. Maximum
 differences were below 6.1e-8. Saved-value replay verifies reporting; it does not
 add independent scientific observations.

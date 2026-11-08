@@ -5,6 +5,10 @@ Start with the [master roadmap](../../PROJECT_MASTER_PLAN.md),
 The project-level audit is [here](../PROJECT_REASSESSMENT_2026-11-08.md).
 The [campaign report](../WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md) consolidates
 current conclusions and negative results.
+The leading local model's [manifest](development_candidate_20261108.json) records
+its configuration and checkpoint identity; the report includes the reproduction
+command and preprocessing contract. It is a development artifact without a new
+validation score.
 
 | Investigation | Fixed design | Evidence |
 |---|---|---|

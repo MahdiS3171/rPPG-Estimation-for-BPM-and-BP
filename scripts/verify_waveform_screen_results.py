@@ -48,7 +48,7 @@ def verify_grouped(args,report):
                     continue
                 means=[np.mean([values[j][key] for j in chosen if str(ids[indices[j]])==person and values[j]['valid']]) for person in people]
                 error=abs(float(np.mean(means))-want);max_error=max(max_error,error)
-                if error>2e-5:raise ValueError(f'Grouped replay failed: {name}/{key}: {error}')
+                if not np.isfinite(error) or error>2e-5:raise ValueError(f'Grouped replay failed: {name}/{key}: {error}')
                 checked+=1
     with np.load(args.screen/'predictions.npz',allow_pickle=False) as predictions,np.load(args.screen/'prediction_indices.npz',allow_pickle=False) as index_archive:
         for key in predictions.files:
@@ -109,7 +109,7 @@ def main():
                             means.append(float(np.mean(v)) if v else np.nan)
                         actual=float(np.nanmean(means))
                         error=abs(actual-expected);max_error=max(max_error,error)
-                        if error>2e-5:raise ValueError(f'Metric replay failed: {result["name"]}/{suffix}/{name}/{key}: {error}')
+                        if not np.isfinite(error) or error>2e-5:raise ValueError(f'Metric replay failed: {result["name"]}/{suffix}/{name}/{key}: {error}')
                         checked+=1
     receipt=dict(saved_aggregates_recomputed=checked,checkpoint_hashes_verified=checkpoints,
         max_absolute_metric_difference=max_error,predictions_sha256=file_sha256(prediction_path),

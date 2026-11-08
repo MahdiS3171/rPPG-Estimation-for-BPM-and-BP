@@ -14,6 +14,15 @@ The linked code repository currently exposes README, LICENSE and a plan, rather
 than the acquisition/training implementation described in the paper's code
 availability statement. Do not claim that code was reproduced.
 
+A follow-up public documentation search found the related
+[MPU-rPPG repository's ICU guide](https://github.com/kingflyingsnow/MPU-rPPG/blob/main/ICU_rPPG_Recording_Guide.md).
+It discusses a Mindray PLETH/HL7 pipeline and timestamp logs, whereas the
+[dataset paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13500808/) describes a
+CMS60D reference and a synchronization procedure. This related guide does not
+map the downloaded Figshare file IDs or their participant/session identity.
+Do not transfer its clock assumptions to the sample. The paper's claimed
+alignment precision also does not independently calibrate our phone recordings.
+
 Draft to the dataset contact listed in the
 [official Figshare record](https://figshare.com/articles/dataset/MPU-rPPG_Sample_Dataset/29377835):
 
