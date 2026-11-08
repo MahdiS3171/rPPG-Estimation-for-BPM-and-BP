@@ -43,5 +43,7 @@ jobs:
         run: python -m unittest discover -s tests -p test_waveform_feature_specialists.py -v
       - name: Native pilot pixel-equivalence contracts
         run: python -m unittest discover -s tests -p test_pilot11_acquisition.py -v
+      - name: Pilot inference and BP separation contracts
+        run: python -m unittest discover -s tests -p test_pilot11_evaluation.py -v
       - name: Source compilation
         run: python -m compileall -q rppg_lab scripts tests

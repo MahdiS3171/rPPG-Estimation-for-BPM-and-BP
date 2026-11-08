@@ -4,6 +4,16 @@ Updated 2026-11-08. Lead: Codex, within the active runtime. Current branch:
 `research/native-waveform-development`. This is the project roadmap; historical
 Gate documents remain evidence, not current work assignments.
 
+**Active authorized work:** the user's request now opens all eleven local pilot
+sessions for frozen-model transfer, optical timing and exploratory session-mean
+BP evaluation under the [fixed protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md).
+The current workbook has eleven consenting exact session matches and 33 cuff
+readings, but zero video-reviewed event timelines. All eleven are being
+re-extracted consistently at native pixels/every frame with original PTS, using
+the user-approved local compute budget. No private waveform fine-tuning occurs.
+The small BP comparison uses S001–S006 for fitting and S007–S011 for evaluation;
+it cannot establish clinical accuracy or physiological timing.
+
 ## Strategic assessment
 
 We have a reproducible facial waveform baseline and a substantial diagnostic
@@ -171,7 +181,7 @@ Do not continue broad model selection on the same 26 people indefinitely.
 | P1 | Reference target differs anatomically or in filtering/latency. | State the estimand and sensor processing. Native contact correlation is descriptive until local timing is independently established. |
 | P1 | Exposed splits or repeated windows masquerade as independent evidence. | Record all consumption; group by subject/session/domain; no new locked test use without specific approval. |
 | P1 | Integration changes frozen evidence or private data. | Additive branch, pinned hashes, protected-data exclusion, review before main merge. |
-| P2 | Sparse cuff events and confounding produce spurious BP accuracy. | No BP fitting now; require audited cuff intervals and an incremental-value study first. |
+| P2 | Sparse cuff events and confounding produce spurious BP accuracy. | Only the authorized fixed session-mean comparison proceeds; event-level/timing-based BP remains unavailable without reviewed intervals and calibrated timing. |
 | P2 | Growing infrastructure substitutes for research. | Reuse current loaders/scorers; one roadmap, one evidence ledger; stop redundant synthetic model campaigns. |
 
 ## User decisions and autonomy envelope
@@ -189,7 +199,8 @@ Do not continue broad model selection on the same 26 people indefinitely.
 - **Compute deferred:** local CPU diagnostics and synthetic checks proceed.
   No paid compute, substantial training or bulk data download is proposed now.
 
-S007–S011, private Dataset/ and sheets/ remain closed. Frozen V1 and all historical
+S001–S011 and the named final workbook are open only for the authorized local
+Pilot11 protocol; other private data remain closed. Frozen V1 and all historical
 sources/results remain untouched. No one should infer clinical BP validity from
 this project. See [decisions](DECISION_LOG.md), [evidence](EVIDENCE_LEDGER.md), and
 the [full audit](docs/PROJECT_REASSESSMENT_2026-11-08.md).
