@@ -44,6 +44,12 @@ def fit_one(configuration,arrays,fit,validation,device,seed,steps,model_factory=
             source=int(rng.random()<configuration['synthetic'])
             subject=rng.choice(list(pools[source]));indices.append(int(rng.choice(pools[source][subject])))
         batch=batch_tensors(arrays,np.asarray(indices),device)
+        if configuration.get('prior_dropout',0):
+            drop=torch.as_tensor(augmentation_rng.random((len(indices),3,6))<configuration['prior_dropout'],device=device)
+            batch['prior']=batch['prior']&~drop
+            empty=~batch['prior'].any((1,2))
+            batch['prior'][empty]=torch.as_tensor(arrays['prior'][np.asarray(indices)[empty.cpu().numpy()]],device=device)
+            batch['descriptors'][:,:72]=batch['descriptors'][:,:72].reshape(len(indices),18,4).mul(batch['prior'].reshape(len(indices),18,1)).reshape(len(indices),72)
         model.train();optimizer.zero_grad(set_to_none=True)
         clean_output=None
         if configuration.get('roi_dropout',False):

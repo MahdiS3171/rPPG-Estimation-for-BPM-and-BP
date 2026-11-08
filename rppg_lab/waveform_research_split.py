@@ -2,6 +2,8 @@
 from pathlib import Path
 import hashlib
 import json
+import os
+import sys
 import numpy as np
 
 RESET_SEED=20261110
@@ -42,3 +44,24 @@ def make_reset_manifest(frozen):
 
 def json_sha256(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def load_development_arrays(data):
+    """Open Train/Validation only; refuse test-array reads in this process."""
+    from .artifacts import file_sha256
+    data=Path(data).resolve();sealed=(data/'test_arrays.npz').resolve()
+    def guard(event,args):
+        if event=='open' and args and isinstance(args[0],(str,bytes,os.PathLike)):
+            if Path(os.path.abspath(os.fsdecode(args[0])))==sealed:
+                raise PermissionError('New Test is closed during development')
+    sys.addaudithook(guard)
+    receipt=json.loads((data/'data_receipt.json').read_text());parts=[]
+    for role in ('train','validation'):
+        record=receipt['partitions'][role];path=data/record['path']
+        if path.resolve()!=data/(role+'_arrays.npz') or file_sha256(path)!=record['sha256']:
+            raise ValueError('Partition file or checksum changed')
+        with np.load(path,allow_pickle=False) as archive:parts.append({k:archive[k] for k in archive.files})
+    if set(parts[0]['record_id'])&set(parts[1]['record_id']):raise ValueError('Train/Validation identity leakage')
+    if parts[0]['validation'].any() or not parts[1]['validation'].all():raise ValueError('Incorrect role flags')
+    arrays={k:np.concatenate([p[k] for p in parts]) for k in parts[0]}
+    return arrays,np.arange(len(parts[0]['x'])),np.arange(len(parts[0]['x']),len(arrays['x'])),receipt

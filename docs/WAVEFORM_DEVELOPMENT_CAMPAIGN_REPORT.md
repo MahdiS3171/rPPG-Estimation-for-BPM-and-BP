@@ -1,5 +1,15 @@
 # Current waveform development campaign
 
+**Latest protocol change:** the user authorized a new subject-level split across
+all eligible public records. The [reset protocol](WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md)
+and [split](waveform_research/reset_split_20261108.json) are committed before
+fitting. New Train: 29 real subjects/eight synthetic clips, 846 windows;
+Validation: six real/one synthetic, 173 windows; Test: six real/one synthetic,
+181 windows. Previous results below retain their original Train-only meaning.
+The from-scratch rerun will be reported separately; this is a historically
+exposed internal benchmark, not an untouched external cohort. Test scoring
+follows locked waveform/specialist validation selection.
+
 Updated 2026-11-08. These are development experiments. Sources are original
 UBFC Train (26 people, 152 ten-second windows) and original SCAMPS Train (eight
 synthetic clips, 16 windows). Original Val/Test, private pilot media and sealed

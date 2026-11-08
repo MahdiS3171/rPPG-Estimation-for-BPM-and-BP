@@ -31,6 +31,8 @@ Repeated test execution does not add participants or independent observations.
 
 | E022 | Clean-runner validation and preserved history | [Successful campaign CI](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42494990987) at implementation head `b11b315b8734bd7fe088a9c7eb2e4d754603a5a5`, in [draft PR #8](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/8). Final local historical replay again checks 32 artifacts/15 PNG files and reproduces 500 rows. | Synthetic historical/source/model/loss/native-rate contracts and compilation pass remotely. Historical pinned identities and frozen hashes remain unchanged. Replays and repeated CI runs add no independent participants or physiological validation. |
 
+| E023 | User-authorized public split reset; preparation only | [Protocol](docs/WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md), [split](docs/waveform_research/reset_split_20261108.json), [data receipt](docs/waveform_research/reset_data_20261108.json): all 41 real subjects and ten admitted synthetic clips. New Train 846 windows, Validation 173, Test 181. | Complete role assignment, no excluded windows or exact cross-role duplicate inputs. UBFC overlap increases window contexts, not independent participants. All prior exposure remains acknowledged. Test arrays are separate and development-loader access is refused. No new efficacy or test score yet. |
+
 ## Closed / unavailable evidence
 
 S007–S011: no enumeration, inspection, hashing, decoding, inference or evaluation.
