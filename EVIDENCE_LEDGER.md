@@ -29,6 +29,8 @@ Repeated test execution does not add participants or independent observations.
 
 | E021 | Full-development candidate fit; engineering artifact | [Candidate manifest](docs/waveform_research/development_candidate_20261108.json): 9,397-parameter TCN, all 168 permitted Train windows, one 300-step fit. | Exact serialization replay, flat abstention and 30/60-Hz input smoke checks pass. This checkpoint has no new validation score. Frozen V1/checkpoint manifest hashes rechecked unchanged; no production replacement or physical timing/BP qualification. |
 
+| E022 | Clean-runner validation and preserved history | [Successful campaign CI](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42494990987) at implementation head `b11b315b8734bd7fe088a9c7eb2e4d754603a5a5`, in [draft PR #8](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/8). Final local historical replay again checks 32 artifacts/15 PNG files and reproduces 500 rows. | Synthetic historical/source/model/loss/native-rate contracts and compilation pass remotely. Historical pinned identities and frozen hashes remain unchanged. Replays and repeated CI runs add no independent participants or physiological validation. |
+
 ## Closed / unavailable evidence
 
 S007–S011: no enumeration, inspection, hashing, decoding, inference or evaluation.

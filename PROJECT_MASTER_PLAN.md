@@ -73,6 +73,10 @@ repeat volunteer collection without a discriminating protocol.
 The approved integration is complete on main at `50cb264`; PR #7 was merged with
 history preserved, the six superseded drafts are closed, and all branches remain.
 No new experiment PR stack is being created.
+The completed campaign is consolidated in
+[draft PR #8](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/8)
+directly against main. Its implementation passed clean GitHub CI. This draft
+does not merge or replace the frozen production path.
 
 The user subsequently authorized broad experimentation on current datasets,
 including adaptive classical selection/fusion, model expansion and loss variants.

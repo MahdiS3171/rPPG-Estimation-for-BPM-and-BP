@@ -27,6 +27,8 @@ at its recorded paths.
   source manifests, dataset-admission records and experiment results remain.
 - Added one [current-research index](waveform_research/README.md) linking protocols,
   results and the reusable experimental pipeline.
+- Consolidated findings and the selected candidate's preprocessing/reproduction
+  contract in the [campaign report](WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md).
 - Audited tracked layout and known generated-cache folders. Raw/protected dataset
   contents were outside the cleanup inventory; no reserved subject was enumerated.
 
