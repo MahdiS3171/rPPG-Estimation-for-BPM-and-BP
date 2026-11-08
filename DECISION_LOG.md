@@ -178,3 +178,14 @@ Test results or replace the waveform pipeline with the feature system. The
 new Test is consumed; no further tuning uses it. Future discriminating work
 needs admitted real waveform diversity, reference characterization and native-
 rate evidence. This result does not establish that specialization never helps.
+
+## 2026-11-08 ? User authorizes all-eleven private pilot evaluation (D019)
+
+The user explicitly requested the new models be tested on all eleven BP-pilot
+subjects for BP and timing feasibility, and named the updated final workbook
+as current. This authorizes local use of S001?S011 under the committed fixed
+protocol, replacing the earlier reserve for this specific evaluation. It does
+not authorize waveform fine-tuning or participant-data release. Keep S001?S006
+for exploratory BP fitting and S007?S011 for fixed BP evaluation; record their
+consumption and preserve the original frozen/model artifacts. Evaluate waveform
+support and optical timing separately from conditional BP prediction.
