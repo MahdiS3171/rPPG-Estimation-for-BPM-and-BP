@@ -1,0 +1,286 @@
+{
+  "status": "DEVELOPMENT_ONLY_NOT_THIRD_DATASET_TEST",
+  "train_sources": [
+    "UBFC_original_Train",
+    "SCAMPS_original_Train_examples"
+  ],
+  "original_ubfc_val_test_used": false,
+  "scamps_val_test_used": false,
+  "private_data_used": false,
+  "neural_training": false,
+  "global_linear_models_fitted": 20,
+  "lambda_fixed": 0.01,
+  "source_balanced": true,
+  "folds": [
+    [
+      "subject5",
+      "subject25",
+      "subject1",
+      "subject27",
+      "subject18",
+      "subject6"
+    ],
+    [
+      "subject22",
+      "subject37",
+      "subject33",
+      "subject34",
+      "subject11"
+    ],
+    [
+      "subject15",
+      "subject20",
+      "subject17",
+      "subject40",
+      "subject21"
+    ],
+    [
+      "subject30",
+      "subject36",
+      "subject10",
+      "subject3",
+      "subject4"
+    ],
+    [
+      "subject23",
+      "subject12",
+      "subject38",
+      "subject8",
+      "subject2"
+    ]
+  ],
+  "ubfc_subjects": 26,
+  "ubfc_intended_windows": 152,
+  "ubfc_prepared_windows": 152,
+  "scamps_recordings": 8,
+  "scamps_windows": 16,
+  "cache_policy": "Read-only historical legacy-detector traces; current Tasks bundle is not retroactively assigned",
+  "runtime_seconds": 217.5400832000014,
+  "git_revision": "f135bbbe61d9f7795469689699c76f0f266ed851",
+  "prediction_archive_sha256": "0e3d9f58a835b01b00ef1f3540400fb756128305651adb7b5db9802ac58c07a0",
+  "summaries": [
+    {
+      "method": "GREEN",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": -0.24678474332573283,
+        "nrmse": 1.5604092709529094,
+        "derivative_r": -0.18223831327293177,
+        "hr_mae": 6.365059530383756
+      }
+    },
+    {
+      "method": "negative_GREEN",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.24678474332573283,
+        "nrmse": 1.190520758735828,
+        "derivative_r": 0.18223831327293177,
+        "hr_mae": 6.365059530383756
+      }
+    },
+    {
+      "method": "CHROM",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.2587039236241275,
+        "nrmse": 1.1711493340822368,
+        "derivative_r": 0.1853395851539688,
+        "hr_mae": 1.5289522492027585
+      }
+    },
+    {
+      "method": "CHROM_WIN",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.26661354655348163,
+        "nrmse": 1.1628406232748276,
+        "derivative_r": 0.18917690736051768,
+        "hr_mae": 1.1508769139124384
+      }
+    },
+    {
+      "method": "POS_WIN",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.17073275550306505,
+        "nrmse": 1.26462479974979,
+        "derivative_r": 0.12573723127312894,
+        "hr_mae": 11.519297026734241
+      }
+    },
+    {
+      "method": "priors_UBFC",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.25670002172220935,
+        "nrmse": 1.1750796341743224,
+        "derivative_r": 0.180848652793779,
+        "hr_mae": 1.6003805432749938
+      }
+    },
+    {
+      "method": "priors_two_source",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.23618320626201467,
+        "nrmse": 1.1950058930195295,
+        "derivative_r": 0.1711740893152303,
+        "hr_mae": 2.25203406064764
+      }
+    },
+    {
+      "method": "RGB_priors_UBFC",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.25377889482831484,
+        "nrmse": 1.179046797905213,
+        "derivative_r": 0.17765727737779985,
+        "hr_mae": 1.9865762448240996
+      }
+    },
+    {
+      "method": "RGB_priors_two_source",
+      "intended_windows": 152,
+      "scored_windows": 152,
+      "valid_predictions": 152,
+      "subjects": 26,
+      "subject_balanced": {
+        "native_r": 0.22869893320086096,
+        "nrmse": 1.2046173786505674,
+        "derivative_r": 0.15912746688183238,
+        "hr_mae": 2.249770565950305
+      }
+    }
+  ],
+  "timing_diagnostics": [
+    {
+      "method": "GREEN",
+      "subject_balanced": {
+        "native_r": -0.24678474359518493,
+        "lag_diagnostic_r": 0.5509707428037218,
+        "diagnostic_lag_ms": 15.170940170940181
+      },
+      "boundary_windows": 13,
+      "windows": 152
+    },
+    {
+      "method": "negative_GREEN",
+      "subject_balanced": {
+        "native_r": 0.24678474359518493,
+        "lag_diagnostic_r": 0.6080629288911941,
+        "diagnostic_lag_ms": 6.346153846153846
+      },
+      "boundary_windows": 16,
+      "windows": 152
+    },
+    {
+      "method": "CHROM",
+      "subject_balanced": {
+        "native_r": 0.2587039239224506,
+        "lag_diagnostic_r": 0.7032904746756958,
+        "diagnostic_lag_ms": 57.97008547008548
+      },
+      "boundary_windows": 19,
+      "windows": 152
+    },
+    {
+      "method": "CHROM_WIN",
+      "subject_balanced": {
+        "native_r": 0.26661354673546056,
+        "lag_diagnostic_r": 0.7119557609426508,
+        "diagnostic_lag_ms": 45.085470085470085
+      },
+      "boundary_windows": 15,
+      "windows": 152
+    },
+    {
+      "method": "POS_WIN",
+      "subject_balanced": {
+        "native_r": 0.17073275547935787,
+        "lag_diagnostic_r": 0.49618602205116874,
+        "diagnostic_lag_ms": 16.77350427350428
+      },
+      "boundary_windows": 13,
+      "windows": 152
+    },
+    {
+      "method": "priors_UBFC",
+      "subject_balanced": {
+        "native_r": 0.25670002218024773,
+        "lag_diagnostic_r": 0.689942906195932,
+        "diagnostic_lag_ms": 53.56837606837608
+      },
+      "boundary_windows": 13,
+      "windows": 152
+    },
+    {
+      "method": "priors_two_source",
+      "subject_balanced": {
+        "native_r": 0.23618320655401276,
+        "lag_diagnostic_r": 0.6551399457994405,
+        "diagnostic_lag_ms": 37.45726495726496
+      },
+      "boundary_windows": 10,
+      "windows": 152
+    },
+    {
+      "method": "RGB_priors_UBFC",
+      "subject_balanced": {
+        "native_r": 0.2537788952828606,
+        "lag_diagnostic_r": 0.6842263379101104,
+        "diagnostic_lag_ms": 53.78205128205128
+      },
+      "boundary_windows": 14,
+      "windows": 152
+    },
+    {
+      "method": "RGB_priors_two_source",
+      "subject_balanced": {
+        "native_r": 0.22869893338174854,
+        "lag_diagnostic_r": 0.6360357617152973,
+        "diagnostic_lag_ms": 53.97435897435897
+      },
+      "boundary_windows": 14,
+      "windows": 152
+    }
+  ],
+  "local_results_sha256": "5ec426daa2bdc600e2f227d5c723b6425cda4a62b8a58e157a9b12184476beea",
+  "local_timing_results_sha256": "d3a1d4751cd859e66a6452b4c27d4659c8758da2b533354b72874d044bb899c9",
+  "source_sha256": {
+    "scripts/study_two_source_waveform.py": "d9f3e45500a6789f8d68331971f8a8c482405cf80710c768a97f668b6349ad86",
+    "scripts/diagnose_two_source_timing.py": "0098869d41e7b91969cacaf4a784a5432726734e848d1352a968289d0461e574",
+    "docs/TWO_SOURCE_WAVEFORM_DEVELOPMENT_PROTOCOL.md": "9e98b1797f829faedcb5f9b4b51f2cabbf87944148047977def5b17577a8e4bc"
+  },
+  "chrom_win_diagnostic_lag_quantiles_ms": [
+    -500.0,
+    -66.66666666666667,
+    33.333333333333336,
+    166.66666666666666,
+    500.0
+  ]
+}
