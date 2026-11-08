@@ -1,0 +1,3458 @@
+[
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7857142857142858,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7857142857142858,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.880952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.880952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7857142857142858,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.0,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "forehead",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.023809523809523815,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.11904761904761905,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.023809523809523815,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.880952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7857142857142858,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.11904761904761905,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.24743582965269675,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.0,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.24743582965269675,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.11904761904761905,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.24743582965269675,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.880952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.08247860988423225,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "left_cheek",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.0,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.3571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.023809523809523815,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.023809523809523815,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6428571428571429,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8333333333333335,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.11904761904761905,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.023809523809523815,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.11904761904761905,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": null,
+    "status": "UNDEFINED_TIES_OR_SUPPORT"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "right_cheek",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.9285714285714287,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8571428571428572,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "GREEN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5000000000000001,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4761904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.9761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "CHROM_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5714285714285715,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4285714285714286,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5476190476190477,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.3333333333333334,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.2142857142857143,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6666666666666669,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.04761904761904763,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.24743582965269675,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.28571428571428575,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "PBV",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.7380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.261904761904762,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.19047619047619052,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.14285714285714288,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.2380952380952381,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4123930494211612,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "POS_WIN",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.1666666666666667,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.6904761904761906,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "spectral_concentration",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4523809523809524,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "snr_db",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.30952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.7619047619047621,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "periodicity",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.4047619047619048,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5952380952380953,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "half_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.8095238095238096,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "adjacent_window_hr_difference_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.09523809523809526,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.07142857142857144,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "inter_roi_hr_range_bpm",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.6190476190476191,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "clipping_fraction_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.5773502691896258,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "hr_abs_error_bpm",
+    "finite_recording_pairs": 8,
+    "spearman_rho": 0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  },
+  {
+    "roi": "equal_roi_average",
+    "method": "OMIT",
+    "indicator": "rgb_step_mean",
+    "metric": "zero_lag_r",
+    "finite_recording_pairs": 8,
+    "spearman_rho": -0.38095238095238104,
+    "status": "DESCRIPTIVE_ONLY"
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-08",
+  "source": "https://figshare.com/articles/dataset/MPU-rPPG_Sample_Dataset/29377835",
+  "source_version": 1,
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "purpose": "DEVELOPMENT_SCHEMA_AND_TIMEBASE_ONLY",
+  "unseen_test_evaluation": false,
+  "selection_policy": "Smallest public MP4 by metadata size; nearby CSV is UNVERIFIED association",
+  "video_reference_pairing": "UNVERIFIED_DO_NOT_TRAIN_OR_SCORE",
+  "files": [
+    {
+      "id": 55553426,
+      "source_name": "Output.csv",
+      "local_path": "incoming/mpu_development_20261108/55553426_Output.csv",
+      "bytes": 540023,
+      "md5": "f61489255ab117b527e394b4fcf5330f",
+      "sha256": "6297d496c57d00ce85e9a6bcd27c629d3eb931d4b75df0b329d865cb2199b577",
+      "source_md5_verified": true,
+      "csv_schema": {
+        "header": [
+          "Count",
+          "PPG",
+          "HR",
+          "SPO2"
+        ],
+        "rows": 34496,
+        "row_column_counts": {
+          "4": 34496
+        }
+      }
+    },
+    {
+      "id": 55553429,
+      "source_name": "Output.mp4",
+      "local_path": "incoming/mpu_development_20261108/55553429_Output.mp4",
+      "bytes": 106817062,
+      "md5": "1d4a5b52c61254e386ba70066d6e4150",
+      "sha256": "9a835b931b3e012d372c8c62dd729823df2600fee49550ea67aa9b89fa343b8c",
+      "source_md5_verified": true,
+      "container_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mpeg4",
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "60/1",
+            "avg_frame_rate": "60/1",
+            "time_base": "1/15360",
+            "duration": "574.933333",
+            "nb_frames": "34496"
+          }
+        ],
+        "format": {
+          "duration": "574.933333"
+        }
+      }
+    }
+  ]
+}

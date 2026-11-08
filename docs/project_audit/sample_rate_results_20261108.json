@@ -1,0 +1,82 @@
+{
+  "evidence_type": "SYNTHETIC_TRANSFER_ONLY",
+  "duration_s": 30,
+  "retained_interval_s": [
+    5,
+    25
+  ],
+  "native_samples": 1800,
+  "model_weights_loaded": false,
+  "training": false,
+  "scope": "No neural performance or real waveform bandwidth measurement; no standardization applied",
+  "rows": [
+    {
+      "input_frequency_hz": 0.7,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 0.7,
+      "native60_raw_rgb_gain": 1.0000000000000002,
+      "adapted30_raw_rgb_gain": 1.000039345873921,
+      "native60_default_green_gain": 0.4999966937411495
+    },
+    {
+      "input_frequency_hz": 1.2,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 1.2,
+      "native60_raw_rgb_gain": 0.9999999999999993,
+      "adapted30_raw_rgb_gain": 1.0000683723439223,
+      "native60_default_green_gain": 0.9982678854612568
+    },
+    {
+      "input_frequency_hz": 3.5,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 3.5,
+      "native60_raw_rgb_gain": 1.0000000000000007,
+      "adapted30_raw_rgb_gain": 1.0000680999090963,
+      "native60_default_green_gain": 0.773825781743576
+    },
+    {
+      "input_frequency_hz": 8.0,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 8.0,
+      "native60_raw_rgb_gain": 0.9999999999999997,
+      "adapted30_raw_rgb_gain": 1.000066584238083,
+      "native60_default_green_gain": 0.004812505270824357
+    },
+    {
+      "input_frequency_hz": 12.0,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 12.0,
+      "native60_raw_rgb_gain": 0.9999999999999999,
+      "adapted30_raw_rgb_gain": 0.34271669301740676,
+      "native60_default_green_gain": 0.00022016249276609275
+    },
+    {
+      "input_frequency_hz": 18.0,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 12.0,
+      "native60_raw_rgb_gain": 1.0000000000000013,
+      "adapted30_raw_rgb_gain": 4.2597808293119494e-05,
+      "native60_default_green_gain": 4.523890126265686e-06
+    },
+    {
+      "input_frequency_hz": 24.0,
+      "input_native_rate_hz": 60,
+      "output_adapter_rate_hz": 30,
+      "fitted_output_frequency_hz": 6.0,
+      "native60_raw_rgb_gain": 1.0000000000000004,
+      "adapted30_raw_rgb_gain": 9.039262638517667e-06,
+      "native60_default_green_gain": 7.131064950008451e-08
+    }
+  ],
+  "source_sha256": {
+    "scripts/audit_waveform_sample_rate.py": "260a97b4aaf073a94fdaf02baabb570c372d7079c03a0f764ddd09961db86559",
+    "rppg_lab/frozen_timebase.py": "bb9be3ff66d9a9a0394d71106e8200a67007fe5f0df72fa8891e376f5302fb8d",
+    "rppg_lab/classical.py": "44ce7787a09a685c7628359c46c1c7e4a78c3e618bb2e5d112e48ae020e7d148"
+  }
+}

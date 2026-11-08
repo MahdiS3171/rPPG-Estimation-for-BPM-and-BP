@@ -1,0 +1,3 @@
+# Preserve the pinned public metadata/license snapshot hashes on Windows checkouts.
+docs/waveform_v2/scamps/official_split.csv text eol=lf
+docs/waveform_v2/scamps/LICENSE_SCAMPS.txt text eol=lf

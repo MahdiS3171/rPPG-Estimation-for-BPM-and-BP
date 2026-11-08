@@ -1,0 +1,123 @@
+{
+  "array_budget_bytes": 201326592,
+  "rss_budget_bytes": 1073741824,
+  "observed_process_peak_bytes": 439713792,
+  "rss_budget_exceeded": false,
+  "rss_sampling_interval_s": 0.002,
+  "runtime": [
+    {
+      "filename": "P000001.mat",
+      "frame_read_seconds": 6.274243200023193,
+      "landmarks_and_A_measurement_seconds": 9.128125000264845,
+      "A_optical_descriptors_seconds": 1.9971083994605578,
+      "B_patch_descriptors_seconds": 10.239873799946508,
+      "B_selection_and_mix_seconds": 0.0034008999937213957,
+      "recording_wall_seconds": 29.230448900008923,
+      "traced_collection_peak_bytes": 96607772,
+      "process_peak_so_far_bytes": 366788608
+    },
+    {
+      "filename": "P000002.mat",
+      "frame_read_seconds": 5.737038900042535,
+      "landmarks_and_A_measurement_seconds": 8.757320700286073,
+      "A_optical_descriptors_seconds": 1.8540622998261824,
+      "B_patch_descriptors_seconds": 9.626725200199871,
+      "B_selection_and_mix_seconds": 0.0022507999965455383,
+      "recording_wall_seconds": 27.413573099998757,
+      "traced_collection_peak_bytes": 96593340,
+      "process_peak_so_far_bytes": 420945920
+    },
+    {
+      "filename": "P000003.mat",
+      "frame_read_seconds": 5.52924169995822,
+      "landmarks_and_A_measurement_seconds": 8.63367140002083,
+      "A_optical_descriptors_seconds": 1.7755221999104833,
+      "B_patch_descriptors_seconds": 9.358768100079033,
+      "B_selection_and_mix_seconds": 0.002964999992400408,
+      "recording_wall_seconds": 26.693571000010706,
+      "traced_collection_peak_bytes": 96506954,
+      "process_peak_so_far_bytes": 427110400
+    },
+    {
+      "filename": "P000004.mat",
+      "frame_read_seconds": 6.105709600029513,
+      "landmarks_and_A_measurement_seconds": 9.209266500140075,
+      "A_optical_descriptors_seconds": 1.8702409999677911,
+      "B_patch_descriptors_seconds": 9.811506899975939,
+      "B_selection_and_mix_seconds": 0.002348199996049516,
+      "recording_wall_seconds": 28.492580099991756,
+      "traced_collection_peak_bytes": 96586366,
+      "process_peak_so_far_bytes": 427110400
+    },
+    {
+      "filename": "P000005.mat",
+      "frame_read_seconds": 5.998500100002275,
+      "landmarks_and_A_measurement_seconds": 8.92457759998797,
+      "A_optical_descriptors_seconds": 1.8182346001267433,
+      "B_patch_descriptors_seconds": 9.60091159986041,
+      "B_selection_and_mix_seconds": 0.004021099986857735,
+      "recording_wall_seconds": 27.83667439999408,
+      "traced_collection_peak_bytes": 96499640,
+      "process_peak_so_far_bytes": 433201152
+    },
+    {
+      "filename": "P000006.mat",
+      "frame_read_seconds": 5.725450400001137,
+      "landmarks_and_A_measurement_seconds": 8.849641099950531,
+      "A_optical_descriptors_seconds": 1.8167340004001744,
+      "B_patch_descriptors_seconds": 9.634663100208854,
+      "B_selection_and_mix_seconds": 0.0026005999970948324,
+      "recording_wall_seconds": 27.516009400002076,
+      "traced_collection_peak_bytes": 96589776,
+      "process_peak_so_far_bytes": 433201152
+    },
+    {
+      "filename": "P000007.mat",
+      "frame_read_seconds": 5.623933999988367,
+      "landmarks_and_A_measurement_seconds": 8.979622700149775,
+      "A_optical_descriptors_seconds": 1.7899791006493615,
+      "B_patch_descriptors_seconds": 9.586957500127028,
+      "B_selection_and_mix_seconds": 0.0022545999963767827,
+      "recording_wall_seconds": 27.41258890001336,
+      "traced_collection_peak_bytes": 96504070,
+      "process_peak_so_far_bytes": 435011584
+    },
+    {
+      "filename": "P000008.mat",
+      "frame_read_seconds": 6.133710900001461,
+      "landmarks_and_A_measurement_seconds": 9.009206399859977,
+      "A_optical_descriptors_seconds": 1.8516395001206547,
+      "B_patch_descriptors_seconds": 9.813160999765387,
+      "B_selection_and_mix_seconds": 0.0028999000060139224,
+      "recording_wall_seconds": 28.297773199999938,
+      "traced_collection_peak_bytes": 96595700,
+      "process_peak_so_far_bytes": 435011584
+    },
+    {
+      "filename": "P000009.mat",
+      "frame_read_seconds": 5.609386400014046,
+      "landmarks_and_A_measurement_seconds": 8.93411150004249,
+      "A_optical_descriptors_seconds": 1.8604310999799054,
+      "B_patch_descriptors_seconds": 9.731220999921788,
+      "B_selection_and_mix_seconds": 0.000821699999505654,
+      "recording_wall_seconds": 27.533716599995387,
+      "traced_collection_peak_bytes": 96507421,
+      "process_peak_so_far_bytes": 439713792
+    },
+    {
+      "filename": "P000010.mat",
+      "frame_read_seconds": 6.323970499986899,
+      "landmarks_and_A_measurement_seconds": 8.996012899937341,
+      "A_optical_descriptors_seconds": 1.8700294002628652,
+      "B_patch_descriptors_seconds": 9.842714500206057,
+      "B_selection_and_mix_seconds": 0.0020604000019375235,
+      "recording_wall_seconds": 28.473230599993258,
+      "traced_collection_peak_bytes": 96595075,
+      "process_peak_so_far_bytes": 439713792
+    }
+  ],
+  "limitations": [
+    "Tracemalloc excludes some native allocations",
+    "RSS sampling can miss brief native peaks"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "package": "Waveform_v2_Gate02_Additive_Patch",
+  "source_commit": "27e54556025e2eff4e1b4091001a2eaf28667cc7",
+  "tests": "12 synthetic unittest cases passed; py_compile/compileall passed",
+  "github_updated": false,
+  "datasets_processed": false,
+  "frozen_waveform_v1_changed": false,
+  "reserved_S007_S011_accessed": false,
+  "files": [
+    {
+      "path": "rppg_lab/waveform_v2_registry.py",
+      "bytes": 11965,
+      "sha256": "e3ab2fcb394bb890088617f230fea0a487f242ce2fe8ec0448c48a51b1d9ef4d"
+    },
+    {
+      "path": "rppg_lab/waveform_v2_benchmark.py",
+      "bytes": 6652,
+      "sha256": "6799200cc143dd5cb941006921a6a72b5cbf1816962b1194f30691e8d1727ab4"
+    },
+    {
+      "path": "scripts/prepare_waveform_v2_pure.py",
+      "bytes": 2671,
+      "sha256": "be411e4d96ff90b8fc506237e6563af584d8ac09edb074886a6556d40756e69b"
+    },
+    {
+      "path": "tests/test_waveform_v2_infrastructure.py",
+      "bytes": 7073,
+      "sha256": "f7b1a2bf38e0ba47d66dd1822a8ad61057805e8ae7f832b0df588ebaa7681972"
+    },
+    {
+      "path": "docs/WAVEFORM_V2_INFRASTRUCTURE_GATE02.md",
+      "bytes": 6717,
+      "sha256": "7f5c3f9520065a63bcfb245186f1e4c11b085ba51e7d742adaa59d4caa36f06f"
+    }
+  ]
+}

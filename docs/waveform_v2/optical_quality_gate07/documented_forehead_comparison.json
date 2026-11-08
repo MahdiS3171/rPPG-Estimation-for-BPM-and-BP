@@ -1,0 +1,394 @@
+{
+  "scope": "documented_engineering_examples_not_validation_truth",
+  "fixed_parameters": true,
+  "ppg_or_prediction_scores_used": false,
+  "examples": [
+    {
+      "filename": "P000001.mat",
+      "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+      "intended_frames": 600,
+      "A_acquisition_valid_frames": 600,
+      "A_acquisition_failure_reasons": {},
+      "A_optical_indicators": {
+        "chroma_compatible_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.9967741935483871,
+          "median": 1.0,
+          "mean": 0.9999822828616428,
+          "maximum": 1.0
+        },
+        "clipped_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "brightness": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.4551898915947506,
+          "median": 0.467505663285552,
+          "mean": 0.4670272685309348,
+          "maximum": 0.472530636981656
+        },
+        "spatial_chroma_mad": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.004363283467997007,
+          "median": 0.0048654141575120435,
+          "mean": 0.0048652437176650905,
+          "maximum": 0.005527176204475607
+        },
+        "finite_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 1.0,
+          "median": 1.0,
+          "mean": 1.0,
+          "maximum": 1.0
+        },
+        "pixel_count": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 1195.0,
+          "median": 1227.0,
+          "mean": 1224.96,
+          "maximum": 1269.0
+        },
+        "centroid_x": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.495395816242822,
+          "median": 0.4963533888310966,
+          "mean": 0.4964868164778843,
+          "maximum": 0.4990036231884058
+        },
+        "centroid_y": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.2972457627118644,
+          "median": 0.3000931291390729,
+          "mean": 0.30060258942168616,
+          "maximum": 0.306214859437751
+        }
+      },
+      "anatomical_skin_confidence": {
+        "status": "UNKNOWN",
+        "independent_annotations": 0,
+        "confidence": null
+      },
+      "hair_or_background_fraction_confirmed": null,
+      "B_provisional_available_frames": 600,
+      "B_trusted_available_frames": 0,
+      "B_whole_ROI_block_reasons": [
+        "ABSTAIN_SKIN_UNVERIFIED",
+        "ABSTAIN_SKIN_UNVERIFIED"
+      ],
+      "B_planned_weights": [
+        [
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ],
+        [
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ]
+      ],
+      "B_eligible_patch_counts": [
+        6,
+        6
+      ],
+      "B_provisional_optical_indicators": {
+        "chroma_compatible_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.9970238095238094,
+          "median": 0.9999999999999999,
+          "mean": 0.9999833950134979,
+          "maximum": 0.9999999999999999
+        },
+        "clipped_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "brightness": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.4591921326004094,
+          "median": 0.47113767847210875,
+          "mean": 0.4706956015519392,
+          "maximum": 0.4752443516014112
+        },
+        "spatial_chroma_mad": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.003646297070290607,
+          "median": 0.004031764662122805,
+          "mean": 0.004047570707692894,
+          "maximum": 0.004824406453139165
+        }
+      },
+      "A_temporal_indicators": {
+        "valid_adjacent_pairs": 599,
+        "median_absolute_rgb_step": 0.0005571803210125307,
+        "maximum_absolute_rgb_step": 0.006302845412419075,
+        "interpretation": "descriptive_change_not_physiological_quality",
+        "median_second_difference_flicker_proxy": 0.0008027486961511053,
+        "median_normalized_centroid_step": 0.0
+      },
+      "B_provisional_temporal_indicators": {
+        "valid_adjacent_pairs": 599,
+        "median_absolute_rgb_step": 0.0006082665672426913,
+        "maximum_absolute_rgb_step": 0.0058510088621685045,
+        "interpretation": "descriptive_change_not_physiological_quality",
+        "median_second_difference_flicker_proxy": 0.0009143345583669353
+      },
+      "weight_stability": {
+        "provisional_l1_step": {
+          "intended_observations": 599,
+          "finite_observations": 599,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "changing_weight_rgb_term": {
+          "intended_observations": 1797,
+          "finite_observations": 1797,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "block_boundary_indices": [
+          300
+        ]
+      },
+      "physiological_pulse_quality": "UNVERIFIED",
+      "trusted_abstention_frames": 600
+    },
+    {
+      "filename": "P000005.mat",
+      "source_sha256": "f83788832701b85a82239c35626a4a68a194b537c6947a8b94403fe767c7a37d",
+      "intended_frames": 600,
+      "A_acquisition_valid_frames": 600,
+      "A_acquisition_failure_reasons": {},
+      "A_optical_indicators": {
+        "chroma_compatible_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 1.0,
+          "median": 1.0,
+          "mean": 1.0,
+          "maximum": 1.0
+        },
+        "clipped_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "brightness": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.24258900150124693,
+          "median": 0.24675330081089536,
+          "mean": 0.24676988526627489,
+          "maximum": 0.2496794291074564
+        },
+        "spatial_chroma_mad": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.004317167273683753,
+          "median": 0.005153007693409853,
+          "mean": 0.005173936210443616,
+          "maximum": 0.006848045713193964
+        },
+        "finite_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 1.0,
+          "median": 1.0,
+          "mean": 1.0,
+          "maximum": 1.0
+        },
+        "pixel_count": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 977.0,
+          "median": 1042.0,
+          "mean": 1043.425,
+          "maximum": 1064.0
+        },
+        "centroid_x": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.5022674611055942,
+          "median": 0.5034562579821201,
+          "mean": 0.5035032696084136,
+          "maximum": 0.5045037361923327
+        },
+        "centroid_y": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.3238043825975688,
+          "median": 0.3279710492642354,
+          "mean": 0.32749614987278103,
+          "maximum": 0.3383133133133133
+        }
+      },
+      "anatomical_skin_confidence": {
+        "status": "UNKNOWN",
+        "independent_annotations": 0,
+        "confidence": null
+      },
+      "hair_or_background_fraction_confirmed": null,
+      "B_provisional_available_frames": 600,
+      "B_trusted_available_frames": 0,
+      "B_whole_ROI_block_reasons": [
+        "ABSTAIN_SKIN_UNVERIFIED",
+        "ABSTAIN_SKIN_UNVERIFIED"
+      ],
+      "B_planned_weights": [
+        [
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ],
+        [
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ]
+      ],
+      "B_eligible_patch_counts": [
+        6,
+        6
+      ],
+      "B_provisional_optical_indicators": {
+        "chroma_compatible_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.9999999999999999,
+          "median": 0.9999999999999999,
+          "mean": 0.9999999999999998,
+          "maximum": 0.9999999999999999
+        },
+        "clipped_fraction": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "brightness": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.24333169843296065,
+          "median": 0.24748928936529033,
+          "mean": 0.24749626065175231,
+          "maximum": 0.2503043894393416
+        },
+        "spatial_chroma_mad": {
+          "intended_observations": 600,
+          "finite_observations": 600,
+          "missing_observations": 0,
+          "minimum": 0.004694722300176162,
+          "median": 0.005328510787049512,
+          "mean": 0.005316464008616031,
+          "maximum": 0.006006978805761619
+        }
+      },
+      "A_temporal_indicators": {
+        "valid_adjacent_pairs": 599,
+        "median_absolute_rgb_step": 0.0005228759219440051,
+        "maximum_absolute_rgb_step": 0.0030647027696908942,
+        "interpretation": "descriptive_change_not_physiological_quality",
+        "median_second_difference_flicker_proxy": 0.0008782134205690452,
+        "median_normalized_centroid_step": 0.0
+      },
+      "B_provisional_temporal_indicators": {
+        "valid_adjacent_pairs": 599,
+        "median_absolute_rgb_step": 0.0005116606985940573,
+        "maximum_absolute_rgb_step": 0.0031930833770639155,
+        "interpretation": "descriptive_change_not_physiological_quality",
+        "median_second_difference_flicker_proxy": 0.0008528115478407174
+      },
+      "weight_stability": {
+        "provisional_l1_step": {
+          "intended_observations": 599,
+          "finite_observations": 599,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "changing_weight_rgb_term": {
+          "intended_observations": 1797,
+          "finite_observations": 1797,
+          "missing_observations": 0,
+          "minimum": 0.0,
+          "median": 0.0,
+          "mean": 0.0,
+          "maximum": 0.0
+        },
+        "block_boundary_indices": [
+          300
+        ]
+      },
+      "physiological_pulse_quality": "UNVERIFIED",
+      "trusted_abstention_frames": 600
+    }
+  ],
+  "trusted_outcome": "Whole ROI abstains when independent skin confidence is UNKNOWN; compatible patches cannot rescue it"
+}

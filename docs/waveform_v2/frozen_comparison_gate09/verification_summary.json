@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-08",
+  "profiles": [
+    {
+      "command": "python -m scripts.verify_waveform_v2_frozen_safe",
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "blocked_io_attempts": 0
+    },
+    {
+      "command": "python -m scripts.verify_waveform_v2_classical_safe",
+      "tests": 175,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "blocked_io_attempts": 0
+    }
+  ],
+  "saved_result_verification": {
+    "artifacts": 32,
+    "pngs": 15,
+    "scored_rows": 500,
+    "neural_windows": 20,
+    "classical_cells": 480,
+    "condition_groups": 75,
+    "paired_comparisons": 72,
+    "forward_calls": 0,
+    "checkpoint_load_calls": 0,
+    "blocked_io_attempts": 0
+  },
+  "actual_forward_calls": 20,
+  "syntax_checks": "PASS",
+  "git_diff_check": "PASS",
+  "overwrite_refusal": "PASS",
+  "training_run": false,
+  "decision": "GO_FOR_SEPARATELY_DESIGNED_RESTRICTED_TRAINING_PROOF_OF_CONCEPT",
+  "training_authorized": false,
+  "changed_file_count": 25,
+  "all_changes_are_new_files": true,
+  "source_file_sha256": {
+    "rppg_lab/waveform_v2_frozen_cache.py": "d58ba59822268c49732b4a5316cc8838f9a613dd6fb3be7b9fbda8a3ab58f19c",
+    "rppg_lab/waveform_v2_frozen_comparison.py": "2283fd21179aff656800ce319aa310103857577bcb2b06509d01d8be41a2095b",
+    "rppg_lab/waveform_v2_frozen_plots.py": "f50e7d93062ab77590330fd09a4a6e781d61b135e327cbaea41e3fe3b1da6740",
+    "scripts/audit_waveform_v2_frozen_comparison.py": "da678d632c622c079893ca4b52f85c9f0de8e81669e24e57b1e10c84bd061e09",
+    "scripts/verify_waveform_v2_frozen_results.py": "51a7c71a1290ad84c13ec823121a7eff0dd0ba2a0b6b971e27c99c09cb5ea4dd",
+    "scripts/verify_waveform_v2_frozen_safe.py": "347fcfd3008707999cba33480ee5096a4ae95c8b4e0c0fe40fbd0bc68f0be0c5",
+    "tests/test_waveform_v2_frozen_comparison.py": "e028481f5e68f851d13802a24bb7ee9695bcbd2eb6e6260d312c37a7ffe750d4"
+  },
+  "plot_visual_review": [
+    "complete_train_comparison.png",
+    "negative_controls.png",
+    "hr_native_lag_diagnostics.png",
+    "fixed_baselines_P000001.png",
+    "fixed_baselines_P000003.png",
+    "native_P000005.png"
+  ],
+  "protocol_commit": "3c5efa8df6438b1009676e198e817e2c2941ec12",
+  "actual_inference_implementation_commit": "87a9e813bed8ec5cbdc2f5c8d015f5b883ce82fe"
+}

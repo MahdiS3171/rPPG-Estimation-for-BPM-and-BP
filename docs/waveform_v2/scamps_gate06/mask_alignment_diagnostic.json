@@ -1,0 +1,1328 @@
+{
+  "decision": "UNVERIFIED",
+  "recordings": [
+    {
+      "filename": "P000001.mat",
+      "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0025762981809923616,
+            0.002648760968147178
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2978975028121459,
+              "0": 0.2979150976627311,
+              "1": 0.29485545918812844
+            },
+            "combined_mask": {
+              "-1": 0.44703618019623753,
+              "0": 0.4483657870169789,
+              "1": 0.4457706287360973
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003995688215253284,
+            0.0038715051762200246
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29671766256111204,
+              "0": 0.30157981528286626,
+              "1": 0.29929851555902515
+            },
+            "combined_mask": {
+              "-1": 0.444880252912812,
+              "0": 0.4444590256485443,
+              "1": 0.44504470679793673
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.004015046401834331,
+            0.004240218905044323
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2985571678836734,
+              "0": 0.29505899294478827,
+              "1": 0.2971487691544944
+            },
+            "combined_mask": {
+              "-1": 0.4427609043761971,
+              "0": 0.4439456903615508,
+              "1": 0.4444026170839052
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0028134986224122934,
+            0.0029168255975107766
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.30512770709646475,
+              "0": 0.30114823344014674,
+              "1": 0.3038404035811553
+            },
+            "combined_mask": {
+              "-1": 0.45651713201423827,
+              "0": 0.45703036046718826,
+              "1": 0.4597674715834403
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003931894609771984,
+            0.0039862473834418105
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2972989177378875,
+              "0": 0.29568900381318763,
+              "1": 0.29626132804263355
+            },
+            "combined_mask": {
+              "-1": 0.4402148784035212,
+              "0": 0.4425180808633886,
+              "1": 0.43929440319064683
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000002.mat",
+      "source_sha256": "1d66ec0b5fdef03ca083c24ca87b0db852799e1c3ee7335ec56d371e09a11b4f",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0021211193339937986,
+            0.0021645561463298725
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2920005180521557,
+              "0": 0.2927169014033351,
+              "1": 0.29554893973905066
+            },
+            "combined_mask": {
+              "-1": 0.4184617445394808,
+              "0": 0.41840464389125115,
+              "1": 0.4195926259415496
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0029546342353919666,
+            0.0028977397156537605
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29602064947010687,
+              "0": 0.2980388490707089,
+              "1": 0.29547543674915866
+            },
+            "combined_mask": {
+              "-1": 0.4178334435164204,
+              "0": 0.4198226416880074,
+              "1": 0.42029513658670004
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.002824414550909919,
+            0.0028444308922162573
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29540922223904303,
+              "0": 0.29339503278907436,
+              "1": 0.29663576927131663
+            },
+            "combined_mask": {
+              "-1": 0.4201988418132278,
+              "0": 0.4225666294169318,
+              "1": 0.42247995027763563
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0028184686525653687,
+            0.002734477179988904
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2961557667442949,
+              "0": 0.2984073138744566,
+              "1": 0.29823377488263686
+            },
+            "combined_mask": {
+              "-1": 0.42442247598880406,
+              "0": 0.42003812290660836,
+              "1": 0.4244625891159614
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0026779684728454514,
+            0.0027610975591044365
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2965788895454889,
+              "0": 0.2952268734400628,
+              "1": 0.2956738577536422
+            },
+            "combined_mask": {
+              "-1": 0.42176696075756803,
+              "0": 0.4216168150394476,
+              "1": 0.4201065418042145
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000003.mat",
+      "source_sha256": "6411b40f99958a3b6cf0fc61ac460e41c947c1feca80dbb801fc2d31c74ebeef",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0008498547640569828,
+            0.0008830337756862045
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2633964670962451,
+              "0": 0.2627740451611601,
+              "1": 0.2634638357013516
+            },
+            "combined_mask": {
+              "-1": 0.49848021753279786,
+              "0": 0.4984960627804584,
+              "1": 0.49802855271462726
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0010261891911957516,
+            0.0010602078930969582
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2617848683527966,
+              "0": 0.26391403442588035,
+              "1": 0.2647388665238032
+            },
+            "combined_mask": {
+              "-1": 0.4986913098679931,
+              "0": 0.49885925806399734,
+              "1": 0.4985096013765579
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0013373956239390989,
+            0.001389887451005052
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2662636865629729,
+              "0": 0.2653651102942757,
+              "1": 0.26436875276388727
+            },
+            "combined_mask": {
+              "-1": 0.5025534086773731,
+              "0": 0.502182241336877,
+              "1": 0.5024752406918125
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.001632943013513189,
+            0.001756399801320017
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2633301467052001,
+              "0": 0.2641134938805678,
+              "1": 0.2627204850816487
+            },
+            "combined_mask": {
+              "-1": 0.4987106523284647,
+              "0": 0.4981053561598454,
+              "1": 0.4971946318146109
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0017185003771737683,
+            0.0018129992921576896
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2626397598588326,
+              "0": 0.26110018575709076,
+              "1": 0.26371411765068997
+            },
+            "combined_mask": {
+              "-1": 0.49865643515749664,
+              "0": 0.4974311404330276,
+              "1": 0.49666014571106726
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000004.mat",
+      "source_sha256": "aed82a87b3451379debcb6745158805b0c5ba8ae82f829dd4b2ef37d49b27178",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0032106482113778366,
+            0.0032044753651738304
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29415975294331476,
+              "0": 0.29274308116838266,
+              "1": 0.2923741924358549
+            },
+            "combined_mask": {
+              "-1": 0.43537777039730685,
+              "0": 0.43644206021076026,
+              "1": 0.43793892397769135
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003910788916096122,
+            0.003947916731216268
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29286938886352953,
+              "0": 0.2945014439375153,
+              "1": 0.2942289427752843
+            },
+            "combined_mask": {
+              "-1": 0.4363876521146705,
+              "0": 0.43618132587826175,
+              "1": 0.4369358131132863
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.004008669274569709,
+            0.004260325964803795
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2922015122948958,
+              "0": 0.2924049238652696,
+              "1": 0.2945103354293476
+            },
+            "combined_mask": {
+              "-1": 0.43934291153718213,
+              "0": 0.4381056656195155,
+              "1": 0.4392331447725038
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0035847631300917043,
+            0.00355026785616819
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29419629630654287,
+              "0": 0.29421460404714467,
+              "1": 0.29403551420756424
+            },
+            "combined_mask": {
+              "-1": 0.4346607895918059,
+              "0": 0.4355462837872242,
+              "1": 0.43538241870363764
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0038239152822535727,
+            0.003848765491768265
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.29448901834639213,
+              "0": 0.2945919485168422,
+              "1": 0.29345038020996916
+            },
+            "combined_mask": {
+              "-1": 0.4347820575113354,
+              "0": 0.43621669898584486,
+              "1": 0.4358253550327041
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000005.mat",
+      "source_sha256": "f83788832701b85a82239c35626a4a68a194b537c6947a8b94403fe767c7a37d",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0025394200208716535,
+            0.0025265750693695198
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.23474159339200737,
+              "0": 0.2346353481734125,
+              "1": 0.2336639422788729
+            },
+            "combined_mask": {
+              "-1": 0.33785977874266016,
+              "0": 0.3398312147734852,
+              "1": 0.3389256194526242
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0033334015353762812,
+            0.0033446805887608747
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.23467768529980862,
+              "0": 0.232565399281964,
+              "1": 0.23560701900114486
+            },
+            "combined_mask": {
+              "-1": 0.33947386103791627,
+              "0": 0.3413810124545468,
+              "1": 0.3428565260274438
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0032268973380861874,
+            0.0033133624934082576
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.23050506168999677,
+              "0": 0.23090268344414547,
+              "1": 0.2326824037215025
+            },
+            "combined_mask": {
+              "-1": 0.3434258166471228,
+              "0": 0.34387512560213074,
+              "1": 0.3413264422680429
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0024213417706104574,
+            0.0024080202303351445
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2302810181664907,
+              "0": 0.23392148699919751,
+              "1": 0.23278670150778716
+            },
+            "combined_mask": {
+              "-1": 0.3385649188199055,
+              "0": 0.3383588093926092,
+              "1": 0.33858130990917795
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0033190814561762467,
+            0.003307620856026511
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.23171347664387648,
+              "0": 0.2334206224126173,
+              "1": 0.2323116320552091
+            },
+            "combined_mask": {
+              "-1": 0.3419710419101044,
+              "0": 0.34089035957969915,
+              "1": 0.3415222761101912
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000006.mat",
+      "source_sha256": "18310c736ac51303b6e4b783633b897c9a72ee7690d11c7c3b2b1f1fa3f684cc",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0021250000302960098,
+            0.0021774464755435472
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5144591298666065,
+              "0": 0.5114083073591514,
+              "1": 0.5110887094655594
+            },
+            "combined_mask": {
+              "-1": 0.8130250866656041,
+              "0": 0.8130792898725265,
+              "1": 0.8149331977843652
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0022268745844835564,
+            0.002098720083401228
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.512932822874317,
+              "0": 0.5117941779776127,
+              "1": 0.5115785450334337
+            },
+            "combined_mask": {
+              "-1": 0.8165042812337714,
+              "0": 0.8160045021118674,
+              "1": 0.8151465631228925
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.002458265280928808,
+            0.0026240015087899303
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5094551704456282,
+              "0": 0.5114915218341364,
+              "1": 0.5122202105584241
+            },
+            "combined_mask": {
+              "-1": 0.8147928641290344,
+              "0": 0.8160385665594606,
+              "1": 0.8137588794703824
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0031809868173877476,
+            0.003069308346241963
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.511607081638799,
+              "0": 0.5123557199640278,
+              "1": 0.5094726838736917
+            },
+            "combined_mask": {
+              "-1": 0.8149100013201968,
+              "0": 0.8148223920706641,
+              "1": 0.813895487361855
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.002691675796587434,
+            0.002646287267683268
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.511088971316146,
+              "0": 0.5086771531837263,
+              "1": 0.5104643898247649
+            },
+            "combined_mask": {
+              "-1": 0.8150900390628636,
+              "0": 0.8157415752430967,
+              "1": 0.8156771895130941
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000007.mat",
+      "source_sha256": "3786c4d0d59b8d175fbca9fd8de347f8bee821d3adef4de33649180ebbbe7515",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0009779185157741369,
+            0.0009834559117492365
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.22210157307495662,
+              "0": 0.2221260218252589,
+              "1": 0.22205242685276122
+            },
+            "combined_mask": {
+              "-1": 0.2822234283849158,
+              "0": 0.2827319418883811,
+              "1": 0.2827781750449881
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0014887663883241151,
+            0.0014388844032456054
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2240934645633393,
+              "0": 0.22532138860991022,
+              "1": 0.22409853733625948
+            },
+            "combined_mask": {
+              "-1": 0.28259869271138144,
+              "0": 0.2826984979613913,
+              "1": 0.2820388834111235
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0012948892983344936,
+            0.0009012799851943446
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2248742902285456,
+              "0": 0.22370257837481483,
+              "1": 0.22140950361892622
+            },
+            "combined_mask": {
+              "-1": 0.28138266960351893,
+              "0": 0.2806184948951502,
+              "1": 0.2807187260289934
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0017248548189834562,
+            0.0016269290662360922
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2213586149507901,
+              "0": 0.22054465914175359,
+              "1": 0.22328873596788082
+            },
+            "combined_mask": {
+              "-1": 0.28195671867074756,
+              "0": 0.2813706135188014,
+              "1": 0.2816643827601679
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0013499909697431442,
+            0.0009269698949787266
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2214475192841067,
+              "0": 0.22296646995669595,
+              "1": 0.22302691076626965
+            },
+            "combined_mask": {
+              "-1": 0.28234878363985677,
+              "0": 0.282254314117422,
+              "1": 0.2826152005712155
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000008.mat",
+      "source_sha256": "f564249af83319fb00ab2f00c27c4a5efde65766bcb6496139e6c21eefed1887",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0022104893461855008,
+            0.0022873094297823694
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5352476660571811,
+              "0": 0.5348923199435023,
+              "1": 0.5333065401046645
+            },
+            "combined_mask": {
+              "-1": 0.18370251740092097,
+              "0": 0.1832830940956635,
+              "1": 0.18247280105775449
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0030494735715048456,
+            0.0030233070767415617
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.535052806756341,
+              "0": 0.5353234836549887,
+              "1": 0.5388164453318265
+            },
+            "combined_mask": {
+              "-1": 0.18254798315683662,
+              "0": 0.1826060811050629,
+              "1": 0.1848333250457077
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.002969748623096772,
+            0.003006490635819285
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5350549479578172,
+              "0": 0.5382364502850694,
+              "1": 0.5353642390794958
+            },
+            "combined_mask": {
+              "-1": 0.18476235881897646,
+              "0": 0.18547902971111266,
+              "1": 0.182064431920914
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0020805419903222678,
+            0.0020662219129546967
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5320940193305448,
+              "0": 0.532560374510931,
+              "1": 0.5337706173460018
+            },
+            "combined_mask": {
+              "-1": 0.18061278874132738,
+              "0": 0.18035506672748117,
+              "1": 0.1813089633825251
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0030528777138318186,
+            0.003093795464883442
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.5325631524668385,
+              "0": 0.5364183799683645,
+              "1": 0.5372025552089079
+            },
+            "combined_mask": {
+              "-1": 0.18459981182537924,
+              "0": 0.1833740060979127,
+              "1": 0.18460860667471513
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000009.mat",
+      "source_sha256": "c97a1b50047df6ec7e7aa646514b99040396634a903c820a5dc3cdab4fe11d22",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0013108206658243608,
+            0.0013497413322679844
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.28353203467936894,
+              "0": 0.284409954682048,
+              "1": 0.28344825640931043
+            },
+            "combined_mask": {
+              "-1": 0.36036600997637597,
+              "0": 0.35678765505439064,
+              "1": 0.3585952643514352
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0017500454470239304,
+            0.0017690632424287118
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2814233721296399,
+              "0": 0.28386828022340543,
+              "1": 0.281936664237805
+            },
+            "combined_mask": {
+              "-1": 0.35327055847991107,
+              "0": 0.3578036074425626,
+              "1": 0.3545189081042227
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.001894562516201943,
+            0.0018275009673972683
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2814846662996148,
+              "0": 0.2836026734297127,
+              "1": 0.2787135002977861
+            },
+            "combined_mask": {
+              "-1": 0.35420417502213286,
+              "0": 0.3575127930122261,
+              "1": 0.356285191210125
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0008787672743481515,
+            0.0012670888201844516
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.28047538679306466,
+              "0": 0.28093561619759366,
+              "1": 0.2810797874373382
+            },
+            "combined_mask": {
+              "-1": 0.36072213510538603,
+              "0": 0.36016582383727264,
+              "1": 0.3601064904884525
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0020172250155667793,
+            0.0018661266045819503
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.2793495459253974,
+              "0": 0.27824292271760714,
+              "1": 0.27910956258206127
+            },
+            "combined_mask": {
+              "-1": 0.35523748730058025,
+              "0": 0.3577345219266815,
+              "1": 0.35463709736878685
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    },
+    {
+      "filename": "P000010.mat",
+      "source_sha256": "847d0942cf21e4cf00e40ab121298becdaa2a34813361f8ef7644e054f0284df",
+      "evidence": "unthresholded_spatial_edge_agreement_and_adjacent_RGB_differences",
+      "ppg_read_or_scored": false,
+      "candidate_offsets_applied": false,
+      "mask_values_modified": false,
+      "decision": "UNVERIFIED",
+      "rows": [
+        {
+          "mask_index": 1,
+          "candidate_frame_indices": [
+            0,
+            1,
+            2
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0026316948844302074,
+            0.002644675999456215
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.450850325569066,
+              "0": 0.45382641824094067,
+              "1": 0.4504367447737948
+            },
+            "combined_mask": {
+              "-1": 0.36958952069297646,
+              "0": 0.3681862190860546,
+              "1": 0.3696432702366768
+            }
+          }
+        },
+        {
+          "mask_index": 149,
+          "candidate_frame_indices": [
+            148,
+            149,
+            150
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003223402406465202,
+            0.003269562541754567
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.44716785693633293,
+              "0": 0.44882948155017627,
+              "1": 0.44709627210176545
+            },
+            "combined_mask": {
+              "-1": 0.37033972743798776,
+              "0": 0.37052790614661346,
+              "1": 0.37078128816848244
+            }
+          }
+        },
+        {
+          "mask_index": 299,
+          "candidate_frame_indices": [
+            298,
+            299,
+            300
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003949845783572528,
+            0.0036995280537559195
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.442158306621253,
+              "0": 0.4429953217555743,
+              "1": 0.444924145886758
+            },
+            "combined_mask": {
+              "-1": 0.3703995131932254,
+              "0": 0.37091992034041615,
+              "1": 0.37112556609529934
+            }
+          }
+        },
+        {
+          "mask_index": 449,
+          "candidate_frame_indices": [
+            448,
+            449,
+            450
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.003297158761768649,
+            0.003144471762190935
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.44019371254614287,
+              "0": 0.4412992879463183,
+              "1": 0.44339557846360644
+            },
+            "combined_mask": {
+              "-1": 0.3723493200624186,
+              "0": 0.3726962102445546,
+              "1": 0.3721785174563327
+            }
+          }
+        },
+        {
+          "mask_index": 597,
+          "candidate_frame_indices": [
+            596,
+            597,
+            598
+          ],
+          "adjacent_rgb_mean_absolute_difference": [
+            0.0031328749964046033,
+            0.003155728119338703
+          ],
+          "edge_agreement": {
+            "skin_mask": {
+              "-1": 0.45059507516185804,
+              "0": 0.44502970305695083,
+              "1": 0.44543437354878673
+            },
+            "combined_mask": {
+              "-1": 0.373015287148405,
+              "0": 0.3725274343013951,
+              "1": 0.3726848115935422
+            }
+          }
+        }
+      ],
+      "limitation": "No independently validated geometric alignment criterion; similar/static poses may not distinguish adjacent frames"
+    }
+  ],
+  "extraction_uses_scamps_segmentation": false,
+  "ppg_scores_computed": false,
+  "conclusion": "Adjacent static/similar candidates and an unvalidated edge descriptor do not certify an offset"
+}

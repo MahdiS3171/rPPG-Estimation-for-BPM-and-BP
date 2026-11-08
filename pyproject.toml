@@ -22,3 +22,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["rppg_lab"]
+
+[project.optional-dependencies]
+scamps = ["h5py>=3.10", "psutil>=5.9"]

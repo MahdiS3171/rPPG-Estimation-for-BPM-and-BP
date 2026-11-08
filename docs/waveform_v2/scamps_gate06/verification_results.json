@@ -1,0 +1,47 @@
+{
+  "profile": "Gate06_non_neural_engineering",
+  "command": "python -m scripts.verify_waveform_v2_scamps_inputs_safe",
+  "total_tests": 119,
+  "new_gate06_tests": 35,
+  "failures": 0,
+  "errors": 0,
+  "runtime_skips": 0,
+  "blocked_io_attempts": 0,
+  "elapsed_seconds": 5.583,
+  "total_repo_test_methods": 404,
+  "not_selected": 285,
+  "not_selected_reason": "Dedicated input-only allowlist; remaining tests include random neural forwards, training/checkpoint/BP plumbing or unrelated functionality",
+  "blocked_operations": [
+    "Torch neural Module.__call__",
+    "torch.load",
+    "Tensor.backward",
+    "protected data/artifact Python I/O"
+  ],
+  "syntax_files": [
+    "rppg_lab/waveform_v2_scamps_roi.py",
+    "rppg_lab/waveform_v2_scamps_inputs.py",
+    "rppg_lab/waveform_v2_scamps_mask_audit.py",
+    "scripts/prepare_waveform_v2_scamps_inputs.py",
+    "scripts/verify_waveform_v2_scamps_inputs_safe.py",
+    "tests/test_waveform_v2_scamps_inputs.py"
+  ],
+  "syntax_pass": true,
+  "cli_help_exit": 0,
+  "cli_existing_output_exit": 2,
+  "cli_source_tree_output_exit": 2,
+  "actual_run": {
+    "recordings": 10,
+    "intended_frames": 6000,
+    "roi_measurements": 18000,
+    "constructed_windows": 20,
+    "prior_constructions": 360,
+    "post_review_input_hashes_identical": 20,
+    "post_review_overlays_identical": 6,
+    "source_checksums_unchanged": true,
+    "native_repeatability_check_frames": 8,
+    "native_repeatability_fresh_detectors": 2,
+    "roi_rgb_bit_identical": true
+  },
+  "no_training_or_waveform_model_inference": true,
+  "implementation_commit": "1fc3c6f222b24f8138cf62c058d9af1e5a6fa53e"
+}

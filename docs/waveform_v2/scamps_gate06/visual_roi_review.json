@@ -1,0 +1,26 @@
+{
+  "scope": "limited_visual_QA_not_a_coverage_reclassification",
+  "reviewed_overlays": [
+    "roi_P000001_frame0300.png",
+    "roi_P000005_frame0300.png"
+  ],
+  "validity_definition": "finite original-frame support within authoritative V1 landmark polygons; not validated skin purity",
+  "observations": [
+    {
+      "filename": "P000001.mat",
+      "source_sha256": "66134a63723035ae5da6abc53785abe64c87295473e9d7e20d3752d2088a52ae",
+      "frame_index": 300,
+      "observation": "Three polygons visually lie on plausible forehead/cheek regions in this reviewed overlay"
+    },
+    {
+      "filename": "P000005.mat",
+      "source_sha256": "f83788832701b85a82239c35626a4a68a194b537c6947a8b94403fe767c7a37d",
+      "frame_index": 300,
+      "observation": "Forehead polygon visibly overlaps bangs/hair; geometric success does not establish skin-only extraction"
+    }
+  ],
+  "thresholds_or_geometry_changed": false,
+  "unverified_scamps_masks_used_for_extraction": false,
+  "training_admission": false,
+  "recommendation": "Gate 07 should predeclare independent optical/skin quality checks or an explicitly distinct extraction ablation before training"
+}

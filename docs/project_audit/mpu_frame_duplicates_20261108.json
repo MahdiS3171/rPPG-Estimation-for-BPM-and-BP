@@ -1,0 +1,11 @@
+{
+  "decoded_frames": 34496,
+  "exact_consecutive_duplicate_pairs": 0,
+  "adjacent_pairs": 34495,
+  "exact_consecutive_duplicate_fraction": 0.0,
+  "unique_frame_hashes": 34496,
+  "source": "incoming/mpu_development_20261108/55553429_Output.mp4",
+  "hash_log": "outputs/project_reassessment_20261108/mpu_decoded_framemd5.txt",
+  "hash_log_sha256": "3d2bc1b184edb26310b7a90e9267c449cc6ecaadf06949baee2d44e2b9d66765",
+  "scope": "Exact decoded-pixel duplicate screen; not proof of native sensor rate, interpolation absence or exposure timing"
+}
