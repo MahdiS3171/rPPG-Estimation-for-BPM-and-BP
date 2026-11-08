@@ -6,6 +6,7 @@ import numpy as np
 from rppg_lab.pilot11_inference import FACE_NAMES,prepared_windows,without_pressure_values
 from rppg_lab.config import PipelineConfig
 from rppg_lab.pilot11_bp import fit_ridge,predict,session_reference,score_locked_predictions
+from rppg_lab.artifacts import file_sha256
 
 
 def check_primary_and_native_rate_keep_same_physical_windows_and_large_gap():
@@ -61,6 +62,19 @@ class PilotEvaluationTests(unittest.TestCase):
     def test_session_reference(self):check_bp_exact_session_reference_uses_one_record_not_repeated_windows()
     def test_prediction_lock(self):
         with tempfile.TemporaryDirectory() as folder:check_heldout_scores_require_a_preexisting_prediction_lock(Path(folder))
+    def test_scoring_keeps_frozen_predictions_when_reference_changes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            folder=Path(folder);path=folder/'locked.json'
+            entry=dict(evaluation_subjects=['A','B','C'],predictions_mmHg=[[105,65]]*3,
+                mean_baseline_mmHg=[[110,70]]*3,hr_baseline_mmHg=[[108,68]]*3)
+            path.write_text(json.dumps({'models':{'fixed':entry}}));digest=file_sha256(path)
+            sessions=[{'subject_id':s,'raw':{'SBP1_mmHg':100,'DBP1_mmHg':60}} for s in ('A','B','C')]
+            score=score_locked_predictions(path,sessions,folder)['models']['fixed']
+            np.testing.assert_array_equal(score['mae_mmHg'],[5,5])
+            np.testing.assert_array_equal(score['improvement_over_mean_baseline_mmHg']['mae_reduction_mmHg'],[5,5])
+            for s in sessions:s['raw'].update(SBP1_mmHg=120,DBP1_mmHg=80)
+            changed=score_locked_predictions(path,sessions,folder)['models']['fixed']
+            np.testing.assert_array_equal(changed['mae_mmHg'],[15,15]);assert file_sha256(path)==digest
 
 
 if __name__=='__main__':unittest.main()

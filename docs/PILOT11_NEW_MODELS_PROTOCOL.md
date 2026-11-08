@@ -64,6 +64,16 @@ No reference alignment before timing. Without local contact PPG, waveform
 correlation cannot be measured. Audit finite/flat outputs, HR/beat support,
 ROI/method/seed agreement and failures; appearance/HR is not waveform truth.
 
+Implementation detail: primary 30-Hz inputs retain the existing centered
+60-to-30 anti-alias adapter (8-Hz passband, 15-Hz stopband, bounded 50.001-ms
+native interpolation and discarded FIR edges), followed by the frozen API's
+150-ms maximum resampling gap. Native-60 sensitivity uses bounded cubic
+regularization with that 150-ms maximum and rate-aware temporal dilation. Both
+start on the same physical ten-second windows and require >=90% native ROI
+coverage plus finite model inputs. This compares complete processing paths;
+it does not isolate sampling rate or establish learned native-60 detail.
+Timing's matched classical paths separately retain the 50.001-ms gap limit.
+
 Primary optical pair: combined face GREEN and central palm GREEN, matched
 0.7–4-Hz filters on each contiguous native-rate segment. Positive delay means
 hand lags face. Reuse the inherited three-estimator diagnostics. Sensitivities:
