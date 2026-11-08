@@ -26,6 +26,8 @@ Repeated test execution does not add participants or independent observations.
 
 | E017 | Matched five-fold component and label controls | [Campaign report](docs/WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md), [table](docs/waveform_research/adaptive_ablations_20261108.csv), [receipt](docs/waveform_research/adaptive_ablations_20261108.json): 20 additional fits. Independent replay reproduces 144 control aggregates and 366 confirmation/seed aggregates. | Correct-label residual shape .788 vs shuffled .468; constant-gate .786 and quality-weighted residual .785 are close. Supports learned correction; adaptive selection's incremental value remains small. No independent test or physical timing result. |
 
+| E018 | Architecture development and five-fold follow-up | [Protocol](docs/WAVEFORM_ARCHITECTURE_EXTENSION_PROTOCOL.md), [screen](docs/waveform_research/architecture_screen_20261108.csv), [confirmation](docs/waveform_research/architecture_confirmation_20261108.csv), [receipt](docs/waveform_research/architecture_confirmation_20261108.json): eight screen fits and 20 follow-ups. Replay reproduces 192 + 162 aggregates. | Longer TCN shape .805, attention .805 vs compact .788; native/HR do not show a uniform gain. Spectral HR 2.702 bpm is worse; time-varying gate adds little. Prefer longer TCN for further morphology work; no independent-domain, native-60 or physiological timing claim. |
+
 ## Closed / unavailable evidence
 
 S007–S011: no enumeration, inspection, hashing, decoding, inference or evaluation.
