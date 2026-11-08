@@ -26,14 +26,14 @@ CONFIGS=[
 ]
 
 
-def fit_one(configuration,arrays,fit,validation,device,seed,steps):
+def fit_one(configuration,arrays,fit,validation,device,seed,steps,model_factory=AdaptiveWaveformNet):
     assert set(arrays['record_id'][fit]).isdisjoint(arrays['record_id'][validation])
     torch.manual_seed(seed)
     if device.type=='cuda':torch.cuda.manual_seed_all(seed)
     rng=np.random.default_rng(seed)
     pools={source:{s:fit[(arrays['source'][fit]==source)&(arrays['record_id'][fit]==s)]
         for s in sorted(set(arrays['record_id'][fit][arrays['source'][fit]==source]))} for source in (0,1)}
-    model=AdaptiveWaveformNet(configuration['kind'],context=configuration['context'],width=configuration['width']).to(device)
+    model=model_factory(configuration['kind'],context=configuration['context'],width=configuration['width']).to(device)
     optimizer=torch.optim.AdamW(model.parameters(),lr=.002,weight_decay=1e-4)
     initial=infer(model,arrays,validation,device)
     curve=[]
