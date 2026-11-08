@@ -195,3 +195,11 @@ loss, source-balance and 30/60-Hz contract tests pass; source compilation and
 133 local document links pass. Frozen V1 checkpoint/manifest and the prior
 candidate SHA-256 identities match their recorded values. CI checks software
 on clean runners; it does not provision physiological data or establish efficacy.
+
+[Clean-runner CI passed](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42503651468)
+for implementation `21bf31dd3c3c6f34ad7223f60384d53126f3865e`. The current review
+description was prepared locally at
+`outputs/project_reassessment_20261108/pr8_updated_review_body.txt`; automatic
+approval review blocked its GitHub update without a specific reason and the
+connector was unavailable. This report is the current scope/results reference
+if PR #8's description still reflects the earlier Train-only campaign.
