@@ -77,8 +77,9 @@ to merge and close superseded drafts while retaining branches. Avoid squash,
 force-push, rewriting published history or deleting evidence. A local descendant
 branch and additive CI definition are published as
 [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
-directly against main. No old PR was closed and no merge performed. The first CI
-run started; report its actual outcome separately rather than assuming success.
+directly against main. No old PR was closed and no merge performed. Remote CI
+[passed at head 014ef78](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42478042383);
+the evidence ledger pins that revision separately from subsequent report updates.
 
 ## Verification and reconciliation
 
