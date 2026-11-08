@@ -1,0 +1,267 @@
+[
+  {
+    "split": "Control",
+    "condition": "frozen_v1",
+    "per_recording": {
+      "sinusoidal_positive": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 0.03996110184623802,
+        "hr_squared_error": 0.0021332362312123723,
+        "hr_error_bpm": 0.02315915737774077,
+        "zero_lag_r": -0.9770955348377476,
+        "lag_aligned_r": 0.984790164558302,
+        "selected_lag_ms": -433.3333333333333,
+        "matched_band_reference_zero_lag_r": -0.9770977259034058,
+        "hr_rmse_bpm": 0.04618697036191454,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "constant_nonpulsatile": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 0,
+        "finite_cells": {
+          "hr_abs_error_bpm": 0,
+          "hr_squared_error": 0,
+          "hr_error_bpm": 0,
+          "zero_lag_r": 0,
+          "lag_aligned_r": 0,
+          "selected_lag_ms": 0,
+          "matched_band_reference_zero_lag_r": 0
+        },
+        "hr_abs_error_bpm": null,
+        "hr_squared_error": null,
+        "hr_error_bpm": null,
+        "zero_lag_r": null,
+        "lag_aligned_r": null,
+        "selected_lag_ms": null,
+        "matched_band_reference_zero_lag_r": null,
+        "hr_rmse_bpm": null,
+        "prediction_failures": {
+          "FLAT_SOURCE_RGB": 2
+        },
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "slow_illumination_drift": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 9.02788939859197,
+        "hr_squared_error": 85.9540065890606,
+        "hr_error_bpm": -2.109791363109469,
+        "zero_lag_r": 0.043765193131769194,
+        "lag_aligned_r": 0.2255650460716162,
+        "selected_lag_ms": 333.3333333333333,
+        "matched_band_reference_zero_lag_r": 0.04304281346309257,
+        "hr_rmse_bpm": 9.271138365328207,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 1
+      },
+      "independent_noise": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 33.92064977027423,
+        "hr_squared_error": 1533.3571763076725,
+        "hr_error_bpm": 33.92064977027423,
+        "zero_lag_r": -0.20599083225574022,
+        "lag_aligned_r": 0.23537658348976664,
+        "selected_lag_ms": -350.0,
+        "matched_band_reference_zero_lag_r": -0.2091254557512867,
+        "hr_rmse_bpm": 39.15810486103321,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "coherent_pulse_band_illumination": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 0.008932577460200264,
+        "hr_squared_error": 7.979735593731251e-05,
+        "hr_error_bpm": 0.008932577460200264,
+        "zero_lag_r": 0.9106526696839303,
+        "lag_aligned_r": 0.961935650980208,
+        "selected_lag_ms": -33.333333333333336,
+        "matched_band_reference_zero_lag_r": 0.910818384429562,
+        "hr_rmse_bpm": 0.00893293657972072,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "clipped_impulses": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 0.30552285155421544,
+        "hr_squared_error": 0.09334421282181916,
+        "hr_error_bpm": 0.30552285155421544,
+        "zero_lag_r": -0.9296875951002634,
+        "lag_aligned_r": 0.9411498987240324,
+        "selected_lag_ms": 400.0,
+        "matched_band_reference_zero_lag_r": -0.9288192469130081,
+        "hr_rmse_bpm": 0.30552285155421544,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "missing_windows": {
+        "intended_cells": 2,
+        "computational_cells": 1,
+        "eligible_cells": 1,
+        "finite_cells": {
+          "hr_abs_error_bpm": 1,
+          "hr_squared_error": 1,
+          "hr_error_bpm": 1,
+          "zero_lag_r": 1,
+          "lag_aligned_r": 1,
+          "selected_lag_ms": 1,
+          "matched_band_reference_zero_lag_r": 1
+        },
+        "hr_abs_error_bpm": 0.016676018825478423,
+        "hr_squared_error": 0.00027808960386771075,
+        "hr_error_bpm": -0.016676018825478423,
+        "zero_lag_r": -0.9762537542820814,
+        "lag_aligned_r": 0.984575076193343,
+        "selected_lag_ms": -433.3333333333333,
+        "matched_band_reference_zero_lag_r": -0.9763073820496648,
+        "hr_rmse_bpm": 0.016676018825478423,
+        "prediction_failures": {
+          "NO_USABLE_ROI": 1
+        },
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      },
+      "time_permuted": {
+        "intended_cells": 2,
+        "computational_cells": 2,
+        "eligible_cells": 2,
+        "finite_cells": {
+          "hr_abs_error_bpm": 2,
+          "hr_squared_error": 2,
+          "hr_error_bpm": 2,
+          "zero_lag_r": 2,
+          "lag_aligned_r": 2,
+          "selected_lag_ms": 2,
+          "matched_band_reference_zero_lag_r": 2
+        },
+        "hr_abs_error_bpm": 47.16399858383468,
+        "hr_squared_error": 2434.565969726813,
+        "hr_error_bpm": 47.16399858383468,
+        "zero_lag_r": 0.05593330942406113,
+        "lag_aligned_r": 0.17122220408822297,
+        "selected_lag_ms": -166.66666666666669,
+        "matched_band_reference_zero_lag_r": 0.0547189530865039,
+        "hr_rmse_bpm": 49.34132111857984,
+        "prediction_failures": {},
+        "reference_unusable_cells": 0,
+        "lag_boundary_cells": 0
+      }
+    },
+    "pooled": {
+      "intended_cells": 16,
+      "computational_cells": 15,
+      "eligible_cells": 13,
+      "finite_cells": {
+        "hr_abs_error_bpm": 13,
+        "hr_squared_error": 13,
+        "hr_error_bpm": 13,
+        "zero_lag_r": 13,
+        "lag_aligned_r": 13,
+        "selected_lag_ms": 13,
+        "matched_band_reference_zero_lag_r": 13
+      },
+      "hr_abs_error_bpm": 13.919275737380657,
+      "hr_squared_error": 623.6881306022703,
+      "hr_error_bpm": 12.20063593353521,
+      "zero_lag_r": -0.24469994878385096,
+      "lag_aligned_r": 0.617281090155203,
+      "selected_lag_ms": -71.7948717948718,
+      "matched_band_reference_zero_lag_r": -0.24532553363282691,
+      "hr_rmse_bpm": 24.973748829566425,
+      "prediction_failures": {
+        "FLAT_SOURCE_RGB": 2,
+        "NO_USABLE_ROI": 1
+      },
+      "reference_unusable_cells": 0,
+      "lag_boundary_cells": 1
+    },
+    "recording_balanced": {
+      "hr_abs_error_bpm": 12.926232900341002,
+      "hr_squared_error": 579.138998279937,
+      "hr_error_bpm": 11.327970794080874,
+      "zero_lag_r": -0.2969537920337246,
+      "lag_aligned_r": 0.643516374872213,
+      "selected_lag_ms": -97.6190476190476,
+      "matched_band_reference_zero_lag_r": -0.2975385228054582,
+      "hr_rmse_bpm": 24.065306943397523,
+      "intended_recordings": 8,
+      "finite_recordings": {
+        "hr_abs_error_bpm": 7,
+        "hr_squared_error": 7,
+        "hr_error_bpm": 7,
+        "zero_lag_r": 7,
+        "lag_aligned_r": 7,
+        "selected_lag_ms": 7,
+        "matched_band_reference_zero_lag_r": 7
+      }
+    },
+    "harmonic_counts": {
+      "suspected_double_peak": 0,
+      "suspected_half_peak": 0,
+      "other_peak_discrepancy": 6,
+      "prediction_band_edge": 0
+    },
+    "harmonic_evaluable_windows": 13
+  }
+]

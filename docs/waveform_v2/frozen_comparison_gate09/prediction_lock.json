@@ -1,0 +1,11 @@
+{
+  "stage": "BEFORE_REFERENCE_ARCHIVE_OPEN",
+  "hashes": {
+    "locked_neural_predictions.npz": "5063d5338f024eabf9b5d290395aa197c65aa9d3f3adc6bd2f48900a88e2c961",
+    "label_blind_neural_predictions.json": "d453ef8d8f57b4e47f7b061169bc8d876a5af01baf9cde052ede148c9bf49e9e"
+  },
+  "intended_windows": 20,
+  "actual_forward_calls": 20,
+  "protocol_commit": "3c5efa8",
+  "implementation_commit": "87a9e813bed8ec5cbdc2f5c8d015f5b883ce82fe"
+}

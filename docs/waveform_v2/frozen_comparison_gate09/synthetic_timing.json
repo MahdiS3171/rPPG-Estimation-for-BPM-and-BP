@@ -1,0 +1,1585 @@
+{
+  "neural": [
+    {
+      "case": "baseline",
+      "start": 0,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        45,
+        45
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 43.20166721306438,
+          "peak_correlation": 0.9912237185553809,
+          "first_half_delay_ms": 42.125169909403255,
+          "second_half_delay_ms": 44.374291771274805,
+          "half_disagreement_ms": 2.2491218618715507,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8466714601680272,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8590232984601202,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9747252428765011,
+      "zero_lag_correlation_hand": -0.971310010987846,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "baseline",
+      "start": 0,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        45,
+        45
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 43.20166721306438,
+          "peak_correlation": 0.9912237185553809,
+          "first_half_delay_ms": 42.125169909403255,
+          "second_half_delay_ms": 44.374291771274805,
+          "half_disagreement_ms": 2.2491218618715507,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8466714601680272,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8590232984601202,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9747252428765011,
+      "zero_lag_correlation_hand": -0.971310010987846,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "baseline",
+      "start": 300,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        45,
+        45
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 43.99246307828545,
+          "peak_correlation": 0.9896216562204735,
+          "first_half_delay_ms": 42.470529819512386,
+          "second_half_delay_ms": 45.43692333143224,
+          "half_disagreement_ms": 2.966393511919854,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8558203143404287,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8482396918742219,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9702672175276089,
+      "zero_lag_correlation_hand": -0.9679227922803346,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "baseline",
+      "start": 300,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        45,
+        45
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 43.99246307828545,
+          "peak_correlation": 0.9896216562204735,
+          "first_half_delay_ms": 42.470529819512386,
+          "second_half_delay_ms": 45.43692333143224,
+          "half_disagreement_ms": 2.966393511919854,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8558203143404287,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8482396918742219,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9702672175276089,
+      "zero_lag_correlation_hand": -0.9679227922803346,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "common_input_delay_100ms",
+      "start": 0,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        100,
+        100,
+        100
+      ],
+      "roi_delays_stream2_ms": [
+        145,
+        145,
+        145
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 42.41956050229496,
+          "peak_correlation": 0.9914118524732467,
+          "first_half_delay_ms": 42.966667553722594,
+          "second_half_delay_ms": 41.91648429794694,
+          "half_disagreement_ms": 1.0501832557756572,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8899111718361913,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.89051579024233,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.7221131231726124,
+      "zero_lag_correlation_hand": -0.736473085563134,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "common_input_delay_100ms",
+      "start": 0,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        100,
+        100,
+        100
+      ],
+      "roi_delays_stream2_ms": [
+        145,
+        145,
+        145
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.95815757437276,
+          "peak_correlation": 0.9945834544509924,
+          "first_half_delay_ms": 44.798901832105024,
+          "second_half_delay_ms": 45.080088571363326,
+          "half_disagreement_ms": 0.2811867392583025,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 42.41956050229496,
+          "peak_correlation": 0.9914118524732467,
+          "first_half_delay_ms": 42.966667553722594,
+          "second_half_delay_ms": 41.91648429794694,
+          "half_disagreement_ms": 1.0501832557756572,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8624706616118714,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8727481180801819,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.96708203151124,
+      "zero_lag_correlation_hand": -0.9645468732660601,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "common_input_delay_100ms",
+      "start": 300,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        100,
+        100,
+        100
+      ],
+      "roi_delays_stream2_ms": [
+        145,
+        145,
+        145
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.46092412040886,
+          "peak_correlation": 0.9896211165805547,
+          "first_half_delay_ms": 42.77342081821062,
+          "second_half_delay_ms": 46.47172479456867,
+          "half_disagreement_ms": 3.698303976358055,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8854370221162786,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.893363431419808,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.7101439057100722,
+      "zero_lag_correlation_hand": -0.7082023078629307,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "common_input_delay_100ms",
+      "start": 300,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        100,
+        100,
+        100
+      ],
+      "roi_delays_stream2_ms": [
+        145,
+        145,
+        145
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.92807770273242,
+          "peak_correlation": 0.9948193643756104,
+          "first_half_delay_ms": 45.078300012166494,
+          "second_half_delay_ms": 44.848428151498986,
+          "half_disagreement_ms": 0.2298718606675081,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.46092412040886,
+          "peak_correlation": 0.9896211165805547,
+          "first_half_delay_ms": 42.77342081821062,
+          "second_half_delay_ms": 46.47172479456867,
+          "half_disagreement_ms": 3.698303976358055,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8457583804486585,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8488921654811408,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9685198952322536,
+      "zero_lag_correlation_hand": -0.9736428422788417,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "differential_second_stream_85ms",
+      "start": 0,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        130,
+        130,
+        130
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 126.7684317103301,
+          "peak_correlation": 0.9869137334421039,
+          "first_half_delay_ms": 125.89414116626838,
+          "second_half_delay_ms": 126.99662342055122,
+          "half_disagreement_ms": 1.1024822542828332,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8466714601680272,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8866506971316084,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9747252428765011,
+      "zero_lag_correlation_hand": -0.8010388208629765,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "differential_second_stream_85ms",
+      "start": 0,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        130,
+        130,
+        130
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 130,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 130.26758863826316,
+          "peak_correlation": 0.9995626338714595,
+          "first_half_delay_ms": 130.2772422803587,
+          "second_half_delay_ms": 130.38732567994842,
+          "half_disagreement_ms": 0.11008339958971192,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 126.7684317103301,
+          "peak_correlation": 0.9869137334421039,
+          "first_half_delay_ms": 125.89414116626838,
+          "second_half_delay_ms": 126.99662342055122,
+          "half_disagreement_ms": 1.1024822542828332,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8466714601680272,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8644830923438152,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9747252428765011,
+      "zero_lag_correlation_hand": -0.9643615601358806,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "differential_second_stream_85ms",
+      "start": 300,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        130,
+        130,
+        130
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 132.85402401325848,
+          "peak_correlation": 0.975928950047013,
+          "first_half_delay_ms": 130.8830847765925,
+          "second_half_delay_ms": 134.82770086830496,
+          "half_disagreement_ms": 3.9446160917124473,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8558203143404287,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8890640036416928,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9702672175276089,
+      "zero_lag_correlation_hand": -0.7780936339973311,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "differential_second_stream_85ms",
+      "start": 300,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        0,
+        0
+      ],
+      "roi_delays_stream2_ms": [
+        130,
+        130,
+        130
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 130,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 129.93940876158004,
+          "peak_correlation": 0.9995719572312592,
+          "first_half_delay_ms": 130.03671376056775,
+          "second_half_delay_ms": 129.8668364803695,
+          "half_disagreement_ms": 0.16987728019825,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 132.85402401325848,
+          "peak_correlation": 0.975928950047013,
+          "first_half_delay_ms": 130.8830847765925,
+          "second_half_delay_ms": 134.82770086830496,
+          "half_disagreement_ms": 3.9446160917124473,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8558203143404287,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.8354078923066959,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.9702672175276089,
+      "zero_lag_correlation_hand": -0.9730259841934862,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "heterogeneous_roi_phases",
+      "start": 0,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        120,
+        120
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        165,
+        165
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.375904158724836,
+          "peak_correlation": 0.992854880464927,
+          "first_half_delay_ms": 44.07252031830117,
+          "second_half_delay_ms": 44.664606140680206,
+          "half_disagreement_ms": 0.5920858223790333,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -339.63788157864633,
+          "peak_correlation": 0.9117237927950024,
+          "first_half_delay_ms": -349.7546132267866,
+          "second_half_delay_ms": -333.5244906440395,
+          "half_disagreement_ms": 16.23012258274713,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "half_window_unstable",
+          "delay_ms": null,
+          "peak_correlation": 0.9045415407712265,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": -334.2452573498313,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.811595500035568,
+      "zero_lag_correlation_hand": -0.8176869869513507,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "heterogeneous_roi_phases",
+      "start": 0,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        120,
+        120
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        165,
+        165
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.975336643844095,
+          "peak_correlation": 0.9946163350321642,
+          "first_half_delay_ms": 45.25322197976917,
+          "second_half_delay_ms": 44.9689725293626,
+          "half_disagreement_ms": 0.2842494504065698,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.375904158724836,
+          "peak_correlation": 0.992854880464927,
+          "first_half_delay_ms": 44.07252031830117,
+          "second_half_delay_ms": 44.664606140680206,
+          "half_disagreement_ms": 0.5920858223790333,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -339.63788157864633,
+          "peak_correlation": 0.9117237927950024,
+          "first_half_delay_ms": -349.7546132267866,
+          "second_half_delay_ms": -333.5244906440395,
+          "half_disagreement_ms": 16.23012258274713,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "half_window_unstable",
+          "delay_ms": null,
+          "peak_correlation": 0.9045415407712265,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": -334.2452573498313,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.811595500035568,
+      "zero_lag_correlation_hand": -0.8176869869513507,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained"
+    },
+    {
+      "case": "heterogeneous_roi_phases",
+      "start": 300,
+      "anchor": "nominal_undelayed",
+      "roi_delays_stream1_ms": [
+        0,
+        120,
+        120
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        165,
+        165
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 42.5550212464393,
+          "peak_correlation": 0.9915639024694056,
+          "first_half_delay_ms": 41.41999835291736,
+          "second_half_delay_ms": 43.77206502152362,
+          "half_disagreement_ms": 2.3520666686062626,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -333.1494473159236,
+          "peak_correlation": 0.8977086508783092,
+          "first_half_delay_ms": -334.17363969340084,
+          "second_half_delay_ms": -331.97806070519357,
+          "half_disagreement_ms": 2.1955789882072736,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -336.97466643081066,
+          "peak_correlation": 0.9116458018328286,
+          "first_half_delay_ms": -339.4558872341886,
+          "second_half_delay_ms": -335.2911928504199,
+          "half_disagreement_ms": 4.164694383768676,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.8010118815492016,
+      "zero_lag_correlation_hand": -0.8055039415875906,
+      "differential_delay_error_ms": -2.4449787535606973,
+      "source_delay_error_ms": -0.11486647138598727,
+      "face_anchor_shift_ms": -333.1494473159236,
+      "hand_anchor_shift_ms": -336.97466643081066,
+      "outcome": "FAIL",
+      "reason": "camera_time_anchor_shift"
+    },
+    {
+      "case": "heterogeneous_roi_phases",
+      "start": 300,
+      "anchor": "actual_first_roi",
+      "roi_delays_stream1_ms": [
+        0,
+        120,
+        120
+      ],
+      "roi_delays_stream2_ms": [
+        45,
+        165,
+        165
+      ],
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.88513352861401,
+          "peak_correlation": 0.9948421102362937,
+          "first_half_delay_ms": 44.80219809501383,
+          "second_half_delay_ms": 44.8600294069723,
+          "half_disagreement_ms": 0.057831311958473464,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 42.5550212464393,
+          "peak_correlation": 0.9915639024694056,
+          "first_half_delay_ms": 41.41999835291736,
+          "second_half_delay_ms": 43.77206502152362,
+          "half_disagreement_ms": 2.3520666686062626,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -333.1494473159236,
+          "peak_correlation": 0.8977086508783092,
+          "first_half_delay_ms": -334.17363969340084,
+          "second_half_delay_ms": -331.97806070519357,
+          "half_disagreement_ms": 2.1955789882072736,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -336.97466643081066,
+          "peak_correlation": 0.9116458018328286,
+          "first_half_delay_ms": -339.4558872341886,
+          "second_half_delay_ms": -335.2911928504199,
+          "half_disagreement_ms": 4.164694383768676,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": -0.8010118815492016,
+      "zero_lag_correlation_hand": -0.8055039415875906,
+      "differential_delay_error_ms": -2.4449787535606973,
+      "source_delay_error_ms": -0.11486647138598727,
+      "face_anchor_shift_ms": -333.1494473159236,
+      "hand_anchor_shift_ms": -336.97466643081066,
+      "outcome": "FAIL",
+      "reason": "camera_time_anchor_shift"
+    }
+  ],
+  "analytical": [
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 1.0,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.9999999999999998,
+      "zero_lag_correlation_hand": 1.0,
+      "differential_delay_error_ms": -0.0193157523158618,
+      "source_delay_error_ms": -0.0193157523158618,
+      "face_anchor_shift_ms": 0.0,
+      "hand_anchor_shift_ms": 0.0,
+      "outcome": "PASS_SYNTHETIC_ONLY",
+      "reason": "within_half_source_frame_synthetic_threshold",
+      "case": "identity"
+    },
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.89787228234494,
+          "peak_correlation": 0.9946913466457562,
+          "first_half_delay_ms": 44.89352104985724,
+          "second_half_delay_ms": 44.93159718539371,
+          "half_disagreement_ms": 0.038076135536471156,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 100.07679014496665,
+          "peak_correlation": 1.0,
+          "first_half_delay_ms": 100.19055970848723,
+          "second_half_delay_ms": 99.95934704974903,
+          "half_disagreement_ms": 0.23121265873820107,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 100.02654761412236,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 100.09805591169042,
+          "second_half_delay_ms": 99.98115960282703,
+          "half_disagreement_ms": 0.11689630886338875,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.6488976480723444,
+      "zero_lag_correlation_hand": 0.6486550388398875,
+      "differential_delay_error_ms": -0.10212771765505835,
+      "source_delay_error_ms": -0.0193157523158618,
+      "face_anchor_shift_ms": 100.07679014496665,
+      "hand_anchor_shift_ms": 100.02654761412236,
+      "outcome": "FAIL",
+      "reason": "camera_time_anchor_shift",
+      "case": "common_latency_100ms"
+    },
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 130.11122584204367,
+          "peak_correlation": 0.9995703262608655,
+          "first_half_delay_ms": 130.23250925123583,
+          "second_half_delay_ms": 129.99323361528042,
+          "half_disagreement_ms": 0.23927563595540846,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 85.0480773850002,
+          "peak_correlation": 0.9912270038386953,
+          "first_half_delay_ms": 85.08009051701494,
+          "second_half_delay_ms": 85.02591886915936,
+          "half_disagreement_ms": 0.054171647855582705,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.9999999999999998,
+      "zero_lag_correlation_hand": 0.7386059822440995,
+      "differential_delay_error_ms": 85.11122584204367,
+      "source_delay_error_ms": -0.0193157523158618,
+      "face_anchor_shift_ms": 0.0,
+      "hand_anchor_shift_ms": 85.0480773850002,
+      "outcome": "FAIL",
+      "reason": "differential_delay_distortion",
+      "case": "differential_hand_latency_85ms"
+    },
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.3293141599409984,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "polarity_ambiguous",
+          "delay_ms": null,
+          "peak_correlation": 0.7899213023824687,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.9999999999999998,
+      "zero_lag_correlation_hand": -1.0,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained",
+      "case": "polarity_inversion_hand"
+    },
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "abstain",
+          "reason": "search_boundary",
+          "delay_ms": null,
+          "peak_correlation": 0.047266124677072655,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "abstain",
+          "reason": "low_correlation",
+          "delay_ms": null,
+          "peak_correlation": 0.07044548634376488,
+          "first_half_delay_ms": null,
+          "second_half_delay_ms": null,
+          "half_disagreement_ms": null,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.9999999999999998,
+      "zero_lag_correlation_hand": -0.03619652760787993,
+      "differential_delay_error_ms": null,
+      "source_delay_error_ms": null,
+      "face_anchor_shift_ms": null,
+      "hand_anchor_shift_ms": null,
+      "outcome": "ABSTAIN_UNVERIFIED",
+      "reason": "timing_estimator_abstained",
+      "case": "unrelated_hand_noise"
+    },
+    {
+      "contract_version": "waveform_v2_synthetic_timing_transfer_v0.1",
+      "scope": "synthetic_only",
+      "known_source_delay_ms": 45.0,
+      "allowed_error_frames": 0.5,
+      "sample_spacing_ms": 33.333333333333215,
+      "subframe_values_are_not_verified_sensor_precision": true,
+      "estimators": {
+        "source_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 44.98068424768414,
+          "peak_correlation": 0.9947411532931093,
+          "first_half_delay_ms": 45.02962307275673,
+          "second_half_delay_ms": 44.9146860510569,
+          "half_disagreement_ms": 0.11493702169983067,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "reconstructed_inter_site": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 20.573777090708248,
+          "peak_correlation": 0.9116069958843187,
+          "first_half_delay_ms": 21.22819812324675,
+          "second_half_delay_ms": 19.789038676036302,
+          "half_disagreement_ms": 1.4391594472104465,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "face_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": 0.0,
+          "peak_correlation": 0.9999999999999998,
+          "first_half_delay_ms": 0.0,
+          "second_half_delay_ms": 0.0,
+          "half_disagreement_ms": 0.0,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        },
+        "hand_output_vs_source": {
+          "status": "diagnostic_only",
+          "reason": "synthetic_timing_proxy_not_physiological",
+          "delay_ms": -24.766454251931155,
+          "peak_correlation": 0.9150960255767515,
+          "first_half_delay_ms": -23.856651111854166,
+          "second_half_delay_ms": -25.424705247886955,
+          "half_disagreement_ms": 1.5680541360327886,
+          "source_sample_spacing_ms": 33.333333333333215,
+          "uncertainty_floor_ms": 33.333333333333215
+        }
+      },
+      "zero_lag_correlation_face": 0.9999999999999998,
+      "zero_lag_correlation_hand": 0.8983839773161085,
+      "differential_delay_error_ms": -24.426222909291752,
+      "source_delay_error_ms": -0.0193157523158618,
+      "face_anchor_shift_ms": 0.0,
+      "hand_anchor_shift_ms": -24.766454251931155,
+      "outcome": "FAIL",
+      "reason": "differential_delay_distortion",
+      "case": "hand_morphology_change"
+    }
+  ],
+  "interpretation": "Independent synthetic windows only; no continuous reconstruction, PTT or BP."
+}
