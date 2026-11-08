@@ -139,3 +139,16 @@ includes zero; no HR, physical timing, native-60 detail or independent-domain
 claim is warranted. Export one full-original-Train fit without a validation
 score, preserving frozen V1. End broad architecture search on the same small
 cohort; prioritize suitable real-domain/reference admission next.
+
+## 2026-11-08 — User authorizes a public-data split reset (D016)
+
+The user requested all eligible public Train/Validation/Test records be
+repartitioned for newly initialized models, replacing the prior Train-only
+development boundary. Use all 41 UBFC subjects and ten admitted SCAMPS clips,
+assigned 29/6/6 and 8/1/1 with the precommitted deterministic split. New Train
+may contain old public Val/Test subjects. Preserve all historical splits,
+evidence, frozen V1 and the prior candidate; private/sealed participants remain
+excluded. Explain that fresh weights do not erase analyst/architecture exposure:
+this is a new internal benchmark, not an independent external cohort. New Test
+is separate from selection through the waveform/specialist validation campaign.
+Use matched same-validation controls for any claim about more training data.

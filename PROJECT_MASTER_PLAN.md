@@ -70,6 +70,18 @@ repeat volunteer collection without a discriminating protocol.
 
 ## Active development campaign
 
+**Latest user-directed protocol:** repartition all 41 eligible public UBFC
+subjects and ten admitted SCAMPS clips for a new from-scratch campaign, using
+29/6/6 and 8/1/1 Train/Validation/Test allocations. This explicitly supersedes
+the old public Train-only boundary for new research, without changing historical
+splits, frozen V1 or private/sealed restrictions. See the
+[reset protocol](docs/WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md) and committed split.
+Fresh weights do not make historically exposed data an untouched external test.
+All new model selection uses Validation; Test stays separate until the waveform
+and three-part specialist comparison is fixed. Rerun earlier mechanisms on this
+protocol, with matched controls to distinguish participant/window increases
+from a changed evaluation population.
+
 The approved integration is complete on main at `50cb264`; PR #7 was merged with
 history preserved, the six superseded drafts are closed, and all branches remain.
 No new experiment PR stack is being created.

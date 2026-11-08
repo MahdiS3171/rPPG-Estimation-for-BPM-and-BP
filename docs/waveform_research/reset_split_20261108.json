@@ -1,0 +1,87 @@
+{
+  "version": "waveform_subject_reset_v1",
+  "date": "2026-11-08",
+  "seed": 20261110,
+  "UBFC": {
+    "train": [
+      "subject1",
+      "subject10",
+      "subject11",
+      "subject13",
+      "subject14",
+      "subject16",
+      "subject17",
+      "subject2",
+      "subject20",
+      "subject21",
+      "subject22",
+      "subject25",
+      "subject27",
+      "subject28",
+      "subject29",
+      "subject3",
+      "subject31",
+      "subject32",
+      "subject33",
+      "subject34",
+      "subject35",
+      "subject36",
+      "subject37",
+      "subject38",
+      "subject39",
+      "subject41",
+      "subject5",
+      "subject6",
+      "subject7"
+    ],
+    "validation": [
+      "subject15",
+      "subject26",
+      "subject30",
+      "subject4",
+      "subject40",
+      "subject9"
+    ],
+    "test": [
+      "subject12",
+      "subject18",
+      "subject19",
+      "subject23",
+      "subject24",
+      "subject8"
+    ]
+  },
+  "SCAMPS": {
+    "train": [
+      "P000002",
+      "P000003",
+      "P000004",
+      "P000005",
+      "P000006",
+      "P000007",
+      "P000008",
+      "P000010"
+    ],
+    "validation": [
+      "P000009"
+    ],
+    "test": [
+      "P000001"
+    ]
+  },
+  "authorization": "User explicitly requested repartitioning all eligible public Train/Val/Test records for new models",
+  "exposure": "Historically exposed internal benchmark; fresh weights do not erase prior analyst/model-selection exposure",
+  "windows": {
+    "seconds": 10,
+    "ubfc_stride_seconds": 2,
+    "scamps_saved_window_starts_seconds": [
+      0,
+      10
+    ],
+    "sample_rate_hz": 30
+  },
+  "test_policy": "No test scoring until waveform and specialist validation comparisons and selection are locked",
+  "no_private_pilot": true,
+  "no_sealed_subject_access": true,
+  "frozen_v1_unchanged": true
+}
