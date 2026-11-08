@@ -83,3 +83,39 @@ signature, contract acceptance or controlled-data transfer is authorized by that
 answer. Keep existing PURE pending; continue the public development admission
 and native-60 design work. Substantial training and first-use held-out evaluation
 still need concrete proposals after suitable data and protocols exist.
+
+## 2026-11-08 — Continue now; two-source training and broader ideas (D010)
+
+User requested work with current datasets while new access is pending, proposed
+training on two datasets with a third dataset reserved for final evaluation,
+and explicitly requested adaptive classical hybrids, expanded models and varied
+loss functions. Implement a bounded local campaign on current development data.
+Keep original frozen/protected boundaries; the two available sources are real
+UBFC and synthetic SCAMPS, not two independent real domains. A third-domain final
+evaluation remains separate and requires an admitted, unconsumed protocol.
+
+## 2026-11-08 — Test mixtures and adaptive/loss components independently (D011)
+
+The 20-solve linear study's 50:50 pooling worsened UBFC development scores.
+Do not infer all multi-source training fails or tune to the consumed external
+test. The neural screen therefore includes 0/20/50% source sampling controls,
+single-source and shuffled-label controls, and fixed classical comparators.
+It trained 21 compact models using a local RTX 4060; no paid compute. Prototype
+temporal kernels preserve physical support across 30/60-Hz grids, without
+claiming 60-Hz physiological supervision from 30-Hz labels.
+
+## 2026-11-08 — Confirm component benefits before combining them (D012)
+
+First-screen hybrid morphology training improved aligned shape/derivative metrics,
+while native correlation did not improve clearly. Confirm across all original
+Train subjects and additional seeds; retain a simple quality-weighted hybrid as
+a serious comparator. Follow-up hypotheses are fixed in the confirmation
+protocol before fitting. More complexity is retained only for measured value.
+
+## 2026-11-08 — Push every substantive completed milestone (D013, user instruction)
+
+User explicitly requested commits and GitHub pushes after each important step.
+Publish the ongoing research branch after protocols/implementations and after
+verified result milestones; retain one coherent branch instead of new stacked
+Gate PRs. Raw data, model checkpoints and participant waveform artifacts remain
+ignored. Main merges still follow the existing approval boundary.

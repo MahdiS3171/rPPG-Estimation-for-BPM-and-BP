@@ -1,7 +1,7 @@
 # Waveform and face–hand timing research
 
 Updated 2026-11-08. Lead: Codex, within the active runtime. Current branch:
-`research/project-reassessment-2026-11-08`. This is the project roadmap; historical
+`research/native-waveform-development`. This is the project roadmap; historical
 Gate documents remain evidence, not current work assignments.
 
 ## Strategic assessment
@@ -70,6 +70,33 @@ repeat volunteer collection without a discriminating protocol.
    directly against main. The user approved the history-preserving merge after
    final green CI and closure of the six old drafts while retaining branches.
    No force-push, raw data release or branch deletion is authorized.
+
+## Active development campaign
+
+The approved integration is complete on main at `50cb264`; PR #7 was merged with
+history preserved, the six superseded drafts are closed, and all branches remain.
+No new experiment PR stack is being created.
+
+The user subsequently authorized broad experimentation on current datasets,
+including adaptive classical selection/fusion, model expansion and loss variants.
+The first Train-only, subject-fold linear study is complete: 50:50 SCAMPS pooling
+worsened its real-source metrics; fixed CHROM_WIN remained stronger. That finding
+motivated explicit source-mixture controls rather than assuming more data helps.
+
+The [adaptive screen](docs/ADAPTIVE_WAVEFORM_SCREEN_PROTOCOL.md) trained 21 compact
+configurations on the local GPU in 157.42 seconds, using one immutable 168-window
+archive. It tests signed learned gating, residual correction, raw-RGB temporal
+models, dual-band heads, four loss schedules, past-only context, dropout and
+shuffled targets. Preliminary aligned shape/derivative gains from the hybrid
+morphology model do not establish improved native phase or generalization.
+
+The [confirmation study](docs/ADAPTIVE_WAVEFORM_CONFIRMATION_PROTOCOL.md) expands
+to all 26 original UBFC Train subjects across five folds, with source-mixture,
+loss, context, width and multi-head comparisons, fixed ensembles, and additional
+seeds. Local time caps are 15 minutes per compact screen. No cloud, new equipment,
+original Val/Test use, private-data access or large video-model campaign is
+included. Native-60 model operation has engineering tests; current labels remain
+30 Hz and cannot validate extra physiological detail at 60 Hz.
 
 ## Ranked risk register
 
