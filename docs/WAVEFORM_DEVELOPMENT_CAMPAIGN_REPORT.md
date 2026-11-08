@@ -74,6 +74,14 @@ The [robustness checks](WAVEFORM_ROBUSTNESS_PROTOCOL.md) assess known input shif
 missing features and equivalent 30/60-Hz grids before deployment claims. No
 additional fit or reference data is needed for those checks.
 
+Initial robustness checks completed for compact, TCN and attention models over
+all 152 OOF windows: whole-input shifts retain >.9999 mean output agreement;
+equivalent interpolated 60-Hz inputs retain >.99998 agreement after subsampling.
+All flat/no-prior cases abstain. ROI removal changes the relative lag by one
+33.33-ms bin in some windows. These are processing checks with coarse lag bins,
+not local timing validation. Two fixed region-dropout/consistency controls now
+test whether that sensitivity can be reduced without losing reconstruction.
+
 Next value comes from robustness and data/reference admission, followed by a
 locked third real domain. Current evidence does not require camera recapture
 as its explanation. Phone calibration can measure acquisition behavior, but

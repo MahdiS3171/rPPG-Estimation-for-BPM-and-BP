@@ -18,6 +18,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--data',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--confirmation',type=Path,help='Reuse completed five-fold development partition; morphology losses only')
+    parser.add_argument('--roi-robustness',action='store_true',help='Two prespecified long-TCN dropout/consistency controls')
     parser.add_argument('--max-seconds',type=int,default=900);args=parser.parse_args()
     root=Path.cwd();allowed=(root/'outputs/waveform_screen').resolve();out=args.out.resolve()
     if allowed not in out.parents or allowed not in args.data.resolve().parents or out.exists():parser.error('Use screen data and NEW output')
@@ -26,6 +27,7 @@ def main():
     with np.load(args.data/'development_arrays.npz',allow_pickle=False) as archive:arrays={k:archive[k] for k in archive.files}
     if args.confirmation:
         confirm_folds(args,arrays,receipt,out,allowed);return
+    if args.roi_robustness:parser.error('ROI controls require --confirmation')
     validation=np.flatnonzero(arrays['validation']);fit=np.flatnonzero(~arrays['validation'])
     configs=[dict(name=architecture+'__'+loss,architecture=architecture,kind='gate_residual',width=16,
         context=False,synthetic=.2,loss=loss) for architecture in ('long_tcn','physical_attention','spectral','temporal_gate')
@@ -64,6 +66,10 @@ def confirm_folds(args,arrays,receipt,out,allowed):
     folds=original['folds']
     configs=[dict(name=name+'__morphology',architecture=name,kind='gate_residual',width=16,
         context=False,synthetic=.2,loss='morphology') for name in ('long_tcn','physical_attention','spectral','temporal_gate')]
+    if args.roi_robustness:
+        configs=[dict(name=name,architecture='long_tcn',kind='gate_residual',width=16,context=False,
+            synthetic=.2,loss='morphology',roi_dropout=True,roi_consistency=weight)
+            for name,weight in (('long_tcn__roi_dropout',0.),('long_tcn__roi_consistency0_2',.2))]
     device=torch.device('cuda' if torch.cuda.is_available() else 'cpu');torch.set_num_threads(1)
     torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
     out.mkdir(parents=True,exist_ok=False)
@@ -88,15 +94,15 @@ def confirm_folds(args,arrays,receipt,out,allowed):
             key=f'fold{fold}_{name}';saved[key]=prediction;index_archive[key]=validation
             parts.setdefault(name,[]).append((validation,prediction))
         (out/'partial_results.json').write_text(json.dumps(clean(runs),indent=2,allow_nan=False)+'\n')
-        if len(runs)!=4*(fold+1):break
+        if len(runs)!=len(configs)*(fold+1):break
     summaries={}
     for name,items in parts.items():
         indices=np.concatenate([i for i,_ in items]);prediction=np.concatenate([p for _,p in items])
         assert len(set(indices))==len(indices)
         summaries[name]=dict(complete_real_cohort=len(indices)==152,summary=summarize(prediction,arrays,indices)[0])
     np.savez_compressed(out/'predictions.npz',**saved);np.savez_compressed(out/'prediction_indices.npz',**index_archive)
-    report=dict(status='EXPLORATORY_ARCHITECTURE_FIVE_FOLD_DEVELOPMENT',complete=len(runs)==20,
-        intended_neural_runs=20,completed_neural_runs=len(runs),runs=runs,summaries=summaries,folds=folds,
+    report=dict(status='ROI_ROBUSTNESS_FIVE_FOLD_DEVELOPMENT' if args.roi_robustness else 'EXPLORATORY_ARCHITECTURE_FIVE_FOLD_DEVELOPMENT',complete=len(runs)==5*len(configs),
+        intended_neural_runs=5*len(configs),completed_neural_runs=len(runs),runs=runs,summaries=summaries,folds=folds,
         data_sha256=receipt['arrays_sha256'],steps=300,seed=SEED,seconds=time.perf_counter()-started,
         no_original_val_test=True,no_private_data=True,no_native60_training_labels=True,
         predictions_sha256=file_sha256(out/'predictions.npz'),indices_sha256=file_sha256(out/'prediction_indices.npz'),

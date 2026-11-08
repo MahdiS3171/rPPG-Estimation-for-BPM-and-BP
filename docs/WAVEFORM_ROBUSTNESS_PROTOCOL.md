@@ -24,3 +24,18 @@ timing. ROI removal occurs after feature extraction and does not simulate every
 camera failure. No reference-based calibration, final evaluation or BP fitting
 is implied. Evidence from these checks guides whether the models need
 equivariance/rate-consistency regularization before any deployment.
+
+## Follow-up fixed after initial robustness results
+
+The leading models preserve tested whole-input shifts and equivalent grids,
+but removing an ROI changes estimated relative output lag by one 33.33-ms bin
+in some windows. Test two controls on the same five folds, 300 steps, seed and
+20% synthetic mixture: longer TCN with region dropout; the same with dropout
+and a 0.2-weight consistency loss. Drop one uniformly selected ROI in half the
+training examples, zeroing input features, masks and corresponding descriptors.
+Use an independent augmentation RNG so source/subject sampling remains matched.
+The consistency target is the current full-input output with stopped gradients;
+standardized native-waveform MSE penalizes changes under region removal. It is
+an engineering regularizer, not physiological timing supervision. Repeat the
+same robustness checks and report waveform/HR tradeoffs for both controls.
+Ten fits maximum, capped at 15 minutes; no search over consistency weights.

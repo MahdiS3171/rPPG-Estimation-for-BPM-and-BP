@@ -28,6 +28,8 @@ Repeated test execution does not add participants or independent observations.
 
 | E018 | Architecture development and five-fold follow-up | [Protocol](docs/WAVEFORM_ARCHITECTURE_EXTENSION_PROTOCOL.md), [screen](docs/waveform_research/architecture_screen_20261108.csv), [confirmation](docs/waveform_research/architecture_confirmation_20261108.csv), [receipt](docs/waveform_research/architecture_confirmation_20261108.json): eight screen fits and 20 follow-ups. Replay reproduces 192 + 162 aggregates. | Longer TCN shape .805, attention .805 vs compact .788; native/HR do not show a uniform gain. Spectral HR 2.702 bpm is worse; time-varying gate adds little. Prefer longer TCN for further morphology work; no independent-domain, native-60 or physiological timing claim. |
 
+| E019 | Feature-level numerical robustness | [Protocol](docs/WAVEFORM_ROBUSTNESS_PROTOCOL.md), [table](docs/waveform_research/waveform_robustness_20261108.csv), [receipt](docs/waveform_research/waveform_robustness_20261108.json): three models x ten conditions x 152 OOF windows; 15 owned checkpoints checked and CPU predictions replayed. | Shift/equivalent-grid consistency is high; flat and no-prior cases abstain. Removing one ROI can move relative output lag by 33.33 ms. This is a numerical stress test on interpolated/current features, not native-60 physiology, camera calibration or millisecond timing qualification. |
+
 ## Closed / unavailable evidence
 
 S007–S011: no enumeration, inspection, hashing, decoding, inference or evaluation.

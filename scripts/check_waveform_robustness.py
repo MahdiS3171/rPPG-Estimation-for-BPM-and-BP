@@ -52,10 +52,14 @@ def agreement(p,expected):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('data','confirmation','extensions','out'):parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--roi-trained',type=Path,help='Optional completed region-dropout training controls')
     args=parser.parse_args();allowed=(Path.cwd()/'outputs/waveform_screen').resolve()
     if any(allowed not in p.resolve().parents for p in (args.data,args.confirmation,args.extensions,args.out)) or args.out.exists():
         parser.error('Use owned screen artifacts and a NEW output')
     roots={'compact_residual':args.confirmation,'long_tcn':args.extensions,'physical_attention':args.extensions}
+    if args.roi_trained:
+        if allowed not in args.roi_trained.resolve().parents:raise ValueError('Use owned screen artifacts')
+        roots.update(long_tcn__roi_dropout=args.roi_trained,long_tcn__roi_consistency0_2=args.roi_trained)
     reports={name:json.loads((root/'results.json').read_text()) for name,root in roots.items()}
     expected_hash=reports['compact_residual']['data_sha256']
     if file_sha256(args.data/'development_arrays.npz')!=expected_hash or any(r['data_sha256']!=expected_hash or not r['complete'] for r in reports.values()):
@@ -63,7 +67,7 @@ def main():
     with np.load(args.data/'development_arrays.npz',allow_pickle=False) as archive:arrays={k:archive[k] for k in archive.files}
     torch.set_num_threads(1);rows=[];hashes={};replay_max=0.
     for name,root in roots.items():
-        report=reports[name];variant='morph_mix20' if name=='compact_residual' else name+'__morphology'
+        report=reports[name];variant='morph_mix20' if name=='compact_residual' else (name if name.startswith('long_tcn__roi_') else name+'__morphology')
         with np.load(root/'predictions.npz',allow_pickle=False) as saved:
             for fold,held in enumerate(report['folds']):
                 indices=np.flatnonzero(np.isin(arrays['record_id'],held));key=f'fold{fold}_{variant}';path=root/(key+'.pt')
@@ -74,7 +78,8 @@ def main():
                 # Own hash-pinned local outputs contain NumPy scalar metadata.
                 checkpoint=torch.load(path,map_location='cpu',weights_only=False)
                 if set(checkpoint['validation_ids'])!=set(held):raise ValueError('Wrong fold checkpoint')
-                model=AdaptiveWaveformNet('gate_residual') if name=='compact_residual' else make_extended_model(name)
+                architecture='long_tcn' if name.startswith('long_tcn__roi_') else name
+                model=AdaptiveWaveformNet('gate_residual') if name=='compact_residual' else make_extended_model(architecture)
                 model.load_state_dict(checkpoint['model_state'],strict=True);model.eval()
                 x=arrays['x'][indices];roi=arrays['roi'][indices];prior=arrays['prior'][indices]
                 original,usable=predict(model,x,roi,prior,arrays['descriptors'][indices],30)

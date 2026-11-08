@@ -31,6 +31,7 @@ def fit_one(configuration,arrays,fit,validation,device,seed,steps,model_factory=
     torch.manual_seed(seed)
     if device.type=='cuda':torch.cuda.manual_seed_all(seed)
     rng=np.random.default_rng(seed)
+    augmentation_rng=np.random.default_rng(seed+771)
     pools={source:{s:fit[(arrays['source'][fit]==source)&(arrays['record_id'][fit]==s)]
         for s in sorted(set(arrays['record_id'][fit][arrays['source'][fit]==source]))} for source in (0,1)}
     model=model_factory(configuration['kind'],context=configuration['context'],width=configuration['width']).to(device)
@@ -43,7 +44,21 @@ def fit_one(configuration,arrays,fit,validation,device,seed,steps,model_factory=
             source=int(rng.random()<configuration['synthetic'])
             subject=rng.choice(list(pools[source]));indices.append(int(rng.choice(pools[source][subject])))
         batch=batch_tensors(arrays,np.asarray(indices),device)
-        model.train();optimizer.zero_grad(set_to_none=True);output=forward(model,batch)
+        model.train();optimizer.zero_grad(set_to_none=True)
+        clean_output=None
+        if configuration.get('roi_dropout',False):
+            if configuration.get('roi_consistency',0):
+                with torch.no_grad():clean_output=forward(model,batch)['ppg'].detach()
+            dropped={key:value.clone() for key,value in batch.items()}
+            remove=augmentation_rng.random(len(indices))<.5
+            regions=augmentation_rng.integers(0,3,len(indices))
+            for row in np.flatnonzero(remove):
+                region=int(regions[row]);dropped['x'][row,region]=0
+                dropped['roi'][row,region]=False;dropped['prior'][row,region]=False
+                dropped['descriptors'][row,24*region:24*(region+1)]=0
+                dropped['descriptors'][row,72+region]=0
+            batch=dropped
+        output=forward(model,batch)
         if configuration['loss']=='spectral_curriculum':
             p,y=standardized(output['ppg']),standardized(batch['y'])
             shape,d1=aligned_components(p,y)
@@ -51,6 +66,11 @@ def fit_one(configuration,arrays,fit,validation,device,seed,steps,model_factory=
             loss=spectral_distance(p,y)+weight*(1-shape.mean()+.2*(1-d1.mean()))
             loss=loss+1e-4*output['residual'].square().mean()
         else:loss=training_loss(output,batch['y'],configuration['loss'],step,steps)
+        if clean_output is not None:
+            # A stop-gradient full-input prediction is an engineering consistency
+            # target, not a physiological phase label. Native waveform MSE
+            # penalizes both shape and phase changes under ROI removal.
+            loss=loss+configuration['roi_consistency']*(standardized(output['ppg'])-standardized(clean_output)).square().mean()
         if not torch.isfinite(loss):raise RuntimeError('Nonfinite confirmation loss')
         loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1.0);optimizer.step()
         if step in (0,steps//3,2*steps//3,steps-1):curve.append(dict(step=step+1,loss=float(loss.detach())))
