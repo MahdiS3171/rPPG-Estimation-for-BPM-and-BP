@@ -130,3 +130,7 @@ S007–S011, private Dataset/ and sheets/ remain closed. Frozen V1 and all histo
 sources/results remain untouched. No one should infer clinical BP validity from
 this project. See [decisions](DECISION_LOG.md), [evidence](EVIDENCE_LEDGER.md), and
 the [full audit](docs/PROJECT_REASSESSMENT_2026-11-08.md).
+
+Use the [current research index](docs/waveform_research/README.md) for protocols
+and results. The [organization review](docs/REPOSITORY_ORGANIZATION.md) records
+reversible cleanup and historical paths that must stay stable.
