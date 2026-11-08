@@ -47,6 +47,16 @@ inside the new namespace. No participant image pixels are saved. Up to three
 local acquisition workers; reassess projected runs exceeding 30 minutes.
 Do not silently substitute an untested detection cadence.
 
+**User-approved compute update, before new acquisition:** profiling projected
+1–2 hours for five new clips or 2–3 hours for all eleven. The user selected
+consistent re-extraction of all eleven. Pin both landmarkers to the Tasks
+backend and existing matching model-asset hashes. Decode each frame once and
+measure every native ROI using bounded polygon calculations. Synthetic tests
+and an exposed-video check establish exact RGB/pixel-count equivalence to the
+full-frame masks, including clipped boundaries. No spatial resizing or reduced
+detection cadence is introduced. Old caches remain unchanged and are not mixed
+into the primary study; current library versions/provenance are saved.
+
 Primary face inference: nonoverlapping ten-second windows at 30 Hz. Actual
 high-rate recordings also support a prespecified 60-Hz numerical sensitivity,
 with identical physical duration and explicit interpolation/gap accounting.

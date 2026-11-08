@@ -70,6 +70,19 @@ repeat volunteer collection without a discriminating protocol.
 
 ## Active development campaign
 
+**Newest pilot authorization:** the user requested frozen new-model testing
+on all eleven BP-pilot subjects and named the updated final workbook as
+authoritative. The [pilot protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md) and
+[scope/model lock](docs/waveform_research/pilot11_model_and_scope_lock_20261108.json)
+authorize local S001–S011 evaluation for this study, superseding the old reserve
+for that use only. No waveform fine-tuning or private-data publication. S001–S006
+are BP development and S007–S011 fixed BP evaluation. The user approved a
+2–3-hour consistent every-frame extraction for all eleven rather than mixing
+legacy/current preprocessing. Updated metadata matches all eleven videos and
+33 numeric cuff pairs, but all cuff timing remains legacy/unreviewed. Primary
+event-level BP/timing associations therefore remain unverified; secondary
+session-average BP is explicitly exploratory. Acquisition/inference is ongoing.
+
 **Latest user-directed protocol:** repartition all 41 eligible public UBFC
 subjects and ten admitted SCAMPS clips for a new from-scratch campaign, using
 29/6/6 and 8/1/1 Train/Validation/Test allocations. This explicitly supersedes

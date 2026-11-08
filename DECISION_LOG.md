@@ -189,3 +189,13 @@ not authorize waveform fine-tuning or participant-data release. Keep S001?S006
 for exploratory BP fitting and S007?S011 for fixed BP evaluation; record their
 consumption and preserve the original frozen/model artifacts. Evaluate waveform
 support and optical timing separately from conditional BP prediction.
+
+## 2026-11-08 ? Consistent all-eleven acquisition approved (D020)
+
+Native profiling projected significant local CPU time and revealed legacy/current
+library differences. The user explicitly selected re-extracting all eleven
+consistently, approximately 2?3 hours locally. Use three workers, fixed Tasks
+landmarkers with the existing matching assets, every frame and original PTS.
+A one-decode bounded-polygon implementation preserves exact native pixel/RGB
+calculations in synthetic and exposed-video checks. No cadence reduction,
+resizing, waveform fitting, source modification or private-data release.
