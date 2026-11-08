@@ -91,5 +91,13 @@
   "interval_caveat": "Conditional development bootstrap by subject; overlapping training folds and selection on exposed development data; not independent-test inference.",
   "aggregate_csv_sha256": "12d3dde5f7312d4214bf055387732367b6cbfb3e7b1bcce2a152c7f157a2931b",
   "local_full_results_path": "outputs\\waveform_screen\\confirmation_20261108_01\\results.json",
-  "local_full_results_sha256": "5dfeb58ed104be3fd1d7cfd60422c228a1076553a0c44b0249c5b3e506cce1fc"
+  "local_full_results_sha256": "5dfeb58ed104be3fd1d7cfd60422c228a1076553a0c44b0249c5b3e506cce1fc",
+  "independent_verification": {
+    "saved_aggregates_recomputed": 366,
+    "registered_checkpoint_hashes_verified": 40,
+    "max_absolute_metric_difference": 4.0003827139756254e-08,
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  }
 }

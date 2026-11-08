@@ -119,3 +119,12 @@ Publish the ongoing research branch after protocols/implementations and after
 verified result milestones; retain one coherent branch instead of new stacked
 Gate PRs. Raw data, model checkpoints and participant waveform artifacts remain
 ignored. Main merges still follow the existing approval boundary.
+
+## 2026-11-08 — Prefer demonstrated correction over accumulated complexity (D014)
+
+Matched controls show residual correction provides most of the shape gain;
+input-adaptive gates add a modest increment. Keep constant/quality-based hybrids
+as live comparators. The first architecture screen motivates a bounded 20-fit
+five-fold check of context, attention, spectral and time-varying gates. Stop
+expanding families that do not improve the relevant endpoints. This remains
+repeated development selection, not an independent generalization result.

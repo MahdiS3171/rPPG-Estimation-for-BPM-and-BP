@@ -100,6 +100,14 @@ included. Native-60 model operation has engineering tests; current labels remain
 
 ## Ranked risk register
 
+Current findings and negative results are consolidated in the
+[campaign report](docs/WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md). Matched controls
+favor learned waveform correction; input-adaptive gating adds little. Eight
+architecture/loss runs are complete; a fixed 20-fit five-fold comparison will
+decide whether longer context/attention earns its extra complexity. Preserve
+strong classical and simple residual comparators. Shape gains do not qualify
+the model for timing or BP.
+
 | Priority | Risk / consequence | Mitigation and stop criterion |
 |---|---|---|
 | P0 | Optical delay is smaller than unknown acquisition/fiducial error. | Establish row timing, exposure, estimator and repeatability error separately. No resolved timing claim when the effect is indistinguishable from those errors. |

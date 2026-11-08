@@ -35,5 +35,7 @@ jobs:
         run: python -m unittest discover -s tests -p test_two_source_waveform.py -v
       - name: Adaptive waveform and loss contracts
         run: python -m unittest discover -s tests -p test_waveform_screen.py -v
+      - name: Extended waveform architecture contracts
+        run: python -m unittest discover -s tests -p test_waveform_extensions.py -v
       - name: Source compilation
         run: python -m compileall -q rppg_lab scripts tests
