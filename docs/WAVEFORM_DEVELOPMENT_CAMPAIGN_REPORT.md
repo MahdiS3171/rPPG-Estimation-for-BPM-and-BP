@@ -1,5 +1,14 @@
 # Current waveform development campaign
 
+**Active follow-up:** the user authorized frozen-model evaluation on all eleven
+local BP-pilot subjects, using the updated final workbook. The
+[Pilot11 protocol](PILOT11_NEW_MODELS_PROTOCOL.md) fixes fifteen checkpoints,
+consistent every-frame acquisition, separate optical timing checks and a small
+six-development/five-evaluation-subject BP comparison. This supersedes the old
+private-data reserve only for that local study. Historical tables below retain
+their original scope. Acquisition/evaluation is in progress; no pilot BP result
+has been scored yet.
+
 **Latest protocol change:** the user authorized a new subject-level split across
 all eligible public records. The [reset protocol](WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md)
 and [split](waveform_research/reset_split_20261108.json) are committed before

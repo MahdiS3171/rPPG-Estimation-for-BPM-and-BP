@@ -68,5 +68,7 @@ bounded with the existing apparatus, report timing as unresolved and continue
 the waveform objective. An authorized external multisite dataset could investigate
 timing physiology separately, while transfer back to the phones remains unproven.
 
-S007–S011 stay sealed. Existing S001–S006 and their cuff labels remain exploratory;
-legacy cuff times cannot become verified without a separately authorized audit.
+The later user-authorized [Pilot11 protocol](PILOT11_NEW_MODELS_PROTOCOL.md)
+opens S001–S011 for fixed local evaluation. Their original recordings are being
+re-extracted consistently. This does not calibrate the phones; legacy cuff
+times remain unverified until actual video intervals are reviewed.

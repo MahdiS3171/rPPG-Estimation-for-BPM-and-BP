@@ -9,8 +9,9 @@ from rppg_lab.artifacts import file_sha256,write_json
 
 
 def audit(root):
-    root=Path(root);groups=defaultdict(list);private=[]
+    root=Path(root);groups=defaultdict(list);private=[];receipts=[]
     for receipt in sorted((root/'evaluation').glob('*/evaluation_complete.json')):
+        receipts.append(file_sha256(receipt))
         folder=receipt.parent/'inference'
         with np.load(folder/'face_waveforms.npz',allow_pickle=False) as waves,np.load(folder/'feature_validity.npz',allow_pickle=False) as valid:
             eligible=valid['60Hz__candidate_cuff_free']&valid['60Hz__face_quality_good']
@@ -34,7 +35,7 @@ def audit(root):
     result=dict(scope='Label-free complete native60 processing path; no matched high-rate contact target',
         frequency_bands_hz=[[8,15],[15,29.5]],normalization_band_hz=[.5,29.5],window='Hann with linear detrending',
         model_summaries=summary,higher_power_is_not_improved_waveform_accuracy=True,
-        source_sha256=file_sha256(__file__))
+        source_sha256=file_sha256(__file__),input_receipt_sha256=sorted(receipts),completed_recordings=len(receipts))
     out=root/'native_output_audit';out.mkdir(exist_ok=True)
     write_json(out/'private_rows.json',private);write_json(out/'aggregate.json',result)
     return result

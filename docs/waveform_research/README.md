@@ -12,6 +12,7 @@ validation score.
 
 | Investigation | Fixed design | Evidence |
 |---|---|---|
+| Authorized eleven-subject local transfer, timing and exploratory BP | [Fixed protocol](../PILOT11_NEW_MODELS_PROTOCOL.md), [scope/models](pilot11_model_and_scope_lock_20261108.json) | [Known-delay clock controls](pilot11_clock_controls_20261108.json); private cohort analysis in progress |
 | User-authorized reset using all eligible public records | [Reset protocol](../WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md) | [Report](../WAVEFORM_RESET_CAMPAIGN_REPORT.md), [split](reset_split_20261108.json), [waveform means](reset_waveform_means_20261108.csv) |
 | Three-part feature systems, matched joint/shared/independent controls | [Specialist protocol](../THREE_PART_FEATURE_PROTOCOL.md) | [Validation table](three_part_validation_20261108.csv), [receipt](three_part_20261108.json) |
 | Locked public internal Test, now consumed | [Selection](reset_internal_test_selection_20261108.json) | [Waveforms](reset_internal_test_waveforms_20261108.csv), [features](reset_internal_test_features_20261108.csv), [receipt](reset_internal_test_20261108.json), [retained models](reset_retained_models_20261108.json) |

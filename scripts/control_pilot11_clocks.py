@@ -2,9 +2,10 @@
 import argparse
 import json
 from pathlib import Path
+import numpy as np
 from rppg_lab.artifacts import file_sha256,write_json
 from rppg_lab.pilot_video import mp4_presentation_times
-from rppg_lab.pilot6_delay_validation import run_synthetic_controls
+from rppg_lab.pilot6_delay_validation import run_synthetic_controls,summarize_simulations
 
 
 if __name__=='__main__':
@@ -19,4 +20,9 @@ if __name__=='__main__':
     trial,summary=run_synthetic_controls(out,config,clocks)
     write_json(out/'scope.json',dict(actual_clocks=len(clocks),attempted=len(trial),physiological_validation=False,
         acquisition_calibration=False,scope='Synthetic known lag, original camera PTS, inherited fixed protocol'))
+    grouped=[dict(r,clock=r['clock'] if r['clock'].startswith('regular') else 'actual_camera_clocks',
+        error_ms=np.nan if r.get('error_ms') is None else r['error_ms']) for r in trial]
+    write_json(out/'aggregate_by_clock_class.json',dict(attempted=len(trial),actual_camera_clocks=len(clocks),
+        summary=summarize_simulations(grouped),physiological_validation=False,physical_camera_calibration=False,
+        private_control_cache_sha256=file_sha256(out/'synthetic_results.json')))
     print('Clock controls complete:',len(trial),'synthetic attempts; no biological timing validation')
