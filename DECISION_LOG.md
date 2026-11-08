@@ -66,9 +66,20 @@ preserves all six ancestors and provides one concrete review/CI surface. No
 existing PR or shared branch was changed; no main merge, branch deletion or
 data release occurred. The new raw development download remains ignored.
 
-## Pending — Main integration and controlled-data access (D008/D009)
+## 2026-11-08 — Integration approved (D008, user decision)
 
-The alternatives, consequences and recommended policy are in
-[PROJECT_MASTER_PLAN.md](PROJECT_MASTER_PLAN.md). No decision has been inferred
-from elapsed time. Substantial training and first-use held-out evaluations will
-need separate, concrete proposals after suitable data and protocols exist.
+User explicitly approved one history-preserving merge of PR #7 after final
+checks and closure of the six superseded drafts while retaining their branches.
+Execute only against the checked head with a passing CI result; recheck origin
+main before merging. This is the specific integration authorization, not blanket
+permission for future major main changes or history rewriting. The GitHub PR
+records the resulting merge commit when executed.
+
+## 2026-11-08 — Tricam access route selected (D009, user decision)
+
+User will pursue Tricam access with their supervisor. The local request draft in
+[DATA_ACCESS_ACTIONS.md](docs/DATA_ACCESS_ACTIONS.md) is ready. No agent email,
+signature, contract acceptance or controlled-data transfer is authorized by that
+answer. Keep existing PURE pending; continue the public development admission
+and native-60 design work. Substantial training and first-use held-out evaluation
+still need concrete proposals after suitable data and protocols exist.

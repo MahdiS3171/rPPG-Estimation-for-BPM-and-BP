@@ -39,9 +39,9 @@ repository. Keep BP fitting and new volunteer collection deferred until a
 specific discriminating study exists. Equipment uncertainty and domain shift
 are competing explanations; neither has been proven primary.
 
-Only material decisions now: the main-integration policy, and any institutional
-agreements needed for the shortlisted real datasets. No paid compute or sensor
-purchase is proposed. The roadmap, decisions and evidence register are maintained
+The user has now approved history-preserving integration after green CI and
+closure of the old drafts, and will pursue Tricam access with their supervisor.
+No paid compute or sensor purchase is proposed. The roadmap, decisions and evidence register are maintained
 at the repository root. This assessment is an evidence checkpoint, not a claim
 that the full research objective is complete.
 
@@ -77,7 +77,8 @@ to merge and close superseded drafts while retaining branches. Avoid squash,
 force-push, rewriting published history or deleting evidence. A local descendant
 branch and additive CI definition are published as
 [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
-directly against main. No old PR was closed and no merge performed. Remote CI
+directly against main. User approval to merge after final checks and close the old
+drafts was subsequently received; execution status is on the PR. Remote CI
 [passed at head 014ef78](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42478042383);
 the evidence ledger pins that revision separately from subsequent report updates.
 

@@ -67,8 +67,9 @@ repeat volunteer collection without a discriminating protocol.
    existing tracked files remain unchanged. A synthetic-only CI workflow and
    an [integration/review packet](docs/PROJECT_REASSESSMENT_2026-11-08.md)
    are in [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
-   directly against main. Request one main-merge policy; no stack merge, force-push,
-   public result upload, or branch deletion is authorized by this plan.
+   directly against main. The user approved the history-preserving merge after
+   final green CI and closure of the six old drafts while retaining branches.
+   No force-push, raw data release or branch deletion is authorized.
 
 ## Ranked risk register
 
@@ -83,18 +84,16 @@ repeat volunteer collection without a discriminating protocol.
 | P2 | Sparse cuff events and confounding produce spurious BP accuracy. | No BP fitting now; require audited cuff intervals and an incremental-value study first. |
 | P2 | Growing infrastructure substitutes for research. | Reuse current loaders/scorers; one roadmap, one evidence ledger; stop redundant synthetic model campaigns. |
 
-## Decisions pending and autonomy envelope
+## User decisions and autonomy envelope
 
-- **Repository:** recommend one reviewed integration PR into main, retaining all
-  ancestral commits; close superseded drafts after merge, retain branches.
-  Main merges still require user approval. Alternative: keep the stack for
-  separate review, with greater review/maintenance burden.
-- **Data access:** recommend a focused native-60 access request (Tricam or
-  VicarPPG-2), alongside existing PURE; MSPM is a separate multisite timing lead.
-  No contract acceptance, external email or controlled-data download is implied.
+- **Repository resolved:** user approved this one reviewed integration PR into
+  main after final checks, preserving ancestry and closing old drafts without
+  deleting branches. Future major main changes still require their decision.
+- **Data route selected:** user will pursue the native-60 Tricam access process
+  with their supervisor, alongside existing PURE. MSPM is a separate timing lead.
+  No agent contract acceptance, external email or controlled-data download is implied.
   The open MPU sample needs correspondence documentation, rather than a signed
-  application for the bounded research use already performed. Alternative:
-  available samples and PURE only, with less high-FPS/multisite evidence.
+  application for the bounded research use already performed.
   Storage needs must be confirmed before any substantial transfer.
 - **Equipment resolved:** phones and cuff only; no repeat purchase question.
 - **Compute deferred:** local CPU diagnostics and synthetic checks proceed.
