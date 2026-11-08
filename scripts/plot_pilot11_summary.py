@@ -28,3 +28,5 @@ if __name__=='__main__':
     fig.supxlabel(f'BP unavailable for {unavailable} of {data["subjects"]} recordings under fixed gates; legacy cuff timing. No clinical validation.',fontsize=9)
     prefix=Path(args.output_prefix);prefix.parent.mkdir(parents=True,exist_ok=True)
     fig.savefig(prefix.with_suffix('.png'),dpi=170);fig.savefig(prefix.with_suffix('.svg'));plt.close(fig)
+    svg=prefix.with_suffix('.svg')
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
