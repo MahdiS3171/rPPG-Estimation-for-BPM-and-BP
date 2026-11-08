@@ -3,7 +3,8 @@ from pathlib import Path
 import tempfile
 import unittest
 import numpy as np
-from rppg_lab.pilot11_inference import FACE_NAMES,prepared_windows,extraction_config,without_pressure_values
+from rppg_lab.pilot11_inference import FACE_NAMES,prepared_windows,without_pressure_values
+from rppg_lab.config import PipelineConfig
 from rppg_lab.pilot11_bp import fit_ridge,predict,session_reference,score_locked_predictions
 
 
@@ -12,7 +13,8 @@ def check_primary_and_native_rate_keep_same_physical_windows_and_large_gap():
     rgb=100+np.stack((signal,.7*signal,.3*signal),1);valid=np.ones(len(t),bool);valid[(t>=12)&(t<13)]=False
     rgb[~valid]=np.nan;native={'timestamps':t}
     for name in FACE_NAMES:native.update({name+'_rgb':rgb,name+'_extraction_valid':valid})
-    a30,r30,_=prepared_windows(native,30,extraction_config());a60,r60,_=prepared_windows(native,60,extraction_config())
+    config=PipelineConfig(regions=('face',),face_rois=FACE_NAMES,face_roi='forehead',max_gap_sec=.050001)
+    a30,r30,_=prepared_windows(native,30,config);a60,r60,_=prepared_windows(native,60,config)
     assert [r['start_sec'] for r in r30]==[r['start_sec'] for r in r60]
     assert a30['roi'][:,0].tolist()==[True,False,True]
     assert a60['roi'][:,0].tolist()==[True,False,True]
