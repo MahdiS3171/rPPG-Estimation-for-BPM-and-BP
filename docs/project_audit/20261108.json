@@ -185,6 +185,7 @@
   "no_training": true,
   "no_new_locked_test_use": true,
   "remote_mutations": [],
+  "snapshot_scope_note": "Read-only six-PR audit before later authorized branch publication. Draft integration PR #7 was subsequently created; no old PR or main branch changed.",
   "host_environment": {
     "python": "3.11.0",
     "numpy": "2.4.6",

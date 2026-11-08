@@ -75,8 +75,10 @@ Recommended policy: one integration PR directly against main, with a merge commi
 retaining the full ancestry. After review and green CI, request user approval
 to merge and close superseded drafts while retaining branches. Avoid squash,
 force-push, rewriting published history or deleting evidence. A local descendant
-branch and additive CI definition are prepared; nothing has been pushed or merged.
-CI must run remotely before claiming a clean-runner result.
+branch and additive CI definition are published as
+[draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
+directly against main. No old PR was closed and no merge performed. The first CI
+run started; report its actual outcome separately rather than assuming success.
 
 ## Verification and reconciliation
 

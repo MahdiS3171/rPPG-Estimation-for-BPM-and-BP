@@ -22,8 +22,8 @@ GO means a possible plumbing experiment, not a scientific or training mandate.
 Branch from `bb5fb59683615489db0da451c52d9ff9de2fa49d`; preserve all 19 commits.
 Use additive files because historical result verification pins 224 inherited
 files, including README and verification scripts. Do not edit those files just
-to modernize navigation. Proposed main integration and draft closure remain
-pending user approval. No remote mutation has occurred.
+to modernize navigation. Proposed main integration and old draft closure remain
+pending user approval. Subsequent branch publication is recorded below.
 
 ## 2026-11-08 — Acquisition identifiability before another optimizer (D004)
 
@@ -57,7 +57,16 @@ research. Source file IDs prevent repeated Output filenames from overwriting
 one another. Pairing/clock/identity remain unverified; no training or scoring.
 Gated native-60 leads require institutional action, not an assumed open mirror.
 
-## Pending — Main integration and controlled-data access (D007/D008)
+## 2026-11-08 — One reviewable integration draft (D007)
+
+Published the new research branch and created
+[draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7)
+directly against main, using the mandate's routine branch/PR authority. This
+preserves all six ancestors and provides one concrete review/CI surface. No
+existing PR or shared branch was changed; no main merge, branch deletion or
+data release occurred. The new raw development download remains ignored.
+
+## Pending — Main integration and controlled-data access (D008/D009)
 
 The alternatives, consequences and recommended policy are in
 [PROJECT_MASTER_PLAN.md](PROJECT_MASTER_PLAN.md). No decision has been inferred

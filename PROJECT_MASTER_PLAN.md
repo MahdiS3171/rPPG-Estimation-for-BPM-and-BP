@@ -66,7 +66,8 @@ repeat volunteer collection without a discriminating protocol.
    tip already contains all six. A local descendant branch preserves the stack;
    existing tracked files remain unchanged. A synthetic-only CI workflow and
    an [integration/review packet](docs/PROJECT_REASSESSMENT_2026-11-08.md)
-   are prepared. Request one main-merge policy; no stack merge, force-push,
+   are in [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
+   directly against main. Request one main-merge policy; no stack merge, force-push,
    public result upload, or branch deletion is authorized by this plan.
 
 ## Ranked risk register
