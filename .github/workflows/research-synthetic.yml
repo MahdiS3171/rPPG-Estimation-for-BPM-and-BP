@@ -39,5 +39,7 @@ jobs:
         run: python -m unittest discover -s tests -p test_waveform_extensions.py -v
       - name: Public research reset split contracts
         run: python -m unittest discover -s tests -p test_waveform_research_split.py -v
+      - name: Three-part feature and gradient-isolation contracts
+        run: python -m unittest discover -s tests -p test_waveform_feature_specialists.py -v
       - name: Source compilation
         run: python -m compileall -q rppg_lab scripts tests
