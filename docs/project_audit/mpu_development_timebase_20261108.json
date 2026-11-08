@@ -1,0 +1,25 @@
+{
+  "video_samples": 34496,
+  "csv_samples": 34496,
+  "same_sample_count": true,
+  "pts_first_s": 0.0,
+  "pts_last_s": 574.9166666666666,
+  "pts_strictly_increasing": true,
+  "pts_interval_quantiles_s": [
+    0.01666666666665151,
+    0.01666666666665151,
+    0.016666666666765195
+  ],
+  "count_first": 0.0,
+  "count_last": 34495.0,
+  "count_strictly_increasing": true,
+  "count_difference_quantiles": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "label_clock_units": "UNVERIFIED",
+  "video_reference_pairing": "UNVERIFIED",
+  "sensor_exposure_clock": "UNVERIFIED",
+  "physical_timing_eligible": false
+}
