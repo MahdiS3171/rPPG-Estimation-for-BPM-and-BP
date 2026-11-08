@@ -166,3 +166,15 @@ exact selection/checkpoint lock before opening the new Test arrays. The user's
 public-data repartition instruction authorizes this internal comparison;
 there is no private/session or new external-domain unblinding. Record one
 consumption before access and perform no Test-based refitting or reselection.
+
+## 2026-11-08 — Preserve the mixed specialist result (D018)
+
+The locked internal Test repeats waveform shape/d1 gains with little HR change.
+Independent feature experts do not consistently outperform a joint learner;
+geometry is near a constant baseline and direct feature HR is worse than
+waveform HR. Keep all three modes and both selected waveform families with
+their exact artifacts. Do not change the Validation-selected primary using
+Test results or replace the waveform pipeline with the feature system. The
+new Test is consumed; no further tuning uses it. Future discriminating work
+needs admitted real waveform diversity, reference characterization and native-
+rate evidence. This result does not establish that specialization never helps.

@@ -1,0 +1,239 @@
+{
+  "status": "RETAINED_WITHOUT_TEST_BASED_RESELECTION",
+  "selection_sha256": "912fe2472bc4529918f964e7a61359903635d1f21a700df6c367dbc992a075a9",
+  "waveform_primary_selected_on_validation": "morph_real_only",
+  "feature_mode_selected_on_validation": "joint",
+  "checkpoints": [
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run063.pt",
+      "sha256": "cc05d3d3882b98f662988cba0d3ee12d0310abf2b93d68cae6694656d16c295c",
+      "identity": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261108,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run064.pt",
+      "sha256": "30bfe0e13fda8036043fea088a936d9765b70c3bd89ffef95d880ff4d77ffaf2",
+      "identity": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261125,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run065.pt",
+      "sha256": "bf9f97fc9244cbf604879e0598870603eabff2c03ec50ce8e5511ac2e20541a4",
+      "identity": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261147,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run117.pt",
+      "sha256": "6e7861c787bae001d5986ab86c4397a96b8bfa5d7c8607960d321380fd4930da",
+      "identity": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261108,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run118.pt",
+      "sha256": "a03dfd63a477b3f6667e09932747b8f13c81ce3dee27f130eb102508701750d6",
+      "identity": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261125,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "waveform",
+      "path": "outputs/waveform_reset/campaign_20261108_01/run119.pt",
+      "sha256": "4cc7522c3d038454575dbd9a798fa2d7371d0cab6d68dd76de3e4900d1c21ded",
+      "identity": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261147,
+        "scope": "full_train"
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/independent__seed20261108.pt",
+      "sha256": "d31c25dcf866cfe9405ded904776810406d6a1939a04b68acb21c8edaa9460f8",
+      "identity": {
+        "mode": "independent",
+        "seed": 20261108,
+        "width": 16
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/independent__seed20261125.pt",
+      "sha256": "8b0fe2ed1a6caf41b589a18a71a3bcf913c347b7c59c1bb454e8fe722fd49fd3",
+      "identity": {
+        "mode": "independent",
+        "seed": 20261125,
+        "width": 16
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/independent__seed20261147.pt",
+      "sha256": "fe62d8962f845405a19cca27b1d528f6d8d6e7ef4a85af168c0c411a561e52b6",
+      "identity": {
+        "mode": "independent",
+        "seed": 20261147,
+        "width": 16
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/joint__seed20261108.pt",
+      "sha256": "6c41e6ac895b040825abbaa3245da874af7c019d376e77b43003c8ae7a8a9c32",
+      "identity": {
+        "mode": "joint",
+        "seed": 20261108,
+        "width": 36
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/joint__seed20261125.pt",
+      "sha256": "77dc7da0a419f5e721a903dfdc973646f085cbb776c0a7ed85f0dceff33b5aa8",
+      "identity": {
+        "mode": "joint",
+        "seed": 20261125,
+        "width": 36
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/joint__seed20261147.pt",
+      "sha256": "79a26a499b6f814718713d675c319d58cf11d7c6c327888fce911a8532d46335",
+      "identity": {
+        "mode": "joint",
+        "seed": 20261147,
+        "width": 36
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/shared_heads__seed20261108.pt",
+      "sha256": "ac197932883af5fbce0e1cfe22ef8887101afc15f3d20777c47d267c2cc4f140",
+      "identity": {
+        "mode": "shared_heads",
+        "seed": 20261108,
+        "width": 27
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/shared_heads__seed20261125.pt",
+      "sha256": "e136f699651fd210620a460400f3cd8354081c6af16d495281d5881f6b1d0dda",
+      "identity": {
+        "mode": "shared_heads",
+        "seed": 20261125,
+        "width": 27
+      }
+    },
+    {
+      "kind": "feature",
+      "path": "outputs/waveform_reset/three_part_20261108_01/shared_heads__seed20261147.pt",
+      "sha256": "56d15cb0d9f2c6921becc45be323d169fb8df383bf6397412b97eca415136e93",
+      "identity": {
+        "mode": "shared_heads",
+        "seed": 20261147,
+        "width": 27
+      }
+    }
+  ],
+  "prior_candidate_preserved": "2851cc36fea693113a27359ef5fb18741595eea26fcf2852e35dd768464e00a9",
+  "frozen_v1_preserved": true,
+  "app_model_unchanged": true
+}

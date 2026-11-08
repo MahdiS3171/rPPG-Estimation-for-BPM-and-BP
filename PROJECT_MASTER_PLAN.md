@@ -93,6 +93,15 @@ systems for one internal Test campaign. No subsequent Test-based tuning is part
 of that comparison. This uses the user's public-data reset authorization;
 private/sealed restrictions and future external-data admission remain unchanged.
 
+The one locked internal Test campaign has now completed and is consumed.
+Waveform gains repeat, while independent feature experts do not consistently
+beat a joint learner and geometry prediction is weak on Test. Preserve every
+comparator, the selection lock and consumption receipts. See the reset report
+and [retained models](docs/waveform_research/reset_retained_models_20261108.json).
+Do not use this Test for further tuning. Next discriminating evidence is real
+waveform/domain/reference admission and native-rate validation, not an assertion
+that specialization or more overlapping windows solves the timing problem.
+
 The approved integration is complete on main at `50cb264`; PR #7 was merged with
 history preserved, the six superseded drafts are closed, and all branches remain.
 No new experiment PR stack is being created.

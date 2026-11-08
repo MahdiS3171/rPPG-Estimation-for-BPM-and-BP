@@ -1,0 +1,55 @@
+{
+  "status": "LOCKED_PUBLIC_INTERNAL_TEST_NOT_EXTERNAL_GENERALIZATION",
+  "complete": true,
+  "selection_sha256": "912fe2472bc4529918f964e7a61359903635d1f21a700df6c367dbc992a075a9",
+  "split_sha256": "0c85e8f6cdf588549d819d6716f31724ba8b80c6ed8bf4f3f5538666f4c8ca21",
+  "partition": {
+    "path": "test_arrays.npz",
+    "sha256": "e5a3ec7b4cd8da63ee2c72a692978174998bb24134d85b5e18234d31931c14aa",
+    "windows": 181,
+    "source_window_counts": {
+      "UBFC": 179,
+      "SCAMPS": 2
+    },
+    "source_identity_counts": {
+      "UBFC": 6,
+      "SCAMPS": 1
+    }
+  },
+  "waveform_numeric_replay": {
+    "aggregates": 1026,
+    "max_absolute_difference": 9.087974484067729e-08
+  },
+  "artifact_sha256": {
+    "waveform_predictions.npz": "f11d68fa8e0b84b0fe2066a5f29a51e071e82a4c972ed9a2680276367d2213a7",
+    "feature_predictions.npz": "9f07ee89e7817a5986b0a9818b8a3450cbb32a2435fdec1e06d0317a31db0b2d",
+    "feature_prediction_valid.npz": "dc5c1645c8d3d3850cafe942a4e2ad4342059379cbbd2b93c25eac0882432d11",
+    "feature_targets.npz": "27bb1ba970ca5d94f5e5d04eb99f81806e60827e2c7cad5df499bfbac819a947"
+  },
+  "seconds": 11.166884600010235,
+  "no_neural_fitting": true,
+  "no_test_based_tuning": true,
+  "no_private_data": true,
+  "git_revision": "da0371e4b1378afcb7ce3d3f7487af8e89db1ad2",
+  "source_results_sha256": "a351f3550c2ed925a56a468ece59f604fc30d9cf9b471af237244e820e229a8c",
+  "consumption": {
+    "status": "INTERNAL_TEST_CONSUMPTION_STARTED",
+    "selection_sha256": "912fe2472bc4529918f964e7a61359903635d1f21a700df6c367dbc992a075a9",
+    "split_sha256": "0c85e8f6cdf588549d819d6716f31724ba8b80c6ed8bf4f3f5538666f4c8ca21",
+    "test_arrays_sha256": "e5a3ec7b4cd8da63ee2c72a692978174998bb24134d85b5e18234d31931c14aa",
+    "no_test_based_tuning": true,
+    "git_revision": "da0371e4b1378afcb7ce3d3f7487af8e89db1ad2"
+  },
+  "independent_feature_verification": {
+    "saved_scalar_values_recomputed": 2850,
+    "maximum_absolute_difference": 0.0,
+    "training_only_center_scale_verified": true,
+    "checkpoint_hashes_verified": 9,
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "no_test_array_access": false,
+    "saved_consumed_test_replay": true,
+    "source_results_sha256": "a351f3550c2ed925a56a468ece59f604fc30d9cf9b471af237244e820e229a8c",
+    "split_sha256": "0c85e8f6cdf588549d819d6716f31724ba8b80c6ed8bf4f3f5538666f4c8ca21"
+  }
+}

@@ -14,6 +14,7 @@ validation score.
 |---|---|---|
 | User-authorized reset using all eligible public records | [Reset protocol](../WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md) | [Report](../WAVEFORM_RESET_CAMPAIGN_REPORT.md), [split](reset_split_20261108.json), [waveform means](reset_waveform_means_20261108.csv) |
 | Three-part feature systems, matched joint/shared/independent controls | [Specialist protocol](../THREE_PART_FEATURE_PROTOCOL.md) | [Validation table](three_part_validation_20261108.csv), [receipt](three_part_20261108.json) |
+| Locked public internal Test, now consumed | [Selection](reset_internal_test_selection_20261108.json) | [Waveforms](reset_internal_test_waveforms_20261108.csv), [features](reset_internal_test_features_20261108.csv), [receipt](reset_internal_test_20261108.json), [retained models](reset_retained_models_20261108.json) |
 | Two-source linear baseline | [Protocol](../TWO_SOURCE_WAVEFORM_DEVELOPMENT_PROTOCOL.md) | [Report](../TWO_SOURCE_WAVEFORM_DEVELOPMENT_REPORT.md), [receipt](two_source_development_20261108.json) |
 | Adaptive hybrids, models and losses | [Screen protocol](../ADAPTIVE_WAVEFORM_SCREEN_PROTOCOL.md) | [Screen results](adaptive_screen_20261108.csv), [receipt](adaptive_screen_20261108.json) |
 | Subject folds, source mixtures, context, capacity and seeds | [Confirmation protocol](../ADAPTIVE_WAVEFORM_CONFIRMATION_PROTOCOL.md) | [Confirmation results](adaptive_confirmation_20261108.csv), [receipt](adaptive_confirmation_20261108.json) |

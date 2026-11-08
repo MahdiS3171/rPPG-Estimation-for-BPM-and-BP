@@ -77,6 +77,10 @@ independent experts with one joint network and one shared encoder/three heads.
 Capacities are 35,274 / 34,858 / 35,766 parameters respectively. Independent
 experts share no parameters and receive no gradients from other task groups,
 verified by synthetic gradient tests. Feature normalization uses Train only.
+This first comparison uses common batches, an AdamW schedule and global gradient
+clipping; optimizer state is per parameter, but the clipping scale can couple
+update magnitudes. It does not test task-specific architectures, learning-rate
+schedules or separate clipping budgets. Conclusions apply to this condition.
 
 Lower scaled feature error is better; values average the same six validation
 people and three seeds. Scaling uses training feature SD with fixed floors.
@@ -105,7 +109,7 @@ physical feature predictions are counted, not clipped away. Pulse features are
 computed from a declared filtered contact reference at 30 Hz; they are not
 verified facial fiducials, clinical HRV, precise face-hand delay or BP labels.
 
-## Verification and internal Test plan
+## Verification and locked internal Test
 
 Independent saved-value replay reproduced 14,958 waveform values (including
 per-person/source aggregates) and checked all 132 checkpoint hashes; maximum
@@ -114,11 +118,80 @@ verified Train-only scaling and checked nine more checkpoint hashes. No neural
 execution or Test access occurred in those replays.
 
 The [selection manifest](waveform_research/reset_internal_test_selection_20261108.json)
-will lock the real-only waveform leader, prespecified mixed TCN comparator,
+locked the real-only waveform leader, prespecified mixed TCN comparator,
 all fixed waveform controls and all three feature-system modes/seeds. Selection
 uses Validation only: waveform mean (shape+d1)/2 with complete finite coverage
 and HR no more than CHROM +0.5 bpm; feature preference uses mean group scaled
 error. Report all locked Test comparators without subsequent Test-based tuning.
-The test consumption receipt is created before opening Test arrays; refuse a
-second independent consumption under a new output name. An internal test is
-useful here, but previous dataset/architecture exposure remains acknowledged.
+The test consumption receipt was created before opening Test arrays. The
+evaluator refuses a second independent consumption under a new output name.
+All 19 waveform and 19 feature comparators completed without neural fitting or
+Test-based tuning. Previous dataset/architecture exposure remains acknowledged.
+
+Internal Test results below average the six real people, then the three seeds:
+
+| Fixed Test comparison | Native r | Shape r | d1 r | HR MAE, bpm |
+|---|---:|---:|---:|---:|
+| CHROM_WIN | .187 | .699 | .561 | 1.481 |
+| Compact real-only, Validation-selected primary | .267 | .748 | .669 | 1.480 |
+| Mixed robust TCN, prespecified comparator | .262 | .760 | .675 | 1.487 |
+
+Waveform shape/derivative gains repeat, with little HR change. The TCN's higher
+Test shape score does not retrospectively change the Validation-selected primary.
+Native reference agreement remains weak and is not local arrival-time truth.
+
+| Feature Test comparison | Rhythm error | Geometry error | Derivative error | HR MAE, bpm |
+|---|---:|---:|---:|---:|
+| Train mean | .909 | .806 | .859 | — |
+| Input-feature ridge | .499 | .829 | .674 | — |
+| Independent experts | .399 | .780 | .609 | 4.063 |
+| Joint, Validation-preferred feature mode | .396 | .801 | .594 | 4.567 |
+| Shared encoder/heads | .419 | .813 | .604 | 4.999 |
+
+The independent system has no consistent overall advantage. Test geometry is
+near the constant baseline for every direct neural mode; its attractive
+Validation scores did not transfer well. Derivative summaries improve relative
+to the constant baseline, but direct HR remains worse than waveform HR. These
+results do not support replacing the waveform model with independent feature
+experts or using the features for BP. They also do not prove specialization can
+never help: this is one small dataset, target definition and training budget.
+
+Source-specific failures remain visible. On the single synthetic Test clip,
+fixed CHROM HR error is 41.327 bpm despite native r .753; quality-weighted fusion
+has .194-bpm HR error. Both learned waveform families have about .8-bpm error.
+One clip cannot establish synthetic-domain generalization. Correlation alone
+would conceal that large classical HR failure.
+
+All waveform Test tables were independently replayed in NumPy during scoring
+(1,026 per-person/source values, max difference 9.1e-8). Saved feature Test
+replay reproduces 2,850 values exactly and checks Train-only scaling and nine
+checkpoint hashes, without another model forward or new Test selection.
+
+![Aggregate Validation and internal Test comparisons](waveform_research/figures/reset_research_summary.png)
+
+Figure bars average seeds; whiskers are seed SD, not participant confidence
+intervals. The two evaluation groups have six real people each. Their error
+differences are not data-size effects. SVG and PNG artifacts contain aggregate
+values only; participant waveforms and checkpoint weights stay local.
+
+## Retained artifacts and next research decision
+
+The [retained-model index](waveform_research/reset_retained_models_20261108.json)
+locates all six selected waveform and nine feature-system checkpoints, with
+exact hashes. Waveform weights remain under
+`outputs/waveform_reset/campaign_20261108_01/`; the three-part systems are under
+`outputs/waveform_reset/three_part_20261108_01/`. The independent checkpoints
+bundle three disjoint expert parameter sets. No app model was replaced.
+
+The prior checkpoint with SHA-256 `2851cc36fea693113a27359ef5fb18741595eea26fcf2852e35dd768464e00a9`
+and frozen V1 remain unchanged. Preserve the new Test as a consumed internal
+comparison, rather than using it for more architecture/loss tuning. Further
+work should target admitted real waveform diversity, reference quality and
+native-rate evidence, with a fresh external protocol when suitable data arrive.
+No new equipment, cloud spend, private data or BP fitting was needed here.
+
+Final local checks: 16 targeted split/leakage, feature-unit, gradient-isolation,
+loss, source-balance and 30/60-Hz contract tests pass; source compilation and
+133 local document links pass. Frozen V1 checkpoint/manifest and the prior
+candidate SHA-256 identities match their recorded values. CI checks software
+on clean runners; it does not provision physiological data or establish efficacy.
