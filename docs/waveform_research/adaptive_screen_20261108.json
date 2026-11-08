@@ -1,0 +1,34 @@
+{
+  "status": "DEVELOPMENT_SCREEN_NOT_FINAL_TEST",
+  "complete": true,
+  "intended_configurations": 21,
+  "trained_configurations": 21,
+  "seed": 20261108,
+  "steps_per_configuration": 120,
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "no_native60_training_labels": true,
+  "runtime_seconds": 157.4215226000233,
+  "git_revision": "db5dfc7b96df25ce1333aacbe12f24f181aa8ebe",
+  "source_sha256": {
+    "scripts/run_waveform_screen.py": "b021aa992732d4f0392cd992634b89aed3547c2bb673a04637da79c6ffc4af0f",
+    "rppg_lab/waveform_v2_screen_models.py": "923d95514e0ffe2e138c20e243b54bc3eb801c0e387ee60b1a581230b95cd5a5",
+    "rppg_lab/waveform_v2_screen_losses.py": "2730d56e383a359fcff5ec625281a4e1fec54d6bc8427526a9fa5cd1111a63e8",
+    "rppg_lab/waveform_v2_screen_features.py": "21e4494bfb0a89f10261814b76cb8596c40ad1365a33faedf1d5dd5d07934043"
+  },
+  "verification": {
+    "saved_aggregates_recomputed": 552,
+    "checkpoint_hashes_verified": 21,
+    "max_absolute_metric_difference": 6.094748061791222e-08,
+    "predictions_sha256": "d4f8fc9f343a1813970163d360567c9cc80712c38c9d04612f4c100cb4f63348",
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  },
+  "aggregate_csv_sha256": "2ec579c12bd58b6e7eeb3fd6b106097a25a1cff292e880a52815c040ba395869",
+  "local_full_results_path": "outputs\\waveform_screen\\screen_20261108_01\\results.json",
+  "local_full_results_sha256": "ad4c7945395665e6312544882d81e4014842c2319c3c8d5bc8c16d7a690b2bbe"
+}

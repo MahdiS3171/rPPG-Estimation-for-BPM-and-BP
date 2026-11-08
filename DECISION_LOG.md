@@ -83,3 +83,135 @@ signature, contract acceptance or controlled-data transfer is authorized by that
 answer. Keep existing PURE pending; continue the public development admission
 and native-60 design work. Substantial training and first-use held-out evaluation
 still need concrete proposals after suitable data and protocols exist.
+
+## 2026-11-08 — Continue now; two-source training and broader ideas (D010)
+
+User requested work with current datasets while new access is pending, proposed
+training on two datasets with a third dataset reserved for final evaluation,
+and explicitly requested adaptive classical hybrids, expanded models and varied
+loss functions. Implement a bounded local campaign on current development data.
+Keep original frozen/protected boundaries; the two available sources are real
+UBFC and synthetic SCAMPS, not two independent real domains. A third-domain final
+evaluation remains separate and requires an admitted, unconsumed protocol.
+
+## 2026-11-08 — Test mixtures and adaptive/loss components independently (D011)
+
+The 20-solve linear study's 50:50 pooling worsened UBFC development scores.
+Do not infer all multi-source training fails or tune to the consumed external
+test. The neural screen therefore includes 0/20/50% source sampling controls,
+single-source and shuffled-label controls, and fixed classical comparators.
+It trained 21 compact models using a local RTX 4060; no paid compute. Prototype
+temporal kernels preserve physical support across 30/60-Hz grids, without
+claiming 60-Hz physiological supervision from 30-Hz labels.
+
+## 2026-11-08 — Confirm component benefits before combining them (D012)
+
+First-screen hybrid morphology training improved aligned shape/derivative metrics,
+while native correlation did not improve clearly. Confirm across all original
+Train subjects and additional seeds; retain a simple quality-weighted hybrid as
+a serious comparator. Follow-up hypotheses are fixed in the confirmation
+protocol before fitting. More complexity is retained only for measured value.
+
+## 2026-11-08 — Push every substantive completed milestone (D013, user instruction)
+
+User explicitly requested commits and GitHub pushes after each important step.
+Publish the ongoing research branch after protocols/implementations and after
+verified result milestones; retain one coherent branch instead of new stacked
+Gate PRs. Raw data, model checkpoints and participant waveform artifacts remain
+ignored. Main merges still follow the existing approval boundary.
+
+## 2026-11-08 — Prefer demonstrated correction over accumulated complexity (D014)
+
+Matched controls show residual correction provides most of the shape gain;
+input-adaptive gates add a modest increment. Keep constant/quality-based hybrids
+as live comparators. The first architecture screen motivates a bounded 20-fit
+five-fold check of context, attention, spectral and time-varying gates. Stop
+expanding families that do not improve the relevant endpoints. This remains
+repeated development selection, not an independent generalization result.
+
+## 2026-11-08 — Retain a robust development candidate (D015)
+
+The 20 architecture fits favor longer TCN context over added attention/spectral
+complexity. Ten matched ROI-training fits improve shape/stability. Retain the
+longer TCN with 50% region dropout and a 0.2 native-output consistency penalty
+as the leading development candidate. Its native-r difference interval still
+includes zero; no HR, physical timing, native-60 detail or independent-domain
+claim is warranted. Export one full-original-Train fit without a validation
+score, preserving frozen V1. End broad architecture search on the same small
+cohort; prioritize suitable real-domain/reference admission next.
+
+## 2026-11-08 — User authorizes a public-data split reset (D016)
+
+The user requested all eligible public Train/Validation/Test records be
+repartitioned for newly initialized models, replacing the prior Train-only
+development boundary. Use all 41 UBFC subjects and ten admitted SCAMPS clips,
+assigned 29/6/6 and 8/1/1 with the precommitted deterministic split. New Train
+may contain old public Val/Test subjects. Preserve all historical splits,
+evidence, frozen V1 and the prior candidate; private/sealed participants remain
+excluded. Explain that fresh weights do not erase analyst/architecture exposure:
+this is a new internal benchmark, not an independent external cohort. New Test
+is separate from selection through the waveform/specialist validation campaign.
+Use matched same-validation controls for any claim about more training data.
+
+## 2026-11-08 — Lock internal Test after waveform/specialist validation (D017)
+
+All 132 waveform and nine matched-capacity feature fits completed. Independent
+replay verifies their saved values and checkpoint identities. From Validation,
+select the compact real-only morphology family by mean three-seed shape/d1
+score, finite coverage and HR within CHROM +0.5 bpm; also retain the prespecified
+mixed-source robust TCN. The joint direct-feature model has the lowest overall
+Validation feature error; test it alongside the user's independent three-expert
+system and shared-head control, all at their three fixed seeds. Commit the
+exact selection/checkpoint lock before opening the new Test arrays. The user's
+public-data repartition instruction authorizes this internal comparison;
+there is no private/session or new external-domain unblinding. Record one
+consumption before access and perform no Test-based refitting or reselection.
+
+## 2026-11-08 — Preserve the mixed specialist result (D018)
+
+The locked internal Test repeats waveform shape/d1 gains with little HR change.
+Independent feature experts do not consistently outperform a joint learner;
+geometry is near a constant baseline and direct feature HR is worse than
+waveform HR. Keep all three modes and both selected waveform families with
+their exact artifacts. Do not change the Validation-selected primary using
+Test results or replace the waveform pipeline with the feature system. The
+new Test is consumed; no further tuning uses it. Future discriminating work
+needs admitted real waveform diversity, reference characterization and native-
+rate evidence. This result does not establish that specialization never helps.
+
+## 2026-11-08 ? User authorizes all-eleven private pilot evaluation (D019)
+
+The user explicitly requested the new models be tested on all eleven BP-pilot
+subjects for BP and timing feasibility, and named the updated final workbook
+as current. This authorizes local use of S001?S011 under the committed fixed
+protocol, replacing the earlier reserve for this specific evaluation. It does
+not authorize waveform fine-tuning or participant-data release. Keep S001?S006
+for exploratory BP fitting and S007?S011 for fixed BP evaluation; record their
+consumption and preserve the original frozen/model artifacts. Evaluate waveform
+support and optical timing separately from conditional BP prediction.
+
+## 2026-11-08 ? Consistent all-eleven acquisition approved (D020)
+
+Native profiling projected significant local CPU time and revealed legacy/current
+library differences. The user explicitly selected re-extracting all eleven
+consistently, approximately 2?3 hours locally. Use three workers, fixed Tasks
+landmarkers with the existing matching assets, every frame and original PTS.
+A one-decode bounded-polygon implementation preserves exact native pixel/RGB
+calculations in synthetic and exposed-video checks. No cadence reduction,
+resizing, waveform fitting, source modification or private-data release.
+
+## 2026-11-09 — Preserve the negative Pilot11 readout and target verification (D021)
+
+All eleven native extractions and fifteen-checkpoint evaluations completed.
+Fixed signal gates leave five fitting and three evaluation people; three of
+eleven lack eligible physiological predictors. Joint-feature BP MAE is
+15.54/9.41 mmHg versus mean 16.11/8.67; independent experts 17.78/11.10.
+One of 108 independent timing attempts is strict and nobody has two. No cuff
+event is video-reviewed and physical camera timing remains unbounded. Do not
+relax gates, select seeds/features/regularization using these errors, fine-tune
+private waveforms or promote a BP predictor. S007–S011 are consumed for the
+authorized fixed study. Keep all artifacts and continue the already agreed
+waveform/calibration route. A BP-blinded 33-event queue and local audio-track
+audit are prepared; audio availability does not certify a cuff event. Any
+corrected-timeline reanalysis must be identified as a sensitivity on consumed
+data, with independent outcome-blinded review and no claim of a fresh Test.

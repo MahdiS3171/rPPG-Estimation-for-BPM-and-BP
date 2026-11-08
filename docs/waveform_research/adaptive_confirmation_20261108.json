@@ -1,0 +1,103 @@
+{
+  "status": "DEVELOPMENT_CONFIRMATION_NOT_FINAL_TEST",
+  "complete": true,
+  "intended_neural_runs": 40,
+  "completed_neural_runs": 40,
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "runtime_seconds": 508.51924779999536,
+  "device": "cuda",
+  "folds": [
+    [
+      "UBFC:subject5",
+      "UBFC:subject25",
+      "UBFC:subject1",
+      "UBFC:subject27",
+      "UBFC:subject18",
+      "UBFC:subject6"
+    ],
+    [
+      "UBFC:subject22",
+      "UBFC:subject37",
+      "UBFC:subject33",
+      "UBFC:subject34",
+      "UBFC:subject11"
+    ],
+    [
+      "UBFC:subject15",
+      "UBFC:subject20",
+      "UBFC:subject17",
+      "UBFC:subject40",
+      "UBFC:subject21"
+    ],
+    [
+      "UBFC:subject30",
+      "UBFC:subject36",
+      "UBFC:subject10",
+      "UBFC:subject3",
+      "UBFC:subject4"
+    ],
+    [
+      "UBFC:subject23",
+      "UBFC:subject12",
+      "UBFC:subject38",
+      "UBFC:subject8",
+      "UBFC:subject2"
+    ]
+  ],
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "predictions_sha256": "3495bb2e6548d03d1945ecc0cba025ee910fd1eda3e774b7bf6fd20298757010",
+  "indices_sha256": "61e75c02f4ff49a98f42285287ba2eb6da7c50a672f4dc5d921ac162b16298b9",
+  "git_revision": "c0584af562655ecafe7651f7e4c8f2c5ac726202",
+  "seed_replications_completed": 4,
+  "paired_development_differences": {
+    "native_r": {
+      "mean": 0.03763778201426881,
+      "bootstrap_interval": [
+        -0.004043706516177298,
+        0.08218313640125406
+      ],
+      "positive_subjects": 16,
+      "subjects": 26
+    },
+    "morphology_r": {
+      "mean": 0.05912778782538878,
+      "bootstrap_interval": [
+        0.04598363180859731,
+        0.07111818472162271
+      ],
+      "positive_subjects": 24,
+      "subjects": 26
+    },
+    "morphology_d1_r": {
+      "mean": 0.1260869453732784,
+      "bootstrap_interval": [
+        0.10555165098550226,
+        0.1461876125433124
+      ],
+      "positive_subjects": 26,
+      "subjects": 26
+    },
+    "hr_mae": {
+      "mean": 0.012175985263038477,
+      "bootstrap_interval": [
+        -0.04173466316153075,
+        0.0692753271152197
+      ],
+      "positive_subjects": 14,
+      "subjects": 26
+    }
+  },
+  "interval_caveat": "Conditional development bootstrap by subject; overlapping training folds and selection on exposed development data; not independent-test inference.",
+  "aggregate_csv_sha256": "12d3dde5f7312d4214bf055387732367b6cbfb3e7b1bcce2a152c7f157a2931b",
+  "local_full_results_path": "outputs\\waveform_screen\\confirmation_20261108_01\\results.json",
+  "local_full_results_sha256": "5dfeb58ed104be3fd1d7cfd60422c228a1076553a0c44b0249c5b3e506cce1fc",
+  "independent_verification": {
+    "saved_aggregates_recomputed": 366,
+    "registered_checkpoint_hashes_verified": 40,
+    "max_absolute_metric_difference": 4.0003827139756254e-08,
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  }
+}

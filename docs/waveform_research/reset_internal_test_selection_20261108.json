@@ -1,0 +1,254 @@
+{
+  "status": "LOCKED_INTERNAL_TEST_SELECTION",
+  "split_sha256": "0c85e8f6cdf588549d819d6716f31724ba8b80c6ed8bf4f3f5538666f4c8ca21",
+  "waveform_validation_results_sha256": "95ee3058c4535bd8168cbe3ccbe3ca9f5e4ca9a1ae3d3fad224482fe05d73690",
+  "feature_validation_results_sha256": "c369844c4d3d5d1923659c38bf532d1db6e2b1c9ab71a90191541bcfe9dda21b",
+  "waveform_primary": "morph_real_only",
+  "waveform_families": [
+    "long_tcn__roi_consistency0_2",
+    "morph_real_only"
+  ],
+  "waveform_hr_eligibility_limit_bpm": 1.8386998995193162,
+  "waveform_selection": "Maximum three-seed mean of (aligned shape r + aligned d1 r)/2 on real Validation, finite complete coverage and HR <= CHROM + 0.5 bpm",
+  "feature_validation_preferred_mode": "joint",
+  "feature_mode_validation_scores": {
+    "independent": 0.4498342159532444,
+    "joint": 0.42997229056795466,
+    "shared_heads": 0.45382105045388554
+  },
+  "feature_test_comparators": "All three fixed matched-capacity modes, each at the same three seeds; no Test-based mode/feature selection",
+  "waveform_checkpoints": [
+    {
+      "key": "run063",
+      "job": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261108,
+        "scope": "full_train"
+      },
+      "checkpoint": "run063.pt",
+      "sha256": "cc05d3d3882b98f662988cba0d3ee12d0310abf2b93d68cae6694656d16c295c"
+    },
+    {
+      "key": "run064",
+      "job": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261125,
+        "scope": "full_train"
+      },
+      "checkpoint": "run064.pt",
+      "sha256": "30bfe0e13fda8036043fea088a936d9765b70c3bd89ffef95d880ff4d77ffaf2"
+    },
+    {
+      "key": "run065",
+      "job": {
+        "configuration": {
+          "architecture": "compact",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.0,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": false,
+          "roi_consistency": 0.0,
+          "name": "morph_real_only"
+        },
+        "seed": 20261147,
+        "scope": "full_train"
+      },
+      "checkpoint": "run065.pt",
+      "sha256": "bf9f97fc9244cbf604879e0598870603eabff2c03ec50ce8e5511ac2e20541a4"
+    },
+    {
+      "key": "run117",
+      "job": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261108,
+        "scope": "full_train"
+      },
+      "checkpoint": "run117.pt",
+      "sha256": "6e7861c787bae001d5986ab86c4397a96b8bfa5d7c8607960d321380fd4930da"
+    },
+    {
+      "key": "run118",
+      "job": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261125,
+        "scope": "full_train"
+      },
+      "checkpoint": "run118.pt",
+      "sha256": "a03dfd63a477b3f6667e09932747b8f13c81ce3dee27f130eb102508701750d6"
+    },
+    {
+      "key": "run119",
+      "job": {
+        "configuration": {
+          "architecture": "long_tcn",
+          "kind": "gate_residual",
+          "width": 16,
+          "loss": "morphology",
+          "synthetic": 0.2,
+          "context": false,
+          "variant": "normal",
+          "shuffle": false,
+          "prior_dropout": 0.0,
+          "roi_dropout": true,
+          "roi_consistency": 0.2,
+          "name": "long_tcn__roi_consistency0_2"
+        },
+        "seed": 20261147,
+        "scope": "full_train"
+      },
+      "checkpoint": "run119.pt",
+      "sha256": "4cc7522c3d038454575dbd9a798fa2d7371d0cab6d68dd76de3e4900d1c21ded"
+    }
+  ],
+  "feature_checkpoints": [
+    {
+      "name": "independent__seed20261108",
+      "mode": "independent",
+      "width": 16,
+      "seed": 20261108,
+      "checkpoint": "independent__seed20261108.pt",
+      "sha256": "d31c25dcf866cfe9405ded904776810406d6a1939a04b68acb21c8edaa9460f8"
+    },
+    {
+      "name": "independent__seed20261125",
+      "mode": "independent",
+      "width": 16,
+      "seed": 20261125,
+      "checkpoint": "independent__seed20261125.pt",
+      "sha256": "8b0fe2ed1a6caf41b589a18a71a3bcf913c347b7c59c1bb454e8fe722fd49fd3"
+    },
+    {
+      "name": "independent__seed20261147",
+      "mode": "independent",
+      "width": 16,
+      "seed": 20261147,
+      "checkpoint": "independent__seed20261147.pt",
+      "sha256": "fe62d8962f845405a19cca27b1d528f6d8d6e7ef4a85af168c0c411a561e52b6"
+    },
+    {
+      "name": "joint__seed20261108",
+      "mode": "joint",
+      "width": 36,
+      "seed": 20261108,
+      "checkpoint": "joint__seed20261108.pt",
+      "sha256": "6c41e6ac895b040825abbaa3245da874af7c019d376e77b43003c8ae7a8a9c32"
+    },
+    {
+      "name": "joint__seed20261125",
+      "mode": "joint",
+      "width": 36,
+      "seed": 20261125,
+      "checkpoint": "joint__seed20261125.pt",
+      "sha256": "77dc7da0a419f5e721a903dfdc973646f085cbb776c0a7ed85f0dceff33b5aa8"
+    },
+    {
+      "name": "joint__seed20261147",
+      "mode": "joint",
+      "width": 36,
+      "seed": 20261147,
+      "checkpoint": "joint__seed20261147.pt",
+      "sha256": "79a26a499b6f814718713d675c319d58cf11d7c6c327888fce911a8532d46335"
+    },
+    {
+      "name": "shared_heads__seed20261108",
+      "mode": "shared_heads",
+      "width": 27,
+      "seed": 20261108,
+      "checkpoint": "shared_heads__seed20261108.pt",
+      "sha256": "ac197932883af5fbce0e1cfe22ef8887101afc15f3d20777c47d267c2cc4f140"
+    },
+    {
+      "name": "shared_heads__seed20261125",
+      "mode": "shared_heads",
+      "width": 27,
+      "seed": 20261125,
+      "checkpoint": "shared_heads__seed20261125.pt",
+      "sha256": "e136f699651fd210620a460400f3cd8354081c6af16d495281d5881f6b1d0dda"
+    },
+    {
+      "name": "shared_heads__seed20261147",
+      "mode": "shared_heads",
+      "width": 27,
+      "seed": 20261147,
+      "checkpoint": "shared_heads__seed20261147.pt",
+      "sha256": "56d15cb0d9f2c6921becc45be323d169fb8df383bf6397412b97eca415136e93"
+    }
+  ],
+  "fixed_waveform_controls": [
+    "CHROM",
+    "CHROM_WIN",
+    "GREEN",
+    "OMIT",
+    "PBV",
+    "POS_WIN",
+    "RGB_priors__real_only",
+    "RGB_priors__two_source50",
+    "negative_GREEN",
+    "priors__real_only",
+    "priors__two_source50",
+    "quality_hard",
+    "quality_weighted"
+  ],
+  "no_refitting_to_test": true,
+  "no_private_data": true,
+  "exposure": "Historically exposed public internal benchmark; not an independent new domain",
+  "source_sha256": "d6998ce549b826ae438655eb6750c0fea8e2dec75bfd410a250a050d42891804",
+  "git_revision": "2335ad4619570f8c5b5dc08088e339881941ee24"
+}

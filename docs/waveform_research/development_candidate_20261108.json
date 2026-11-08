@@ -1,0 +1,56 @@
+{
+  "status": "DEVELOPMENT_CANDIDATE_NOT_FINAL_EFFICACY_RESULT",
+  "configuration": {
+    "name": "long_tcn__roi_consistency0_2",
+    "architecture": "long_tcn",
+    "kind": "gate_residual",
+    "width": 16,
+    "context": false,
+    "synthetic": 0.2,
+    "loss": "morphology",
+    "roi_dropout": true,
+    "roi_consistency": 0.2
+  },
+  "steps": 300,
+  "seed": 20261108,
+  "checkpoint": "waveform_v2_development_candidate.pt",
+  "checkpoint_sha256": "2851cc36fea693113a27359ef5fb18741595eea26fcf2852e35dd768464e00a9",
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "selection_evidence_sha256": "c0d41f859fafa47fafa68f304cacd7a98dd4df2ccd6a73933d3c70583e884782",
+  "fitting_windows": 168,
+  "real_training_subjects": 26,
+  "synthetic_training_clips": 8,
+  "parameters": 9397,
+  "seconds": 9.26325089999591,
+  "fit_curve": [
+    {
+      "step": 1,
+      "loss": 0.41425544023513794
+    },
+    {
+      "step": 101,
+      "loss": 0.2702633738517761
+    },
+    {
+      "step": 201,
+      "loss": 0.26600128412246704
+    },
+    {
+      "step": 300,
+      "loss": 0.23318569362163544
+    }
+  ],
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "no_new_validation_score": true,
+  "trained_label_rate_hz": 30,
+  "supported_input_rates_hz": [
+    30,
+    60
+  ],
+  "serialization_exact_replay": true,
+  "flat_abstention_checked": true,
+  "native60_shape_smoke_only": true,
+  "git_revision": "86ee287c5215976f47b17c66e6d4374d231eb72b",
+  "source_manifest_sha256": "dc512815ef2925c3e1c7761dac40cd8a106db7e81d1f0dbbf17e5d25f89a92c1"
+}

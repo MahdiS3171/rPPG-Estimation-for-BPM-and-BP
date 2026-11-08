@@ -31,5 +31,19 @@ jobs:
         run: python -m scripts.verify_waveform_v2_classical_safe
       - name: Acquisition identifiability controls
         run: python -c "from scripts.audit_camera_timing_identifiability import controls; print(controls())"
+      - name: Source-balanced baseline contracts
+        run: python -m unittest discover -s tests -p test_two_source_waveform.py -v
+      - name: Adaptive waveform and loss contracts
+        run: python -m unittest discover -s tests -p test_waveform_screen.py -v
+      - name: Extended waveform architecture contracts
+        run: python -m unittest discover -s tests -p test_waveform_extensions.py -v
+      - name: Public research reset split contracts
+        run: python -m unittest discover -s tests -p test_waveform_research_split.py -v
+      - name: Three-part feature and gradient-isolation contracts
+        run: python -m unittest discover -s tests -p test_waveform_feature_specialists.py -v
+      - name: Native pilot pixel-equivalence contracts
+        run: python -m unittest discover -s tests -p test_pilot11_acquisition.py -v
+      - name: Pilot inference and BP separation contracts
+        run: python -m unittest discover -s tests -p test_pilot11_evaluation.py -v
       - name: Source compilation
         run: python -m compileall -q rppg_lab scripts tests

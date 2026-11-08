@@ -1,8 +1,22 @@
 # Waveform and face–hand timing research
 
-Updated 2026-11-08. Lead: Codex, within the active runtime. Current branch:
-`research/project-reassessment-2026-11-08`. This is the project roadmap; historical
+Updated 2026-11-09. Lead: Codex, within the active runtime. Current branch:
+`research/native-waveform-development`. This is the project roadmap; historical
 Gate documents remain evidence, not current work assignments.
+
+**Latest completed work:** the user's request opened all eleven local pilot
+sessions for frozen-model transfer, optical timing and exploratory session-mean
+BP evaluation under the [fixed protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md).
+The current workbook has eleven consenting exact session matches and 33 cuff
+readings, but zero video-reviewed event timelines. All 198,513 frames were
+re-extracted consistently at native pixels/every frame with original PTS.
+No private waveform fine-tuning occurred. Signal eligibility left five fitting
+and three evaluation people from the fixed S001–S006 / S007–S011 roles.
+[The report](docs/PILOT11_NEW_MODELS_REPORT.md) records joint-feature BP MAE
+15.54/9.41 mmHg versus mean 16.11/8.67; independent specialists 17.78/11.10.
+One of 108 independent timing attempts was strict; nobody had two. Physical
+timing remains unbounded. Next permitted work targets cuff/source verification
+and camera controls, with a local BP-blinded 33-event review queue prepared.
 
 ## Strategic assessment
 
@@ -32,12 +46,12 @@ repeat volunteer collection without a discriminating protocol.
 |---|---|---|
 | Can facial waveforms generalize? | V1 is useful on UBFC; external HR deteriorates substantially. | Matched native-waveform comparisons on newly admitted real data. |
 | Do reconstructed timestamps preserve local pulse timing? | Processing controls fail or abstain; sensor/reference clock calibration is missing. | Known acquisition timing controls and appropriate site references. |
-| Is simultaneous face–hand optical delay repeatable and resolved? | Pilot has one independent strictly accepted window; no repeatability established. | Calibrated phone acquisition, repeated observations, uncertainty smaller than the effect. |
-| Does delay improve BP estimation? | No timing-verified cuff associations; no credible incremental test. | Only after the preceding evidence, subject/session-separated controlled comparison. |
+| Is simultaneous face–hand optical delay repeatable and resolved? | All-eleven consistent extraction: one strict / 108 independent attempts; no person has two. No exposure/row calibration. | Calibrated phone acquisition, repeated observations, uncertainty smaller than the effect. |
+| Does delay improve BP estimation? | Zero verified cuff links, so timing increment unavailable. Fixed morphology-BP study on five fitting/three evaluation people shows no reliable mean-baseline advantage. | Reviewed existing cuff events; independent timing evidence and a new grouped BP study before any claim. |
 
 ## Workstreams and exit conditions
 
-1. **Camera feasibility, highest priority.** The data-free acquisition experiment
+1. **Camera feasibility, equipment-limited parallel work.** The data-free acquisition experiment
    is complete: unmeasured row timing confounds physiological delay, and waveform
    mismatch can reverse its estimate. Next use the
    [phone-only calibration design](docs/PHONE_CAMERA_FEASIBILITY_PLAN.md).
@@ -62,16 +76,106 @@ repeat volunteer collection without a discriminating protocol.
    local arrival time. Detailed architecture and substantial training budget are
    decided after data admission and baseline evidence. Personalization and
    semantic patch refinement remain optional later ablations.
-4. **Integration.** The six draft PRs are a linear 19-commit stack. Their latest
-   tip already contains all six. A local descendant branch preserves the stack;
-   existing tracked files remain unchanged. A synthetic-only CI workflow and
-   an [integration/review packet](docs/PROJECT_REASSESSMENT_2026-11-08.md)
-   are in [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
-   directly against main. The user approved the history-preserving merge after
-   final green CI and closure of the six old drafts while retaining branches.
-   No force-push, raw data release or branch deletion is authorized.
+4. **Integration complete.** The six original PRs formed a linear 19-commit
+   stack. [PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7)
+   integrated it with history preserved after user approval and green CI; the
+   six old drafts are closed and branches retained. Current development stays
+   on one branch. No force-push, raw data release or branch deletion is authorized.
+
+## Active development campaign
+
+**Newest pilot authorization:** the user requested frozen new-model testing
+on all eleven BP-pilot subjects and named the updated final workbook as
+authoritative. The [pilot protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md) and
+[scope/model lock](docs/waveform_research/pilot11_model_and_scope_lock_20261108.json)
+authorize local S001–S011 evaluation for this study, superseding the old reserve
+for that use only. No waveform fine-tuning or private-data publication. S001–S006
+are BP development and S007–S011 fixed BP evaluation. The user approved a
+2–3-hour consistent every-frame extraction for all eleven rather than mixing
+legacy/current preprocessing. Updated metadata matches all eleven videos and
+33 numeric cuff pairs, but all cuff timing remains legacy/unreviewed. Primary
+event-level BP/timing associations therefore remain unverified; secondary
+session-average BP is explicitly exploratory. Acquisition/inference is ongoing.
+
+**Latest user-directed protocol:** repartition all 41 eligible public UBFC
+subjects and ten admitted SCAMPS clips for a new from-scratch campaign, using
+29/6/6 and 8/1/1 Train/Validation/Test allocations. This explicitly supersedes
+the old public Train-only boundary for new research, without changing historical
+splits, frozen V1 or private/sealed restrictions. See the
+[reset protocol](docs/WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md) and committed split.
+Fresh weights do not make historically exposed data an untouched external test.
+All new model selection uses Validation; Test stays separate until the waveform
+and three-part specialist comparison is fixed. Rerun earlier mechanisms on this
+protocol, with matched controls to distinguish participant/window increases
+from a changed evaluation population.
+
+The reset rerun is now complete: 132 waveform fits and nine feature-system fits,
+with independent saved-value verification. The
+[reset report](docs/WAVEFORM_RESET_CAMPAIGN_REPORT.md) separates new Validation
+scores from historical OOF scores. Fully independent feature experts did not
+consistently beat a matched joint learner. A validation-only
+[selection lock](docs/waveform_research/reset_internal_test_selection_20261108.json)
+fixes the waveform leader, robust mixed-source comparator and all three feature
+systems for one internal Test campaign. No subsequent Test-based tuning is part
+of that comparison. This uses the user's public-data reset authorization;
+private/sealed restrictions and future external-data admission remain unchanged.
+
+The one locked internal Test campaign has now completed and is consumed.
+Waveform gains repeat, while independent feature experts do not consistently
+beat a joint learner and geometry prediction is weak on Test. Preserve every
+comparator, the selection lock and consumption receipts. See the reset report
+and [retained models](docs/waveform_research/reset_retained_models_20261108.json).
+Do not use this Test for further tuning. Next discriminating evidence is real
+waveform/domain/reference admission and native-rate validation, not an assertion
+that specialization or more overlapping windows solves the timing problem.
+
+The approved integration is complete on main at `50cb264`; PR #7 was merged with
+history preserved, the six superseded drafts are closed, and all branches remain.
+No new experiment PR stack is being created.
+The completed campaign is consolidated in
+[draft PR #8](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/8)
+directly against main. Its implementation passed clean GitHub CI. This draft
+does not merge or replace the frozen production path.
+
+The user subsequently authorized broad experimentation on current datasets,
+including adaptive classical selection/fusion, model expansion and loss variants.
+The first Train-only, subject-fold linear study is complete: 50:50 SCAMPS pooling
+worsened its real-source metrics; fixed CHROM_WIN remained stronger. That finding
+motivated explicit source-mixture controls rather than assuming more data helps.
+
+The [adaptive screen](docs/ADAPTIVE_WAVEFORM_SCREEN_PROTOCOL.md) trained 21 compact
+configurations on the local GPU in 157.42 seconds, using one immutable 168-window
+archive. It tests signed learned gating, residual correction, raw-RGB temporal
+models, dual-band heads, four loss schedules, past-only context, dropout and
+shuffled targets. Preliminary aligned shape/derivative gains from the hybrid
+morphology model do not establish improved native phase or generalization.
+
+The completed [confirmation study](docs/ADAPTIVE_WAVEFORM_CONFIRMATION_PROTOCOL.md) expands
+to all 26 original UBFC Train subjects across five folds, with source-mixture,
+loss, context, width and multi-head comparisons, fixed ensembles, and additional
+seeds. Local time caps are 15 minutes per compact screen. No cloud, new equipment,
+original Val/Test use, private-data access or large video-model campaign is
+included. Native-60 model operation has engineering tests; current labels remain
+30 Hz and cannot validate extra physiological detail at 60 Hz.
 
 ## Ranked risk register
+
+Current findings and negative results are consolidated in the
+[campaign report](docs/WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md). Matched controls
+favor learned waveform correction; input-adaptive gating adds little. All 123
+neural development fits and 20 linear solves are complete. Longer TCN context
+improves shape; attention adds no clear increment. ROI dropout/consistency
+improves robustness; retain the TCN consistency variant as the leading local
+candidate, with fixed classical and simple hybrids as comparators. Its current
+OOF shape r is .811 vs CHROM_WIN .729; native-r gains remain uncertain and HR
+does not clearly improve. A one-time full-Train fit exports a separate local
+checkpoint without a new validation score. These are 30-Hz labels, not native-60
+supervision. No timing or BP qualification follows.
+
+Next execution priorities: preserve this candidate and its software contracts;
+complete documented public-reference/permission checks; admit a second real
+waveform domain when available; then lock a third domain before evaluation.
+Do not continue broad model selection on the same 26 people indefinitely.
 
 | Priority | Risk / consequence | Mitigation and stop criterion |
 |---|---|---|
@@ -81,7 +185,7 @@ repeat volunteer collection without a discriminating protocol.
 | P1 | Reference target differs anatomically or in filtering/latency. | State the estimand and sensor processing. Native contact correlation is descriptive until local timing is independently established. |
 | P1 | Exposed splits or repeated windows masquerade as independent evidence. | Record all consumption; group by subject/session/domain; no new locked test use without specific approval. |
 | P1 | Integration changes frozen evidence or private data. | Additive branch, pinned hashes, protected-data exclusion, review before main merge. |
-| P2 | Sparse cuff events and confounding produce spurious BP accuracy. | No BP fitting now; require audited cuff intervals and an incremental-value study first. |
+| P2 | Sparse cuff events and confounding produce spurious BP accuracy. | Only the authorized fixed session-mean comparison proceeds; event-level/timing-based BP remains unavailable without reviewed intervals and calibrated timing. |
 | P2 | Growing infrastructure substitutes for research. | Reuse current loaders/scorers; one roadmap, one evidence ledger; stop redundant synthetic model campaigns. |
 
 ## User decisions and autonomy envelope
@@ -99,7 +203,12 @@ repeat volunteer collection without a discriminating protocol.
 - **Compute deferred:** local CPU diagnostics and synthetic checks proceed.
   No paid compute, substantial training or bulk data download is proposed now.
 
-S007–S011, private Dataset/ and sheets/ remain closed. Frozen V1 and all historical
+S001–S011 and the named final workbook are open only for the authorized local
+Pilot11 protocol; other private data remain closed. Frozen V1 and all historical
 sources/results remain untouched. No one should infer clinical BP validity from
 this project. See [decisions](DECISION_LOG.md), [evidence](EVIDENCE_LEDGER.md), and
 the [full audit](docs/PROJECT_REASSESSMENT_2026-11-08.md).
+
+Use the [current research index](docs/waveform_research/README.md) for protocols
+and results. The [organization review](docs/REPOSITORY_ORGANIZATION.md) records
+reversible cleanup and historical paths that must stay stable.

@@ -49,7 +49,10 @@ the same 10-second duration at 60 Hz, preserving original PTS provenance. Start
 with a compact temporal model and raw RGB plus explicitly characterized optional
 priors; avoid making a 4-Hz channel bank the only information source. Express
 filter cutoffs and receptive fields in seconds/Hz, not unexamined sample counts.
-No candidate has been trained or shown to improve reconstruction yet.
+At the time of this initial strategy, no candidate had been trained. The later
+[development campaign](WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md) now supplies a
+30-Hz-trained TCN candidate with 60-Hz input support and equivalent-grid checks.
+It does not yet supply native-60 training/reference evidence.
 
 Use real native-60-or-higher RGB with a sufficiently sampled waveform reference.
 Lower-FPS datasets can contribute domain diversity and rate augmentation; their

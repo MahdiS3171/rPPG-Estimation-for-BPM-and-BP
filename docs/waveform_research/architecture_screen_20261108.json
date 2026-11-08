@@ -1,0 +1,33 @@
+{
+  "status": "EXPLORATORY_ARCHITECTURE_SCREEN",
+  "complete": true,
+  "steps": 120,
+  "seed": 20261108,
+  "seconds": 20.04507769999327,
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "predictions_sha256": "1193485abd60d1e1156796fde7f8dff94c987ca5baf648bd64325dc26eaa7ba3",
+  "git_revision": "e0066714f262091453b8da4e9337d13671d02b9d",
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "no_native60_training_labels": true,
+  "source_results_sha256": "a01edeb61ccf5e61e397ac9d9f743772ab3b52815bbd4c1d1bdec152c0a16c4f",
+  "independent_verification": {
+    "saved_aggregates_recomputed": 192,
+    "checkpoint_hashes_verified": 8,
+    "max_absolute_metric_difference": 5.9483976855290166e-08,
+    "predictions_sha256": "1193485abd60d1e1156796fde7f8dff94c987ca5baf648bd64325dc26eaa7ba3",
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  },
+  "checkpoint_hashes": {
+    "long_tcn__native": "744609d2ce69bda258019ed0fe80f5fd9264c59377df7c31b60b36fb88b3633c",
+    "long_tcn__morphology": "644a749fa8a62ecc8210e74c804a5dc8efc7ff2ba107e5a0dc6cfd0a5f8e85c8",
+    "physical_attention__native": "3360572296ebda69f7c7259bff7b5e0db237ec526c6693a946a13b5c3c715992",
+    "physical_attention__morphology": "14e5b15472494c21e74d5fac107465891c4969fdb905df14db758b7435d73736",
+    "spectral__native": "9df210de2c5ea08cc35a5cabbaa92e81f9ebec963d2606bc9d7e50abe7637355",
+    "spectral__morphology": "c788acab8c369e2d7da14429c0b9c8ba76473f337c4a05b55c91b375377cb40d",
+    "temporal_gate__native": "5824218d04e905598205e778316b923d5e53418ca42259adae39cf00ba1a758a",
+    "temporal_gate__morphology": "a2ade03428aa8041719a3c631a4de761a06e0422da92c9badfccda637173b415"
+  }
+}

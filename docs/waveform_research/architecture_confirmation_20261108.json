@@ -1,0 +1,85 @@
+{
+  "status": "EXPLORATORY_ARCHITECTURE_FIVE_FOLD_DEVELOPMENT",
+  "complete": true,
+  "intended_neural_runs": 20,
+  "completed_neural_runs": 20,
+  "steps": 300,
+  "seed": 20261108,
+  "seconds": 108.61025759999757,
+  "folds": [
+    [
+      "UBFC:subject5",
+      "UBFC:subject25",
+      "UBFC:subject1",
+      "UBFC:subject27",
+      "UBFC:subject18",
+      "UBFC:subject6"
+    ],
+    [
+      "UBFC:subject22",
+      "UBFC:subject37",
+      "UBFC:subject33",
+      "UBFC:subject34",
+      "UBFC:subject11"
+    ],
+    [
+      "UBFC:subject15",
+      "UBFC:subject20",
+      "UBFC:subject17",
+      "UBFC:subject40",
+      "UBFC:subject21"
+    ],
+    [
+      "UBFC:subject30",
+      "UBFC:subject36",
+      "UBFC:subject10",
+      "UBFC:subject3",
+      "UBFC:subject4"
+    ],
+    [
+      "UBFC:subject23",
+      "UBFC:subject12",
+      "UBFC:subject38",
+      "UBFC:subject8",
+      "UBFC:subject2"
+    ]
+  ],
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "predictions_sha256": "93b68d7d75033a3f16e2f8dfcc788e0da05c575965ac452714557c928d74a730",
+  "indices_sha256": "03f4b495a28da0119a9c97f8abfb1cf57609eeefe1d8ab680e9a2274dafa56b3",
+  "git_revision": "f9b3e39a867d117497950613be41ef3c9fe130ea",
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "no_native60_training_labels": true,
+  "source_results_sha256": "709b49311c1ebd401ef4f6a28e0d0de9ec7efe94895fcdbe50ed7a571fd61bf7",
+  "independent_verification": {
+    "saved_aggregates_recomputed": 162,
+    "registered_checkpoint_hashes_verified": 20,
+    "max_absolute_metric_difference": 2.199066961861007e-08,
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  },
+  "checkpoint_hashes": {
+    "fold0_long_tcn__morphology": "8bf80f5b49cc66bf0b8f8248fc46c2e34e05265c199f360186fbf43c3970e068",
+    "fold0_physical_attention__morphology": "6a4d2f6072deb234fa39f02d5f49fe66f117632f9b1b2c4479fb8eabb0a69461",
+    "fold0_spectral__morphology": "99f69afd10e2e5a1d4cd581a0c918ffb7f60fca1f50bb7f0ffd5544c6cd63b9b",
+    "fold0_temporal_gate__morphology": "e62cd018f8e1b2cbd2b386cbb4b9d03d039ae5a8806e759d462a7b1263ca6e28",
+    "fold1_long_tcn__morphology": "85f00f3e512b202f23a4d17a1d4c47bda515cb3871db78fa8cd02d08aedd0edd",
+    "fold1_physical_attention__morphology": "11dd82385b3c3d9350ad8c9556e0a2d93216c0eaa2795a798ea98127257579e0",
+    "fold1_spectral__morphology": "e6924ce0ef6eec1fb0005f31ab665b13b3c02853b8f347138e7105880d5df6f2",
+    "fold1_temporal_gate__morphology": "512d88843230361e9c801e5c3c2ccc979a4c68b970996763e412cc070c78e060",
+    "fold2_long_tcn__morphology": "af76b58506c97d960a1a1e1592c2f0316a2ee58a27f601c105aee1aec6be8eeb",
+    "fold2_physical_attention__morphology": "0b87c72def967e77a06fc48c56696b8fc329665107358b7b0754d45e28748dd7",
+    "fold2_spectral__morphology": "73c06d5c0738a601ebd01029257852bb2b9d810948596665d1e4d4e3ebc0ff35",
+    "fold2_temporal_gate__morphology": "e88cb3a725eb9437fa285d682c849da788ec0a4a77825a5321236bd098292730",
+    "fold3_long_tcn__morphology": "381dd9d6d54087d0b9643d9949cba3251607678b0d43b29792b1b42a8eefdb3a",
+    "fold3_physical_attention__morphology": "5e84849eb30deac3f463234787fcd38d5dba73b6d5c03810f248fc46c6a2738d",
+    "fold3_spectral__morphology": "bdf4e5378c30cfa3d9d4747c9b61c2cbc646d4176cb02f6d3848ff708f384052",
+    "fold3_temporal_gate__morphology": "e8847188ba62dfbc77dc0a0f688e461e18809539d24d73b448386d437302f1bd",
+    "fold4_long_tcn__morphology": "8a562eb30d90e4d7f6e03784f02c99f2d84499191942d35e834467394437d841",
+    "fold4_physical_attention__morphology": "076dc2d2941b38ebe9402bc0c8ca17608eafd3344568c5d8af7e9e58bc179ffa",
+    "fold4_spectral__morphology": "a2c1ff797db6904ad39fcd94be16b16a4cb712e67410e5e971252609e6e071c2",
+    "fold4_temporal_gate__morphology": "65347972a993ca3100f7aff62fa92de782220f5ef512f08ee7031059746aa023"
+  }
+}

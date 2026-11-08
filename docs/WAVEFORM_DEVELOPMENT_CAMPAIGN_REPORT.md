@@ -1,0 +1,164 @@
+# Current waveform development campaign
+
+**Active follow-up:** the user authorized frozen-model evaluation on all eleven
+local BP-pilot subjects, using the updated final workbook. The
+[Pilot11 protocol](PILOT11_NEW_MODELS_PROTOCOL.md) fixes fifteen checkpoints,
+consistent every-frame acquisition, separate optical timing checks and a small
+six-development/five-evaluation-subject BP comparison. This supersedes the old
+private-data reserve only for that local study. Historical tables below retain
+their original scope. The [completed Pilot11 report](PILOT11_NEW_MODELS_REPORT.md)
+finds no reliable BP gain: signal eligibility leaves five fitting/three
+evaluation people; independent specialists have SBP/DBP MAE 17.78/11.10 mmHg
+versus training mean 16.11/8.67. One of 108 independent timing attempts is strict,
+with no within-person repetition. These results do not select a new waveform
+primary or establish native-60 waveform truth.
+
+**Latest protocol change:** the user authorized a new subject-level split across
+all eligible public records. The [reset protocol](WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md)
+and [split](waveform_research/reset_split_20261108.json) are committed before
+fitting. New Train: 29 real subjects/eight synthetic clips, 846 windows;
+Validation: six real/one synthetic, 173 windows; Test: six real/one synthetic,
+181 windows. Previous results below retain their original Train-only meaning.
+The from-scratch rerun is reported separately; this is a historically
+exposed internal benchmark, not an untouched external cohort. Test scoring
+follows locked waveform/specialist validation selection.
+
+The rerun and three-part comparison have completed; see the
+[separate reset report](WAVEFORM_RESET_CAMPAIGN_REPORT.md) for their results.
+The historical table below remains unchanged and uses its original protocol.
+
+Updated 2026-11-08. These are development experiments. Sources are original
+UBFC Train (26 people, 152 ten-second windows) and original SCAMPS Train (eight
+synthetic clips, 16 windows). Original Val/Test, private pilot media and sealed
+participants remain unused. Two training sources do not establish transfer
+across two real populations.
+
+## Findings
+
+The strongest repeatable gain so far is waveform shape correction using a
+residual hybrid and a morphology loss. Native correlation improves less
+consistently. Adding waveform complexity has not established a heart-rate gain.
+
+| Method, same five development folds | Native r | Aligned shape r | Aligned derivative r | HR MAE, bpm |
+|---|---:|---:|---:|---:|
+| Fixed CHROM_WIN | .267 | .729 | .607 | 1.151 |
+| Input-quality weighted classical | .267 | .728 | .609 | 1.126 |
+| Adaptive residual, morphology loss, 20% synthetic | .304 | .788 | .733 | 1.163 |
+| Same residual, real data only | .300 | .793 | .740 | 1.383 |
+| Same residual, 50% synthetic | .286 | .784 | .727 | 1.137 |
+| Constant learned gate plus residual | .294 | .786 | .731 | 1.411 |
+| Frozen CHROM gate plus residual | .286 | .784 | .733 | 1.194 |
+| Quality-weighted base plus residual | .300 | .785 | .734 | 1.330 |
+| Adaptive residual, shuffled fitting targets | .167 | .468 | .395 | 8.530 |
+| Longer TCN residual, morphology loss | .302 | .805 | .738 | 1.224 |
+| Attention residual, morphology loss | .298 | .805 | .740 | 1.244 |
+| Spectral residual, morphology loss | .285 | .739 | .664 | 2.702 |
+| Time-varying gate, morphology loss | .290 | .792 | .736 | 1.502 |
+| Longer TCN with ROI dropout | .305 | .812 | .751 | 1.194 |
+| Longer TCN with ROI dropout and consistency | .314 | .811 | .749 | 1.205 |
+
+Scores average windows within people, then people. Aligned metrics choose one
+lag within +/-0.5 seconds against the contact target on fixed central support.
+They describe shape after reference alignment. Physical phase, arrival-time
+preservation and local face-to-hand timing are not established.
+
+The adaptive residual improves aligned shape in 24/26 subjects and aligned
+derivative correlation in 26/26. The mean native-r difference is +.038, with a
+descriptive subject-bootstrap interval of [-.004, .082]. Development selection
+and overlapping training cohorts limit inference from this interval. Additional
+seeds reproduce the initial shape gain. The matched shuffled-label control is
+substantially worse, supporting information learned from correct targets.
+
+The adaptive component adds much less than the residual correction: full shape
+.788, constant-gate .786, quality-based .785. Holding descriptors constant at
+inference also does not worsen the initial-screen morphology score. Keep simple
+hybrids as live comparators. Selecting the highest-quality individual trace was
+weak (HR MAE 6.677 bpm); weighted classical fusion was stronger here.
+
+## Decisions from negative results
+
+- Do not pool synthetic and real data indiscriminately. A 50:50 linear mixture
+  worsened metrics; neural mixture effects differ by endpoint.
+- Wider networks, past-only calibration context, dual-band heads and fixed
+  ensembles did not clearly improve on the compact residual. Preserve their
+  evidence rather than accumulating mechanisms in one larger model.
+- Native loss and schedules ending in native loss did not solve phase. Contact
+  site, reference filtering and alignment remain possible confounders; a loss
+  cannot identify an unmeasured sensor clock.
+- Labels remain 30 Hz. Native-60 input support and physical-time kernels are
+  engineering capabilities; interpolation cannot manufacture physiological
+  supervision. Extra detail at 60 Hz remains unvalidated.
+
+## Architecture comparison and remaining checks
+
+Eight exploratory architecture/loss runs and all 20 follow-up five-fold fits
+completed. Longer context and attention improve aligned shape from .788 to
+.805, with essentially equivalent results. Prefer the longer TCN as a morphology
+candidate because attention adds complexity without a clear increment. Native
+and HR endpoints do not establish a uniform advantage. Spectral residuals and
+time-varying gates are deprioritized. Including the ten ROI-training controls,
+123 neural development fits and
+20 linear solves completed; these counts are experiments, not participants.
+
+The [robustness checks](WAVEFORM_ROBUSTNESS_PROTOCOL.md) assess known input shifts,
+missing features and equivalent 30/60-Hz grids before deployment claims. No
+additional fit or reference data is needed for those checks.
+
+Initial robustness checks completed for compact, TCN and attention models over
+all 152 OOF windows: whole-input shifts retain >.9999 mean output agreement;
+equivalent interpolated 60-Hz inputs retain >.99998 agreement after subsampling.
+All flat/no-prior cases abstain. ROI removal changes the relative lag by one
+33.33-ms bin in some windows. These are processing checks with coarse lag bins,
+not local timing validation. Both fixed region-dropout controls improve shape
+and ROI stability. Dropout plus 0.2 consistency reaches native r .314, shape
+.811, derivative .749 and HR MAE 1.205 bpm. Shape improves in 24/26 subjects,
+derivative in 26/26; the descriptive native-r difference interval still includes
+zero [-.003, .100]. The consistency variant has no additional lag bin under
+the tested ROI removals, at 33.33-ms resolution. This does not resolve effects
+below that grid or validate physical timing.
+
+Retain the longer TCN with dropout/consistency as the leading development
+candidate. Its small shape difference from dropout alone is inconclusive;
+better observed ROI stability motivates the selection. A one-time fit on all
+permitted Train windows produces a local checkpoint and manifest. Its exported
+checkpoint has no new validation score. Keep classical and compact hybrids for
+future independent comparisons. Native timing/generalization remain open.
+
+The full-Train fit completed: 9,397 parameters, 300 steps, 168 windows from 26
+real subjects and eight synthetic clips. Its local checkpoint is
+`outputs/waveform_screen/development_candidate_20261108_01/waveform_v2_development_candidate.pt`.
+SHA-256: `2851cc36fea693113a27359ef5fb18741595eea26fcf2852e35dd768464e00a9`.
+The [candidate receipt](waveform_research/development_candidate_20261108.json)
+records configuration, source hashes and checks. Exact serialization replay,
+flat abstention and 30/60-Hz input smoke checks pass. This adds one fitting run
+to the 123 development comparisons; it does not add validation evidence.
+
+Reproduction after the permitted prepared data and completed ROI study exist:
+
+```powershell
+python -m scripts.screen_waveform_extensions --data outputs/waveform_screen/data_20261108_01 --candidate-from outputs/waveform_screen/roi_training_20261108_01 --out outputs/waveform_screen/development_candidate_REPRO
+```
+
+The model factory is `make_extended_model('long_tcn', width=16)`. Its input is
+`[batch, 3 ROIs, 9 channels, 10*fs samples]`: RGB followed by GREEN, CHROM,
+CHROM_WIN, PBV, POS_WIN and OMIT, with the prepared pipeline's normalization,
+validity masks and 75 input-only descriptors. A checkpoint is not an arbitrary
+video-to-waveform API; the same preprocessing contract must be honored. V1 and
+the app's frozen inference path were not replaced.
+
+Next value comes from robustness and data/reference admission, followed by a
+locked third real domain. Current evidence does not require camera recapture
+as its explanation. Phone calibration can measure acquisition behavior, but
+phones and a cuff alone do not provide a local contact timing reference.
+
+## Reproducibility
+
+The [research index](waveform_research/README.md) links fixed protocols, result
+tables and hash receipts. Checkpoints, per-window predictions and participant
+waveform plots remain local and ignored. Independent numerical replay reproduced
+552 first-screen aggregates, 366 confirmation/seed aggregates, 144 matched
+control aggregates, 192 architecture-screen aggregates, 162 architecture
+confirmation aggregates and 90 ROI-training aggregates without neural inference
+or original-source access. Maximum
+differences were below 6.1e-8. Saved-value replay verifies reporting; it does not
+add independent scientific observations.
