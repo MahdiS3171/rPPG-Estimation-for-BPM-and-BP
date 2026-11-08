@@ -37,7 +37,7 @@ repeat volunteer collection without a discriminating protocol.
 
 ## Workstreams and exit conditions
 
-1. **Camera feasibility, highest priority.** The data-free acquisition experiment
+1. **Camera feasibility, equipment-limited parallel work.** The data-free acquisition experiment
    is complete: unmeasured row timing confounds physiological delay, and waveform
    mismatch can reverse its estimate. Next use the
    [phone-only calibration design](docs/PHONE_CAMERA_FEASIBILITY_PLAN.md).
@@ -62,14 +62,11 @@ repeat volunteer collection without a discriminating protocol.
    local arrival time. Detailed architecture and substantial training budget are
    decided after data admission and baseline evidence. Personalization and
    semantic patch refinement remain optional later ablations.
-4. **Integration.** The six draft PRs are a linear 19-commit stack. Their latest
-   tip already contains all six. A local descendant branch preserves the stack;
-   existing tracked files remain unchanged. A synthetic-only CI workflow and
-   an [integration/review packet](docs/PROJECT_REASSESSMENT_2026-11-08.md)
-   are in [draft PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7),
-   directly against main. The user approved the history-preserving merge after
-   final green CI and closure of the six old drafts while retaining branches.
-   No force-push, raw data release or branch deletion is authorized.
+4. **Integration complete.** The six original PRs formed a linear 19-commit
+   stack. [PR #7](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/pull/7)
+   integrated it with history preserved after user approval and green CI; the
+   six old drafts are closed and branches retained. Current development stays
+   on one branch. No force-push, raw data release or branch deletion is authorized.
 
 ## Active development campaign
 
@@ -90,7 +87,7 @@ models, dual-band heads, four loss schedules, past-only context, dropout and
 shuffled targets. Preliminary aligned shape/derivative gains from the hybrid
 morphology model do not establish improved native phase or generalization.
 
-The [confirmation study](docs/ADAPTIVE_WAVEFORM_CONFIRMATION_PROTOCOL.md) expands
+The completed [confirmation study](docs/ADAPTIVE_WAVEFORM_CONFIRMATION_PROTOCOL.md) expands
 to all 26 original UBFC Train subjects across five folds, with source-mixture,
 loss, context, width and multi-head comparisons, fixed ensembles, and additional
 seeds. Local time caps are 15 minutes per compact screen. No cloud, new equipment,
@@ -102,11 +99,20 @@ included. Native-60 model operation has engineering tests; current labels remain
 
 Current findings and negative results are consolidated in the
 [campaign report](docs/WAVEFORM_DEVELOPMENT_CAMPAIGN_REPORT.md). Matched controls
-favor learned waveform correction; input-adaptive gating adds little. Eight
-architecture/loss runs are complete; a fixed 20-fit five-fold comparison will
-decide whether longer context/attention earns its extra complexity. Preserve
-strong classical and simple residual comparators. Shape gains do not qualify
-the model for timing or BP.
+favor learned waveform correction; input-adaptive gating adds little. All 123
+neural development fits and 20 linear solves are complete. Longer TCN context
+improves shape; attention adds no clear increment. ROI dropout/consistency
+improves robustness; retain the TCN consistency variant as the leading local
+candidate, with fixed classical and simple hybrids as comparators. Its current
+OOF shape r is .811 vs CHROM_WIN .729; native-r gains remain uncertain and HR
+does not clearly improve. A one-time full-Train fit exports a separate local
+checkpoint without a new validation score. These are 30-Hz labels, not native-60
+supervision. No timing or BP qualification follows.
+
+Next execution priorities: preserve this candidate and its software contracts;
+complete documented public-reference/permission checks; admit a second real
+waveform domain when available; then lock a third domain before evaluation.
+Do not continue broad model selection on the same 26 people indefinitely.
 
 | Priority | Risk / consequence | Mitigation and stop criterion |
 |---|---|---|

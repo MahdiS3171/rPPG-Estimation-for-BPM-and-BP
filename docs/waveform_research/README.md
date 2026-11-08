@@ -14,6 +14,7 @@ current conclusions and negative results.
 | Adaptive versus fixed/global/quality gates; shuffled labels | [Matched ablations](../ADAPTIVE_WAVEFORM_ABLATION_PROTOCOL.md) | [Results](adaptive_ablations_20261108.csv), [receipt](adaptive_ablations_20261108.json) |
 | Longer context, attention, spectral and time-varying gates | [Extension protocol](../WAVEFORM_ARCHITECTURE_EXTENSION_PROTOCOL.md) | [Screen](architecture_screen_20261108.csv), [confirmation](architecture_confirmation_20261108.csv), [receipt](architecture_confirmation_20261108.json) |
 | Known shifts, missing inputs and equivalent 30/60-Hz grids | [Robustness protocol](../WAVEFORM_ROBUSTNESS_PROTOCOL.md) | [Results](waveform_robustness_20261108.csv), [receipt](waveform_robustness_20261108.json); no native-60 ground truth. |
+| Region dropout and output consistency | [Follow-up/export protocol](../WAVEFORM_ROBUSTNESS_PROTOCOL.md) | [Training](roi_training_20261108.csv), [receipt](roi_training_20261108.json), [robustness](roi_robustness_20261108.csv) |
 | Native 60-fps strategy | [Strategy and transfer audit](../NATIVE_60FPS_WAVEFORM_STRATEGY.md) | [Sampling transfer](../project_audit/sample_rate_results_20261108.json) |
 | Physical acquisition timing | [Protocol](../CAMERA_TIMING_IDENTIFIABILITY_PROTOCOL.md) | [Report](../CAMERA_TIMING_IDENTIFIABILITY_REPORT.md) |
 

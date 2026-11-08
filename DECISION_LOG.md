@@ -128,3 +128,14 @@ as live comparators. The first architecture screen motivates a bounded 20-fit
 five-fold check of context, attention, spectral and time-varying gates. Stop
 expanding families that do not improve the relevant endpoints. This remains
 repeated development selection, not an independent generalization result.
+
+## 2026-11-08 — Retain a robust development candidate (D015)
+
+The 20 architecture fits favor longer TCN context over added attention/spectral
+complexity. Ten matched ROI-training fits improve shape/stability. Retain the
+longer TCN with 50% region dropout and a 0.2 native-output consistency penalty
+as the leading development candidate. Its native-r difference interval still
+includes zero; no HR, physical timing, native-60 detail or independent-domain
+claim is warranted. Export one full-original-Train fit without a validation
+score, preserving frozen V1. End broad architecture search on the same small
+cohort; prioritize suitable real-domain/reference admission next.

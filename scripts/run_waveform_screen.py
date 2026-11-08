@@ -72,6 +72,7 @@ def forward(model,batch):
 
 
 def infer(model,arrays,indices,device):
+    if not len(indices):return np.empty((0,arrays['x'].shape[-1]),dtype=np.float32)
     model.eval();predictions=[]
     with torch.inference_mode():
         for start in range(0,len(indices),32):

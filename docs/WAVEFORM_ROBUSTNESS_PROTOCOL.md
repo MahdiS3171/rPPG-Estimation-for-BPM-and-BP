@@ -39,3 +39,16 @@ standardized native-waveform MSE penalizes changes under region removal. It is
 an engineering regularizer, not physiological timing supervision. Repeat the
 same robustness checks and report waveform/HR tradeoffs for both controls.
 Ten fits maximum, capped at 15 minutes; no search over consistency weights.
+
+## Candidate export fixed after follow-up
+
+The ten fits completed. Dropout improves shape/derivatives; the 0.2 consistency
+variant has similar shape, higher mean native correlation and stronger ROI-output
+stability. Retain the latter as the development candidate, not a universally
+best model. Fit it once on all 168 permitted original-Train windows, same seed,
+300 steps and source-balanced 20% synthetic sampling. Export a local checkpoint
+and hash manifest, test exact serialization replay, flat abstention and 30/60-Hz
+input shapes. Do not report a validation score for this full-development fit.
+Earlier OOF scores describe the selection procedure, not this final checkpoint.
+Frozen V1 is untouched. The candidate remains separate from production and is
+not qualified for physiological timing or BP.

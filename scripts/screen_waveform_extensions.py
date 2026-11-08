@@ -19,12 +19,15 @@ def main():
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--confirmation',type=Path,help='Reuse completed five-fold development partition; morphology losses only')
     parser.add_argument('--roi-robustness',action='store_true',help='Two prespecified long-TCN dropout/consistency controls')
+    parser.add_argument('--candidate-from',type=Path,help='Export full-development candidate after the completed ROI study')
     parser.add_argument('--max-seconds',type=int,default=900);args=parser.parse_args()
     root=Path.cwd();allowed=(root/'outputs/waveform_screen').resolve();out=args.out.resolve()
     if allowed not in out.parents or allowed not in args.data.resolve().parents or out.exists():parser.error('Use screen data and NEW output')
     receipt=json.loads((args.data/'data_receipt.json').read_text())
     if file_sha256(args.data/'development_arrays.npz')!=receipt['arrays_sha256']:raise ValueError('Data changed')
     with np.load(args.data/'development_arrays.npz',allow_pickle=False) as archive:arrays={k:archive[k] for k in archive.files}
+    if args.candidate_from:
+        export_candidate(args,arrays,receipt,out,allowed);return
     if args.confirmation:
         confirm_folds(args,arrays,receipt,out,allowed);return
     if args.roi_robustness:parser.error('ROI controls require --confirmation')
@@ -109,6 +112,49 @@ def confirm_folds(args,arrays,receipt,out,allowed):
         git_revision=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
     (out/'results.json').write_text(json.dumps(clean(report),indent=2,allow_nan=False)+'\n')
     print(json.dumps(dict(complete=report['complete'],seconds=report['seconds']),indent=2))
+
+
+def export_candidate(args,arrays,receipt,out,allowed):
+    if allowed not in args.candidate_from.resolve().parents:raise ValueError('Use owned selection evidence')
+    evidence=json.loads((args.candidate_from/'results.json').read_text())
+    config=dict(name='long_tcn__roi_consistency0_2',architecture='long_tcn',kind='gate_residual',width=16,
+        context=False,synthetic=.2,loss='morphology',roi_dropout=True,roi_consistency=.2)
+    if not evidence['complete'] or evidence['data_sha256']!=receipt['arrays_sha256'] or config['name'] not in evidence['summaries']:
+        raise ValueError('Need completed matched selection evidence')
+    out.mkdir(parents=True,exist_ok=False);device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    torch.set_num_threads(1);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
+    (out/'configuration_lock.json').write_text(json.dumps(dict(configuration=config,steps=300,seed=SEED,
+        data_sha256=receipt['arrays_sha256'],all_original_train_only=True,no_validation_metrics=True),indent=2)+'\n')
+    started=time.perf_counter()
+    def factory(kind,context=False,width=16):return make_extended_model('long_tcn',width)
+    model,initial,predictions,curve=fit_one(config,arrays,np.arange(len(arrays['x'])),np.array([],dtype=int),device,SEED,300,model_factory=factory)
+    path=out/'waveform_v2_development_candidate.pt'
+    torch.save(dict(model_state=model.state_dict(),configuration=config,seed=SEED,steps=300,
+        data_sha256=receipt['arrays_sha256'],status='DEVELOPMENT_ONLY_NOT_TIMING_OR_BP_QUALIFIED'),path)
+    restored=make_extended_model('long_tcn');restored.load_state_dict(torch.load(path,map_location='cpu',weights_only=True)['model_state'],strict=True)
+    from scripts.check_waveform_robustness import predict
+    from rppg_lab.waveform_v2_screen_features import window_descriptors
+    from scipy.signal import resample_poly
+    x=arrays['x'][:1];roi=arrays['roi'][:1];prior=arrays['prior'][:1]
+    original,_=predict(model.eval(),x,roi,prior,arrays['descriptors'][:1],30)
+    replay,_=predict(restored.eval(),x,roi,prior,arrays['descriptors'][:1],30)
+    np.testing.assert_array_equal(original,replay)
+    high=resample_poly(x,2,1,axis=-1).astype('float32')
+    p60,usable=predict(restored,high,roi,prior,np.stack([window_descriptors(high[0],60)]),60)
+    flat,flat_usable=predict(restored,np.zeros_like(x),roi,prior,np.zeros((1,75),dtype='float32'),30)
+    if p60.shape!=(1,600) or not np.isfinite(p60).all() or not usable.all() or flat_usable.any() or np.any(flat):
+        raise ValueError('Candidate smoke checks failed')
+    manifest=dict(status='DEVELOPMENT_CANDIDATE_NOT_FINAL_EFFICACY_RESULT',configuration=config,steps=300,seed=SEED,
+        checkpoint=path.name,checkpoint_sha256=file_sha256(path),data_sha256=receipt['arrays_sha256'],
+        selection_evidence_sha256=file_sha256(args.candidate_from/'results.json'),fitting_windows=len(arrays['x']),
+        real_training_subjects=len(set(arrays['record_id'][arrays['source']==0])),
+        synthetic_training_clips=len(set(arrays['record_id'][arrays['source']==1])),parameters=sum(p.numel() for p in model.parameters()),
+        seconds=time.perf_counter()-started,fit_curve=curve,no_original_val_test=True,no_private_data=True,
+        no_new_validation_score=True,trained_label_rate_hz=30,supported_input_rates_hz=[30,60],
+        serialization_exact_replay=True,flat_abstention_checked=True,native60_shape_smoke_only=True,
+        git_revision=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+    (out/'candidate_manifest.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+    print(json.dumps(manifest,indent=2))
 
 
 if __name__=='__main__':main()

@@ -1,0 +1,154 @@
+{
+  "status": "ROI_ROBUSTNESS_FIVE_FOLD_DEVELOPMENT",
+  "complete": true,
+  "intended_neural_runs": 10,
+  "completed_neural_runs": 10,
+  "steps": 300,
+  "seed": 20261108,
+  "seconds": 66.39265310001792,
+  "folds": [
+    [
+      "UBFC:subject5",
+      "UBFC:subject25",
+      "UBFC:subject1",
+      "UBFC:subject27",
+      "UBFC:subject18",
+      "UBFC:subject6"
+    ],
+    [
+      "UBFC:subject22",
+      "UBFC:subject37",
+      "UBFC:subject33",
+      "UBFC:subject34",
+      "UBFC:subject11"
+    ],
+    [
+      "UBFC:subject15",
+      "UBFC:subject20",
+      "UBFC:subject17",
+      "UBFC:subject40",
+      "UBFC:subject21"
+    ],
+    [
+      "UBFC:subject30",
+      "UBFC:subject36",
+      "UBFC:subject10",
+      "UBFC:subject3",
+      "UBFC:subject4"
+    ],
+    [
+      "UBFC:subject23",
+      "UBFC:subject12",
+      "UBFC:subject38",
+      "UBFC:subject8",
+      "UBFC:subject2"
+    ]
+  ],
+  "data_sha256": "64dcc4d31d95b0d02245b8a21e19b513d4bfa47a9c058c11c5f455cf4b93275a",
+  "predictions_sha256": "c51ef02c206f11ca2c96d88b927ccae2710d9e876107959dd5c121ea84fc8984",
+  "indices_sha256": "f6f519c134d308ceb98ba197341bfc6e0a77d810a81ed900cc66c99f3303ea1c",
+  "git_revision": "63089780d89ee7b827c87f563057dea0bbbbf61f",
+  "no_original_val_test": true,
+  "no_private_data": true,
+  "no_native60_training_labels": true,
+  "source_results_sha256": "c0d41f859fafa47fafa68f304cacd7a98dd4df2ccd6a73933d3c70583e884782",
+  "independent_verification": {
+    "saved_aggregates_recomputed": 90,
+    "registered_checkpoint_hashes_verified": 10,
+    "max_absolute_metric_difference": 1.9120715677445332e-08,
+    "neural_forwards": 0,
+    "checkpoint_loads": 0,
+    "original_dataset_access": false
+  },
+  "checkpoint_hashes": {
+    "fold0_long_tcn__roi_dropout": "91ec2c17075e58624dc223d36dd551d14c1db00d6e369d6d92841cfd7af5db26",
+    "fold0_long_tcn__roi_consistency0_2": "24974cab3e9b7616778bf26ac44cc208ca57c70a1441f08fad2da4275cabbd72",
+    "fold1_long_tcn__roi_dropout": "7294c8878a001332bf4175525f49edb946d50916c9bcb99d4ba4293c71159cf3",
+    "fold1_long_tcn__roi_consistency0_2": "58a741aefd8ef15eb6d8b3063c74fe2c3dc35320b0f9a426aaab96b349894d7a",
+    "fold2_long_tcn__roi_dropout": "13ccf8c1ccef0bfac8d75929ba83ff2753724ee8a5fb846bb94401e482569a9d",
+    "fold2_long_tcn__roi_consistency0_2": "59b42f60552384b8e736edeea74c9c4dce52ba700bbfb69be966751055116699",
+    "fold3_long_tcn__roi_dropout": "e91a3cdef261d0e4b278f1763a4d34322f7c5e444795523d21daa6e3cf7df2cc",
+    "fold3_long_tcn__roi_consistency0_2": "797ac8709db21b42e253e616d99d3fff6808b8b408635642981083e4e16b6cd8",
+    "fold4_long_tcn__roi_dropout": "48e1cd96bd6549d5fcf54f97ed31878a0acb489f8c8ec4a2d6fcb38c8eb9d070",
+    "fold4_long_tcn__roi_consistency0_2": "4235b9d687261b119acd2facbaef7a1b8c15924a0bed13ddb27f4981198e9e35"
+  },
+  "descriptive_paired_subject_bootstrap": {
+    "long_tcn__roi_dropout": {
+      "native_r": {
+        "mean": 0.03816634252500777,
+        "interval": [
+          -0.0037992230380047053,
+          0.08060662960778449
+        ],
+        "positive_subjects": 14,
+        "subjects": 26
+      },
+      "morphology_r": {
+        "mean": 0.08297128455761152,
+        "interval": [
+          0.06772555723881876,
+          0.09685412816703318
+        ],
+        "positive_subjects": 25,
+        "subjects": 26
+      },
+      "morphology_d1_r": {
+        "mean": 0.14399635046720505,
+        "interval": [
+          0.12423400019510433,
+          0.1641936453966758
+        ],
+        "positive_subjects": 26,
+        "subjects": 26
+      },
+      "hr_mae": {
+        "mean": 0.04279140290593339,
+        "interval": [
+          -0.07676317902890033,
+          0.21969486365849006
+        ],
+        "positive_subjects": 12,
+        "subjects": 26
+      }
+    },
+    "long_tcn__roi_consistency0_2": {
+      "native_r": {
+        "mean": 0.046950110735166944,
+        "interval": [
+          -0.0025073236523470484,
+          0.09950422499718044
+        ],
+        "positive_subjects": 14,
+        "subjects": 26
+      },
+      "morphology_r": {
+        "mean": 0.08160892274135197,
+        "interval": [
+          0.06645080908846394,
+          0.09574019567229043
+        ],
+        "positive_subjects": 24,
+        "subjects": 26
+      },
+      "morphology_d1_r": {
+        "mean": 0.14235123269833053,
+        "interval": [
+          0.12323640828331311,
+          0.162033097880582
+        ],
+        "positive_subjects": 26,
+        "subjects": 26
+      },
+      "hr_mae": {
+        "mean": 0.05416357491946388,
+        "interval": [
+          -0.0659918264897257,
+          0.23169671987308468
+        ],
+        "positive_subjects": 11,
+        "subjects": 26
+      }
+    }
+  },
+  "bootstrap_limitations": "Development-selected, shared training folds; descriptive, not independent final inference; positive HR error difference is worse."
+}

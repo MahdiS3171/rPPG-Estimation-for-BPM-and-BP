@@ -27,6 +27,8 @@ consistently. Adding waveform complexity has not established a heart-rate gain.
 | Attention residual, morphology loss | .298 | .805 | .740 | 1.244 |
 | Spectral residual, morphology loss | .285 | .739 | .664 | 2.702 |
 | Time-varying gate, morphology loss | .290 | .792 | .736 | 1.502 |
+| Longer TCN with ROI dropout | .305 | .812 | .751 | 1.194 |
+| Longer TCN with ROI dropout and consistency | .314 | .811 | .749 | 1.205 |
 
 Scores average windows within people, then people. Aligned metrics choose one
 lag within +/-0.5 seconds against the contact target on fixed central support.
@@ -67,7 +69,8 @@ completed. Longer context and attention improve aligned shape from .788 to
 .805, with essentially equivalent results. Prefer the longer TCN as a morphology
 candidate because attention adds complexity without a clear increment. Native
 and HR endpoints do not establish a uniform advantage. Spectral residuals and
-time-varying gates are deprioritized. Across the campaign, 113 neural fits and
+time-varying gates are deprioritized. Including the ten ROI-training controls,
+123 neural development fits and
 20 linear solves completed; these counts are experiments, not participants.
 
 The [robustness checks](WAVEFORM_ROBUSTNESS_PROTOCOL.md) assess known input shifts,
@@ -79,8 +82,20 @@ all 152 OOF windows: whole-input shifts retain >.9999 mean output agreement;
 equivalent interpolated 60-Hz inputs retain >.99998 agreement after subsampling.
 All flat/no-prior cases abstain. ROI removal changes the relative lag by one
 33.33-ms bin in some windows. These are processing checks with coarse lag bins,
-not local timing validation. Two fixed region-dropout/consistency controls now
-test whether that sensitivity can be reduced without losing reconstruction.
+not local timing validation. Both fixed region-dropout controls improve shape
+and ROI stability. Dropout plus 0.2 consistency reaches native r .314, shape
+.811, derivative .749 and HR MAE 1.205 bpm. Shape improves in 24/26 subjects,
+derivative in 26/26; the descriptive native-r difference interval still includes
+zero [-.003, .100]. The consistency variant has no additional lag bin under
+the tested ROI removals, at 33.33-ms resolution. This does not resolve effects
+below that grid or validate physical timing.
+
+Retain the longer TCN with dropout/consistency as the leading development
+candidate. Its small shape difference from dropout alone is inconclusive;
+better observed ROI stability motivates the selection. A one-time fit on all
+permitted Train windows produces a local checkpoint and manifest. Its exported
+checkpoint has no new validation score. Keep classical and compact hybrids for
+future independent comparisons. Native timing/generalization remain open.
 
 Next value comes from robustness and data/reference admission, followed by a
 locked third real domain. Current evidence does not require camera recapture
