@@ -83,6 +83,8 @@ def summarize(root):
         predictions=[number(r['delay_xcorr_sec']) for r in group if r['model']!='face_GREEN']
         if len(predictions)>=2:spreads.append(1000*float(np.ptp(predictions)))
     bp=json.loads((root/'bp/bp_summary.json').read_text())
+    bandwidth=json.loads((root/'native_output_audit/aggregate.json').read_text())
+    if bandwidth['input_receipt_sha256']!=sorted(h for _,h in completed):raise ValueError('Bandwidth audit does not cover the exact completed cohort')
     result=dict(date='2026-11-08',scope_sha256=file_sha256(scope_path),evaluation_receipt_sha256=sorted(h for _,h in completed),
         subjects=len(completed),models=15,recordings=len(completed),
         source_frames=sum(r['timing']['camera']['source_frames'] for r,_ in completed),
@@ -94,7 +96,7 @@ def summarize(root):
             attempted_rows=len(learned),median_same_window_cross_model_lag_range_ms=median(spreads),
             lag_range_population='All computable windows and phases, six frozen waveform checkpoints',
             calibrated=False,hand_neural_model_validated=False),
-        bp=bp,private_artifacts_published=False,limitations=['No local contact waveform truth','Unmeasured rolling shutter/exposure timing',
+        bp=bp,native_output_bandwidth=bandwidth,private_artifacts_published=False,limitations=['No local contact waveform truth','Unmeasured rolling shutter/exposure timing',
             'Legacy unverified cuff event times','Six development and five evaluation people at most','30-Hz training targets; native60 is processing sensitivity only'])
     return result
 
