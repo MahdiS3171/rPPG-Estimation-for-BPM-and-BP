@@ -1,18 +1,22 @@
 # Waveform and face–hand timing research
 
-Updated 2026-11-08. Lead: Codex, within the active runtime. Current branch:
+Updated 2026-11-09. Lead: Codex, within the active runtime. Current branch:
 `research/native-waveform-development`. This is the project roadmap; historical
 Gate documents remain evidence, not current work assignments.
 
-**Active authorized work:** the user's request now opens all eleven local pilot
+**Latest completed work:** the user's request opened all eleven local pilot
 sessions for frozen-model transfer, optical timing and exploratory session-mean
 BP evaluation under the [fixed protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md).
 The current workbook has eleven consenting exact session matches and 33 cuff
-readings, but zero video-reviewed event timelines. All eleven are being
-re-extracted consistently at native pixels/every frame with original PTS, using
-the user-approved local compute budget. No private waveform fine-tuning occurs.
-The small BP comparison uses S001–S006 for fitting and S007–S011 for evaluation;
-it cannot establish clinical accuracy or physiological timing.
+readings, but zero video-reviewed event timelines. All 198,513 frames were
+re-extracted consistently at native pixels/every frame with original PTS.
+No private waveform fine-tuning occurred. Signal eligibility left five fitting
+and three evaluation people from the fixed S001–S006 / S007–S011 roles.
+[The report](docs/PILOT11_NEW_MODELS_REPORT.md) records joint-feature BP MAE
+15.54/9.41 mmHg versus mean 16.11/8.67; independent specialists 17.78/11.10.
+One of 108 independent timing attempts was strict; nobody had two. Physical
+timing remains unbounded. Next permitted work targets cuff/source verification
+and camera controls, with a local BP-blinded 33-event review queue prepared.
 
 ## Strategic assessment
 
@@ -42,8 +46,8 @@ repeat volunteer collection without a discriminating protocol.
 |---|---|---|
 | Can facial waveforms generalize? | V1 is useful on UBFC; external HR deteriorates substantially. | Matched native-waveform comparisons on newly admitted real data. |
 | Do reconstructed timestamps preserve local pulse timing? | Processing controls fail or abstain; sensor/reference clock calibration is missing. | Known acquisition timing controls and appropriate site references. |
-| Is simultaneous face–hand optical delay repeatable and resolved? | Pilot has one independent strictly accepted window; no repeatability established. | Calibrated phone acquisition, repeated observations, uncertainty smaller than the effect. |
-| Does delay improve BP estimation? | No timing-verified cuff associations; no credible incremental test. | Only after the preceding evidence, subject/session-separated controlled comparison. |
+| Is simultaneous face–hand optical delay repeatable and resolved? | All-eleven consistent extraction: one strict / 108 independent attempts; no person has two. No exposure/row calibration. | Calibrated phone acquisition, repeated observations, uncertainty smaller than the effect. |
+| Does delay improve BP estimation? | Zero verified cuff links, so timing increment unavailable. Fixed morphology-BP study on five fitting/three evaluation people shows no reliable mean-baseline advantage. | Reviewed existing cuff events; independent timing evidence and a new grouped BP study before any claim. |
 
 ## Workstreams and exit conditions
 

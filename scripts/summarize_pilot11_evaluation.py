@@ -3,6 +3,7 @@ import argparse
 from collections import Counter,defaultdict
 import csv
 import json
+import importlib.metadata
 from pathlib import Path
 import numpy as np
 from rppg_lab.artifacts import file_sha256,write_json
@@ -91,13 +92,16 @@ def summarize(root):
     replay=json.loads((root/'bp/numerical_verification.json').read_text())
     bandwidth=json.loads((root/'native_output_audit/aggregate.json').read_text())
     if bandwidth['input_receipt_sha256']!=sorted(h for _,h in completed):raise ValueError('Bandwidth audit does not cover the exact completed cohort')
-    result=dict(date='2026-11-08',scope_sha256=file_sha256(scope_path),evaluation_receipt_sha256=sorted(h for _,h in completed),
+    result=dict(date='2026-11-08',report_date='2026-11-09',scope_sha256=file_sha256(scope_path),evaluation_receipt_sha256=sorted(h for _,h in completed),
+        software_versions={name:importlib.metadata.version(name) for name in ('numpy','scipy','torch','scikit-learn','opencv-python','mediapipe')},
         aggregation_source_sha256=file_sha256(__file__),metadata_snapshot_sha256=file_sha256(root/'private_metadata/metadata_snapshot.xlsx'),
         subjects=len(completed),models=15,recordings=len(completed),
         source_frames=sum(r['timing']['camera']['source_frames'] for r,_ in completed),
         source_seconds=sum(r['timing']['camera']['source_seconds'] for r,_ in completed),
         repeated_decoded_pixel_frames=sum(r['timing']['camera']['repeated_decoded_pixel_frames'] for r,_ in completed),
         every_frame_native_acquisition=True,contact_waveform_reference_available=False,
+        model_window_schedule_by_rate={fs:{key:sum(r['face_rates'][fs][key] for r,_ in completed) for key in
+            ('windows','candidate_cuff_free','verified_cuff_free','face_quality_good')} for fs in ('30','60')},
         primary_timing=primary,guard_sensitivity=policies,quality_by_phase=phase_quality,waveform_support=output,
         paired_30_60_processing=rate_results,learned_face_timing=dict(computable_rows=sum(r['computable']=='True' for r in learned),
             attempted_rows=len(learned),median_same_window_cross_model_lag_range_ms=median(spreads),

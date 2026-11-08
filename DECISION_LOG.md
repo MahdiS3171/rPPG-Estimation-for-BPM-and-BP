@@ -199,3 +199,19 @@ landmarkers with the existing matching assets, every frame and original PTS.
 A one-decode bounded-polygon implementation preserves exact native pixel/RGB
 calculations in synthetic and exposed-video checks. No cadence reduction,
 resizing, waveform fitting, source modification or private-data release.
+
+## 2026-11-09 — Preserve the negative Pilot11 readout and target verification (D021)
+
+All eleven native extractions and fifteen-checkpoint evaluations completed.
+Fixed signal gates leave five fitting and three evaluation people; three of
+eleven lack eligible physiological predictors. Joint-feature BP MAE is
+15.54/9.41 mmHg versus mean 16.11/8.67; independent experts 17.78/11.10.
+One of 108 independent timing attempts is strict and nobody has two. No cuff
+event is video-reviewed and physical camera timing remains unbounded. Do not
+relax gates, select seeds/features/regularization using these errors, fine-tune
+private waveforms or promote a BP predictor. S007–S011 are consumed for the
+authorized fixed study. Keep all artifacts and continue the already agreed
+waveform/calibration route. A BP-blinded 33-event queue and local audio-track
+audit are prepared; audio availability does not certify a cuff event. Any
+corrected-timeline reanalysis must be identified as a sensitivity on consumed
+data, with independent outcome-blinded review and no claim of a fresh Test.

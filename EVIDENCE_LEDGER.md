@@ -1,6 +1,6 @@
 # Research evidence ledger
 
-Updated 2026-11-08. Software correctness, synthetic controls, exposed real data
+Updated 2026-11-09. Software correctness, synthetic controls, exposed real data
 and independent physiological validation are different evidence classes.
 Repeated test execution does not add participants or independent observations.
 
@@ -34,17 +34,22 @@ Repeated test execution does not add participants or independent observations.
 | E026 | Locked, consumed public internal Test | [Report](docs/WAVEFORM_RESET_CAMPAIGN_REPORT.md), [selection](docs/waveform_research/reset_internal_test_selection_20261108.json), [waveforms](docs/waveform_research/reset_internal_test_waveforms_20261108.csv), [features](docs/waveform_research/reset_internal_test_features_20261108.csv), [receipt](docs/waveform_research/reset_internal_test_20261108.json): six real people/one synthetic clip, 181 windows, 19 waveform and 19 feature comparators. | Waveform shape/d1 gains repeat: real-only .748/.669, TCN .760/.675 vs CHROM .699/.561; HR ~1.48 bpm. Independent feature experts show no consistent advantage, geometry is near a constant baseline, direct feature HR is worse. 1,026 waveform and 2,850 feature values replayed. No Test-based tuning; internal/historically exposed, not external or physiological/BP validation. |
 
 | E027 | Clean-runner validation of completed reset/specialist implementation | [Successful CI](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42503651468) at `21bf31dd3c3c6f34ad7223f60384d53126f3865e`. Local 16 targeted contracts and compilation pass; 133 local document links resolve. | Synthetic history, split/leakage guards, feature units, gradient isolation and model/loss/native-rate contracts pass remotely. Frozen V1/prior candidate identities match. Software validation does not add independent participants, native-60 supervision or physiological efficacy. |
-| E028 | User-authorized eleven-subject local evaluation, acquisition in progress | [Fixed protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md), [scope/model lock](docs/waveform_research/pilot11_model_and_scope_lock_20261108.json), decisions D019–D020. Exact updated workbook snapshot: eleven consenting matched sessions, 33 numeric cuff pairs, zero video-reviewed event timelines. | The user's explicit request opens S001–S011 for this frozen local evaluation. Consistent every-frame extraction of all eleven is approved and running. No waveform fine-tuning or new efficacy result. Legacy timing prevents verified event-level BP associations. Private metadata/traces remain ignored and local. |
+| E028 | User-authorized eleven-subject local evaluation, completed | [Fixed protocol](docs/PILOT11_NEW_MODELS_PROTOCOL.md), [scope/model lock](docs/waveform_research/pilot11_model_and_scope_lock_20261108.json), decisions D019–D021. Exact updated workbook snapshot: eleven consenting matched sessions, 33 numeric cuff pairs, zero video-reviewed event timelines. | S001–S011 are consumed for this fixed local study. All 198,513 frames were re-extracted consistently; fifteen retained checkpoints evaluated. No waveform fine-tuning. See E030–E032 for results. Private metadata/traces remain ignored and local. |
 
 | E029 | Known-delay synthetic controls on actual MP4 clocks | [Aggregate clock controls](docs/waveform_research/pilot11_clock_controls_20261108.json): 25,740 attempts across regular 30/60-Hz and eleven actual camera clocks; inherited fixed scenarios/configuration. | Filtered GREEN on actual clocks has mean absolute recovery error 1.096 ms for matched clean shapes and 12.392 ms for prescribed shape mismatch; deliberate long-gap windows all abstain. Demonstrates numerical sub-frame recovery and morphology sensitivity. These are generated pulses, not eleven physiological validation subjects, exposure calibration or proof of native sensor cadence. |
+
+| E030 | New real Pilot11 transfer, timing and exploratory BP | [Report](docs/PILOT11_NEW_MODELS_REPORT.md), [aggregate results](docs/waveform_research/pilot11_evaluation_20261108.json): eleven people, 329 model windows per rate, 26 primary candidate/quality-qualified windows across eight people. | Fixed BP roles retain five fitting/three evaluation people: mean SBP/DBP MAE 16.11/8.67; joint 15.54/9.41; independent 17.78/11.10 mmHg. No reliable mean-baseline advantage. One strict / 108 independent timing attempts; no person has two; zero verified cuff-free events. No contact waveform truth or camera calibration; no clinical or native-60 fidelity claim. |
+| E031 | Saved-result verification and remote software contracts | [Aggregate receipt](docs/waveform_research/pilot11_evaluation_20261108.json): independent sklearn imputation/scaling/SVD-ridge reproduces 180 saved numbers, maximum difference 1.42e-14; 121 artifact hashes, fifteen retained checkpoint identities and three prior frozen/candidate identities pass. [Successful source CI](https://github.com/MahdiS3171/rPPG-Estimation-for-BPM-and-BP/actions/runs/42518433848) at `e47431944aabc70dee2a228fdea1d995a544daf2`. | Numerical/source integrity, with no repeated neural inference in replay. Not extra participants or biological validation. |
+| E032 | Local metadata/review preparation only | BP-blinded queue: 33 events, eleven original recordings, all eleven have audio tracks; local ignored `outputs/pilot11_new_models/20261108_01/cuff_review/`. | A possible channel for independent cuff-timeline review. Audio presence does not establish pump sounds, actual intervals, calibration or physiological timing; all events remain unverified. No BP values appear in the review queue and no workbook was edited. |
 
 ## Closed / unavailable evidence
 
 S007–S011's earlier seal is superseded only for the explicitly authorized
 Pilot11 protocol above; the cohort is now consumed for that purpose.
 Original UBFC test and rPPG-10 external evidence are consumed; SCAMPS Val/Test
-are exposed diagnostics. No newly untouched test, completed BP fit, clinical validation,
-real camera calibration or new participant study was performed. Dataset access
+are exposed diagnostics. The explicitly authorized small Pilot11 BP fits are
+completed exploratory work; there is no newly untouched test, clinical validation,
+real camera calibration or new participant collection. Dataset access
 and future splits must be recorded here before any evidence-consuming action.
 
 ## Reproduction receipts

@@ -1,0 +1,1096 @@
+{
+  "date": "2026-11-08",
+  "report_date": "2026-11-09",
+  "scope_sha256": "775854d0fd2cbadfdec3c5631e0cf674fcd5f6937e8ffa7ca9751fd3e227be6f",
+  "evaluation_receipt_sha256": [
+    "1973d0e74a69acc4cc23ec07294f203d808a6bb2fd4cfb4f17a2078ea33002f7",
+    "1c80f594bf9e03c6ce1fc053065ad587a2f93afd42ff4d976c30fb7ca7e0a4d3",
+    "31f7a35274f41187d5267aa3ac0a3d35c5734d8bf9d3029ccbbb12a97577c515",
+    "47a833e0da141c2e95908dba79ead79eb9ad22dea5a1060392ff07315aff338b",
+    "5e833e8d30dc425acf34d010f9783fa0f86ebb5176491b62762c07793826e182",
+    "609e8a65a26ebd43836728f2bfbbf04391ddda12038e4662b2402ebfbc74b12a",
+    "7c83618f87d6906f4548bab4aaa8bdcc56efe3ed09af3f51fd9b1fbe478bfc27",
+    "a4b084e82248dc6a7e18cc99bfb904a4fd32f6cacc2671d0ad967242b95964df",
+    "b2eac2e1b66f14dfdc4371107e21423c88ae4d9d9972c371a154bc5bf0542af2",
+    "daa9a5878eff091b4439f004ae58bafb33f0fecd0a3a7bd27743d11a866dc515",
+    "fea274e4cbef4b8f469a331c83c543893c48fa84b2f277261e90e3282abafca2"
+  ],
+  "software_versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "torch": "2.12.1+cu132",
+    "scikit-learn": "1.9.0",
+    "opencv-python": "4.13.0.92",
+    "mediapipe": "0.10.14"
+  },
+  "aggregation_source_sha256": "c9bcc42c177ebe691cb1fdb01d1d01293f7e0391a64490d865d52d8d74addac6",
+  "metadata_snapshot_sha256": "785cf7f989fd9473ba8dd6bafcc17c0f0e9abd7149416905228970584ca38930",
+  "subjects": 11,
+  "models": 15,
+  "recordings": 11,
+  "source_frames": 198513,
+  "source_seconds": 3314.9745777777775,
+  "repeated_decoded_pixel_frames": 0,
+  "every_frame_native_acquisition": true,
+  "contact_waveform_reference_available": false,
+  "model_window_schedule_by_rate": {
+    "30": {
+      "windows": 329,
+      "candidate_cuff_free": 106,
+      "verified_cuff_free": 0,
+      "face_quality_good": 97
+    },
+    "60": {
+      "windows": 329,
+      "candidate_cuff_free": 106,
+      "verified_cuff_free": 0,
+      "face_quality_good": 98
+    }
+  },
+  "primary_timing": {
+    "attempted_independent_candidate_windows": 108,
+    "computable": 93,
+    "status_counts": {
+      "uncertain": 86,
+      "invalid": 15,
+      "intermediate": 6,
+      "strict": 1
+    },
+    "subjects_with_at_least_two_strict": 0,
+    "subjects_with_at_least_one_strict": 1,
+    "verified_cuff_free_windows": 0,
+    "failure_reason_counts": {
+      "face_waveform_uncertain": 93,
+      "hand_waveform_uncertain": 66,
+      "low_signed_correlation": 78,
+      "low_cross_spectral_coherence": 88,
+      "cycle_ambiguity": 57,
+      "polarity_ambiguity": 19,
+      "split_difference_sec_too_large": 79,
+      "phase_xcorr_difference_sec_too_large": 63,
+      "cross_method_range_sec_unconfirmed": 107,
+      "cross_roi_range_sec_unconfirmed": 105,
+      "face_hand_hr_disagreement": 52,
+      "delay_noncomputable_or_boundary": 15,
+      "search_boundary": 15,
+      "irregular_source_gap": 69
+    },
+    "physical_timing_calibrated": false,
+    "physical_uncertainty_bound_ms": null,
+    "subject_median_delay_xcorr_ms": -3.4280127548574457,
+    "subject_median_split_difference_ms": 46.45427298972753,
+    "subject_median_phase_xcorr_difference_ms": 46.00071208497036,
+    "subject_median_cross_method_range_ms": 30.134068639881427,
+    "subject_median_cross_roi_range_ms": 31.759628285275994,
+    "agreement_diagnostic_availability": {
+      "split_difference_sec": {
+        "attempted": 108,
+        "unavailable": 27,
+        "measured_within_33_334_ms": 29,
+        "measured_exceeds_33_334_ms": 52
+      },
+      "phase_xcorr_difference_sec": {
+        "attempted": 108,
+        "unavailable": 15,
+        "measured_within_33_334_ms": 45,
+        "measured_exceeds_33_334_ms": 48
+      },
+      "cross_method_range_sec": {
+        "attempted": 108,
+        "unavailable": 106,
+        "measured_within_33_334_ms": 1,
+        "measured_exceeds_33_334_ms": 1
+      },
+      "cross_roi_range_sec": {
+        "attempted": 108,
+        "unavailable": 103,
+        "measured_within_33_334_ms": 3,
+        "measured_exceeds_33_334_ms": 2
+      }
+    }
+  },
+  "guard_sensitivity": [
+    {
+      "policy": "A",
+      "guard_sec": 0,
+      "attempted": 132,
+      "computable": 111,
+      "status_counts": {
+        "uncertain": 103,
+        "invalid": 21,
+        "intermediate": 8
+      }
+    },
+    {
+      "policy": "B",
+      "guard_sec": 5,
+      "attempted": 108,
+      "computable": 93,
+      "status_counts": {
+        "uncertain": 86,
+        "invalid": 15,
+        "intermediate": 6,
+        "strict": 1
+      }
+    },
+    {
+      "policy": "C",
+      "guard_sec": 10,
+      "attempted": 69,
+      "computable": 57,
+      "status_counts": {
+        "uncertain": 54,
+        "invalid": 12,
+        "intermediate": 3
+      }
+    }
+  ],
+  "quality_by_phase": [
+    {
+      "roi": "combined",
+      "phase": "candidate_cuff_free",
+      "attempted_overlapping": 404,
+      "status_counts": {
+        "invalid": 67,
+        "uncertain": 279,
+        "good": 58
+      },
+      "median_snr_db": -0.9689939606627356,
+      "median_periodicity": 0.2703922338373332
+    },
+    {
+      "roi": "combined",
+      "phase": "cuff_active",
+      "attempted_overlapping": 538,
+      "status_counts": {
+        "invalid": 56,
+        "uncertain": 359,
+        "good": 123
+      },
+      "median_snr_db": -0.1464132006863762,
+      "median_periodicity": 0.34868006272235014
+    },
+    {
+      "roi": "combined",
+      "phase": "cuff_boundary_guard",
+      "attempted_overlapping": 0,
+      "status_counts": {},
+      "median_snr_db": null,
+      "median_periodicity": null
+    },
+    {
+      "roi": "combined",
+      "phase": "crosses_boundary",
+      "attempted_overlapping": 142,
+      "status_counts": {
+        "invalid": 142
+      },
+      "median_snr_db": null,
+      "median_periodicity": null
+    },
+    {
+      "roi": "hand_palm",
+      "phase": "candidate_cuff_free",
+      "attempted_overlapping": 404,
+      "status_counts": {
+        "invalid": 67,
+        "uncertain": 212,
+        "good": 125
+      },
+      "median_snr_db": 1.1756461594677912,
+      "median_periodicity": 0.39801464757769095
+    },
+    {
+      "roi": "hand_palm",
+      "phase": "cuff_active",
+      "attempted_overlapping": 538,
+      "status_counts": {
+        "invalid": 56,
+        "uncertain": 240,
+        "good": 242
+      },
+      "median_snr_db": 1.986661140302653,
+      "median_periodicity": 0.5098472444366093
+    },
+    {
+      "roi": "hand_palm",
+      "phase": "cuff_boundary_guard",
+      "attempted_overlapping": 0,
+      "status_counts": {},
+      "median_snr_db": null,
+      "median_periodicity": null
+    },
+    {
+      "roi": "hand_palm",
+      "phase": "crosses_boundary",
+      "attempted_overlapping": 142,
+      "status_counts": {
+        "invalid": 142
+      },
+      "median_snr_db": null,
+      "median_periodicity": null
+    }
+  ],
+  "waveform_support": [
+    {
+      "model": "face_GREEN",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.0
+    },
+    {
+      "model": "face_GREEN",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.0
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261108",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.7378118102579805
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261108",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.7122761348399003
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261125",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.8338299985320745
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261125",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.8394027442335883
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261147",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.7701552163694672
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261147",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.7497723946348458
+    },
+    {
+      "model": "morph_real_only__seed20261108",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.8199792265097656
+    },
+    {
+      "model": "morph_real_only__seed20261108",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.8063560288171345
+    },
+    {
+      "model": "morph_real_only__seed20261125",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.5397154182007426
+    },
+    {
+      "model": "morph_real_only__seed20261125",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.5391314471921582
+    },
+    {
+      "model": "morph_real_only__seed20261147",
+      "sample_rate_hz": 30,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 316,
+      "candidate_quality_windows": 26,
+      "hr_comparison_windows": 26,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.6279474592700041
+    },
+    {
+      "model": "morph_real_only__seed20261147",
+      "sample_rate_hz": 60,
+      "subjects": 11,
+      "attempted": 329,
+      "finite": 329,
+      "nonflat": 329,
+      "candidate_quality_windows": 28,
+      "hr_comparison_windows": 28,
+      "subject_median_abs_hr_difference_from_GREEN_bpm": 0.6326230823018051
+    }
+  ],
+  "paired_30_60_processing": [
+    {
+      "model": "face_GREEN",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9982877835836939,
+      "subject_median_abs_relative_lag_ms": 0.33644897238388327,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261108",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9983573571943265,
+      "subject_median_abs_relative_lag_ms": 0.33189960772676397,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261125",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9983654924351608,
+      "subject_median_abs_relative_lag_ms": 0.3999457334924241,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "long_tcn__roi_consistency0_2__seed20261147",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9981038698639817,
+      "subject_median_abs_relative_lag_ms": 0.5135005282600683,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "morph_real_only__seed20261108",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9983899432425373,
+      "subject_median_abs_relative_lag_ms": 0.36332708358196375,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "morph_real_only__seed20261125",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9980260527685074,
+      "subject_median_abs_relative_lag_ms": 0.3456485282317624,
+      "physiological_accuracy_available": false
+    },
+    {
+      "model": "morph_real_only__seed20261147",
+      "attempted_candidate_quality_windows": 26,
+      "subject_median_same_clock_correlation": 0.9979863836859113,
+      "subject_median_abs_relative_lag_ms": 0.34127474363762655,
+      "physiological_accuracy_available": false
+    }
+  ],
+  "learned_face_timing": {
+    "computable_rows": 1634,
+    "attempted_rows": 4606,
+    "median_same_window_cross_model_lag_range_ms": 43.67683129191054,
+    "lag_range_population": "All computable windows and phases, six frozen waveform checkpoints",
+    "calibrated": false,
+    "hand_neural_model_validated": false
+  },
+  "bp": {
+    "prediction_lock_sha256": "cd817545fb17a436051c966e186e30828e00a8be224aa382d6aa62505de8c670",
+    "targets": [
+      "SBP",
+      "DBP"
+    ],
+    "unit": "mmHg",
+    "models": {
+      "train_mean": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          16.111111111111114,
+          8.666666666666666
+        ],
+        "bias_mmHg": [
+          -15.444444444444457,
+          -6.444444444444447
+        ],
+        "rmse_mmHg": [
+          25.306272096209824,
+          9.641730288851841
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            0.0,
+            0.0
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            1.2692413233592248,
+            3.4307360082083562
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              0.6866387487025349,
+              1.8559719388668157
+            ],
+            [
+              1.9350728372525907,
+              5.230466373170117
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      },
+      "HR_only": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          17.38035243447034,
+          12.097402674875022
+        ],
+        "bias_mmHg": [
+          -15.923010845055316,
+          -7.738000644260713
+        ],
+        "rmse_mmHg": [
+          26.477969232088853,
+          13.136636207034817
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            -1.2692413233592248,
+            -3.4307360082083562
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -1.9350728372525907,
+              -5.230466373170117
+            ],
+            [
+              -0.6866387487025349,
+              -1.8559719388668157
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            0.0,
+            0.0
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      },
+      "HR_compact_geometry": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          16.68274606014577,
+          12.289722835903959
+        ],
+        "bias_mmHg": [
+          -14.10596226130881,
+          -8.767261545072268
+        ],
+        "rmse_mmHg": [
+          26.028751674982683,
+          13.43443051143329
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            -0.5716349490346554,
+            -3.6230561692372922
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -2.865175698255456,
+              -4.838377271011865
+            ],
+            [
+              2.3823650522247846,
+              -1.950358602914207
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            0.6976063743245694,
+            -0.19232016102893587
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -1.6791633141329072,
+              -2.2244606949189887
+            ],
+            [
+              3.0690038009273195,
+              1.255411109673929
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      },
+      "HR_TCN_geometry": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          17.078140662980598,
+          11.587979190176867
+        ],
+        "bias_mmHg": [
+          -16.63708888580435,
+          -8.715938033463829
+        ],
+        "rmse_mmHg": [
+          26.242949473436656,
+          12.758786396230994
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            -0.9670295518694824,
+            -2.9213125235102004
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -1.7850231458324686,
+              -4.492958299944377
+            ],
+            [
+              0.3384223342356165,
+              -0.974728401736229
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            0.3022117714897424,
+            0.5094234846981559
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -1.0983843971299336,
+              -2.636986361077561
+            ],
+            [
+              1.5244347183581652,
+              2.231041310851907
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      },
+      "HR_joint_geometry": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          15.544603095443458,
+          9.413887155964085
+        ],
+        "bias_mmHg": [
+          -14.997735836880386,
+          -6.2325435604993755
+        ],
+        "rmse_mmHg": [
+          25.731846431977544,
+          10.6621325915129
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            0.5665080156676557,
+            -0.747220489297419
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -0.8765393322702124,
+              -2.697353917144426
+            ],
+            [
+              2.3963642671178036,
+              1.8943745091159059
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            1.8357493390268804,
+            2.683515518910937
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              1.0585335049823783,
+              1.767087652724399
+            ],
+            [
+              3.0830030158203385,
+              3.7503464479827215
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      },
+      "HR_independent_geometry": {
+        "subjects": 3,
+        "cuff_readings": 9,
+        "mae_mmHg": [
+          17.77828634011728,
+          11.100741393506325
+        ],
+        "bias_mmHg": [
+          -15.125105674742438,
+          -7.265147241941918
+        ],
+        "rmse_mmHg": [
+          28.55730331200803,
+          12.6727986937525
+        ],
+        "improvement_over_mean_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            -1.6671752290061665,
+            -2.434074726839659
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -5.688421355622893,
+              -5.991153205970065
+            ],
+            [
+              2.8418380494258315,
+              1.1089869194643711
+            ]
+          ]
+        },
+        "improvement_over_hr_baseline_mmHg": {
+          "mae_reduction_mmHg": [
+            -0.3979339056469418,
+            0.9966612813686974
+          ],
+          "descriptive_95pct_subject_bootstrap_mmHg": [
+            [
+              -3.753348518370302,
+              -0.7606868327999479
+            ],
+            [
+              3.5284767981283665,
+              2.9649588583311868
+            ]
+          ]
+        },
+        "evaluation_reference_range_mmHg": [
+          44.66666666666667,
+          17.0
+        ],
+        "evaluation_reference_sd_mmHg": [
+          20.046858686833623,
+          7.171617583602187
+        ]
+      }
+    },
+    "event_level_bp_available": false,
+    "timing_increment_available": false,
+    "clinical_validation": false,
+    "interpretation": "Exploratory session-mean transfer; legacy cuff timing, tiny fixed evaluation cohort, no waveform/timing ground truth",
+    "development": {
+      "train_mean": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            7.333333333333334,
+            7.000000000000007
+          ],
+          "bias_mmHg": [
+            -2.842170943040401e-15,
+            1.4210854715202005e-15
+          ],
+          "rmse_mmHg": [
+            8.469717298181276,
+            9.3355652093367
+          ]
+        }
+      },
+      "HR_only": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            8.281016644264648,
+            6.481485543006189
+          ],
+          "bias_mmHg": [
+            -0.07593374632863004,
+            0.11435262295848503
+          ],
+          "rmse_mmHg": [
+            9.432300243430547,
+            8.416820901028327
+          ]
+        }
+      },
+      "HR_compact_geometry": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            9.388781517474609,
+            7.343741050458196
+          ],
+          "bias_mmHg": [
+            0.3299883491113462,
+            -0.6024598735966677
+          ],
+          "rmse_mmHg": [
+            11.000767125403982,
+            8.765706779895368
+          ]
+        }
+      },
+      "HR_TCN_geometry": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            10.527080804672261,
+            6.234583274558678
+          ],
+          "bias_mmHg": [
+            -1.002391471481792,
+            0.41140056301007777
+          ],
+          "rmse_mmHg": [
+            11.669407201786935,
+            8.435053531740573
+          ]
+        }
+      },
+      "HR_joint_geometry": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            9.285521085157587,
+            7.1238818129164185
+          ],
+          "bias_mmHg": [
+            1.6996028650494963,
+            1.817385413053931
+          ],
+          "rmse_mmHg": [
+            10.100829765057417,
+            8.497776668723343
+          ]
+        }
+      },
+      "HR_independent_geometry": {
+        "status": "available",
+        "subjects": 5,
+        "leave_one_subject_out": {
+          "mae_mmHg": [
+            7.797509661970063,
+            6.214268572963102
+          ],
+          "bias_mmHg": [
+            1.2852947404852757,
+            1.8545852752348437
+          ],
+          "rmse_mmHg": [
+            8.497333705858226,
+            9.583727238618248
+          ]
+        }
+      }
+    },
+    "coverage": {
+      "subjects": 11,
+      "eligible_face_windows": 26,
+      "subjects_with_hr": 8
+    }
+  },
+  "numerical_verification": {
+    "checked_numeric_values": 180,
+    "maximum_absolute_difference": 1.4210854715202004e-14,
+    "verified_evaluation_artifacts": 121,
+    "retained_models_verified": 15,
+    "prior_artifacts_verified": 3,
+    "prediction_lock_sha256": "cd817545fb17a436051c966e186e30828e00a8be224aa382d6aa62505de8c670",
+    "independent_fitter": "sklearn median imputer + StandardScaler + SVD Ridge alpha10",
+    "neural_inference_rerun": false,
+    "waveform_fitting": false,
+    "source_sha256": "18cee06db1ba5088c768769785616028f3a6504620803e3a39f7661a4f69551c"
+  },
+  "native_output_bandwidth": {
+    "scope": "Label-free complete native60 processing path; no matched high-rate contact target",
+    "frequency_bands_hz": [
+      [
+        8,
+        15
+      ],
+      [
+        15,
+        29.5
+      ]
+    ],
+    "normalization_band_hz": [
+      0.5,
+      29.5
+    ],
+    "window": "Hann with linear detrending",
+    "model_summaries": [
+      {
+        "model": "60Hz__face_GREEN",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          1.7818027231442102e-07,
+          1.2801437427462092e-12
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            9.955696000929493e-08,
+            8.710864196842874e-13
+          ],
+          [
+            3.3233347807026803e-07,
+            2.0654027533401065e-12
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__long_tcn__roi_consistency0_2__seed20261108",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          0.0008280195761471987,
+          0.0003293907211627811
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            0.0005815339391119778,
+            0.00017875506455311552
+          ],
+          [
+            0.0015104057092685252,
+            0.0005744055524701253
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__long_tcn__roi_consistency0_2__seed20261125",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          0.0009219893254339695,
+          0.0003672322491183877
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            0.0006120458710938692,
+            0.00022476189406006597
+          ],
+          [
+            0.0016114959144033492,
+            0.000574844001675956
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__long_tcn__roi_consistency0_2__seed20261147",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          0.0010143882827833295,
+          0.0003018271236214787
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            0.0008694351854501292,
+            0.00019491910279612057
+          ],
+          [
+            0.0017447076097596437,
+            0.0007112598250387236
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__morph_real_only__seed20261108",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          7.469661068171263e-05,
+          5.855251583852805e-05
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            5.7993737755168695e-05,
+            4.8106488975463435e-05
+          ],
+          [
+            0.00011792614895966835,
+            6.694160401821136e-05
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__morph_real_only__seed20261125",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          0.00010338063293602318,
+          6.351112097036093e-05
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            8.404299114772584e-05,
+            4.346200785221299e-05
+          ],
+          [
+            0.00012368953139230143,
+            9.600831435818691e-05
+          ]
+        ]
+      },
+      {
+        "model": "60Hz__morph_real_only__seed20261147",
+        "subjects": 8,
+        "subject_median_band_power_fraction": [
+          0.00011413023457862437,
+          5.4600990551989526e-05
+        ],
+        "subject_IQR_band_power_fraction": [
+          [
+            8.772684668656439e-05,
+            4.3677285248122644e-05
+          ],
+          [
+            0.00012682885062531568,
+            8.034210077312309e-05
+          ]
+        ]
+      }
+    ],
+    "higher_power_is_not_improved_waveform_accuracy": true,
+    "source_sha256": "7693b2916ae80f71977f6536cef7d5c97dbab8927b5dd871cd0e3e0e7956e1ce",
+    "input_receipt_sha256": [
+      "1973d0e74a69acc4cc23ec07294f203d808a6bb2fd4cfb4f17a2078ea33002f7",
+      "1c80f594bf9e03c6ce1fc053065ad587a2f93afd42ff4d976c30fb7ca7e0a4d3",
+      "31f7a35274f41187d5267aa3ac0a3d35c5734d8bf9d3029ccbbb12a97577c515",
+      "47a833e0da141c2e95908dba79ead79eb9ad22dea5a1060392ff07315aff338b",
+      "5e833e8d30dc425acf34d010f9783fa0f86ebb5176491b62762c07793826e182",
+      "609e8a65a26ebd43836728f2bfbbf04391ddda12038e4662b2402ebfbc74b12a",
+      "7c83618f87d6906f4548bab4aaa8bdcc56efe3ed09af3f51fd9b1fbe478bfc27",
+      "a4b084e82248dc6a7e18cc99bfb904a4fd32f6cacc2671d0ad967242b95964df",
+      "b2eac2e1b66f14dfdc4371107e21423c88ae4d9d9972c371a154bc5bf0542af2",
+      "daa9a5878eff091b4439f004ae58bafb33f0fecd0a3a7bd27743d11a866dc515",
+      "fea274e4cbef4b8f469a331c83c543893c48fa84b2f277261e90e3282abafca2"
+    ],
+    "completed_recordings": 11
+  },
+  "private_artifacts_published": false,
+  "limitations": [
+    "No local contact waveform truth",
+    "Unmeasured rolling shutter/exposure timing",
+    "Legacy unverified cuff event times",
+    "Six development and five evaluation people at most",
+    "30-Hz training targets; native60 is processing sensitivity only"
+  ]
+}

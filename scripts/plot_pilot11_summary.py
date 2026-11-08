@@ -21,7 +21,10 @@ if __name__=='__main__':
         for y,value,k in zip(positions,values,chosen):ax.text(value+limit*.015,y,f'{value:.2f}  (n={models[k]["subjects"]})',va='center',fontsize=9)
         ax.set_title(target,fontsize=12);ax.set_xlabel('Held-out session-mean MAE (mmHg)');ax.spines[['top','right']].set_visible(False)
     axes[0].set_yticks(positions,[names[k] for k in chosen]);axes[0].invert_yaxis()
-    fig.suptitle('Exploratory BP feasibility: frozen waveform/feature models, up to six fitting people',fontsize=12)
-    fig.supxlabel('At most five evaluation people; legacy cuff timing. No clinical or timing-based validation.',fontsize=9)
+    fitting=sorted({data['bp']['development'][k]['subjects'] for k in chosen});evaluation=sorted({models[k]['subjects'] for k in chosen})
+    counts=f'{fitting[0]} fitting people, {evaluation[0]} evaluation people' if len(fitting)==len(evaluation)==1 else 'Eligibility counts differ by comparator'
+    fig.suptitle('Exploratory BP feasibility: '+counts,fontsize=12)
+    unavailable=data['subjects']-data['bp']['coverage']['subjects_with_hr']
+    fig.supxlabel(f'BP unavailable for {unavailable} of {data["subjects"]} recordings under fixed gates; legacy cuff timing. No clinical validation.',fontsize=9)
     prefix=Path(args.output_prefix);prefix.parent.mkdir(parents=True,exist_ok=True)
     fig.savefig(prefix.with_suffix('.png'),dpi=170);fig.savefig(prefix.with_suffix('.svg'));plt.close(fig)

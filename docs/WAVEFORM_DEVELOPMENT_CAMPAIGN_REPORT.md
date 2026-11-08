@@ -6,8 +6,12 @@ local BP-pilot subjects, using the updated final workbook. The
 consistent every-frame acquisition, separate optical timing checks and a small
 six-development/five-evaluation-subject BP comparison. This supersedes the old
 private-data reserve only for that local study. Historical tables below retain
-their original scope. Acquisition/evaluation is in progress; no pilot BP result
-has been scored yet.
+their original scope. The [completed Pilot11 report](PILOT11_NEW_MODELS_REPORT.md)
+finds no reliable BP gain: signal eligibility leaves five fitting/three
+evaluation people; independent specialists have SBP/DBP MAE 17.78/11.10 mmHg
+versus training mean 16.11/8.67. One of 108 independent timing attempts is strict,
+with no within-person repetition. These results do not select a new waveform
+primary or establish native-60 waveform truth.
 
 **Latest protocol change:** the user authorized a new subject-level split across
 all eligible public records. The [reset protocol](WAVEFORM_RESET_CAMPAIGN_PROTOCOL.md)
