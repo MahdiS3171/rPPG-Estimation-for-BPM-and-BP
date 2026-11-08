@@ -152,3 +152,17 @@ excluded. Explain that fresh weights do not erase analyst/architecture exposure:
 this is a new internal benchmark, not an independent external cohort. New Test
 is separate from selection through the waveform/specialist validation campaign.
 Use matched same-validation controls for any claim about more training data.
+
+## 2026-11-08 — Lock internal Test after waveform/specialist validation (D017)
+
+All 132 waveform and nine matched-capacity feature fits completed. Independent
+replay verifies their saved values and checkpoint identities. From Validation,
+select the compact real-only morphology family by mean three-seed shape/d1
+score, finite coverage and HR within CHROM +0.5 bpm; also retain the prespecified
+mixed-source robust TCN. The joint direct-feature model has the lowest overall
+Validation feature error; test it alongside the user's independent three-expert
+system and shared-head control, all at their three fixed seeds. Commit the
+exact selection/checkpoint lock before opening the new Test arrays. The user's
+public-data repartition instruction authorizes this internal comparison;
+there is no private/session or new external-domain unblinding. Record one
+consumption before access and perform no Test-based refitting or reselection.

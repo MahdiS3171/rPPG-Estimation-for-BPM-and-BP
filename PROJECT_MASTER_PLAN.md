@@ -82,6 +82,17 @@ and three-part specialist comparison is fixed. Rerun earlier mechanisms on this
 protocol, with matched controls to distinguish participant/window increases
 from a changed evaluation population.
 
+The reset rerun is now complete: 132 waveform fits and nine feature-system fits,
+with independent saved-value verification. The
+[reset report](docs/WAVEFORM_RESET_CAMPAIGN_REPORT.md) separates new Validation
+scores from historical OOF scores. Fully independent feature experts did not
+consistently beat a matched joint learner. A validation-only
+[selection lock](docs/waveform_research/reset_internal_test_selection_20261108.json)
+fixes the waveform leader, robust mixed-source comparator and all three feature
+systems for one internal Test campaign. No subsequent Test-based tuning is part
+of that comparison. This uses the user's public-data reset authorization;
+private/sealed restrictions and future external-data admission remain unchanged.
+
 The approved integration is complete on main at `50cb264`; PR #7 was merged with
 history preserved, the six superseded drafts are closed, and all branches remain.
 No new experiment PR stack is being created.
